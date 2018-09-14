@@ -4,7 +4,7 @@ include::_attributes.adoc[]
 endif::[]
 :keywords: devkit, connector, attributes
 
-Like all Mule elements, connectors have attributes that can be assigned in the connector's global configuration dialog.
+Like all Mule elements, connectors have attributes that can be assigned in the connector's global configuration dialog. Using DevKit you can define required and optional attributes.
 
 == Prerequisites
 
@@ -12,11 +12,12 @@ This document assumes you are familiar with the xref:index.adoc[Anypoint Connect
 
 == @Configurable Annotation
 
-The connector's attributes are defined using the `@Configurable` annotation, which provide for essential fields, at least from a user perspective. Since DevKit 3.7, all `@Configurable` parameters must be placed inside the "Config" class _instead of_ the `@Connector` class, normally defined in a separate Java file. These attributes are user assigned in the connector's global configuration dialog, if not set by default. In addition to the `@Configurable` annotation for each attribute, the attributes need public getters and setters.
+The connector's attributes are defined using the `@Configurable` annotation, which provide the code that creates the essential fields, at least from a user perspective. Since DevKit 3.7, all `@Configurable` parameters must be placed inside the "Config" class _instead of_ the `@Connector` class, which is normally defined in a separate Java file. These attributes are user assigned in the connector's global configuration dialog, if not set by default. In addition to the `@Configurable` annotation for each attribute, you need to define public getters and setters for the attributes.
 
-*Note*: A connector may make use of any number of simple or complex `@Configurable` attributes you define when writing code for the connector.
+*Note:* A connector may make use of any number of simple or complex `@Configurable` attributes you define when writing code for the connector.
 
-XML configuration:
+
+Example connector configuration:
 
 [source,xml,linenums]
 ----
@@ -27,7 +28,7 @@ image::configurable-screenshot.png[]
 
 == @Optional Annotation
 
-As mentioned before, `@Configurable` attributes are mandatory. If we want to make them optional we need to mark them with the `@Optional` annotation.
+As mentioned before, `@Configurable` attributes are mandatory. To make an attribute optional, mark with the `@Optional` annotation.
 
 [source,java,linenums]
 ----
@@ -57,12 +58,15 @@ public abstract class AbstractAnalyticsConfig {
 
 XML configuration for a partially complete configuration with some sample proxy settings defined:
 
+
+image::defining-connector-attributes-5ea65.png[proxy settings defined]
+
 [source,xml,linenums]
 ----
 <sfdc-analytics:config name="Salesforce_Analytics_Cloud__Basic_authentication" username="" password="" securityToken="" metadataFileName="" proxyHost="127.3.4.12" proxyUsername="dearuser" proxyPassword="asdfaesfasf" doc:name="Salesforce Analytics Cloud: Basic authentication" proxyPort="3127"/>
 ----
 
-If unchanged, the default port number does not show up in the configuration. If changed, for example, `proxyPort="3127"` (default port number is "3128") it shows in the XML configuration line. See above.
+If the user does not change the default port number, no information is displayed in the configuration. If changed, for example, to `proxyPort="3127"`  it shows in the connector's XML configuration (in the sfdc analytics case above, the default port number is "3128").
 
 == @Default Annotation
 
@@ -83,13 +87,11 @@ public abstract class AbstractAnalyticsConfig {
 
 *Note:* Whenever an attribute is marked as `@Default`, it's implicitly `@Optional` as well.
 
-
 == Customizing Attributes Look and Feel
 
 By default, Anypoint DevKit infers the names and labels for the Studio dialog boxes from methods, parameters, JavaDoc comments, and instance variable names in your Java files. However, you can also use annotations to customize many aspects of the look and feel of your component to improve the user experience.
 
-[NOTE]
-The package `org.mule.api.annotations.display` defines the annotations that let you perform these customizations.
+*Note:* The package `org.mule.api.annotations.display` defines the annotations that let you perform these customizations.
 
 You can (and should) use several annotations that control how the attribute appears in the connector's dialog in Studio and in your connector documentation.
 
@@ -186,10 +188,7 @@ image::placement-1-screenshot.png[]
 
 image::placement-2-screenshot.png[]
 
-== Next
-
-* xref:complex-data-types-attributes.adoc[complex data types]
-
 == See Also
 
+* *NEXT:* Learn more about xref:complex-data-types-attributes.adoc[complex data types] attribute support, such as enumerated types and collections.
 * Learn more about xref:adding-datasense.adoc[Adding DataSense] to your connector.

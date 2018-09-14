@@ -4,11 +4,20 @@ include::_attributes.adoc[]
 endif::[]
 :keywords: devkit, extend, connector
 
+Improve the efficacy, efficiency and reliability of your connector by implementing the following DevKit-supported features.
+
 * xref:adding-datasense.adoc[Adding DataSense]
+** Learn how to add DataSense to your connector so it can sense dynamic and static metadata, making Mule application design more intuitive and less burdensome.
 * xref:adding-datasense-query-language.adoc[Adding DataSense Query Language]
+** Familiarize yourself with the query language and libraries that your connector can use to query data from a service
 * xref:adding-query-pagination-support.adoc[Adding Query Pagination Support]
+** To avoid processing all records in memory at once, use pagination, which allows the connector to ingest the records in chunks, thus improving connector performance. Note that your service's API must support pagination if you want to use the feature in your connector.
 * xref:building-a-batch-enabled-connector.adoc[Building a Batch Enabled Connector]
+** Handle large batches of messages and discover the records easily by adding two classes to your connector's code
 * xref:shading-libraries.adoc[Shading Libraries]
+** Add support for shading (renaming) JAR files in scenarios where multiple versions of dependencies are required that may collide with those in Mule
+* xref:adding-libraries.adoc[Adding Libraries or JARs to Connector Build]
+** For libraries or JARs that cannot be packaged in your connector, prompt Anypoint Studio to request them from the connector user and build the connector with them.
 
 '''''
 

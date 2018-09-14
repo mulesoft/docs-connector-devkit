@@ -10,7 +10,5 @@ The set of example connectors provided with the Anypoint Connector DevKit docume
 
 *Examples:*
 
-* xref:tutorial-barn-connector.adoc[Tutorial - Barn Connector]
 * xref:creating-a-connector-using-a-java-sdk.adoc[Creating a Connector Using a Java SDK]
 * xref:creating-a-connector-for-a-soap-service-via-cxf-client.adoc[Creating a Connector for a SOAP Service Via CXF Client]
-* xref:creating-a-connector-for-a-restful-api-using-restcall-annotations.adoc[Creating a Connector for a RESTful API using @RESTCall Annotations]

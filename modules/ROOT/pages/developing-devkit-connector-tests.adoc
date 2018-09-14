@@ -13,9 +13,9 @@ While testing strategy may vary extensively based on your specific needs, this d
 This document assumes that you:
 
 * Installed the Anypoint Connector DevKit Plugin as described in  xref:creating-an-anypoint-connector-project.adoc[Creating an Anypoint Connector Project]
-* Are familiar with Anypoint Studio
-* Are familiar with Maven build manager for Java
-* Are familiar with JUnit - The Regression and Smoke Test scaffolds make calls to JUnit
+* Are familiar with xref:5@studio::index.adoc[Anypoint Studio]
+* Are familiar with https://maven.apache.org/[Maven] build manager for Java
+* Are familiar with http://junit.org/[JUnit]
 
 == Code Areas to Test
 
@@ -41,9 +41,9 @@ Incorporate these kind of tests in your test suite:
 
 == Generate Tests Scaffold
 
-A test scaffold is a set of Java files that appear under src/test/java after you use Anypoint Studio to generate tests. Studio generates these files:
+A test scaffold is a set of Java files that appear under `src/test/java` after you use Anypoint Studio to generate tests. Studio generates these files:
 
-=== Test Runners - Runs sets of test cases
+=== Test Runners - Running Sets of Test Cases
 
 * Regression test suite file - You can use this code to uncover new bugs by comparing the previous state of the connector to the current. If this is the first run, it finds new bugs.
 * Smoke test suite file - Reveals simple issues such as "does this feature run?" that you can use to ensure that the basic behavior of your connector functions as expected.
@@ -59,7 +59,7 @@ A test scaffold is a set of Java files that appear under src/test/java after you
 +
 image::generatetests.png[GenerateTests]
 +
-. Click the methods that you want to create a test scaffold for, or click *Select All*. The wizard displays choices from methods in your application, for example, this application contains many methods:
+. Click the methods that you want to create a test scaffold for, or click *Select All*. The wizard displays choices from test-ready methods in your application. If you do not see a desired method, be sure you annotated the function properly, for example, placed `@Processor` above your method.
 +
 image::testscaffoldinggeneration.png[TestScaffoldingGeneration]
 +
@@ -67,7 +67,7 @@ image::testscaffoldinggeneration.png[TestScaffoldingGeneration]
 . Click additional choices if you want Studio to create test data that you can use to test your connector:
 ** *Generate Functional Test Data Files*
 ** *Generate Interop Test Data Files*
-. Click *Finish*. Studio creates files that appear in Package Explorer under src/test/java.
+. Click *Finish*. Studio creates files that appear in Package Explorer under `src/test/java`.
 . Add your code to the scaffolded tests. To run your tests, see Running Generated Tests.
 
 === Example Scaffold File
@@ -125,12 +125,9 @@ DevKit testing procedure provides the following features.
 
 === Coverage Categories
 
-* Smoke suite ensures tests preconditions are met for a Regression run.
+* Smoke suite tests whether preconditions are met for a Regression run.
 * Regression suite includes at least one test case for each operation.
-
-// == Testing Framework
-// NOTE: This Github URL is not visible to non-ms employees
-// Write functional tests using the https://github.com/mulesoft-labs/connector-testing-framework/tree/master/functional-test-framework[current connector testing framework].
+* Write functional tests using the https://mulesoft.github.io/connector-testing-framework/[connector testing framework].
 
 == Suite Implementation
 
@@ -152,4 +149,4 @@ Also, if a connector is *Standard*, remember to add a `muleLicenseKey.lic` file 
 
 If you are developing individual unit tests while adding operations to your connector, you should go back to the development process. Build your connector project with Maven; if any of your tests fail, then your Maven build process fails.
 
-After you complete your test suite, you can xref:connector-reference-documentation.adoc[complete documentation and samples] for your connector.
+After you complete your test suite, you can  xref:connector-reference-documentation.adoc[generate complete documentation and samples] for your connector.

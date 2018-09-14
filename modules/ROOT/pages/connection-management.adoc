@@ -2,6 +2,7 @@
 ifndef::env-site,env-github[]
 include::_attributes.adoc[]
 endif::[]
+:keywords: devkit, connection, connectivity, test, authentication
 :keywords: devkit, connection, authentication, annotations, test connectivity, pooling, disconnect, validate, identify, reconnect on
 
 The Connection Management framework provides multi-tenancy capabilities for a connector (managing multiple simultaneous connections with different credentials for each connector within your application), as well as connection pooling and instance pooling. These benefits are available for most authentication schemes other than OAuth, and for APIs that do not require authentication. Basic Authentication is designated in a connector with the `@ConnectionManagement` attribute.
@@ -56,7 +57,7 @@ To use Connection Management in a connector, define and annotate the following m
 * `@ValidateConnection` method - Returns true if a connection is still valid, false otherwise
 * `@ConnectionIdentifier` method - Returns a prefix used in generating unique identifiers for connector instances in the connection pool
 
-The specific implementation of these methods depends on the target. For more information on annotations, see the xref:annotation-reference.adoc[Annotation Reference].
+The specific implementation of these methods depends on the target. For more information on annotations, see the http://mulesoft.github.io/mule-devkit/[Anypoint DevKit API Reference].
 
 [source,java,linenums]
 ----

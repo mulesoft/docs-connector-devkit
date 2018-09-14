@@ -2,8 +2,6 @@
 ifndef::env-site,env-github[]
 include::_attributes.adoc[]
 endif::[]
-:keywords: devkit, test, framework
+:keywords: devkit, test, framework, ctf, functional testing,
 
-This page lists Mule 3.7 changes to the DevKit connector testing framework.
-
-See https://mulesoft.github.io/connector-testing-framework/[Connector Testing Framework].
+For background information on connector functional testing and to understand its most recent implementation, read on at https://mulesoft.github.io/connector-testing-framework/[Connector Testing Framework].

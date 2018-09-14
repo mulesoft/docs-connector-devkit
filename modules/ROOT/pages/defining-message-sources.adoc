@@ -4,9 +4,12 @@ include::_attributes.adoc[]
 endif::[]
 :keywords: devkit, message sources, polling, source strategy, module, verifiers
 
-Using DevKit, you can create Message Sources, which receive or generate new messages for Mule to process.
+Using DevKit, you can create message sources, which receive or generate new messages for Mule to process.
 
-One of the use cases of Message Sources is implementing Streaming APIs. The `@Source` annotation marks a method inside a `@Module` or `@Connector` annotated class as callable from a Mule flow and capable of generating Mule events. Each marked method generates a Message Source. The method must receive a `SourceCallback` as one of its arguments that represents the next message processor in the chain. The order in which this parameter appears doesn't matter as long as it is present in the method signature.
+One of the use cases of message sources is implementing Streaming APIs. The `@Source` annotation marks a method inside a `@Module` or `@Connector` annotated class as callable from a Mule flow and capable of generating Mule events. Each marked method generates a message source. The method must receive a `SourceCallback` as one of its arguments that represents the next message processor in the chain. The order in which this parameter appears doesn't matter as long as it is present in the method signature.
+
+Another use case is how to pass inbound properties to the message that comes out of the message source.
+See <<Pass Inbound Properties Use Case>>.
 
 == Polling Implementation
 
@@ -42,7 +45,7 @@ For `SourceStrategy.POLLING,` `@Source` generates a `pollingPeriod` parameter, i
 `@Source` annotated method with `SourceStrategy.POLLING:`
 
 * Cannot define a `pollingPeriod` parameter.
-* Must define a default ` pollingPeriod ` value.
+* Must define a default `pollingPeriod` value.
 
 `@Source` annotated method _without_ `SourceStrategy.POLLING` cannot define a default `pollingPeriod` value.
 
@@ -54,7 +57,7 @@ The `@Source` methods provide support for a reconnection strategy using `@Reconn
 
 == Example
 
-The SalesForce Connector supports the SalesForce Streaming API in which users can subscribe to topics and receive notifications when a new event related to that topic occurs.
+The http://mulesoft.github.io/mule-salesforce-connector/[SalesForce Connector] supports the SalesForce Streaming API in which users can subscribe to topics and receive notifications when a new event related to that topic occurs.
 
 [source,java,linenums]
 ----
@@ -86,6 +89,32 @@ You can invoke this method in Anypoint Studio using:
 
 This method subscribes to a topic with the given parameter name, and when an update is received, it invokes the logger.
 
+== Pass Inbound Properties Use Case
+
+This use case describes how to pass inbound properties to the message that comes out of the message source.
+
+Previously this page describes the `callback.process(Object payload)` call, but this additional call is also available:
+
+`callback.process(Object payload, Map<String, Object> properties)`
+
+This call sets inbound properties through the map called `properties`.
+
+Example:
+
+[source,java,linenums]
+----
+@Source(sourceStrategy = SourceStrategy.POLLING,pollingPeriod=5000)
+public void getNewMessages(SourceCallback callback) throws Exception {
+Map<String, Object> properties = new HashMap<String, Object>();
+properties.put("originalFilename", "123.txt");
+callback.process("testMessage", properties);
+}
+----
+
+After this is built into a connector, it contains an inbound property called originalFiname with value `123.txt` after the message source.
+
 == See Also
 
-* xref:3.7@mule-runtime::salesforce-connector.adoc[Salesforce Connector]
+* xref:3.7@mule-runtime::salesforce-connector.adoc[Salesforce Connector Documentation]
+* https://www.anypoint.mulesoft.com/exchange/?type=connector&search=salesforce[SalesForce Connector]
+* https://www.anypoint.mulesoft.com/exchange/?type=connector&search=freshbooks[FreshBooks Connector].

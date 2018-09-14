@@ -2,31 +2,44 @@
 ifndef::env-site,env-github[]
 include::_attributes.adoc[]
 endif::[]
-:keywords: devkit, shading, library, jar, plugin, artifacts
+:keywords: devkit, shading, library, jar, plugin, artifacts, shade, maven, classpath, collision, conflict
 
-DevKit version 3.5.3 and later supports the use of shading (renaming) JAR files using the http://maven.apache.org/plugins/maven-shade-plugin/examples/includes-excludes.html[Apache Maven Shade Plugin] from your project's `pom.xml` file.
+DevKit version 3.5.3 and later supports creating a "shaded" .jar file (i.e. an "uber" .jar containing the classes and packages of its dependency libraries with optional relocation of various packages and classes) using the http://maven.apache.org/plugins/maven-shade-plugin/examples/includes-excludes.html[Apache Maven Shade Plugin].
 
-If needed, you can add a dependency in your `pom.xml` files so that your JAR file names do not collide with those in Mule. For those scenarios, we strongly recommend that you use the same version of the library as Mule does, and if is not possible, then change your library to another one. If you still need a custom library that collides with Mule, then shading can work for you.
+The Maven Shade plugin can be used to build your custom connector library .jar bundled with all of its library class dependencies which ensures its library class dependencies do not collide/conflict at runtime with other versions of any libraries already being used within Mule.
 
-To add the shading plugin to your connector’s `pom.xml` file:
+== Before Using
 
-. Add the custom JAR to the connector using the `pom.xml` file dependencies.
-. Rename the packages of the library to the new JAR to avoid collisions.
+Before moving forward with the Maven Shade plugin, it is advisable to first consider one of the following approaches as an alternative to shading:
 
-The following example shows the dependencies for a `groupId` of  `org.some.library` and an `artifactId` of  `custom-artifact-id`:
+* Use the same version of the library that Mule is using
+* Use an entirely different library with packages and classes that do not collide with ones being used by Mule
+
+When neither of the two alternate approaches above are feasible for your custom connector, use of the Maven Shade plugin may be the last viable option.
+
+== What Shade Plugin Does
+
+The Maven Shade plugin takes care of renaming the packages of colliding classes. It also alters the byte code of calling classes to instead use the relocated classes in the shaded package.  By doing these things, the Maven Shade plugin ensures that classes needed by your connector--that would have collided with another version of the same classes being used by Mule--can co-exist peacefully in the same JVM classpath, thereby preventing the appearance of "Not Found" errors for classes and methods at runtime.
+
+== To Use the Shade Plugin
+
+* Add a dependency entry to the custom connector's `pom.xml` file for any dependency .jar which has a transitive dependency on one or more library .jars that contain classes which collide with classes in use by Mule.
+* Add the shade plugin to the build plugins section of your custom connector project's `pom.xml` file.
+* (Optional) Add an explicit configuration for the "mule-devkit-maven-plugin" to ensure that the shaded connector jar is built properly for installation into Anypoint Studio
+
+The following example configuration is for dealing with a conflicting Apache Commons Compress library:
 
 [source,xml,linenums]
 ----
 <dependencies>
    <dependency>
-       <groupId>org.some.library</groupId>
-       <artifactId>custom-artifact-id</artifactId>
-       <version>2.0</version> <!-- version is in connector's JAR -->
+       <groupId>org.apache.commons</groupId>
+       <artifactId>commons-compress</artifactId>
+       <version>1.8.1</version>
    </dependency>
 </dependencies>
 ----
 
-The following example shows the use of the plugin for shading artifacts:
 
 [source,xml,linenums]
 ----
@@ -35,23 +48,36 @@ The following example shows the use of the plugin for shading artifacts:
    <plugin>
      <groupId>org.apache.maven.plugins</groupId>
      <artifactId>maven-shade-plugin</artifactId>
-     <version>2.3</version>
+     <version>3.0.0</version>
      <configuration>
-       <!-- custom shade configuration -->
+       <!-- Custom shade configuration -->
        <artifactSet>
          <includes>
-            <include>org.some.library:custom-artifact-id</include>
+            <include>org.apache.commons:commons-compress</include> <!-- the.group.id:the-artifact-id -->
          </includes>
        </artifactSet>
        <relocations>
          <relocation>
-            <pattern>org.some.library</pattern>
-            <shadedPattern>org.some.library.new.pakage.name.shade</shadedPattern>
+            <pattern>org.apache.commons.compress</pattern> <-- original.package.name -->
+            <shadedPattern>com.mycompany.shaded.org.apache.commons.compress</shadedPattern> <!-- new.shaded.package.name -->
          </relocation>
        </relocations>
       </configuration>
    </plugin>
-  <!-- Other plugins -->
+
+   <plugin> <!-- Use this explicit plugin configuration to properly install a shaded custom connector in Anypoint Studio -->
+     <groupId>org.mule.tools.devkit</groupId>
+     <artifactId>mule-devkit-maven-plugin</artifactId>
+     <version>${mule.devkit.version}</version>
+     <extensions>true</extensions>
+     <configuration>
+       <attachShadedJar>true</attachShadedJar>
+       <attachConnectorLibs>false</attachConnectorLibs>
+       <skipStudioPluginPackage>${devkit.studio.package.skip}</skipStudioPluginPackage>
+     </configuration>
+   </plugin>
+
+   <!-- Other plugins -->
  </plugins>
 </build>
 ----

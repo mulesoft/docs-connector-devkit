@@ -26,7 +26,7 @@ From the service provider's API documentation, obtain the precise values for the
 
 === @OAuth2 Annotation
 
-To implement OAuth V2 authentication on your Connector you need to create a new `@ConnectionStrategy`. Create a new class and annotate it with the the `@OAuth2` annotation.
+To implement OAuth V2 authentication on your Connector you need to create a new `@Config`. Create a new class and annotate it with the the `@OAuth2` annotation.
 
 [NOTE]
 During the building process, a connector annotated with `@OAuth2` gets two additional auto-generated `@Processor` methods called  `authorize`  and  `unauthorize` . These message processors are in charge of initiating and ending the OAuth session.
@@ -237,3 +237,4 @@ When Mule automatically launches an HTTP listener request to handle the OAuth ca
 == See Also
 
 * xref:3.7@mule-runtime::http-connector-reference.adoc[HTTPS Connector Reference]
+* xref:3.7@mule-runtime::tls-configuration.adoc[HTTPS Examples]

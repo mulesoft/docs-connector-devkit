@@ -47,7 +47,11 @@ image::image2013-8-11-173a213a7.png[image2013-8-11+173A213A7]
 
 == Example Service: SunSetRiseService
 
+The web service for the demo is the SunSetRise Web service. The <<Appendix - sunsetriseservice WSDL>> provides access information.
+
+[TIP]
 Example files are available in the attached link:{attachmentsdir}/CxfExampleFiles.zip[CxfExampleFiies.zip] file for the sections of this document that follow.
+
 
 The request and response are both represented by an XML document that specifies:
 
@@ -795,7 +799,7 @@ The parameters to the `@Processor` method are automatically exposed in the prope
 
 === Adding XML Configuration Examples for Javadoc
 
-DevKit enforces JavaDoc documentation of your methods. One of the things you must add is an XML sample of the inputs required by each connector method. xref:annotation-reference.adoc[Learn more about Javadoc annotations for DevKit].
+DevKit enforces JavaDoc documentation of your methods. One of the things you must add is an XML sample of the inputs required by each connector method. http://mulesoft.github.io/mule-devkit/[Learn more about Javadoc annotations for DevKit].
 
 In the `@Connector` class source code, the following comment text links the method to its required XML sample – the path is to the *doc* folder in your Studio project, not in a file system:
 
@@ -870,12 +874,12 @@ http://www.mulesoft.org/schema/mule/json http://www.mulesoft.org/schema/mule/jso
 ----
 
 =====
+
 == Next Steps
 
 Once you get through the process above, you have a working SOAP CXF connector. You can:
 
 * Add more operations using the same process
-* Check out some of the other xref:anypoint-connector-examples.adoc[examples]
 * Example files are available in the attached link:{attachmentsdir}/CxfExampleFiles.zip[CxfExampleFiies.zip] file for the WSDL2Java sections of this document
 
 == Appendix - sunsetriseservice WSDL

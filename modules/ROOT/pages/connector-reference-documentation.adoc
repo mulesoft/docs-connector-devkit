@@ -1,67 +1,93 @@
-= Connector Reference Documentation
+= Creating Connector Documentation
 ifndef::env-site,env-github[]
 include::_attributes.adoc[]
 endif::[]
-:keywords: devkit, reference documentation
+:keywords: devkit, reference documentation, apidoc, javadoc
 
-After creating your connector, documenting its functionality helps customers use your connector effectively and can help reduce customer support and training costs.
+This document describes how to write Javadoc comments in your connector code and generate readable documentation for your connector users.
 
-Documenting a connector consists of creating:
 
-* Javadoc reference documentation - See the sections below
-* Readme, use cases, and release notes - See "Documenting with Use Cases" in xref:packaging-your-connector-for-release.adoc[Packaging Your Connector for Release]
+== Introduction
 
-Anypoint Studio simplifies the work of creating reference documentation.
+After you build your connector, document its functionality to help customers use it effectively and reduce customer support and training costs.
 
-Mule builds on http://en.wikipedia.org/wiki/Javadoc[Javadoc] to automate and simplify the creation of technical reference documentation for your connector, adding a custom Javadoc doclet and some DevKit-specific Java annotations. This document describes how to generate documentation and what to include.
+Connector documentation usually consists of:
+
+* Reference documentation (created by DevKit APIdoc; see <<Generating Documentation, Generating Documentation>>)
+* README
+* Release notes
+* User guide including use cases - for examples see xref:packaging-your-connector-for-release.adoc#documenting-with-use-cases[Documenting with Use Cases]
+
+[NOTE]
+Mule builds on http://en.wikipedia.org/wiki/Javadoc[Javadoc] to automate and simplify the creation of technical reference documentation for your connector, by adding a custom Javadoc Doclet and some DevKit-specific Java annotations.
 
 == Prerequisites
 
-This document assumes that you are familiar with Anypoint Studio and with Javadoc. It also assumes that you have already developed and tested your connectors.
+This document assumes you are familiar with Anypoint Studio and Javadoc. It also assumes that you have already developed and tested your connectors.
 
-== Generating Documentation
+== Tags for Generating Documentation
 
-Whenever you build the connector, DevKit automatically creates an HTML file that serves as a user-friendly reference for the Javadoc annotations that you have added within your code. This documentation can be previewed by right-clicking your project in the Package Explorer, then select *Anypoint Connector* > *Preview Documentation*.
+The following sections describe the Javadoc tags and syntax that can be used to generate the documentation for your connector built using Anypoint DevKit.
 
-This generated documentation can be found in the `target/apidocs` directory in your project. Open the file `index.html` to show the fully generated documentation.
+=== Supported Javadoc Tags
 
-image::devkit-doc-screenshot.png[devkit_doc_screenshot]
+The DevKit-supported Javadoc tags are described in this table and are used in examples throughout this document.
+//TODO: screenshots or provide link to existing apidoc?
 
-The documentation always includes the following:
+[%header,cols="20a,40a,40a"]
+|===
+|Tag|Description|Example
+|`@link` | Provides an inline link pointing to the documentation for the specified package if the fully qualified name is provided, otherwise the text after link is parsed as a string. Format: `{@link package.name.Class}` a|
+`* @param document`
+`* a {@link org.bson.Document} instance.`
 
-* Mule XML configuration documentation
-* Reference documentation for calling connector methods directly from Java
-* A (boilerplate) guide to installing the connector in Mule
+image::javadoc-link-sample.png[javadoc-link]
+|`@see` | Provides an in-line link to a URL, for example to a page where a related class or method is described a| If you want URLs inside your Javadoc comments to be parsed as hyperlinks, you can use the Javadoc tag `@see` to create an in-line link that will parse `+{@see http://example.com}+` +
+or instead +
+`{@see <a href="http://example.com">http://example.com</a>}` to display the full URL. For a more detailed discussion of its usage, see http://docs.oracle.com/javase/7/docs/technotes/tools/windows/javadoc.html#see[Javadoc reference]
+|`@api.doc`|Adds a new section to the documentation intended to provide a link to a service API’s documentation. You have the option whether or not to use html after the tag a|
+`* @api.doc <a href="http://www.salesforce.com/us/developer/docs/api/Content/sforce_api_calls_create.htm">create()</a>`
 
-As you build out your connector, review the generated documentation to ensure that the contents are sane and correct. If you find the generated documentation insufficient, you can always include more detail in the Javadoc comments in your code.
+image::apidoc-ref-sample.png[]
+|`@javadoc` | Can be used on the connector class, for example, `@javadoc.url`, followed by the name of a Java package name and the Javadoc URL, which the `@link` tag can use to reference a data type referenced in javadoc | See <<Annotation for Non-Java Data Types,Annotation for Non-Java Data Types>> for the code comment snippet.
+|`@param` | Used underneath the description of a method. `@param` adds the parameter name and its description to the reference material. The description should be listed on the line below a|
+`* @param collection`
 
-== Documenting Annotations
+`* the name of the collection to update`
 
-The following sections describe the annotations that can be used in Anypoint DevKit to document your connector.
+image::apidoc-param-sample.png[apidoc-param]
+|`@return` | Adds the description of the function's return type to the "Returns" section of the documentation. a|
+`* @return the id that was just inserted`
+
+|===
+
+For visual reference, have a look at the DevKit 3.8.0 generated documentation for one of the Salesforce connector's operations:
+
+image::apidoc-look.png[]
 
 [NOTE]
 Documentation is not mandatory, however, unless you disable the Javadoc Check, errors display. To disable Javadoc Check and show errors as warnings, right-click your project, and click *Anypoint Connector* > *Disable Javadoc check*.
 
-=== Required Connector Metadata: @Connector and @Author
+=== @Connector and @Author Metadata
 
-Each class annotated with `@Connector` should have a class-level Javadoc comment with a high-level overview of the extensions. This may also include the `@Author` annotation.
+Each class annotated with `@Connector` should have a class-level Javadoc comment with a high-level overview of the extensions. This may also include the `@author` annotation.
 
 [source,java,linenums]
 ----
 /**
- * Anypoint Connector
+ * CMIS (Content Management Interoperability Services) is a standard for improving interoperability between ECM systems.
  *
  * @author MuleSoft, Inc.
  */
-@Connector(name="barn", schemaVersion="1.0", friendlyName="Barn", minMuleVersion="3.6")
-public class BarnConnector
-{
-  ...
+@ReconnectOn(exceptions = CMISConnectorConnectionException.class)
+@Connector(name = "cmis", schemaVersion = "1.1", friendlyName = "CMIS")
+public class CMISConnector implements CMISFacade {
+...
 ----
 
 === Documenting @Configurable Attributes
 
-`@Configurable`  annotations can be documented by having a Javadoc comment that briefly explains the attribute.
+`@Configurable` attributes of your connector can be documented with a Javadoc comment that briefly explains the attribute.
 
 [source,java,linenums]
 ----
@@ -84,52 +110,118 @@ public class BarnConnector
  private String apiEndpoint;
 ----
 
-=== Documenting @Processor Methods and Parameters: @param and @return
-
-Each method annotated with @Processor or @Source (for streaming APIs) should have a Javadoc comment that includes the following:
-
-* A description of the use of the method
-* A pointer to an XML code sample for the element in Mule (described below)
-* For each parameter of the method, a Javadoc `@param` annotation, with a description of the parameter
-
-If the method has a return type other than `void`, a Javadoc `@return` annotation includes a description of the return value.
+The `@Default` annotation puts the value between parentheses under the "Default Value" column in the row corresponding to the attribute. The default value for `host` is `localhost:27017` in this example:
 
 [source,java,linenums]
 ----
 /**
- * Custom processor that places an animal in the barn.
+ * A list of MongoDB instances, with the format <code>host:port</code>, separated by commas.
  *
- * {@sample.xml ../../../doc/barn-connector.xml.sample barn:putInBarn}
+ * <pre>
+ * Example: 127.0.0.1:27017, 192.168.1.2:27017
+ * </pre>
  *
- * @param animal Name of the animal to be place in the barn
- * @return returns processed message
  */
- @Processor
- public String putInBarn(String animal)
- {
-     return animal + "has been placed in the barn";
- }
+@Configurable
+    @Default("localhost:27017")
+    @FriendlyName("Servers (host:port)")
+    @Placement(group = "Connection")
+    private String host;
 ----
 
-=== Required XML Code Samples: @sample.xml
+The above comments populate the attribute table like so:
 
-The `@sample.xml` annotation points to an XML snippet that demonstrates how to use this method in Mule's XML. This example is then featured in the generated DevKit documentation.
+image::host-attr.png[]
 
-DevKit also does sanity checks on the XML code referenced by the `@sample.xml` annotation, ensuring that the XML example parses successfully against the generated schema for your connector.
+=== Documenting Connection Strategies
 
-Syntax for the annotation is shown in the example below.
+With version 3.8.0 of DevKit, it is possible to generate documentation for as many connection strategies as are supported by the connector, and will appear under the *Configs* heading:
 
-[source,json,linenums]
+image::multiple-configs.png[]
+
+=== Documenting @Processor Methods and Parameters
+
+Each method annotated with `@Processor` or `@Source` (for streaming APIs) should have a Javadoc comment that includes the following:
+
+* A description of the use of the method
+* For each parameter of the method, a Javadoc `@param` tag, with a description of the parameter
+* If the method has a return type other than `void`, a Javadoc `@return` tag with a description of the return value
+
+See this code sample, which includes examples of the above:
+
+[source,java,linenums]
 ----
-{@sample.xml xml-location tag-name}
+/**
+ * Inserts a document into a collection, setting its ID if necessary.
+ *
+ *
+ * @param collection
+ *            the name of the collection where the given document should be inserted.
+ * @param document
+ *            a {@link Document} instance.
+ * @return the id that was just inserted
+ */
+@Processor
+public String insertDocument(final String collection, @RefOnly @Default("#[payload]") final Document document) {
+    Validate.notNull(collection);
+    Validate.notNull(document);
+    return config.getClient().insertObject(collection, document);
+}
 ----
 
-The parameters passed to `@sample.xml` are as follows:
+=== Linking to External Javadoc Resources
 
-* `xml-location`: The relative path from `src/main/java` to the example file. The Maven archetype creates this file in your project at `doc/project-name.xml.sample`; the relative path is generally  `../../../`
-* `tag-name`: A name for the example in the `.xml.sample` file, in the format `myconnector:my-method-name` or `myconnector:myMethodName`.
+To support linking from your documentation to a third-party Javadoc resource, reference the URL once by annotating the *connector class* with the Javadoc tag `@javadoc.url`.
 
-The examples file specified by the `@sample.xml` tag must adhere to the structure displayed in the example below.
+Use the format `+@javadoc.url package.name[https://javadocurl/];+` as in this example:
+
+[source,java,linenums]
+----
+/**
+*
+* @author MuleSoft
+* @javadoc.url org.bson[https://api.mongodb.org/java/3.1/];
+* @javadoc.url com.mongodb[https://api.mongodb.org/java/3.1/];
+*/
+public class MongoCloudConnector {
+...
+----
+
+=== Using @link for External Javadoc
+
+Once the `@javadoc.url` tag is in place and you confirm the package and URL are specified using the proper syntax, you use the `@link` tag as desired, to create functioning links from within your comments.
+
+[NOTE]
+The *fully qualified name of the class* must be specified after `@link` to create a functioning URL, for example, `{@link org.bson.Document}`. Otherwise, the package for the datatype in question will not be found.
+
+
+[source,java,linenums]
+----
+/**
+ * Inserts a document in a collection, setting its ID if necessary.
+ * @see <a href="http://example.com">http://example.com</a>
+ *
+ * @param collection
+ *            the name of the collection where to insert the given document.
+ * @param document
+ *            a {@link org.bson.Document} instance.
+ * @return the id that was just inserted
+ */
+@Processor
+public String insertDocument(final String collection, @RefOnly @Default("#[payload]") final Document document) {
+...
+----
+
+
+DevKit concatenates the base URL for the MongoDB Java API, the path to the particular package, and the specific class to form a proper URL.
+
+image::apidoc-mongo-document-attr.png[]
+
+Clicking *Document* from the documentation shown above would direct the user to the reference material for this class: `+https://api.mongodb.org/java/3.1/org/bson/Document.html+`.
+
+=== XML Code Samples File
+
+The examples file must be stored in the `/doc` folder and adhere to this structure:
 
 [source,xml,linenums]
 ----
@@ -142,15 +234,46 @@ The examples file specified by the `@sample.xml` tag must adhere to the structur
 ...
 ----
 
-Here is an example for the message processor 'myGreeting' given above.
+Here is an example from the CMIS connector's `xml.sample` file:
 
 [source,xml,linenums]
 ----
-<!-- BEGIN_INCLUDE(barn:putInBarn) -->
-    <barn:put-in-barn animal="#[map-payload:animal]" />
-<!-- END_INCLUDE(barn:putInBarn) -->
+<!-- BEGIN_INCLUDE(cmis:getObjectByPath) -->
+        <cmis:get-object-by-path path="/mule-cloud-connector" config-ref="config" />
+<!-- END_INCLUDE(cmis:getObjectByPath) -->
 ----
+
+[NOTE]
+DevKit APIDoc can generate more than one example from the `xml.sample` file for the same connector operation. Of course, the example must follow the same "_INCLUDE" tag structure above. As of DevKit 3.8.0, the `@sample.xml` tag is *NOT* supported.
+
+== Generating Documentation
+
+Documentation can be previewed by right-clicking your project in the Package Explorer, then selecting *Anypoint Connector* > *Preview Documentation*.
+
+[IMPORTANT]
+You must have *DevKit 3.8.0* and have *JDK 7 or higher* enabled to access the updated documentation features described here. Ensure the appropriate version of DevKit is referenced in the pom.xml file, and likewise for the JDK used by the system.
+
+When you generate documentation for your connector (*Project* > *Generate Javadoc*), DevKit automatically creates both an *HTML* file and an http://asciidoctor.org/docs/what-is-asciidoc/#what-is-asciidoc[AsciiDoc] file that serve as a user-friendly reference for the Javadoc comments you have added within your code explaining connector methods and attributes.
+
+=== Using a Maven Command
+
+Alternatively, you can navigate to the connector's root directory and execute the following Maven command to generate the documentation:
+
+----
+mvn clean compile -DgenerateApidocs
+----
+
+
+The generated documentation should have been created in a new `target/apidocs` directory in your connector folder. Open the file `connectorname-apidoc.html` to show the fully generated documentation in the browser.
+
+=== Contextual Help in Studio
+
+The same Javadoc comments are also consumed by DevKit to provide contextual help for the user within Studio at design time, as shown here:
+
+image::contextual-help-box.png[contextual help]
+
+As you build out your connector, perform a review of the generated documentation to ensure that the contents are sane and correct. If you find it lacking, you can always include more detail in the Javadoc comments in your code and regenerate the documentation.
 
 == See Also
 
-After you add all required operations to your connector and develop tests, move on to xref:packaging-your-connector-for-release.adoc[packaging your connector for release].
+After you add all required operations to your connector and develop tests, move on to xref:packaging-your-connector-for-release.adoc[Packaging Your Connector For Release].

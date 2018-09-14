@@ -1,0 +1,46 @@
+= Adding Native Libraries and JARs to a Connector Build
+ifndef::env-site,env-github[]
+include::_attributes.adoc[]
+endif::[]
+:keywords: native, jars, library, devkit, connector
+
+When building connectors with dependencies that cannot be bundled within the same JAR, you can instruct Anypoint Studio to prompt users to add the files to your connector.
+
+To add native libraries and JAR files to a build:
+
+. Add a file to trigger this feature -  the connector must have one file per configuration at this path:
++
+`<root_connector_folder>src/main/resources/META-INF/<connector_name>-<configElementName>-required-libs.xml`
++
+. Ensure that the *-required-libs.xml* file contains a namespace, require, and jar tags.
++
+For example:
++
+[source,xml,linenums]
+----
+<namespace xmlns="http://www.mulesoft.org/schema/mule/tooling.attributes" xmlns:mule="http://www.mulesoft.org/schema/mule/core">
+    <require>
+       <jar name="PeopleSoft Java Object Adapter (psjoa-1.0.jar)"
+fileName="psjoa(.*)\.jar" targetFolder="/lib/peoplesoft"
+targetRuntimeFolder="/plugins" className="psft.pt8.joa.IPSMessage"/>
+    </require>
+</namespace>
+----
++
+In this example, for the PeopleSoft connector, the *jar* element contains these attributes:
++
+*name*: The JAR name to display in the Anypoint Studio prompt.
++
+*fileName*: Filter to apply to the selected JAR to verify that it's the required one. This matches the actual file name of the JAR.
++
+*targetFolder*: Folder in the project where to copy the JAR.
++
+*targetRuntimeFolder*: Folder to put the runtime.
++
+*className*:  Filter to apply to the JAR to verify that it's the required one. This looks for the declared class inside the selected JAR. The class name must be the full-qualified name of the class.
++
+. Specifying a required libraries XML file causes Anypoint Studio to modify your configuration description so that Studio displays an option for installing libraries:
++
+image::36reqddeps.png[36ReqdDeps]
+
+NOTE: If a library is not required for a particular configuration, do not create a required-libs.xml file for that configuration.

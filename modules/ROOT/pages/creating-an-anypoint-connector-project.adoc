@@ -6,7 +6,6 @@ endif::[]
 
 * xref:creating-a-java-sdk-based-connector.adoc[Creating a Java SDK-Based Connector]
 * xref:creating-a-soap-connector.adoc[Creating a SOAP Connector]
-* xref:creating-a-rest-connector.adoc[Creating a REST Connector]
 
 == Prerequisites
 
@@ -15,10 +14,9 @@ The DevKit documentation assumes you have:
 . A working knowledge of Mule, Anypoint Studio and Java development in general.
 . Explored the https://www.mulesoft.com/exchange[existing connectors].
 . Access to a sandbox environment for the target system or source, and documentation of the Web service it exposes.
-. A general familiarity with the Java language, specifically the use of Java annotations. DevKit's functionality is exposed to connector developers through Java annotations that inject code into your connector classes. The injected code provides the interface between the connector and Mule that would otherwise require each connector developer to include extensive boilerplate code. This documentation explains each DevKit-specific annotation in the context of examples. If you are not familiar with annotations, refer to a brief explanation of https://en.wikipedia.org/wiki/Java_annotation[Java annotations].
+. A general familiarity with the Java language, specifically the use of Java annotations. DevKit's functionality is exposed to connector developers through Java annotations that inject code into your connector classes. The injected code provides the interface between the connector and Mule that would otherwise require each connector developer to include extensive boilerplate code. This documentation explains each DevKit-specific annotation in the context of examples. If you are not familiar with annotations, refer to a brief explanation of http://en.wikipedia.org/wiki/Java_annotation[Java annotations].
 
-[IMPORTANT]
-To build connector projects, you must first install the xref:setting-up-your-dev-environment.adoc[Anypoint Connector DevKit Plugin] into Anypoint Studio.
+*Important:* To build connector projects, you must first install the xref:setting-up-your-dev-environment.adoc[Anypoint Connector DevKit Plugin] into Anypoint Studio.
 
 == Viewing the Connector Structure
 
@@ -53,15 +51,15 @@ With your cursor on the @Connector class or any other @ annotation, type CTRL + 
 
 image::connectorhelpinfo.png[ConnectorHelpInfo]
 
-For more information on @Connector and other Anypoint Connector DevKit annotations, see the xref:annotation-reference.adoc[Annotation Reference].
+For more information on @Connector and other Anypoint Connector DevKit annotations, see the http://mulesoft.github.io/mule-devkit/[Anypoint DevKit API Reference].
 
-=== Using Templates
+=== Using Code Templates
 
-Templates are customizable pieces of code that you can add to your connector, and which provide a basic structure for elements you commonly use. Type the name or part of it and press `[Command | Ctrl ] + space` to insert the template into the current Connector Class.
+Templates are customizable pieces of code that you can add to your connector, and which provide a basic structure for elements you commonly use. Type the name or part of it and press `[ Command | Ctrl ] + space` to insert the template into the current Connector Class.
 
 image::screen23.png[]
 
-Available DevKit templates:
+=== Available DevKit Templates
 
 [%autowidth.spread]
 |===
@@ -70,30 +68,29 @@ Available DevKit templates:
 |`processor` |Add a processor to your connector. There are several options with different templates.
 |`transformer` |Add a transformer method. Transformers convert one input to another.
 |`restconfig` |Add a configurable element to a REST-based connector, such as URI params, query params, or header params.
-|`restprocessor` |Add a @RestCall processor. *Note*: REST-based connectors insert the @RestCall parameter when you create an Anypoint Connector Project.
+|`restprocessor` |*@RestCall processor deprecated from 3.8.0 onward.* REST-based connectors insert the @RestCall parameter when you create an Anypoint Connector Project.
 |===
 
 == Installing or Updating Your Connector in Anypoint Studio
 
 After coding your connector, you can install it in Anypoint Studio and give it a test drive. Once installed, you can use your connector in a Mule Project and verify that it works as you intended.
 
-=== Copy Your Connector to Anypoint Studio
-
 . In the package explorer of Anypoint Studio, right-click your project root.
-. Select *Anypoint Connector > Install or Update*:
+. Select *Anypoint Connector* > *Install or Update*:
 +
-image::barnimportannotation.png[BarnImportAnnotation]
+image::connector-install-update.png[]
 +
 . At *Check the items you wish to install*, click *Next*.
 . At *Review the items to be installed*, click *Next*.
-. At Review Licenses, click *I accept the terms of the license . agreement*, and click *Finish*.
+. At Review Licenses, click *I accept the terms of the license agreement*, and click *Finish*.
 . Restart Anypoint Studio.
 
 === Test Drive Your Connector
 
 To try your connector out:
-. Create a new project by clicking New > Mule Project.
-. Add an HTTP connector to the canvas.
+
+. Create a new project by clicking *New* > *Mule Project*.
+. Add an *HTTP connector* to the canvas.
 . Search for your connector by name and add it to the flow.
 +
 For example:
@@ -102,11 +99,27 @@ image::connector-display.png[]
 
 == Importing An Existing Connector Project
 
-To import an existing connector project, click *File > Import >  Anypoint Studio  >  Anypoint Connector Project from External Location*, choose a URL or a .zip file, and complete the wizard to locate and import the project.
+To import an existing connector project, click *File* > *Import* >  *Anypoint Studio*  >  *Anypoint Connector Project from External Location*, choose a URL or a .zip file, and complete the wizard to locate and import the project.
 
 image::import.jpg[]
 
-See also: "Creating a Compressed Project File" in xref:packaging-your-connector-for-release.adoc[Packaging Your Connector for Release].
+
+== Exporting a Compressed Project File
+
+To create a compressed file of your project:
+
+. In Anypoint Studio, right-click your project name in the Package Explorer, and click *Export*.
+. Click *General* > *Archive* File with these settings. Choose whether you want a TAR file (for Linux or Mac) or a ZIP file for Mac or Windows. (Windows users can also uncompress TAR files using third-party software such as 7zip.) +
+IMPORTANT: Uncheck the *target* folder.
++
+image::archivefile.png[ArchiveFile]
+
+. Click the down arrow next to your project name and unclick *target*: +
++
+image::archivedirs.png[ArchiveDirs]
+
+. Click *Browse* in *To archive file* and choose the name and location of the zip or tar file.
+. Click *Finish* to create the compressed file.
 
 == See Also
 

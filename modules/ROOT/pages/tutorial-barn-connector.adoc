@@ -297,5 +297,4 @@ image::barnbrowser.png[BarnBrowser]
 == See Also
 
 * **NEXT STEP:**  Implement xref:authentication.adoc[authentication] in your connector
-* More tutorials? See xref:anypoint-connector-examples.adoc[Anypoint Connector Examples]
 * xref:installing-and-testing-your-connector-in-studio.adoc[Building and Installing your Connector]

@@ -4,7 +4,7 @@ include::_attributes.adoc[]
 endif::[]
 :keywords: devkit, soap, connector, maven
 
-The *SOAP Connect* wizard generates a WSDL-based connector that receives and responds XML elements. This kind of connector only runs on Mule versions 3.7 or above.
+The *SOAP Connect* wizard generates a WSDL-based connector that receives XML elements and responds likewise. This kind of connector only runs on Mule versions 3.7 or newer.
 
 == Create a SOAP Project
 
@@ -229,6 +229,34 @@ public class TShirtWSDLProvider {
     public String resolveAddress(ServiceDefinition serviceDefinition){...}
 }
 ----
+
+==== WSDL Operation Filtering
+
+For a particular `ServiceDefinition`, the developer is able to filter out (that is, hide from the connector user) individual operations that are declared in the WSDL file.
+
+This filtering is necessary in order to exclude login/logout operations from the operations dropdown exposed to the application developer.
+
+===== Implementation
+
+The set of excluded operations must be listed in the `ServiceDefinition`, so the operations that should be off-limits to the application developer are effectively ignored by DevKit in the metadata key retrieval process.
+
+[source,java,linenums]
+----
+@WsdlServiceRetriever
+    public ServiceDefinition getServiceDefinition() {
+           ServiceDefinition service = new DefaultServiceDefinition(
+                          "ServiceId", "tshirt", "tshirt.wsdl","TshirtService","TshirtServicePort");
+
+           service.setExclusions(Arrays.asList("login", "logout"));
+
+            // Exclusions can also be set as:
+            // service.excludeOperation("myUnwantedOp");
+
+            return service;
+    }
+----
+
+Metadata keys that match the excluded operations are removed before metadata keys are returned through invocation of `getMetaDataKeys()`.
 
 This new method generates the keys in the following format: Tshirt_ID#Unable to render embedded object: File (@OrderTshirt, Tshirt_ID#) not found.
 
@@ -626,7 +654,7 @@ public class TShirtWSDLProvider {
 
 === Envelope Headers
 
-Some APIs need to send custom headers for each envelope that's sent. DevKit provides a hook to tune headers before executing an operation. The above code shows how to achieve this in the *cookHeaders* method. Take care to secure this XML parsing code against XXE attacks by following the https://www.owasp.org/index.php/XML_External_Entity_(XXE)_Prevention_Cheat_Sheet#JAXP_DocumentBuilderFactory_and_SAXParserFactory[OWASP guidance].
+Some APIs need to send custom headers for each envelope that is sent. DevKit provides a hook to tune headers before executing an operation. The above code shows how to achieve this in the *cookHeaders* method. Take care to secure this XML parsing code against XXE attacks by following the https://www.owasp.org/index.php/XML_External_Entity_(XXE)_Prevention_Cheat_Sheet#JAXP_DocumentBuilderFactory_and_SAXParserFactory[OWASP guidance].
 
 [source,java,linenums]
 ----

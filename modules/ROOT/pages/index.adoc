@@ -4,27 +4,37 @@ include::_attributes.adoc[]
 endif::[]
 :keywords: devkit, development, features, architecture
 
-The *MuleSoft Anypoint DevKit*, or simply *DevKit*, enables the development of MuleSoft Anypoint Connectors.
+The *Anypoint Connector DevKit*, or simply *DevKit*, enables the development of xref:3.8@mule-runtime::anypoint-connectors.adoc[Anypoint Connectors]. An *Anypoint Connector* is an extension module to the MuleSoft Anypoint Platform that facilitates communication between third-party systems/APIs and Mule applications.
 
-A MuleSoft connector is an extension module to the MuleSoft Anypoint Platform, with modules that ease the interconnection of third-party systems and APIs with Mule applications.
+[NOTE]
+====
+*Anypoint Connector DevKit 3.9 is the latest version of DevKit*, offering connector end user support in a few aspects of Mule app design in Studio. Requirements and suggestions for writing connector code using DevKit have not changed since version 3.8.
 
-== Development Steps
+xref:release-notes::connector-devkit/anypoint-connector-devkit-3.9.x-release-notes.adoc[Anypoint Connector DevKit 3.9.x Release Notes]
+====
 
-. See detailed instructions xref:setting-up-your-dev-environment.adoc[here] on how to install:  http://www.oracle.com/technetwork/java/javase/downloads/jdk7-downloads-1880260.html[Java JDK version 7], https://maven.apache.org/download.cgi[Apache Maven], https://www.mulesoft.com/lp/dl/studio[Anypoint Studio], and xref:setting-up-your-dev-environment.adoc[Anypoint DevKit Plugin] to build and test your connector. You can develop a connector using Windows, Mac, or Linux.
+[IMPORTANT]
+*DevKit version number* does not follow Mule versioning. *DevKit 3.8*-built connectors work with *Mule 3.5.3 onward*.
+
+== Developing Connectors with DevKit
+
+This is what you need to develop *DevKit-based Anypoint Connectors* on your system with your instance of Anypoint Studio.
+
+. See detailed instructions xref:setting-up-your-dev-environment.adoc[here] on how to install:  http://www.oracle.com/technetwork/java/javase/downloads/jdk8-downloads-2133151.html[Java JDK version 8], https://maven.apache.org/download.cgi[Apache Maven], https://www.mulesoft.com/lp/dl/studio[Anypoint Studio], and xref:setting-up-your-dev-environment.adoc[Anypoint DevKit Plugin] to build and test your connector. You can develop a connector using Windows, Mac, or Linux.
 . _New Connector:_
-* xref:creating-a-java-sdk-based-connector.adoc[Create an Anypoint project] - Set up Anypoint Studio and install the connector plugin.
+* xref:creating-an-anypoint-connector-project.adoc[Create Anypoint Connector Project]
 
 +
 _Existing Connector:_
 * Click *File* > *Import* > *Anypoint Studio* > *Anypoint Connector Project from External Location*, choose a URL or a .zip file, and complete the wizard to locate and import the project.
 +
-See also xref:creating-a-soap-connector.adoc[Creating a SOAP Connector] and xref:creating-a-rest-connector.adoc[Creating a REST Connector].
+See also xref:creating-a-soap-connector.adoc[Creating a SOAP Connector] or link:/anypoint-connector-devkit/v/3.8/creating-a-connector-for-a-restful-api-using-jersey[Creating a REST Connector Using Jersey].
 . xref:setting-up-api-access.adoc[Determine resource access] - Each resource has a different access method, such as REST, SOAP, FTP, or the Java SDK features.
 . xref:authentication.adoc[Choose an authentication mechanism] - Mule supports OAuth V1 or V2, and username and password authentication (known as xref:connection-management.adoc[connection management]), which can be used for protocols such as API Key, SAML, NTLM, Kerberos, or LDAP.
 . xref:connector-attributes-and-operations.adoc[Choose the connector's data model] - Models can be static Java objects or dynamic objects. You can use xref:5@studio::datasense.adoc[DataSense] - Determine what information the target resource expects.
 . xref:defining-connector-attributes.adoc[Add connector @ attribute annotations] - Create code for your connector containing the @ attributes that Mule uses to designate the important parts of your connector.
 . xref:developing-devkit-connector-tests.adoc[Code tests] - Tests can be unit tests, functional tests, and Studio interoperability tests.
-. xref:connector-reference-documentation.adoc[Document your connector] - MuleSoft provides a template that helps you fill in the blanks to create documentation to help your staff and to help others understand the features and use of your connector.
+. xref:connector-reference-documentation.adoc[Document your connector] - MuleSoft provides a template that helps you fill in the blanks to create documentation to help your staff and others understand the features and use of your connector.
 . xref:packaging-your-connector-for-release.adoc[Package your connector].
 
 == DevKit Features
@@ -40,13 +50,13 @@ Features DevKit provides:
 * Examples, training, and support to simplify development startup.
 * Batch, Query Pagination, and DataSense Query Language support.
 
-DevKit is a annotations-based tool, with a wide set of available annotations to support its features. For a complete list of DevKit annotations, see the xref:annotation-reference.adoc[Annotation Reference].
+DevKit is a annotations-based tool, with a wide set of available annotations to support its features. For a complete list of DevKit annotations, see the http://mulesoft.github.io/mule-devkit/[Annotation Reference].
 
 == What is a Connector?
 
-An Anypoint connector is an extension module that eases the interaction between a Mule application and external resources, such as a databases or APIs, through REST, SOAP, or the Java SDK.
+An Anypoint Connector is an extension module that eases the interaction between a Mule application and external resources, such as databases or APIs, through REST, SOAP, or the Java SDK.
 
-As reusable components that hide API complexity from the integration developer, custom connectors facilitate integration with SaaS and on-premise web services, applications, and data sources. Connectors built using Anypoint DevKit in Anypoint Studio, running Mule runtime environments, act as extensions of Mule Anypoint Platform.
+As reusable components that hide API complexity from the integration developer, custom connectors facilitate integration with SaaS and on-premises web services, applications, and data sources. Connectors built using Anypoint DevKit in Anypoint Studio, running Mule runtime environments, act as extensions of Anypoint Platform.
 
 === Connector Architecture
 
@@ -60,7 +70,7 @@ A Mule connector has two operational sides. The Mule-facing side communicates wi
 
 From the Mule-facing side, a connector consists of:
 
-* *Main Java class*. Java code that you annotate with the `@Connector` attribute. See the xref:annotation-reference.adoc[Annotation Reference] for information about Anypoint Connector DevKit annotations. See  http://en.wikipedia.org/wiki/Java_annotation[Java annotations] for information on how annotations work.
+* *Main Java class*. Java code that you annotate with the `@Connector` attribute. See the http://mulesoft.github.io/mule-devkit/[Anypoint DevKit API Reference] for information about Anypoint Connector DevKit annotations. See  http://en.wikipedia.org/wiki/Java_annotation[Java annotations] for information on how annotations work.
 * *Connector attributes*. Properties of the `@Connector` class that you annotate with the `@Configurable` attribute.
 * *Methods*. Functionality that you annotate with the `@Processor` attribute.
 
@@ -76,7 +86,7 @@ The client class in turn generally depends on other classes to actually implemen
 
 == Coding a Connector
 
-DevKit lets you build connectors from scratch. Before creating your own connector, check the https://www.anypoint.mulesoft.com/exchange/?type=connector&search=community[Anypoint Exchange] for available connectors. The connectors page also lists Community open source connectors that let you contribute to the growing community of public connector development.
+DevKit lets you build connectors from scratch. Before creating your own connector, check the https://www.anypoint.mulesoft.com/exchange/?type=connector[Anypoint Exchange] for available connectors. The connectors page also lists Community open source connectors that let you contribute to the growing community of public connector development.
 
 === Connector Data Model
 
@@ -86,29 +96,34 @@ The data model for the connector consists of the objects passed into and out of 
 
 REST simplifies access to HTTP using POST, GET, PUT, and DELETE calls to provide access to creating, getting, putting, and deleting information on a resource.
 
-DevKit provides a set of annotations called `@RestCall` annotations that helps building a Connector for a RESTful API.
+DevKit currently provides a strategy for link:/anypoint-connector-devkit/v/3.8/creating-a-connector-for-a-restful-api-using-jersey[Creating a Connector for a RESTful API Using Jersey] to build a REST API-supported connector.
 
 SOAP is a traditional means of communicating with a resource and requires a WSDL file, which is an XML file that specifies all aspects of a Java class’s structure, methods, properties, and documentation. SOAP is an industry standard with tools for governance, building, and schema information. DevKit provides a tools that helps building a connector using a WSDL file.
 
-=== DevKit 3.7 Example Default Connector
 
-The following is an example of the starting `@Connector` and `@Configuration` classes that DevKit 3.7 creates:
+=== DevKit 3.9 Default Connector Project Classes
+
+The following is an example of the starting `@Connector` and `@Configuration` classes that DevKit 3.9 creates:
 
 [source,java,linenums]
 ----
 
-package org.mule.modules.demojdk;
+package org.mule.modules.newconnector;
 
 import org.mule.api.annotations.Config;
+import org.mule.api.annotations.Connector;
+import org.mule.api.annotations.Processor;
 
-@Connector(name="demo-jdk", friendlyName="DemoJDK")
-public class DemoJDKConnector {
+import org.mule.modules.connpom.config.ConnectorConfig;
+
+@Connector(name="connpom", friendlyName="Connpom")
+public class ConnpomConnector {
+
     @Config
     ConnectorConfig config;
+
     /**
      * Custom processor
-     *
-     * {@sample.xml ../../../doc/demo-jdk-connector.xml.sample demo-jdk:greet}
      *
      * @param friend Name to be used to generate a greeting message.
      * @return A greeting message
@@ -124,34 +139,41 @@ public class DemoJDKConnector {
     public ConnectorConfig getConfig() {
         return config;
     }
+
     public void setConfig(ConnectorConfig config) {
         this.config = config;
     }
+
 }
 ----
 
-The DevKit 3.7 `@Configuration` class is as follows:
+The DevKit 3.9 `@Configuration` class is as follows:
 
 [source,java,linenums]
 ----
-package org.mule.modules.demojdk.config;
+package org.mule.modules.newconnector.config;
+
 import org.mule.api.annotations.components.Configuration;
 import org.mule.api.annotations.Configurable;
 import org.mule.api.annotations.param.Default;
+
 @Configuration(friendlyName = "Configuration")
 public class ConnectorConfig {
+
     /**
      * Greeting message
      */
     @Configurable
     @Default("Hello")
     private String greeting;
+
     /**
      * Reply message
      */
     @Configurable
     @Default("How are you?")
     private String reply;
+
     /**
      * Set greeting message
      *
@@ -160,12 +182,14 @@ public class ConnectorConfig {
     public void setGreeting(String greeting) {
         this.greeting = greeting;
     }
+
     /**
      * Get greeting message
      */
     public String getGreeting() {
         return this.greeting;
     }
+
     /**
      * Set reply
      *
@@ -174,18 +198,57 @@ public class ConnectorConfig {
     public void setReply(String reply) {
         this.reply = reply;
     }
+
     /**
      * Get reply
      */
     public String getReply() {
         return this.reply;
     }
+
 }
 ----
 
-== Anypoint Connector DevKit Features
+=== DevKit 3.9 Default pom.xml
 
-DevKit supports:
+The `pom.xml` file for a DevKit 3.9 project. The `<parent>` section shows DevKit's group ID `org.mule.tools.devkit`.
+
+
+[source,xml,linenums]
+----
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+
+    <modelVersion>4.0.0</modelVersion>
+    <groupId>org.mule.modules</groupId>
+    <artifactId>newconnector-connector</artifactId>
+    <version>1.0.0-SNAPSHOT</version>
+    <packaging>mule-module</packaging>
+    <name>Mule Newconnector Anypoint Connector</name>
+
+    <parent>
+        <groupId>org.mule.tools.devkit</groupId>
+        <artifactId>mule-devkit-parent</artifactId>
+        <version>3.9.0</version>
+    </parent>
+
+    <properties>
+        <category>Community</category>
+        <licensePath>LICENSE.md</licensePath>
+        <devkit.studio.package.skip>false</devkit.studio.package.skip>
+    </properties>
+    <repositories>
+        <repository>
+            <id>mulesoft-releases</id>
+            <name>MuleSoft Releases Repository</name>
+            <url>http://repository.mulesoft.org/releases/</url>
+            <layout>default</layout>
+        </repository>
+    </repositories>
+</project>
+----
+
+== Connector Features DevKit Supports
 
 *Authentication Types*
 
@@ -197,10 +260,9 @@ DevKit supports:
 *API Types*
 
 * xref:creating-a-connector-for-a-soap-service-via-cxf-client.adoc[SOAP APIs]
-* xref:creating-a-connector-for-a-restful-api-using-restcall-annotations.adoc[REST APIs]
 * xref:creating-a-connector-using-a-java-sdk.adoc[Java SDKs]
 
-*Anypoint Platform*
+*Data Processing and Retrieval*
 
 * xref:adding-datasense.adoc[DataSense]
 * xref:adding-datasense-query-language.adoc[DataSense Query Language]
@@ -219,12 +281,7 @@ DevKit supports:
 == See Also
 
 * xref:anypoint-connector-development.adoc[Connector Development]
-* xref:3.7@mule-runtime::anypoint-connectors.adoc[Anypoint Connectors]
-* https://www.anypoint.mulesoft.com/exchange/?type=connector[Connectors]
-* xref:5@studio::datasense-enabled-connectors.adoc[DataSense-Enabled Connectors]
-* xref:annotation-reference.adoc[Annotations Reference]
-* xref:anypoint-connector-examples.adoc[Examples]
-* xref:tutorial-barn-connector.adoc[Tutorial - Barn Connector]
-* xref:creating-a-connector-using-a-java-sdk.adoc[Creating a Connector Using a Java SDK]
-* xref:creating-a-connector-for-a-soap-service-via-cxf-client.adoc[Creating a Connector for a SOAP Service Via CXF Client]
-* xref:creating-a-connector-for-a-restful-api-using-restcall-annotations.adoc[Creating a Connector for a RESTful API using @RESTCall Annotations]
+* xref:3.8@mule-runtime::anypoint-connectors.adoc[Anypoint Connectors]
+* https://www.anypoint.mulesoft.com/exchange/?type=connector[Connectors on Exchange]
+* http://blogs.mulesoft.com/dev/anypoint-studio-dev/change-the-studio-category-of-your-devkit-component/[Blog post on how to change the DevKit extension category]
+* xref:6@studio::datasense-enabled-connectors.adoc[DataSense-Enabled Connectors]

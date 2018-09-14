@@ -2,7 +2,7 @@
 ifndef::env-site,env-github[]
 include::_attributes.adoc[]
 endif::[]
-:keywords: devkit, setup, studio, maven, devkit plugin, plugin
+:keywords: devkit, setup, studio, maven, devkit plugin, plugin, com.sun.tools
 
 This topic explains how to prepare a development environment that includes all the components required to develop Anypoint Connectors.
 
@@ -26,9 +26,9 @@ To build connector projects, you must first install the Anypoint Connector DevKi
 
 If you have not already installed Anypoint Studio, follow the xref:3.7@mule-runtime::installing.adoc[detailed instructions] to install. For a quick introduction to Anypoint Studio, review xref:5@studio::index.adoc[Anypoint Studio Essentials].
 
-== JDK 7
+== JDK
 
-Oracle makes JDK freely available for all supported platforms, including Windows, Mac OS X and Linux. Download version 7 of the http://www.oracle.com/technetwork/java/javase/downloads/java-archive-downloads-javase7-521261.html[Java Development Kit (JDK)] for your platform and install.
+Oracle makes the Java Development Kit (JDK) freely available for all supported platforms, including Windows, Mac OS X and Linux. Download http://www.oracle.com/technetwork/java/javase/downloads/jdk7-downloads-1880260.html[version 7] or http://www.oracle.com/technetwork/java/javase/downloads/jdk8-downloads-2133151.html[version 8] as appropriate for your platform and install.
 
 Anypoint Studio must be configured to reference the location of your JDK rather than your JRE. To set JDK as Anypoint Studio's installed JRE:
 
@@ -41,6 +41,8 @@ Anypoint Studio must be configured to reference the location of your JDK rather 
 . If Anypoint Studio is referencing the JRE rather than the JDK, edit the record and remap it to the root of your JDK installation.
 
 image::installed-jres-jdk.png[installed jres]
+
+NOTE: When referencing the root of your JRE instead of a JDK, Maven will be unable to resolve the DevKit-required depenency `com.sun:tools:jar:1.6`. An error describing the inability to resolve this dependency will show up in the console when the build process kicks off.
 
 == Apache Maven
 
@@ -74,9 +76,10 @@ image::installnewsoftware.png[InstallNewSoftware]
 . In the Install menu's *Work with* drop-down menu, click the down arrow and click *Anypoint DevKit Update Site*. Click the checkbox for Anypoint DevKit Plugin, and click *Next*.
 +
 [NOTE]
-If the Anypoint DevKit Update Site is not available in the dropdown list, click *Add* and copy this URL to the repository.
+If the Anypoint DevKit Update Site is not available in the dropdown list, click *Add* and copy this URL to the repository +
+*Location*: `+http://studio.mulesoft.org/r5/devkit+`
 +
-image::devkit-update-site.png[]
+image::devkit-update-site.png[AddOns-Update-Site]
 +
 . Proceed through the remaining steps in the wizard to install.
 . Restart Studio.

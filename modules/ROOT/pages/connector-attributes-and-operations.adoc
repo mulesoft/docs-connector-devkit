@@ -1,4 +1,4 @@
-= Connector Attributes and Operations
+= Adding Connector Functionality
 ifndef::env-site,env-github[]
 include::_attributes.adoc[]
 endif::[]
@@ -52,4 +52,3 @@ Some services expose multiple APIs accessible via different styles to suit diffe
 == See Also
 
 * *NEXT:* Continue to xref:defining-connector-attributes.adoc[Defining Connector Attributes].
-* You can also jump into your specific use case, checking the xref:anypoint-connector-examples.adoc[examples].

@@ -1,4 +1,4 @@
-= Creating a Connector Using a Java SDK
+= Java SDK-Based Connector Example
 ifndef::env-site,env-github[]
 include::_attributes.adoc[]
 endif::[]
@@ -316,7 +316,7 @@ The JavaDoc for each operation includes a pointer to the sample code file:
 
 `../../../doc/twitter-connector.xml.sample`
 
-As well as the usual `@param` and `@return` comments. DevKit enforces the inclusion of these code samples, and checks the samples you provide against the parameters defined for those operations. See Creating DevKit Connector Documentation for details on creating the required documentation for each of your operations.
+As well as the usual `@param` and `@return` comments, DevKit enforces the inclusion of these code samples, and checks the samples you provide against the parameters defined for those operations. See xref:connector-reference-documentation.adoc[Connector Reference Documentation] for details on creating the required documentation for each of your operations.
 
 === Creating Unit Tests for Operations
 

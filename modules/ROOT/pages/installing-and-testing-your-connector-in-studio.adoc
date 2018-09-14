@@ -169,16 +169,14 @@ Because DevKit enforces proper documentation of all projects, you must provide a
 
 At this point the connector is ready to be built and used for the first time. The DevKit plugin for Anypoint Studio automates the process of building the connector, running tests, and packaging it to be used in Anypoint Studio.
 
-To compile and install your connector, right-click your project and select *Anypoint Connector* > *Install or Update*. The *Install or Update* feature can suggest automatic updates to your connector in Anypoint Studio.
+To start the process to compile and install your connector, right-click your project and select *Anypoint Connector* > *Install or Update*.
 
-For manual installation, run the below command from the command console from within the connector project directory:
+For manual installation of a new connector, run the below command from the command console from within the connector project directory:
 
 [source,text,linenums]
 ----
 mvn clean package
 ----
-
-This command creates an "update site" that you can use to install the connector in Anypoint Studio. For more information about how to package your connector, check xref:packaging-your-connector-for-release.adoc[Packaging Your Connector for Release].
 
 === Installation from Update Site
 
@@ -192,10 +190,13 @@ After running the `mvn clean package` command:
 +
 image::installing-and-testing-your-connector-in-studio-69499.png[]
 +
-. Again, ensure the connector is selected on the next screen. Click *Next*, accept the License(s), accept the terms and *Finish*.
+. Again, ensure the connector is selected on the next screen. Click *Next*, accept the License(s) agreement terms and *Finish*.
+
+The *Install or Update* feature can suggest automatic updates to your connector in Anypoint Studio.
 
 ====
 
+For more information about how to package your connector, check xref:packaging-your-connector-for-release.adoc[Packaging Your Connector for Release].
 
 == Testing the Connector
 

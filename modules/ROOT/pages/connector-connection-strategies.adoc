@@ -1,29 +1,34 @@
-= Connector Configs
+= Configuring Connection Strategies
 ifndef::env-site,env-github[]
 include::_attributes.adoc[]
 endif::[]
 :keywords: devkit, strategy, connector, oauth, config, connection, authentication
 
-Since Devkit 3.6, connections are no longer supported at the `@Connector` level (excluding OAuth V1), but now are defined in another component and injected to the `@Connector` by annotating a field with `@Config`. This provides a better environment for developing a connector and the easiest way to create multiple authentication types.
+Since DevKit 3.6, connections are no longer supported at the `@Connector` level (excluding OAuth V1), but now are defined in a "configuration" class and injected into the `@Connector`.
 
-*Note*: OAuth V1 is *not* supported as a `@Config`.
+Inject this configuration class into the connector by annotating a field in the Connector class with `@Config`.
+
+This approach improves the experience for developing a connector and is the easiest way to support multiple authentication types.
+
+*Note*: OAuth V1 is *not* supported via injection by `@Config`.
 
 == Prerequisites
 
 This document assumes you are familiar with the xref:index.adoc[Anypoint Connector DevKit] and you are ready to implement authentication on your connector. You should also be familiar with xref:authentication-methods.adoc[authentication methods].
 
-== Adding a @Config to a @Connector
+== Adding @Config to a @Connector
 
-To add a `@Config`:
+To add a configuration class and inject it into the connector:
 
-. Create a new Java class for the connection strategy.
+. Create a new Java class for the connection strategy. This is your configuration class.
 . Annotate the class with the one of the DevKit authentication methods. In the example we are using `@ConnectionManagement`.
 . Develop your authentication logic or connection management.
-. Finally, set `@Connector` to reference the connection strategy class by creating a `@Config` field with the reference to the new strategy. The `@Connector` is then detached from how it connects with the service.
+. Finally, in the `@Connector` annotated class, reference the connection strategy class by creating a `@Config` field with the reference to the new strategy. The connector operation logic is defined separately from logic for connection with the service.
 
 == Examples
 
-The following example shows the `@Connector` and `@Config` blocks in a connector:
+The following example shows the `@Connector` injecting the configuration with `@Config`.
+
 
 [source,java,linenums]
 ----
@@ -31,22 +36,22 @@ The following example shows the `@Connector` and `@Config` blocks in a connector
 public class MyConnector
 {
     @Config
-    private ConnectionManagementStrategy strategy;
+    private Config config;
 
-    public void setMyProperty(ConnectionManagementStrategy strategy)
+    public void setMyProperty(Config config)
     {
         this.strategy = strategy;
     }
 
-    public ConnectionManagementStrategy getStrategy()
+    public Config getConfig()
     {
-        return this.strategy;
+        return this.config;
     }
         ...
 }
 ----
 
-The next example declares the `@ConnectionManagement` block in a connector:
+This code declares the `@ConnectionManagement` block in the configuration file that was injected above:
 
 [source,java,linenums]
 ----
@@ -84,27 +89,47 @@ public class ConnectionManagementStrategy
 
 == Supporting Multiple Authentication Models in One Connector
 
-Anypoint DevKit supports multiple authentication models in the same connector. The LDAP connector illustrates how to structure the connector code to support this feature.
+Anypoint Connector DevKit supports multiple authentication models in the same connector. The LDAP connector illustrates how to structure the connector code to support this feature.
 
+The connector injects the base configuration type that the configurations are inherited from, `AbstractConfig`.
+
+. `AbstractConfig.java` is declared in one file.
++
 [source,java,linenums]
 ----
-public class LDAPConnector
-{ ... @Config AbstractConfig config; ... }
 public abstract class AbstractConfig
 { ... }
-
+----
++
+. Its child classes are declared in separate files. These strategies are for caching and TLS respectively.
++
+.LDAPCacheConfig.java
+[source,java,linenums]
+----
 @ConnectionManagement(friendlyName = "Configuration", configElementName = "config")
 public class LDAPCacheConfig extends AbstractConfig { ... }
+----
++
+.LDAPTlsConfig.java
+[source,java,linenums]
+----
 @ConnectionManagement(friendlyName = "TLS Configuration", configElementName = "tls-config")
 public class LDAPTlsConfig extends AbstractConfig
 { ... }
 ----
++
+. In the `LDAPConnector.java` class, the abstract configuration is injected
++
+[source,java,linenums]
+----
+public class LDAPConnector
+{ ... @Config AbstractConfig config; ... }
+----
 
-Users can declare an abstract base class or interface using different Connection Strategies that share as child classes and implement the authentication logic and connection management if applicable.
+Users can declare an abstract base class or interface using different Connection Strategies as child classes and implement the authentication logic and connection management, if applicable.
 
-Supporting both OAuth and Basic Authentication in the same connector means having two config elements in the same XML namespace. To enable this, you can use the parameter configElementName of the Connection Strategies annotations.
+Supporting both OAuth and Basic Authentication in the same connector means having two config elements in the same XML namespace. To enable this, you can use the parameter `configElementName` of the Connection Strategies annotations.
 
-For example in the LDAP connector, the `LDAPTlsConnection` class sets the configElementName to tls-config , rather than the default value, config, on the other hand the `LDAPCacheConnection` uses the default value for `configElementName`. As a result, in XML,
- use either `ldap:tls-config` or `ldap:config` to pick the needed version of the connector. Anypoint Studio renders this when configuring the connector displaying this screen:
+For example, in the LDAP connector, the `LDAPTlsConnection` class sets the `configElementName` to `tls-config` , rather than the default value, `config`, on the other hand the `LDAPCacheConnection` uses the default value for `configElementName`. As a result, in XML, use either `ldap:tls-config` or `ldap:config` to pick the needed version of the connector. Anypoint Studio renders this when configuring the connector displaying this screen:
 
 image::ldaptypes.png[LDAPtypes]

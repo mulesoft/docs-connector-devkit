@@ -16,8 +16,6 @@ image::new-proj2.png[new+proj2]
 +
 Create an Anypoint Connector Project:
 +
-image::createconnector36.png[CreateConnector36]
-+
 [%header%autowidth.spread]
 |===
 |Field |Entry
@@ -33,8 +31,6 @@ image::createconnector36.png[CreateConnector36]
 image::generictype.png[GenericType]
 
 * *SOAP*. See xref:creating-a-soap-connector.adoc[Creating a SOAP Connector].
-
-* *REST*. Refer to xref:creating-a-rest-connector.adoc[Creating a REST Connector]:
 |*Authentication* |Click an authentication choice for how your connector accesses its resource: xref:connection-management.adoc[Connection Management], xref:oauth-v1.adoc[OAuth V1], or xref:oauth-v2.adoc[OAuth V2].
 2.+|*DataSense:*
 |*Add DataSense methods* |Provides methods to display metadata on the resource's entities. For more information, see xref:adding-datasense.adoc[Adding DataSense].
@@ -50,55 +46,13 @@ image::generictype.png[GenericType]
 |*Maven Settings* |Click *Manually set values*, if needed, to change the Maven Group ID, Artifact ID, or the version of the connector.
 |*GitHub Settings* |Click *Add GitHub information* , if needed, to link your project to a new or existing GitHub repository.
 |===
-. Click *Next* and choose security for your connector, and to personalize how the connector's icon appears in Anypoint Studio when users build projects using your connector:
+. Click *Next* and choose how the connector's icon appears in Anypoint Studio when users build projects using your connector:
 +
-image::securityicon.png[SecurityIcon]
+image::creating-a-java-sdk-based-connector-71fef.png[Icon set]
 . Click *Finish*. This generates a project containing the structure with all the required elements such as images, sample docs, and some basic tests for your connector. Refer to the DevKit documentation to build upon this initial, basic structure in xref:installing-and-testing-your-connector-in-studio.adoc[Installing and Testing Your Connector in Studio].
 +
 image::screen05.png[]
 
-== Adding Native Libraries and JARs to a Connector Build
-
-When building connectors with dependencies that cannot be bundled within the same JAR, you can instruct Anypoint Studio to prompt users to add the files to your connector.
-
-To add native libraries and JAR files to a build:
-
-. Add a file to trigger this feature -  the connector must have one file per configuration at this path:
-+
-`<root_connector_folder>src/main/resources/META-INF/<connector_name>-<configElementName>-required-libs.xml`
-+
-. Ensure that the *-required-libs.xml* file contains a namespace, require, and jar tags.
-+
-For example:
-+
-[source,xml,linenums]
-----
-<namespace xmlns="http://www.mulesoft.org/schema/mule/tooling.attributes" xmlns:mule="http://www.mulesoft.org/schema/mule/core">
-    <require>
-       <jar name="PeopleSoft Java Object Adapter (psjoa-1.0.jar)"
-fileName="psjoa(.*)\.jar" targetFolder="/lib/peoplesoft"
-targetRuntimeFolder="/plugins" className="psft.pt8.joa.IPSMessage"/>
-    </require>
-</namespace>
-----
-+
-In this example, for the PeopleSoft connector, the *jar* element contains these attributes:
-+
-*name*: The JAR name to display in the Anypoint Studio prompt.
-+
-*fileName*: Filter to apply to the selected JAR to verify that it's the required one. This matches the actual file name of the JAR.
-+
-*targetFolder*: Folder in the project where to copy the JAR.
-+
-*targetRuntimeFolder*: Folder to put the runtime.
-+
-*className*:  Filter to apply to the JAR to verify that it's the required one. This looks for the declared class inside the selected JAR. The class name must be the full-qualified name of the class.
-+
-. Specifying a required libraries XML file causes Anypoint Studio to modify your configuration description so that Studio displays an option for installing libraries:
-+
-image::36reqddeps.png[36ReqdDeps]
-
-NOTE: If a library is not required for a particular configuration, do not create a required-libs.xml file for that configuration.
 
 == More DevKit Actions
 

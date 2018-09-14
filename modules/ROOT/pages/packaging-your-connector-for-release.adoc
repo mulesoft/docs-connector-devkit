@@ -7,20 +7,32 @@ endif::[]
 When your connector is ready for release to a broad audience, take the following additional steps to ensure user success:
 
 * Create a license agreement for your connector.
+* See the advantages of building your connector with xref:release-notes::connector-devkit/anypoint-connector-devkit-3.9.x-release-notes.adoc[DevKit 3.9] and packaging two sets of connector logo-icons to support the old and new Studio UI.
 * Develop end-to-end walkthroughs to illustrate performing common use cases with your connector.
-* Create a compressed file for distribution.
+* Create a compressed file for distribution using Maven.
 
 == Prerequisites
 
 This document assumes you have:
 
-* Developed your connectors
-* Documented them in preparation for their release. Additional information about documenting your connector is provided in <<Documenting With Use Cases>>.
+* Developed your connector
+* Documented the connector in preparation for release. Additional information about documenting your connector is provided in the next section.
 * Completed testing as described in xref:developing-devkit-connector-tests.adoc[Developing DevKit Connector Tests].
 
-== Customize License Agreement
+== Documenting Use Cases Before Packaging
 
-During connector installation, Studio presents you with a license agreement. You can customize the contents of this agreement to reflect your terms and the wording you want for your connector license.
+Before packaging and releasing your connector, we recommend you document your connector effectively. Useful documentation can help reduce your support and training costs, as well as improving customer satisfaction.
+
+Documentation tips:
+
+* *Readme* - Provide a Readme file that customers can readily access. The best Readme file appears automatically during installation, such as part of an installation wizard. The Readme needs to contain installation information and explain any required software that customers need to install or configure first before they can install your connector.
+* *Use Cases*: Explain why, when, and how a customer uses your connector. For each use case, provide examples with explanations.
+* *Release Notes*: Ensure your connector is versioned and that you help customers understand what changes between releases. We recommend that you list new features, known issues, and what issues were fixed.
+* *APIDoc*: Generate xref:connector-reference-documentation.adoc[Connector Reference Documentation] that leverages Javadoc, running a simple Maven command run from your connector's root folder.
+
+== Applying a License Agreement and Header
+
+Before you package the connector you can customize the contents of the license agreement to reflect your terms and the wording you want for your connector license. When a user of your packaged connector installs it in Studio, the user is presented with the license agreement.
 
 Maven first searches for a `LICENSE.md` file in the same directory as the `pom.xml` file during the build process.
 
@@ -32,12 +44,13 @@ If this file is not found, Maven goes through the following steps to locate a li
 
 In addition to the global license file, the DevKit requires that your source files also contains a license header. To apply the license header to every source file in your project, run the following command in a command console at the root of your project, which contains your connector project's `pom.xml` file:
 
-[source,text,linenums]
 ----
 mvn license:format
 ----
 
 This command goes through your whole project and applies the license header defined in the `LICENSE_HEADER.txt` file to each source file. This includes Java files, SQL scripts, XML files, and more.
+
+== Installing Connector Into Local Maven Repo
 
 Run the following command to install your connector with your updated license information into your local Maven repository.
 
@@ -55,8 +68,9 @@ To enable verbose logging, use:
 `mvn clean install -Ddevkit.verbose.logging=true`
 ====
 
+== Packaging Connector using Maven
 
-You can also use the following Maven command to package the connector instead of installing. This creates an update site that you can use to install the connector in Anypoint Studio. This update site contains everything you need to use the connector inside your Mule applications (icons for the palette, XSDs, source files, etc.) Therefore it is important that your source files have the license headers before packaging.
+You can use the following Maven command to package the connector to get it ready for installation anywhere. This creates an "update site" in a `.zip` file that you can use to install the connector in Anypoint Studio.  manually. This update site contains everything you need to use the connector inside your Mule applications (icons for the palette, XSDs, source files, etc.) Therefore it is important that your source files have the license headers before packaging.
 
 *Note*: Packaging the connector does not check for license headers in your source files. To package your connector, run the following command at the root folder:
 
@@ -64,48 +78,93 @@ You can also use the following Maven command to package the connector instead of
 mvn clean package
 ----
 
-== Creating a Compressed Project File
+Find the packaged connector in the connector's `/target` folder to install and make the connector available in Studio.
 
-To create a compressed file of your project:
 
-. In Anypoint Studio, right-click your project name in the Package Explorer, and click *Export*.
-. Click *General* > *Archive* File with these settings. Choose whether you want a TAR file (for Linux or Mac) or a ZIP file for Mac or Windows. (Windows users can also uncompress TAR files using third-party software such as 7zip.) +
-IMPORTANT: Uncheck the *target* folder.
-+
-image::archivefile.png[ArchiveFile]
-
-. Click the down arrow next to your project name and unclick *target*: +
-+
-image::archivedirs.png[ArchiveDirs]
-
-. Click *Browse* in *To archive file* and choose the name and location of the zip or tar file.
-. Click *Finish* to create the compressed file.
-
-== Documenting With Use Cases
-
-Before releasing your connector, document your connector effectively. Useful documentation can help reduce your support and training costs, as well as improving customer satisfaction.
-
-Documentation tips:
-
-* *Readme* - Provide a Readme file that customers can readily access. The best Readme file appears automatically during installation, such as part of an installation wizard. The Readme needs to contain installation information and explain any required software that customers need to install or configure first before they can install your connector.
-* *Use Cases*: Explain why, when, and how a customer uses your connector. For each use case, provide examples with explanations. For information, see http://en.wikipedia.org/wiki/Use_case[Wikipedia's Use Case] topic.
-* *Release Notes*: Ensure your connector is versioned and that you help customers understand what changes between releases. We recommend that you list new features, known issues, and what issues were fixed.
-
-== Certify and Publish Your Connector
+== Optional - Certifying and Publishing Your Connector
 
 MuleSoft's program certifies and publishes third party connectors to be distributed through Anypoint Exchange. For more information about this program, please move on to xref:connector-certification-program-guidelines.adoc[Connector Certification Program Guidelines].
 
 
-== Uploading your Connector to Exchange
+== Optional - Uploading your Connector to Exchange
 
-Anypoint Studio identifies each connector by a *Feature ID* that spans all versions of the connector. In order to expose your connector via the xref:exchange::index.adoc[Anypoint Exchange], you will be prompted by the Exchange to provide this Feature ID when uploading your connector asset, as well as a version number.
+If your connector has been certified by MuleSoft, you can publish your connector on the publicly available Anypoint Exchange, and make it accessible from Exchange for download into Anypoint Studio. To publish your connector, use the Maven Facade described in xref:exchange::to-publish-assets-maven.adoc[To Publish and Deploy Exchange Assets Using Maven].
+Publishing a connector requires obtaining the organization ID for the organization or business group where the connector is available in Exchange.
 
-Follow the steps below to obtain this ID:
+////
 
-. Unzip the file containing your connector's Update Site
-. In the created folder, look for the `context.xml` file and open it with a text editor
+[NOTE]
+====
+In Anypoint Studio 6.0.1 and later, Feature ID is not a mandatory field. If not provided Studio is able to install the connector, however Exchange won’t be able to differentiate the status of the connector. Therefore, you will always see the *Install* button next to it in Exchange, even if you already have the latest version installed.
 
-. In this file, search for a string that follows the following pattern: `id=’org.mule.tooling.ui.extension.<connector name>.feature.group’`. That entire value is your connector’s Feature ID. As a more concrete example, your Feature ID could be something like ’org.mule.tooling.ui.extension.cloudhub.3.6.0.feature.group’
+Also, you don’t need to provide the full version number anymore. Following the example above, you can just provide 2.0.1 as the Connector Version and Studio makes a best effort to find an exact version based on this provided version.
+====
+
+From Exchange, click *Add Item* > *Connector* and fill out the form before entering the connector artifact details under *Versions*. Follow the steps below to complete the publishing process.
+
+. Unzip the file you have created locally containing your connector's Update Site.
+. In the extracted folder, look for the `content.xml` file and open it with a text editor.
+. In this file, search for a string that follows this pattern: `id=’org.mule.tooling.ui.extension.<connector name>.feature.group’`. That entire value is your connector’s *Feature ID*. As a more concrete example, your Feature ID could be something like `’org.mule.tooling.ui.extension.cloudhub.3.6.0.feature.group’`
+. Provide the version string, for example `version='1.0.0.201606211519'`, where it reads *Connector version*. Consumers of the connector only see the short version number. For example if the version number you provide is `2.0.1.201606101417`, they only see `2.0.1`. (The full version number displays ONLY when editing the entry in Exchange.)
+. Enter the minimum Mule runtime version required for your connector to work.
+. Provide the *Update Site URL* for your connector, and complete any other necessary fields for the connector's entry on Anypoint Exchange, such as a link to a documentation website.
+
+////
+
+== Optional - Changing the Studio Category of your Module
+
+If your extension does not truly qualify as a connector, that is, it should be understand as an extension belonging to a different category in Anypoint Studio, add the `@Category` annotation to the connector class, specifying one of the categories available in Studio. You cannot define your own category.
+
+Here is how the annotation is added in the `xyz-Connector.java` file:
+
+[source,java,linenums]
+----
+@Connector(name = "myext", schemaVersion = "3.4", friendlyName="mine", minMuleVersion="3.5", description="An extension that allows you to extend xyz and perform every xyz operation")
+@Category(name = "org.mule.tooling.category.core", description = "Components")
+public class MyExtension
+{
+  ...
+
+----
+
+Other available categories must be defined using one of the following:
+
+[source,java,linenums]
+----
+import org.mule.api.annotations.Category;
+
+// Endpoint
+@Category(name = "org.mule.tooling.category.endpoints", description = "Endpoints")
+
+// Scope
+@Category(name = "org.mule.tooling.category.scopes", description = "Scopes")
+
+// Component
+@Category(name = "org.mule.tooling.category.core", description = "Components")
+
+// Transformer
+@Category(name = "org.mule.tooling.category.transformers", description = "Transformers")
+
+// Filters
+@Category(name = "org.mule.tooling.category.filters", description = "Filters")
+
+// Flow Control
+@Category(name = "org.mule.tooling.category.flowControl", description = "Flow Control")
+
+// Error Handling
+@Category(name = "org.mule.tooling.ui.modules.core.exceptions", description = "Error Handling")
+
+// Cloud Connectors
+@Category(name = "org.mule.tooling.category.cloudconnector", description = "Cloud Connectors")
+
+// Miscellaneous
+@Category(name = "org.mule.tooling.ui.modules.core.miscellaneous", description = "Miscellaneous")
+
+// Security
+@Category(name = "org.mule.tooling.category.security", description = "Security")
+----
 
 
-In this same `context.xml` file you will find a tag named *version* next to the Feature ID. Provide this value in the *Connector Version* field in Exchange. Consumers will later only see a beautified and simpler version number. For example if the version number you provide is 2.0.1.201606101417, they will just see 2.0.1. The full version number will be displayed ONLY when are editing a specific version.
+== See Also
+
+* https://www.anypoint.mulesoft.com/exchange/[Anypoint Exchange]
