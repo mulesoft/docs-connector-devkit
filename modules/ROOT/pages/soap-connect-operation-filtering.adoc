@@ -4,7 +4,7 @@ include::_attributes.adoc[]
 endif::[]
 :keywords: wsdl, operation filtering, soap connect, session management
 
-//todo: make sub-item of https://docs.mulesoft.com/anypoint-connector-devkit/v/3.8/creating-a-soap-connector#coding-with-wsdlprovider ?
+//todo: make sub-item of https://docs.mulesoft.com/anypoint-connector-devkit/v/3.9/creating-a-soap-connector#coding-with-wsdlprovider ?
 
 == Introduction
 For a particular `ServiceDefinition`, the developer is able to filter out (that is, hide from the connector user) individual operations that are declared in the WSDL file.

@@ -61,7 +61,7 @@ image::apidoc-param-sample.png[apidoc-param]
 
 |===
 
-For visual reference, have a look at the DevKit 3.8.0 generated documentation for one of the Salesforce connector's operations:
+For visual reference, have a look at the DevKit 3.9.0 generated documentation for one of the Salesforce connector's operations:
 
 image::apidoc-look.png[]
 
@@ -135,7 +135,7 @@ image::host-attr.png[]
 
 === Documenting Connection Strategies
 
-With version 3.8.0 of DevKit, it is possible to generate documentation for as many connection strategies as are supported by the connector, and will appear under the *Configs* heading:
+With version 3.9.0 of DevKit, it is possible to generate documentation for as many connection strategies as are supported by the connector, and will appear under the *Configs* heading:
 
 image::multiple-configs.png[]
 
@@ -244,14 +244,14 @@ Here is an example from the CMIS connector's `xml.sample` file:
 ----
 
 [NOTE]
-DevKit APIDoc can generate more than one example from the `xml.sample` file for the same connector operation. Of course, the example must follow the same "_INCLUDE" tag structure above. As of DevKit 3.8.0, the `@sample.xml` tag is *NOT* supported.
+DevKit APIDoc can generate more than one example from the `xml.sample` file for the same connector operation. Of course, the example must follow the same "_INCLUDE" tag structure above. As of DevKit 3.9.0, the `@sample.xml` tag is *NOT* supported.
 
 == Generating Documentation
 
 Documentation can be previewed by right-clicking your project in the Package Explorer, then selecting *Anypoint Connector* > *Preview Documentation*.
 
 [IMPORTANT]
-You must have *DevKit 3.8.0* and have *JDK 7 or higher* enabled to access the updated documentation features described here. Ensure the appropriate version of DevKit is referenced in the pom.xml file, and likewise for the JDK used by the system.
+You must have *DevKit 3.9.0* and have *JDK 7 or higher* enabled to access the updated documentation features described here. Ensure the appropriate version of DevKit is referenced in the pom.xml file, and likewise for the JDK used by the system.
 
 When you generate documentation for your connector (*Project* > *Generate Javadoc*), DevKit automatically creates both an *HTML* file and an http://asciidoctor.org/docs/what-is-asciidoc/#what-is-asciidoc[AsciiDoc] file that serve as a user-friendly reference for the Javadoc comments you have added within your code explaining connector methods and attributes.
 

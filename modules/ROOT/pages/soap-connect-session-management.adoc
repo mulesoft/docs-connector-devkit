@@ -4,7 +4,7 @@ include::_attributes.adoc[]
 endif::[]
 :keywords: soap connect, session management, wsdl, web service, soap
 
-To support SOAP-based connector development, *DevKit 3.8.0* comes equipped with the option for the connector developer to define a *session token* for managing SOAP service connections, SOAP sessions or any service operations requiring a token.
+To support SOAP-based connector development, *DevKit 3.9.0* comes equipped with the option for the connector developer to define a *session token* for managing SOAP service connections, SOAP sessions or any service operations requiring a token.
 
 == Introduction
 
@@ -108,7 +108,7 @@ public class Config {
 
 == Enriching the SOAP Body With Session Token
 
-With the release of DevKit 3.8.0 the `@WsdlBodyEnricher` can be used to inject the session token into the SOAP body.
+With the release of DevKit 3.9.0 the `@WsdlBodyEnricher` can be used to inject the session token into the SOAP body.
 
 === @WsdlBodyEnricher
 

@@ -11,7 +11,7 @@ endif::[]
 
 Learn how to create a connector to a web service using the Anypoint Connector DevKit.
 
-DevKit helps you build xref:3.8@mule-runtime::anypoint-connectors.adoc[Anypoint Connectors]. This tutorial shows you how to code a connector to support authentication, connections, service operations and more. This is functionality that you as the connector developer expose to the end user of the connector, who is the Mule application developer.
+DevKit helps you build xref:3.9@mule-runtime::anypoint-connectors.adoc[Anypoint Connectors]. This tutorial shows you how to code a connector to support authentication, connections, service operations and more. This is functionality that you as the connector developer expose to the end user of the connector, who is the Mule application developer.
 
 == What is the Anypoint Connector DevKit?
 
@@ -40,7 +40,7 @@ Here is why you might want to build your own connector:
 
 == Prerequisites
 
-Before developing a connector you should have a working knowledge of Mule, xref:6@studio::download-and-launch-anypoint-studio.adoc[Anypoint Studio], and Java development in general, specifically the use of https://docs.oracle.com/javase/tutorial/java/annotations/basics.html[Java annotations].
+Before developing a connector you should have a working knowledge of Mule, Anypoint Studio, and Java development in general, specifically the use of https://docs.oracle.com/javase/tutorial/java/annotations/basics.html[Java annotations].
 
 [NOTE]
 ====
@@ -245,7 +245,7 @@ In the `ConnectorConfig.java` file add the @Configurable annotation for the addr
 +
 image::config-field.png[width="600"]
 +
-. Define a configurable field inside the `@Configuration`-annotated class with a default value for the endpoint our client connects to, for example, `@Default("http://devkit-cookbook.cloudhub.io/soap")`
+. Define a configurable field inside the `@Configuration`-annotated class with a default value for the endpoint our client connects to, for example, `+@Default("http://devkit-cookbook.cloudhub.io/soap")+`
 . Any field marked with the `@Configurable` annotation must have a getter and a setter for that field.
 +
 See full https://github.com/mulesoft/mule-cookbook-tutorial/blob/master/src/main/asciidoc/resources/java/v1/ConnectorConfig.java[Config] source code.
@@ -305,7 +305,7 @@ Once you regenerate the sources, the errors will go away as the generated code w
 ==== Defining Example Code for Connector Processors
 
 [NOTE]
-Connectors built with DevKit 3.8 support specification of examples in a different format. See the new specification and generation format at xref:connector-reference-documentation.adoc[Connector Reference Documentation].
+Connectors built with DevKit 3.9 support specification of examples in a different format. See the new specification and generation format at xref:connector-reference-documentation.adoc[Connector Reference Documentation].
 
 Follow along to add an example use for an operation (annotated with `@Processor`).
 
@@ -344,7 +344,7 @@ Our example in this case looks like this:
 
 Make a simple app that listens at an HTTP endpoint; when the endpoint is hit, the app retrieves the list of recently added items from the cookbook service using the connector.
 
-. Create a Mule application in Studio and add an HTTP listener and specify `/get-recently` for the path.
+. Create a Mule application in Studio and add an HTTP listener and specify `/get-recently` for the path. If this is your first Mule app, take a look at our xref:general:getting-started:build-a-hello-world-application.adoc[Hello World Application].
 . Drop the connector onto the canvas and configure using `admin` and `admin` as the credentials (this is for non-OAuth configuration).
 +
 image::devkit-tutorial-4cb84.png[]
@@ -819,16 +819,21 @@ See:
 
 You can for example use a foreach in front of your paged processor:
 
-Mule App:
+[.ex]
+=====
+[discrete.view]
+=== Mule App
 
 image::pagination-example.png[width="600"]
 
-XML:
+[discrete.view]
+=== XML
 
 [source,xml,linenums]
 ----
 include::{examplesdir}/mule-app/pagination-example.xml[]
 ----
+=====
 
 [[install-guide]]
 == Installing a Connector
@@ -1129,7 +1134,6 @@ See:
 == Adding @Source
 
 === What is a Source?
-
 In some cases it is necessary to create Message Sources instead of Message Processors.
 
 Basically, a Message Source receives or generates new messages to be processed by Mule.
@@ -1155,20 +1159,24 @@ include::{examplesdir}/java/v7/CookbookConnector.java[lines=73..90]
 . On your flow now just drag and drop the Cookbook Connector, and you will see that is automatically while generate a flow.
 +
 image::source-example.png[width="600"]
-+
+
 . Add a logger and debug to see that the payload now has your recipes.
 +
-Mule App:
-+
+[.ex]
+=====
+[discrete.view]
+=== Mule App
+
 image::source-debug.png[width="600"]
-+
-XML:
-+
+
+[discrete.view]
+=== XML
+
 [source,xml,linenums]
 ----
 include::{examplesdir}/mule-app/source-example.xml[]
 ----
-
+=====
 
 == About Adding a Transformer
 
@@ -1200,20 +1208,25 @@ include::{examplesdir}/java/v6/CookbookConnector.java[lines=163..169]
 
 To use your transformer, just drag and drop it from the palette and build a flow.
 
-Here we are using it explicitly to map transform the recipes into a Map.
-
-Mule App:
+* Here we are using it explicitly to map transform the recipes into a Map.
++
+[.ex]
+=====
+[discrete.view]
+=== Mule App
 
 image::transformer-explicit.png[width="600"]
 
-XML:
+[discrete.view]
+=== XML
 
 [source,xml,linenums]
 ----
 include::{examplesdir}/mule-app/transformer-example.xml[]
 ----
+=====
 
-Transformers can also be used implicitly as long as only one transformer is found to resolve the type.
+* Transformers can also be used implicitly as long as only one transformer is found to resolve the type.
 
 . Define another transformer that can transform Recipe object into Map<String,Object>
 +
@@ -1224,17 +1237,24 @@ include::{examplesdir}/java/v8/CookbookConnector.java[lines=226..232]
 +
 . Install the connector.
 +
-. In your Mule app, create a flow that takes the first item of the list and add an update operation after it. Don't use the transformer.
+. In your mule app create a flow that takes the first item of the list and add an update operation after it. Don't use the transformer.
 +
+[.ex]
+=====
+[discrete.view]
+=== Mule App
+
 image::transformer-implicitly.png[width="600"]
-+
-XML:
-+
+
+[discrete.view]
+=== XML
+
 [source,xml,linenums]
 ----
 include::{examplesdir}/mule-app/transformer2-example.xml[]
 ----
-+
+=====
+
 . Run the example and see that the flow will execute successfully.
 
 == Using @Password
@@ -1284,7 +1304,6 @@ If you have a wsdl, the easiest way to build a connector is to create a client u
 You can configure the CXF goal in your `pom.xml` file very easily. The full documentation is at the Apache  http://cxf.apache.org/docs/maven-cxf-codegen-plugin-wsdl-to-java.html[CXF site].
 
 For example, in your `pom.xml` file, you can add the following plus all required dependencies:
-
 [source,xml,linenums]
 ----
 <build>
@@ -1377,14 +1396,14 @@ Response response = invocationBuilder.get(); // # <5>
 System.out.println(response.getStatus());
 System.out.println(response.readEntity(String.class));
 ----
-<1> The client is ready to make a request to URL `+http://example.com/rest+`.
-<2> Add paths for `+http://example.com/rest/resource/helloworld+`.
-<3> Configure a query param in the form of `+http://example.com/rest/resource/helloworld?greeting=Hi+World%21+`.
-<4> Specify we want the reply in JSON format.
-<5> Make a GET request.
+<1> The client is ready to make a request to URL `+http://example.com/rest+`
+<2> Add paths for `+http://example.com/rest/resource/helloworld+`
+<3> Configure a query param. It looks like `+http://example.com/rest/resource/helloworld?greeting=Hi+World%21+`
+<4> Specify we want the reply in JSON format
+<5> Make a GET request
 
 === REST Server for Cookbook
 
 If testing the three resources included in the Cookbook REST server, set up your connector to be SDK-based and select OAuth v2 as the authentication mechanism.
 
-For more information, see the https://jersey.github.io/[Jersey client] documentation.
+For more information, see the http://repo1.maven.org/maven2/com/sun/jersey/jersey-documentation/1.6/jersey-documentation-1.6-user-guide.pdf[Jersey client] documentation.

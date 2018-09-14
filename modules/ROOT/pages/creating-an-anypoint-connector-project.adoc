@@ -68,7 +68,7 @@ image::screen23.png[]
 |`processor` |Add a processor to your connector. There are several options with different templates.
 |`transformer` |Add a transformer method. Transformers convert one input to another.
 |`restconfig` |Add a configurable element to a REST-based connector, such as URI params, query params, or header params.
-|`restprocessor` |*@RestCall processor deprecated from 3.8.0 onward.* REST-based connectors insert the @RestCall parameter when you create an Anypoint Connector Project.
+|`restprocessor` |*@RestCall processor deprecated from 3.9.0 onward.* REST-based connectors insert the @RestCall parameter when you create an Anypoint Connector Project.
 |===
 
 == Installing or Updating Your Connector in Anypoint Studio

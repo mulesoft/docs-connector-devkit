@@ -7,7 +7,7 @@ endif::[]
 //todo: link to sample connectors and Mule app
 == Introduction
 
-With *DevKit 3.8.0*, MuleSoft Certified Connector partners/developers, referred to here also as "partners", can manage their connector’s license natively with DevKit before the connector is packaged for release, ensuring only the partner's paid customers are using the connector.
+With *DevKit 3.9.0*, MuleSoft Certified Connector partners/developers, referred to here also as "partners", can manage their connector’s license natively with DevKit before the connector is packaged for release, ensuring only the partner's paid customers are using the connector.
 
 Partners that have built a MuleSoft Certified Connector can give potential customers the chance to build a Mule application with their connector and test it on the Mule ESB bundled with Anypoint Studio. However, upon deploying the Mule application with the connector, customers are prompted for the partner's generated key ensuring they possess a valid license from the partner.
 
@@ -118,7 +118,7 @@ Trying to deploy this sample Mule application to *Mule ESB On-Prem* without a va
 
 ----
 Exception…
-Caused by: org.mule.devkit.3.8.0.internal.lic.exception.InvalidLicenseException: License with name [license-demo.lic] not found as resource. License was not provided or its name is not the expected
+Caused by: org.mule.devkit.3.9.0.internal.lic.exception.InvalidLicenseException: License with name [license-demo.lic] not found as resource. License was not provided or its name is not the expected
 ----
 
 Attempting to deploy the Mule application using the unlicensed connector to *CloudHub* fails with a status indicator:

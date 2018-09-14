@@ -1,5 +1,5 @@
 name: connector-devkit
 title: Connector DevKit
-version: '3.8'
+version: '3.9'
 nav:
 - modules/ROOT/nav.adoc

@@ -41,7 +41,7 @@ mvn clean test -Ddeploymentprofile= -Dmuledirectory=/local/usr/mule_3.6.3
 
 === CloudHub Mode
 
-As of DevKit 3.8.0, CTF support for a CloudHub deployment profile is available, allowing you to test your connector in a more dynamic environment, a clear advantage to deploying a Mule application in a classic standalone environment. The two required parameters, besides specifying `-Ddeploymentprofile=cloudhub`, are your CloudHub username `-Dcloudhubuser=` and `-Dcloudhubpassword=`.
+As of DevKit 3.9.0, CTF support for a CloudHub deployment profile is available, allowing you to test your connector in a more dynamic environment, a clear advantage to deploying a Mule application in a classic standalone environment. The two required parameters, besides specifying `-Ddeploymentprofile=cloudhub`, are your CloudHub username `-Dcloudhubuser=` and `-Dcloudhubpassword=`.
 
 ----
 mvn clean test -Ddeploymentprofile=cloudhub -Dcloudhubuser=<your_username> -Dcloudhubpassword=<your_password>

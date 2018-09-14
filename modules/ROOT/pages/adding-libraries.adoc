@@ -12,6 +12,8 @@ To add native libraries and JAR files to a build:
 +
 `<root_connector_folder>src/main/resources/META-INF/<connector_name>-<configElementName>-required-libs.xml`
 +
+For example: `<root_connector_folder>src/main/resources/META-INF/peoplesoft-connector-Configuration-required-libs.xml`
++
 . Ensure that the *-required-libs.xml* file contains a namespace, require, and jar tags.
 +
 For example:

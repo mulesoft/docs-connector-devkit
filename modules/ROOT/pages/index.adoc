@@ -4,17 +4,17 @@ include::_attributes.adoc[]
 endif::[]
 :keywords: devkit, development, features, architecture
 
-The *Anypoint Connector DevKit*, or simply *DevKit*, enables the development of xref:3.8@mule-runtime::anypoint-connectors.adoc[Anypoint Connectors]. An *Anypoint Connector* is an extension module to the MuleSoft Anypoint Platform that facilitates communication between third-party systems/APIs and Mule applications.
+The *Anypoint Connector DevKit*, or simply *DevKit*, enables the development of xref:3.9@mule-runtime::anypoint-connectors.adoc[Anypoint Connectors]. An *Anypoint Connector* is an extension module to the MuleSoft Anypoint Platform that facilitates communication between third-party systems/APIs and Mule applications.
 
 [NOTE]
 ====
-*Anypoint Connector DevKit 3.9 is the latest version of DevKit*, offering connector end user support in a few aspects of Mule app design in Studio. Requirements and suggestions for writing connector code using DevKit have not changed since version 3.8.
+*Anypoint Connector DevKit 3.9 is the latest version of DevKit*, offering connector end user support in a few aspects of Mule app design in Studio. Requirements and suggestions for writing connector code using DevKit have not changed since version 3.9.
 
 xref:release-notes::connector-devkit/anypoint-connector-devkit-3.9.x-release-notes.adoc[Anypoint Connector DevKit 3.9.x Release Notes]
 ====
 
 [IMPORTANT]
-*DevKit version number* does not follow Mule versioning. *DevKit 3.8*-built connectors work with *Mule 3.5.3 onward*.
+*DevKit version number* does not follow Mule versioning. *DevKit 3.9*-built connectors work with *Mule 3.5.3 onward*.
 
 == Developing Connectors with DevKit
 
@@ -28,7 +28,7 @@ This is what you need to develop *DevKit-based Anypoint Connectors* on your syst
 _Existing Connector:_
 * Click *File* > *Import* > *Anypoint Studio* > *Anypoint Connector Project from External Location*, choose a URL or a .zip file, and complete the wizard to locate and import the project.
 +
-See also xref:creating-a-soap-connector.adoc[Creating a SOAP Connector] or link:/anypoint-connector-devkit/v/3.8/creating-a-connector-for-a-restful-api-using-jersey[Creating a REST Connector Using Jersey].
+See also xref:creating-a-soap-connector.adoc[Creating a SOAP Connector].
 . xref:setting-up-api-access.adoc[Determine resource access] - Each resource has a different access method, such as REST, SOAP, FTP, or the Java SDK features.
 . xref:authentication.adoc[Choose an authentication mechanism] - Mule supports OAuth V1 or V2, and username and password authentication (known as xref:connection-management.adoc[connection management]), which can be used for protocols such as API Key, SAML, NTLM, Kerberos, or LDAP.
 . xref:connector-attributes-and-operations.adoc[Choose the connector's data model] - Models can be static Java objects or dynamic objects. You can use xref:5@studio::datasense.adoc[DataSense] - Determine what information the target resource expects.
@@ -95,8 +95,6 @@ The data model for the connector consists of the objects passed into and out of 
 === REST Versus SOAP
 
 REST simplifies access to HTTP using POST, GET, PUT, and DELETE calls to provide access to creating, getting, putting, and deleting information on a resource.
-
-DevKit currently provides a strategy for link:/anypoint-connector-devkit/v/3.8/creating-a-connector-for-a-restful-api-using-jersey[Creating a Connector for a RESTful API Using Jersey] to build a REST API-supported connector.
 
 SOAP is a traditional means of communicating with a resource and requires a WSDL file, which is an XML file that specifies all aspects of a Java class’s structure, methods, properties, and documentation. SOAP is an industry standard with tools for governance, building, and schema information. DevKit provides a tools that helps building a connector using a WSDL file.
 
@@ -252,7 +250,7 @@ The `pom.xml` file for a DevKit 3.9 project. The `<parent>` section shows DevKit
 
 *Authentication Types*
 
-*  xref:connection-management.adoc[Connection Management] (username and password authentication)
+* xref:connection-management.adoc[Connection Management] (username and password authentication)
 * xref:oauth-v1.adoc[OAuth V1]
 * xref:oauth-v2.adoc[OAuth V2]
 * Other authentication schemes:  xref:authentication-methods.adoc[Authentication Methods]
@@ -281,7 +279,7 @@ The `pom.xml` file for a DevKit 3.9 project. The `<parent>` section shows DevKit
 == See Also
 
 * xref:anypoint-connector-development.adoc[Connector Development]
-* xref:3.8@mule-runtime::anypoint-connectors.adoc[Anypoint Connectors]
+* xref:3.9@mule-runtime::anypoint-connectors.adoc[Anypoint Connectors]
 * https://www.anypoint.mulesoft.com/exchange/?type=connector[Connectors on Exchange]
 * http://blogs.mulesoft.com/dev/anypoint-studio-dev/change-the-studio-category-of-your-devkit-component/[Blog post on how to change the DevKit extension category]
 * xref:6@studio::datasense-enabled-connectors.adoc[DataSense-Enabled Connectors]

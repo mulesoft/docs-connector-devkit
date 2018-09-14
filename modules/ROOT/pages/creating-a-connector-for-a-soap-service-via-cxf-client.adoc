@@ -47,7 +47,8 @@ image::image2013-8-11-173a213a7.png[image2013-8-11+173A213A7]
 
 == Example Service: SunSetRiseService
 
-The web service for the demo is the SunSetRise Web service. The <<Appendix - sunsetriseservice WSDL>> provides access information.
+The web service for the demo is the SunSetRise Web service. The <<Appendix - sunsetriseservice WSDL>> provides
+access information.
 
 [TIP]
 Example files are available in the attached link:{attachmentsdir}/CxfExampleFiles.zip[CxfExampleFiies.zip] file for the sections of this document that follow.
