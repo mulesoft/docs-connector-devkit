@@ -1,0 +1,34 @@
+= Anypoint Connector Examples
+ifndef::env-site,env-github[]
+include::_attributes.adoc[]
+endif::[]
+
+image::icon-gears-blue-big.png[]
+
+The set of example connectors provided with Anypoint(TM) Connector DevKit documentation illustrates a range of concepts and techniques to apply when building connectors for a variety of use cases. This document summarizes the available example connectors and what topics each one illustrates.
+
+== Assumptions
+
+This document assumes that you are familiar with:
+
+* xref:index.adoc[Anypoint Connector DevKit]
+* xref:defining-attributes-operations-and-data-model.adoc[Defining Attributes, Operations, and Data Model]
+
+To work with these samples, create a development environment with the instructions in [Setting Up an DevKit Development Environment].
+
+== Connector Examples
+
+[%header%autowidth.spread]
+|===
+|Connector |Example |Description
+|Barn |xref:barn-connector.adoc[Barn Connector] |A simple custom connector.
+|Dropbox |https://github.com/mulesoft/connector-documentation-oauth1-example[OAuth1 Example Connector] |A simple connector to Dropbox that implements OAuth1.
+|Twitter |xref:creating-a-connector-using-a-java-client-library.adoc[Java Client Library Example Connector] |Official MuleSoft Twitter connector based on the widely used, unofficialtwitter4j client library.
+|SunSetRise |xref:creating-a-connector-for-a-soap-service-via-cxf-client.adoc[SOAP Service Example Connector with CXF] |The _de_ facto standard for building and consuming SOAP web services.
+|Dropbox |xref:creating-a-connector-for-a-restful-api-using-jersey.adoc[Example Connector to RESTful Service with Jersey Client] |Flexible access to any RESTful API.
+|@`RESTCall` Annotations |xref:creating-a-connector-for-a-restful-api-using-restcall-annotations.adoc[Example Connector using RESTCall Annotations] |DevKit's built-in client for simple RESTful APIs.
+|===
+
+== See Also
+
+* xref:adding-datasense.adoc[Add DataSense] (design-time metadata awareness) to your connector.
