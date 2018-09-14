@@ -2,8 +2,11 @@
 ifndef::env-site,env-github[]
 include::_attributes.adoc[]
 endif::[]
+:keywords: devkit, install, test, connector, connection strategy
 
-Having built a project with the Anypoint DevKit plugin, you can install the skeletal connector in Anypoint Studio to confirm its basic functionality before adding more operations to it. This document describes the steps to take to build, then install and test your connector in Anypoint Studio. The macro steps of this procedure are as follows:
+Having built a project with the Anypoint DevKit plugin, you can install the skeletal connector in Anypoint Studio to confirm its basic functionality before adding more operations to it. This document describes the steps to take to build, then install and test your connector in Anypoint Studio.
+
+The steps of this procedure are:
 
 . Set required @Connector annotations.
 . Add a "put in barn" operation to connector.
@@ -11,28 +14,27 @@ Having built a project with the Anypoint DevKit plugin, you can install the skel
 . Build the connector project and Install it using the Anypoint DevKit plugin.
 . Test the connector's basic functionality.
 
-
-== Assumptions
+== Prerequisites
 
 This document assumes you have xref:creating-an-anypoint-connector-project.adoc[created a connector project].
 
 == Setting @Connector Annotation Parameters
 
-The @Connector annotation on the Maven-generated class has a required parameter: `friendlyName`. (See example below.) This parameter defines a human-readable name for the connector, which appears as the connector's label in Studio's palette. Without this parameter, the connector does not appear in the palette in Mule Studio releases after 3.4.0.
+The `@Connector` annotation on the Maven-generated class has a required parameter: `friendlyName`. (See example below.) This parameter defines a human-readable name for the connector, which appears as the connector's label in Studio's palette. Without this parameter, the connector does not appear in the palette in Anypoint Studio.
 
 [source,java,linenums]
 ----
-@Connector(name = "barn", schemaVersion = "1.0", friendlyName = "Barn", minMuleVersion = "3.5")
+@Connector(name = "barn", schemaVersion = "1.0", friendlyName = "Barn")
 ----
 
 == Adding an Operation
 
 The connector project you created is immediately ready to build, then install and test in Anypoint Studio. However, to make testing more interesting, you can add an operation to the connector that receives an animal as a string and returns the same animal name followed by "has been placed in the barn".  Follow the steps below to add this operation.
 
-. In Anypoint Studio, open the main Java file, **`src/main/java/org.mule.modules.barn/BarnConnector.java`**
-. Paste the following code at the very end of the connector class, before the final closing curly brackets.
+. In Anypoint Studio, open the main Java file,  *`src/main/java/org.mule.modules.barn/BarnConnector.java`*
+. Paste the following code in the connector class:
 +
-[source,text,linenums]
+[source,java,linenums]
 ----
 /**
  * Custom processor that places an animal in the barn.
@@ -48,108 +50,56 @@ The connector project you created is immediately ready to build, then install an
  }
 ----
 +
-[WARNING]
-The identifier **`name`** is reserved and cannot be used as a parameter.
-
-. Confirm that the complete class appears as per the following.
+[NOTE]
+The identifier  `name` is reserved and cannot be used as a parameter.
+. Confirm that the complete class appears as follows:
 +
 [source,java,linenums]
 ----
+/**
+ * (c) 2003-2014 MuleSoft, Inc. The software in this package is published
+ * under the terms of the CPAL v1.0 license, a copy of which has been
+ * included with this distribution in the LICENSE.md file.
+ */
 package org.mule.modules.barn;
+import org.mule.api.annotations.ConnectionStrategy;
 import org.mule.api.annotations.Connector;
-import org.mule.api.annotations.Connect;
-import org.mule.api.annotations.ValidateConnection;
-import org.mule.api.annotations.ConnectionIdentifier;
-import org.mule.api.annotations.Disconnect;
-import org.mule.api.annotations.param.ConnectionKey;
-import org.mule.api.ConnectionException;
 import org.mule.api.annotations.Configurable;
 import org.mule.api.annotations.Processor;
-import org.mule.api.annotations.display.Password;
+import org.mule.api.annotations.param.Default;
+import org.mule.modules.myproject.strategy.ConnectorConnectionStrategy;
 /**
  * Anypoint Connector
  *
  * @author MuleSoft, Inc.
  */
-@Connector(name="barn", schemaVersion="1.0", friendlyName="Barn", minMuleVersion="3.5")
+@Connector(name="barn", schemaVersion="1.0", friendlyName="Barn")
 public class BarnConnector
 {
     /**
      * Configurable
      */
     @Configurable
+    @Default("value")
     private String myProperty;
+    @ConnectionStrategy
+    ConnectorConnectionStrategy connectionStrategy;
 
-    /**
-     * Set property
-     *
-     * @param myProperty My property
-     */
-    public void setMyProperty(String myProperty)
-    {
-        this.myProperty = myProperty;
-    }
-    /**
-     * Get property
-     */
-    public String getMyProperty()
-    {
-        return this.myProperty;
-    }
-    /**
-     * Connect
-     *
-     * @param username A username
-     * @param password A password
-     * @throws ConnectionException
-     */
-    @Connect
-    public void connect(@ConnectionKey String username, @Password String password)
-        throws ConnectionException {
-        /*
-         * CODE FOR ESTABLISHING A CONNECTION GOES IN HERE
-         */
-    }
-    /**
-     * Disconnect
-     */
-    @Disconnect
-    public void disconnect() {
-        /*
-         * CODE FOR CLOSING A CONNECTION GOES IN HERE
-         */
-    }
-    /**
-     * Are we connected
-     */
-    @ValidateConnection
-    public boolean isConnected() {
-        return true;
-    }
-    /**
-     * Are we connected
-     */
-    @ConnectionIdentifier
-    public String connectionId() {
-        return "001";
-    }
     /**
      * Custom processor
      *
-     * {@sample.xml ../../../doc/barn-connector.xml.sample barn:myProcessor}
+     * {@sample.xml ../../../doc/barn-connector.xml.sample barn:my-processor}
      *
      * @param content Content to be processed
      * @return Some string
      */
     @Processor
-    public String myProcessor(String content)
-    {
+    public String myProcessor(String content) {
         /*
          * MESSAGE PROCESSOR CODE GOES HERE
          */
         return content;
     }
-
     /**
      * Custom processor that places an animal in the barn.
      *
@@ -162,16 +112,38 @@ public class BarnConnector
      public String putInBarn(String animal) {
         return animal + " has been placed in the barn";
      }
-
+    /**
+     * Set property
+     *
+     * @param myProperty My property
+     */
+    public void setMyProperty(String myProperty) {
+        this.myProperty = myProperty;
+    }
+    /**
+     * Get property
+     */
+    public String getMyProperty() {
+        return this.myProperty;
+    }
+    public ConnectorConnectionStrategy getConnectionStrategy() {
+        return connectionStrategy;
+    }
+    public void setConnectionStrategy(ConnectorConnectionStrategy
+     connectionStrategy) {
+        this.connectionStrategy = connectionStrategy;
+    }
 }
 ----
++
+. In Anypoint Studio, select `ConnectorConnectionStrategy` in the code, and on a Mac press the CMD key, or in Windows, press the Ctrl key. The `ConnectorConnectionStrategy.java` file opens and you can see the connection management implementation for this connector.
 
 
 === Documenting the Operation
 
 Because DevKit enforces proper documentation of all projects, you must provide at least one example of how to use each operation you add to a connector.
 
-. In your Anypoint Studio, open the file  **`doc/barn-connector.xml.sample`** then paste the following snippet at the end.
+. In your Anypoint Studio, open the file   `doc/barn-connector.xml.sample`  then paste the following snippet at the end:
 +
 [source,xml,linenums]
 ----
@@ -179,8 +151,7 @@ Because DevKit enforces proper documentation of all projects, you must provide a
     <barn:put-in-barn animal="#[map-payload:animal]" />
 <!-- END_INCLUDE(barn:putInBarn) -->
 ----
-
-. Confirm that the complete contents of the file appear as per the following.
+. Confirm that the complete contents of the file appears as:
 +
 [source,xml,linenums]
 ----
@@ -193,38 +164,40 @@ Because DevKit enforces proper documentation of all projects, you must provide a
 <!-- END_INCLUDE(barn:putInBarn) -->
 ----
 
+
+
 == Building and Installing the Connector
 
 At this point the connector is ready to be built and used for the first time. The DevKit plugin for Anypoint Studio automates the process of building the connector, running tests, and packaging it to be used in Anypoint Studio.
 
-To compile and install your connector, right click your project and select **Anypoint Connector > Install or Update.** This is equivalent to running the command below from the command console from within the project folder:
+To compile and install your connector, right-click your project and select *Anypoint Connector* > *Install or Update*. This is equivalent to running the command below from the command console from within the project folder:
 
-[source,text,linenums]
 ----
 mvn clean package
 ----
 
-This command will create an update site that you can use to install the connector in Anypoint Studio. For more information about how to package your connector, check xref:packaging-your-connector-for-release.adoc[Packaging Your Connector for Release].
+This command creates an update site that you can use to install the connector in Anypoint Studio. For more information about how to package your connector, check xref:packaging-your-connector-for-release.adoc[Packaging Your Connector for Release].
 
-The *Install or Update* feature will also automatically install your connector in Anypoint Studio.
+The *Install or Update*  feature also automatically installs your connector in Anypoint Studio.
 
 image::barn-studio-icon.png[]
 
 
+
 == Testing the Connector
 
-To see your new connector function, create, then run a Mule application which uses the Barn Connector.
+To see your new connector function, create, then run a Mule application which uses the Barn Connector. You can create the application using either the Studio Visual Editor or its XML Editor.
 
 [.ex]
 =====
 [discrete.view]
-=== STUDIO Visual Editor
+=== Studio Visual Editor
 
-. Create a simple flow using an *HTTP endpoint* and your new *Barn Connector*. Use the default values configured in the HTTP endpoint (*port*:`8081`, *host*: `localhost`).
+. Create a simple flow using an *HTTP* connector and your new *Barn Connector*. Use the default values configured in the HTTP endpoint (*port*:`8081`, *host*: `localhost`).
 +
-image::flow-1.png[]
-
-. Select the connector to open the properties editor. Notice the parameters Studio makes available to the end user to configure. Configure the parameters according to the table below. +
+image::36barnconnector.png[36BarnConnector]
++
+. Select the connector to open the properties editor. Notice the parameters Studio makes available to the end user to configure. Configure the parameters according to the table below.
 +
 image::config1.png[]
 +
@@ -232,37 +205,32 @@ image::config1.png[]
 |===
 |Parameter |Value
 |*Display Name* |`Barn`
-|*Config Reference* |see next step
+|*Config Reference* |See next step
 |*Operation* |Put In Barn
 |*Animal* |`#[message.inboundProperties['animal']]`
 |===
-
++
 . Click the plus sign next to the *Config Reference* field to create a new global element for your connector to use.
-
 +
 image::config.png[]
 +
-
-. In the *My Property*, *Username* and *Password* fields, enter any string as the value, then click *OK*.
+. In the *My Property*, *Username*, and *Password* fields, enter any string as the value, then click *OK*. +
 +
 image::global-elements.png[]
-
-. Save, then run the project as a Mule Application (right-click project name, then select **Run As > Mule Application**).
-
++
+. Save, then run the project as a Mule Application (right-click project name, then select *Run As* > *Mule Application*).
 . From a browser, navigate to `http://localhost:8081/?animal=Mule`
-
-. The application returns the response in your browser (see below). +
+. The application returns the response in your browser (see below).
 +
 image::browser.png[]
 
 [discrete.view]
-=== Studio XML Editor
+=== XML
 
-. Create a simple flow using an `http:inbound-endpoint` and your new `barn:config`. Configure the parameters of each element according to the code sample below.
+. Create a simple flow using an HTTP connector and your new `barn:config`. Configure the parameters of each element according to the code sample below.
 +
 [source,xml,linenums]
 ----
-<?xml version="1.0" encoding="UTF-8"?>
 <mule xmlns:barn="http://www.mulesoft.org/schema/mule/barn"
     xmlns:http="http://www.mulesoft.org/schema/mule/http" xmlns="http://www.mulesoft.org/schema/mule/core"
     xmlns:doc="http://www.mulesoft.org/schema/mule/documentation"
@@ -289,10 +257,10 @@ http://www.mulesoft.org/schema/mule/barn http://www.mulesoft.org/schema/mule/bar
     </flow>
 </mule>
 ----
-
++
 . Save, then run the project.
 . From a browser, navigate to `http://localhost:8081/?animal=Mule`
-. The application returns the response in your browser (see below). +
+. The application returns the response in your browser (see below).
 +
 image::browser.png[]
 
@@ -300,4 +268,4 @@ image::browser.png[]
 
 == See Also
 
-* **NEXT STEP:** implement xref:authentication.adoc[authentication] on your connector.
+* *NEXT STEP:* Implement xref:authentication.adoc[authentication] on your connector.

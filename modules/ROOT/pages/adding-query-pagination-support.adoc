@@ -122,5 +122,5 @@ To create your own version of `ProviderAwarePagingDelegate`, you must extend it.
 
 == See Also
 
-* *NEXT*: Learn how to add xref:3.6@developing-devkit-connector-tests.adoc[tests] to your connector.
-* Generate the xref:3.6@connector-reference-documentation.adoc[Reference Documentation].
+* *NEXT*: Learn how to add xref:developing-devkit-connector-tests.adoc[tests] to your connector.
+* Generate the xref:connector-reference-documentation.adoc[Reference Documentation].

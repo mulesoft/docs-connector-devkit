@@ -350,5 +350,5 @@ In Anypoint DevKit, passing a complex object also uses a  `ref` attribute in a c
 
 == See Also
 
-* NEXT: Continue to xref:3.7@adding-datasense.adoc[Add DataSense] to your Connector.
-* Learn how to xref:3.6@developing-devkit-connector-tests.adoc[Test Your Connector].
+* NEXT: Continue to xref:adding-datasense.adoc[Add DataSense] to your Connector.
+* Learn how to xref:developing-devkit-connector-tests.adoc[Test Your Connector].

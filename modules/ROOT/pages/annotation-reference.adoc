@@ -2,20 +2,85 @@
 ifndef::env-site,env-github[]
 include::_attributes.adoc[]
 endif::[]
+:keywords: devkit, annotation, reference
 
-This document lists MuleSoft elements that start with an at sign (@). For more information on annotations, see http://docs.oracle.com/javase/7/docs/api/index.html?java/lang/annotation/Annotation.html[java.lang.annotation.Annotation].
+This document lists MuleSoft elements that start with an at sign (@). For more information on annotations, see http://docs.oracle.com/javase/7/docs/api/index.html?java/lang/annotation/Annotation.html[java.lang.annotation.Annotation]. For Mule annotations not in the DevKit, see  xref:3.6@mule-runtime::creating-flow-objects-and-transformers-using-annotations.adoc[Creating Flow Objects and Transformers Using Annotations].
 
-*http://mulesoft.github.io/mule-devkit/3.5.3/apidocs/index.html[DevKit 3.5 API]*
+*http://mulesoft.github.io/mule-devkit/3.6.2/apidocs/index.html[DevKit 3.6 API]*
 
-[%header%autowidth.spread]
+== Category Summary
+
+[%header,cols="2*a"]
 |===
-|Annotation |Description
-|`@Category` a|Anypoint Studio and the doclet use the @Category annotation to organize message processors. You can use @Category annotation at class definition level (Connector or Module) to select under which category you want your extension to be listed in:
+
+|Category
+|Annotations
+
+|*Newest Annotations* |<<AnnotationReference-configan,@Configuration>> <<AnnotationReference-connmgmtan,@ConnectionManagement>> <<AnnotationReference-connstratan,@ConnectionStrategy>> <<AnnotationReference-handlean,@Handle>> <<AnnotationReference-handleran,@Handler>> <<AnnotationReference-httpbasicauthan,@HTTPBasicAuth>> <<AnnotationReference-literalan,@Literal>> <<AnnotationReference-onexceptionan,@OnException>> <<AnnotationReference-reqentitlean,@RequiresEntitlement>> <<AnnotationReference-reqentlican,@RequiresEnterpriseLicense>>  <<AnnotationReference-testconnan,@TestConnectivity>>
+
+|*General*
+|<<AnnotationReference-catan,@Category>> <<AnnotationReference-confan,@Configurable>> <<AnnotationReference-connan,@Connector>> <<AnnotationReference-expran,@Expr>> <<AnnotationReference-expenan,@ExpressionEnricher>>
+ <<AnnotationReference-exevan,@ExpressionEvaluator>> <<AnnotationReference-exlan,@ExpressionLanguage>> <<AnnotationReference-filan,@Filter>> <<AnnotationReference-iconan,@Icons>>
+ <<AnnotationReference-ignan,@Ignore>> <<AnnotationReference-mimean,@Mime>> <<AnnotationReference-modulean,@Module>> <<AnnotationReference-pagean,@Paged>> <<AnnotationReference-procan,@Processor>>
+ <<AnnotationReference-srcan,@Source>> <<AnnotationReference-tranan,@Transformer>> <<AnnotationReference-trsan,@TransformerResolver>>
+
+|*Argument Passing* |<<AnnotationReference-inhean,@InboundHeaders>> <<AnnotationReference-ivhean,@InvocationHeaders>> <<AnnotationReference-literalan,@Literal>> <<AnnotationReference-outhan,@OutboundHeaders>>
+ <<AnnotationReference-payan,@Payload>>   <<AnnotationReference-sessa,@SessionHeaders>>
+
+|*Connection Management* |<<AnnotationReference-cnctan,@Connect>> <<AnnotationReference-coidan,@ConnectionIdentifier>> <<AnnotationReference-connmgmtan,@ConnectionManagement>>   <<AnnotationReference-connstratan,@ConnectionStrategy>> <<AnnotationReference-discan,@Disconnect>> <<AnnotationReference-invan,@InvalidateConnectionOn>> <<AnnotationReference-recan,@ReconnectOn>> <<AnnotationReference-valcan,@ValidateConnection>>
+
+|*DataSense* |<<AnnotationReference-metan,@MetaDataCategory>> <<AnnotationReference-mtkpan,@MetaDataKeyParam>> <<AnnotationReference-mtkran,@MetaDataKeyRetriever>>
+ <<AnnotationReference-mtoran,@MetaDataOutputRetriever>> <<AnnotationReference-mtran,@MetaDataRetriever>> <<AnnotationReference-mtsan,@MetaDataScope>>
+ <<AnnotationReference-noman,@NoMetaData>> <<AnnotationReference-quan,@Query>> <<AnnotationReference-qupan,@QueryPart>> <<AnnotationReference-qutan,@QueryTranslator >>
+
+|*Display*
+|<<AnnotationReference-fnan,@FriendlyName>> <<AnnotationReference-passan,@Password>> <<AnnotationReference-pathan,@Path>> <<AnnotationReference-plcan,@Placement>> <<AnnotationReference-suman,@Summary>> <<AnnotationReference-textan,@Text>>
+
+|*Exception Management*
+|<<AnnotationReference-onexceptionan,@OnException>> <<AnnotationReference-handleran,@Handler>> <<AnnotationReference-handlean,@Handle>>
+
+|*Lifecycle*
+|<<AnnotationReference-displ,@Dispose>> <<AnnotationReference-initan,@Initialise>>   <<AnnotationReference-stan,@Start>> <<AnnotationReference-stopan,@Stop>>
+
+|*Authentication* |<<AnnotationReference-httpbasicauthan,@HTTPBasicAuth>>
+
+|*OAuth*
+|<<AnnotationReference-oa1an,@OAuth>> <<AnnotationReference-oa2an,@OAuth2>> <<AnnotationReference-oatan,@OAuthAccessToken>> <<AnnotationReference-oatian,@OAuthAccessTokenIdentifier>>
+ <<AnnotationReference-oatsan,@OAuthAccessTokenSecret>> <<AnnotationReference-oaupan,@OAuthAuthorizationParameter>>
+ <<AnnotationReference-oacban,@OAuthCallbackParameter>> <<AnnotationReference-oackan,@OAuthConsumerKey>> <<AnnotationReference-oacsan,@OAuthConsumerSecret>>
+ <<AnnotationReference-oaitan,@OAuthInvalidateAccessTokenOn>> <<AnnotationReference-oapan,@OAuthPostAuthorization>>
+ <<AnnotationReference-oapran,@OAuthProtected>> <<AnnotationReference-oasan,@OAuthScope>>
+
+|*Parameters* |<<AnnotationReference-conkan,@ConnectionKey>> <<AnnotationReference-defan,@Default>> <<AnnotationReference-eman,@Email>> <<AnnotationReference-e,@ExceptionPayload>>
+ <<AnnotationReference-mtskan,@MetaDataStaticKey>> <<AnnotationReference-optan,@Optional>>   <<AnnotationReference-refan,@RefOnly>>
+
+|*REST*
+|<<AnnotationReference-binpan,@BinaryParam>> <<AnnotationReference-rstcan,@RestCall>> <<AnnotationReference-rstean,@RestExceptionOn>> <<AnnotationReference-rstpan,@RestHeaderParam>>
+ <<AnnotationReference-rshcan,@RestHttpClient>> <<AnnotationReference-rsppan,@RestPostParam>> <<AnnotationReference-rsqpan,@RestQueryParam>> <<AnnotationReference-rstoan,@RestTimeout>>
+ <<AnnotationReference-rsupan,@RestUriParam>>
+|===
+
+== @BinaryParam
+
+Category: REST +
+Mule Version: 3.5 and later
+
+Specifies if a payload is a binary type.
+
+See also: <<AnnotationReference-rstcan,@RestCall>> <<AnnotationReference-rstean,@RestExceptionOn>> <<AnnotationReference-rstpan,@RestHeaderParam>> <<AnnotationReference-rshcan,@RestHttpClient>>
+ <<AnnotationReference-rsppan,@RestPostParam>> <<AnnotationReference-rsqpan,@RestQueryParam>> <<AnnotationReference-rstoan,@RestTimeout>> <<AnnotationReference-rsupan,@RestUriParam>>
+
+== @Category
+
+Category: General +
+Mule Version: 3.5 and later
+
+Anypoint Studio and the doclet use the `@Category` annotation to organize message processors. You can use `@Category` annotation at class definition level (`@Connector` or `@Module`) to select which category you want your extension listed in:
 
 [source,java,linenums]
 ----
-@Connector(name = "ldap", schemaVersion = "3.5",
-  friendlyName="LDAP", minMuleVersion="3.5",
+Connector(name = "ldap", schemaVersion = "3.6",
+  friendlyName="LDAP", minMuleVersion="3.6",
   description="The LDAP connector connects to a
     LDAP server and performs LDAP operations")
 @Category(name = "org.mule.tooling.category.core",
@@ -26,28 +91,44 @@ This document lists MuleSoft elements that start with an at sign (@). For more i
     }
 ----
 
-Notes:
+*Notes*:
 
-* You can only add the connector to one of the existing Studio categories (this means you cannot define your own category)
-* The values for name and description attributes of @Category can only have these values:
+* You can only add the connector to one of the existing Studio categories (this means you cannot define your own category).
+* The values for name and description attributes of `@Category` can only have these values:
++
+[%header,cols="2*a"]
+|===
 
-** Endpoints: org.mule.tooling.category.endpoints
-** Scopes: org.mule.tooling.category.scopes
-** Components: org.mule.tooling.category.core
-** Transformers: org.mule.tooling.category.transformers
-** Filters: org.mule.tooling.category.filters
-** Flow Control: org.mule.tooling.category.flowControl
-** Error Handling: org.mule.tooling.ui.modules.core.exceptions
-** Cloud Connectors (DEFAULT): org.mule.tooling.category.cloudconnector
-** Miscellaneous: org.mule.tooling.ui.modules.core.miscellaneous
-** Security: org.mule.tooling.category.security
+|Name
+|Description
+
+|Cloud Connectors (DEFAULT)
+|`org.mule.tooling.category.cloudconnector`
+|Components
+|`org.mule.tooling.category.core`
+|Endpoints
+|`org.mule.tooling.category.endpoints`
+|Error Handling
+|`org.mule.tooling.ui.modules.core.exceptions`
+|Flow Control
+|`org.mule.tooling.category.flowControl`
+|Filters
+|`org.mule.tooling.category.filters`
+|Miscellaneous
+|`org.mule.tooling.ui.modules.core.miscellaneous`
+|Scopes
+|`org.mule.tooling.category.scopes`
+|Security
+|`org.mule.tooling.category.security`
+|Transformers
+|`org.mule.tooling.category.transformers`
+|===
 
 You can use the following to specify the permitted categories:
 
 [source,java,linenums]
 ----
 import org.mule.api.annotations.Category;
-
 @Category(name = "org.mule.tooling.category.endpoints", description = "Endpoints")
 @Category(name = "org.mule.tooling.category.scopes", description = "Scopes")
 @Category(name = "org.mule.tooling.category.core", description = "Components")
@@ -59,7 +140,18 @@ import org.mule.api.annotations.Category;
 @Category(name = "org.mule.tooling.ui.modules.core.miscellaneous", description = "Miscellaneous")
 @Category(name = "org.mule.tooling.category.security", description = "Security")
 ----
-|`@Configurable` a|Marks a field inside a `@Connector` as being configurable. The `@Configurable` annotation signals the generator to create a property configurable for each instance of your connector through XML syntax or a connector configuration dialog box. In addition to the `@Configurable` annotation, you need at least one public get and set function.
+
+See also: <<AnnotationReference-confan,@Configurable>> <<AnnotationReference-connan,@Connector>> <<AnnotationReference-expran,@Expr>> <<AnnotationReference-expenan,@ExpressionEnricher>> <<AnnotationReference-exevan,@ExpressionEvaluator>>
+ <<AnnotationReference-exlan,@ExpressionLanguage>> <<AnnotationReference-filan,@Filter>> <<AnnotationReference-iconan,@Icons>> <<AnnotationReference-ignan,@Ignore>> <<AnnotationReference-mimean,@Mime>> <<AnnotationReference-modulean,@Module>> <<AnnotationReference-pagean,@Paged>> <<AnnotationReference-procan,@Processor>>
+ <<AnnotationReference-srcan,@Source>> <<AnnotationReference-tranan,@Transformer>> <<AnnotationReference-trsan,@TransformerResolver>>
+
+
+== @Configurable
+
+Category: General +
+Mule Version: 3.5 and later
+
+Marks a field inside a `@Connector` as being configurable. The `@Configurable` annotation signals the generator to create a property configurable for each instance of your connector through XML syntax or a connector configuration dialog box. In addition to the `@Configurable` annotation, you need at least one public get and set function.
 
 [source,java,linenums]
 ----
@@ -74,43 +166,663 @@ import org.mule.api.annotations.Category;
       this.url = url;
  }
 ----
-|`@Connector` a|Defines a class that exports its functionality as a Mule connector.
 
-This class-level annotation identifies a Java class as a Cloud Connector.
+See also: <<AnnotationReference-catan,@Category>>   <<AnnotationReference-connan,@Connector>>   <<AnnotationReference-expran,@Expr>>   <<AnnotationReference-expenan,@ExpressionEnricher>>   <<AnnotationReference-exevan,@ExpressionEvaluator>>   +
+ <<AnnotationReference-exlan,@ExpressionLanguage>>   <<AnnotationReference-filan,@Filter>>   <<AnnotationReference-iconan,@Icons>>   <<AnnotationReference-ignan,@Ignore>>   <<AnnotationReference-mimean,@Mime>>   <<AnnotationReference-modulean,@Module>>   <<AnnotationReference-pagean,@Paged>>   <<AnnotationReference-procan,@Processor>> +
+ <<AnnotationReference-srcan,@Source>>   <<AnnotationReference-tranan,@Transformer>>   <<AnnotationReference-trsan,@TransformerResolver>>
 
-`@Connector` restrictions:
+== @Configuration
 
-* Cannot be an interface
-* Must be `public`
-* Cannot have a typed parameter (no generics)
+Category: Connection Management +
+Mule Version: 3.6 and later
+
+Indicates a class without a connection management strategy; that is, without a pooling profile or the ability to reconnect. Provides a generic strategy for global elements without any connection management.
+
+Using this annotation, a connector or module can configure different parameters at a global element level using <<AnnotationReference-confan,@Configurable>> when there is no need for authentication and/or connection management.
 
 [source,java,linenums]
 ----
-@Connector(name = "hello", schemaVersion = "1.0", friendlyName = "Hello", minMuleVersion = "3.5")
+@Configuration
+public class GenericStrategy{
+
+    @Configurable
+    private String myConfigurable
+    ...
+}
+----
+
+Notes:
+
+* The @Configuration strategy does not have any connection management tabs for a pooling profile or reconnection, and a connection group is not created by default.
+* All configurables go into the `General` group by default.
+* Define your own group and/or use connectivity testing.
+
+See also: <<AnnotationReference-confan,@Configurable>> <<AnnotationReference-cnctan,@Connect>>   <<AnnotationReference-coidan,@ConnectionIdentifier>>   <<AnnotationReference-connmgmtan,@ConnectionManagement>>   <<AnnotationReference-connstratan,@ConnectionStrategy>>   <<AnnotationReference-discan,@Disconnect>> <<AnnotationReference-invan,@InvalidateConnectionOn>>   <<AnnotationReference-recan,@ReconnectOn>>   <<AnnotationReference-valcan,@ValidateConnection>>
+
+== @Connect
+
+Category: Connection Management +
+Mule Version: 3.5 and later
+
+Marks a method inside a @Connector scope as responsible for creating a connection.
+
+This method can have several parameters and can contain annotations such as @ConnectionKey or @Password. The @Connect annotation guarantees that the method is called before calling any message processor.
+
+This method designates which method inside an `@Connector` class is responsible for creating a connection to the target. The `@Connect` method is called automatically by Mule when the connector starts up, or if the connection to the API has been lost and must be reestablished. When this method finishes, if authentication is successful, the connector instance is ready to make requests to the API.
+
+A method annotated with `@Connect` must:
+
+* Be `public`
+* Throw `org.mule.api.ConnectionException` (and no other exceptions)
+* Have a `void` return type
+* If automatic connection management for username and password authentication is used, have exactly one method annotated `@Connect`; otherwise compilation fails
+* The parameters cannot be of primitive type such as int, bool, short, etc.
+
+Example 1:
+[source,java,linenums]
+----
+@Connect
+public void connect(@ConnectionKey String username, String password) throws   ConnectionException { ... }
+----
+
+Example 2:
+
+[source,java,linenums]
+----
+@Connect
+public void connect(@ConnectionKey String username, String password)
+throws ConnectionException
+{
+   ConnectorConfig config = new ConnectorConfig();
+   config.setUsername(username);
+   config.setPassword(password);
+   try
+   {
+      connection = com.mycompany.ws.Connector.newConnection(config);
+   }
+   catch (com.mycompany.ws.ConnectionException e)
+   {
+      throw new org.mule.api.ConnectionException(ConnectionExceptionCode.UNKNOWN, null, e.getMessage(), e);
+   }
+}
+----
+
+The parameters required by this method are the credentials needed for authentication, in this case username and password. Since this method is annotated with  `@Connect` , Anypoint DevKit makes these parameters available both in the configuration element for this connector (as occurs with  `@Configurable`  fields), as well as in the message processor whenever it is dragged into a flow. Specified credentials override those that are set in the configuration element.
+
+See also: xref:connection-management.adoc[Connection Management]  <<AnnotationReference-cnctan,@Connect>>  <<AnnotationReference-coidan,@ConnectionIdentifier>>  <<AnnotationReference-discan,@Disconnect>>  <<AnnotationReference-invan,@InvalidateConnectionOn>>  +
+ <<AnnotationReference-recan,@ReconnectOn>>  <<AnnotationReference-valcan,@ValidateConnection>>
+
+== @ConnectionIdentifier
+
+Category: Connection Management +
+Mule Version: 3.5 and later
+
+Marks a method inside a <<AnnotationReference-connan,@Connector>>  as responsible for identifying the connection.
+
+A method annotated with `@ConnectionIdentifier` must:
+
+* Be `public`
+* Not be `static`
+* Not take arguments
+* Return `java.lang.String`
+
+A `@Connector` class that uses connection management for basic authentication must have exactly one method annotated `@ConnectionIdentifier`; otherwise compilation fails.
+
+The connector’s connection manager calls the method annotated with @ConnectionIdentifier for debugging purposes.
+
+This annotation must be used on a non-static method without arguments and must return a String that contains the connection identifier representation.
+
+The following example code returns the connection SessionId as an identifier (if available). The SessionHeader object in this case contains header information about the current connection to the API, including the session ID.
+
+[source,java,linenums]
+----
+@ConnectionIdentifier
+   public String connectionId() {
+    if (connection != null){
+     return connection.getSessionHeader().getSessionId();
+    } else {
+     return null;
+    }
+   }
+----
+
+See also:  xref:connection-management.adoc[Connection Management]   <<AnnotationReference-cnctan,@Connect>>   <<AnnotationReference-discan,@Disconnect>>   <<AnnotationReference-invan,@InvalidateConnectionOn>>   +
+ <<AnnotationReference-recan,@ReconnectOn>>   <<AnnotationReference-valcan,@ValidateConnection>>
+
+== @ConnectionKey
+
+Category: Parameters +
+Mule Version: 3.5 and later
+
+Marks a parameter inside the connect method as part of the key for the connector lookup. This only can be used as part of the <<AnnotationReference-cnctan,@Connect>> method.
+
+[source,java,linenums]
+----
+@Connect(strategy=ConnectStrategy.SINGLE_INSTANCE)
+public void connect(@ConnectionKey String username, @Password String password)
+throws ConnectionException { ... }
+----
+
+See also: <<AnnotationReference-defan,@Default>>  <<AnnotationReference-eman,@Email>>  <<AnnotationReference-excpan,@ExceptionPayload>>  <<AnnotationReference-mtskan,@MetaDataStaticKey>>  <<AnnotationReference-optan,@Optional>>  <<AnnotationReference-refan,@RefOnly>>
+
+== @ConnectionManagement
+
+Category: Connection Management +
+Mule Version: 3.6 and later
+
+Indicates a class that defines a connection strategy for basic username and password authentication.
+
+Examples
+
+[source,java,linenums]
+----
+@ConnectionManagement(friendlyName = "Connection Management type Strategy",
+     configElementName="config-type")
+public class ConnectionManagementStrategy implements StrategyCommonInterface {
+
+    MyDummyService service;
+
+    public ConnectionManagementStrategy(){
+        service = new MyDummyService();
+    }
+
+    @TestConnectivity
+    @Connect
+    public void connect(@ConnectionKey String username, @Password String password)
+        throws ConnectionException {
+        Boolean result = service.connectService(username, password);
+        if(result == false){
+            throw new ConnectionException(null, "Invalid Username or password",
+              "Please review Username or Password values");
+        }
+    }
+----
+
+The following example is for connectors with connection management and connectivity testing.
+
+[source,java,linenums]
+----
+@ConnectionManagement
+public class BasicAuthConnectionStrategy{
+  @Connect
+  @TestConnectivity //(active=true) default
+  //Connection management methods
+}
+----
+
+The following example is for connectors with connection management and no connectivity testing:
+
+[source,java,linenums]
+----
+@ConnectionManagement
+public class BasicAuthConnectionStrategy{
+  @Connect
+  @TestConnectivity(active=false)
+  //Connection management methods
+}
+----
+
+Indicates a connector strategy class. See <<AnnotationReference-connstrat,@ConnectionStrategy>> for more examples.
+
+See also: <<AnnotationReference-configan,@Configuration>> <<AnnotationReference-confan,@Configurable>> <<AnnotationReference-cnctan,@Connect>> <<AnnotationReference-coidan,@ConnectionIdentifier>>  +
+ <<AnnotationReference-connstratan,@ConnectionStrategy>> <<AnnotationReference-discan,@Disconnect>> <<AnnotationReference-invan,@InvalidateConnectionOn>> <<AnnotationReference-recan,@ReconnectOn>>  +
+ <<AnnotationReference-testconnan,@TestConnectivity>>   <<AnnotationReference-valcan,@ValidateConnection>>
+
+== @ConnectionStrategy
+
+Category: Authentication +
+Mule Version: 3.6 and later
+
+Indicates a connection strategy class for a connection. The class is defined by the new @ConnectionManagement annotation, the new @Configuration annotation, the new @HTTPBasicAuth annotation or the existing @OAuth2 annotation. In previous Mule versions, a connection strategy could only be added by inheritance, which made coding more difficult and caused extensibility problems when new DevKit features appeared. The new connection strategy features solve these issues.
+
+[source,java,linenums]
+----
+@Connector
+public class MyConnector {
+
+    @ConnectionStrategy
+    private OAuth2Strategy connection;
+
+    @Processor
+    public void doSomething(){
+        connection.getClient().doSomething();
+    }
+}
+@OAuth2(friendlyName="oauth2", configElementName="oauth2", ...)
+public class OAuth2Strategy implements BaseConnectionStrategy {
+
+    @Override
+    public Client getClient(){
+        return this.client;
+    }
+
+    /**
+     * Your application's client identifier (consumer key in Remote Access Detail).
+     */
+    @OAuthConsumerKey
+    private String consumerKey;
+
+    /**
+     * Your application's client secret (consumer secret in Remote Access Detail).
+     */
+    @OAuthConsumerSecret
+    private String consumerSecret;
+
+    @OAuthAccessToken
+    private String accessToken;
+
+    @OAuthPostAuthorization
+    public void postAuthorize() {...}
+
+    ...
+}
+----
+
+*Example with @ConnectionManagement*
+
+[source,java,linenums]
+----
+@Connector
+public class MyConnector {
+
+    @ConnectionStrategy
+    private ConnectionManagementStrategy connection;
+
+    @Processor
+    public void doSomething(){
+        connection.getClient().doSomething();
+    }
+}
+----
+
+[source,java,linenums]
+----
+@ConnectionManagement(friendlyName="ConnectionManagement", configElementName="connection-management")
+public class ConnectionManagementStrategy implements BaseConnectionStrategy {
+
+    @Override
+    public Client getClient(){
+        return this.client;
+    }
+
+    @Connect
+    public void connect(...){
+        this.client = new Client(...);
+    }
+
+    @Disconnect
+    public void disconnect() {...}
+
+    @ValidateConnection
+    public boolean isConnected() {...}
+
+    @ConnectorIdentifier
+    public String getIdentifier() {...}
+
+}
+----
+
+*Multiple Connection Strategies*
+
+Each of the connection strategies above extends the BaseConnectionStrategy interface.
+
+[source,java,linenums]
+----
+public interface BaseConnectionStrategy{
+    private Client client;
+
+    Client getClient();
+}
+----
+
+The @ConnectorStrategy field type is the common interface.
+
+[source,java,linenums]
+----
+@Connector
+public class MyConnector {
+
+
+    @ConnectionStrategy
+    private BaseConnectionStrategy connection;
+
+    @Processor
+    public void doSomething(){
+        connection.getClient().doSomething();
+    }
+    ...
+}
+----
+
+Now you can choose at design time which connection type is your Connector going to use.
+
+image::screen-shot-2014-12-30-at-1_06_11-pm.png[Screen+Shot+2014-12-30+at+1.06.11+PM]
+
+https://github.com/mulesoft-labs/multiple-strategies-example-connector[Here] is an example of a multiple strategies connector in github.
+
+
+*Compatibility*
+
+@Connect parameters cannot be overridden  from the @Processor call.
+
+For this case, the @ConnectionManagement component in the DevKit lets you add the @Connect parameters as optional parameters for the @Processor blocks by annotating the @ConnetionStrategy with @OverrideAtProcessors. This way you can override an attribute directly from the @Processor call.
+
+The @OverrideAtProcessor annotation is deprecated in Mule 3.6 and later and exists only for backward compatibility.
+
+*Execution Time: Connector Pooling*
+
+The simplest way is to maintain current DevKit connector's architecture and continue having a pool of connectors per each configuration. Use the following example:
+
+[source,xml,linenums]
+----
+<my-connector:connection-management name="connection-management" username="mule" password="mulemanishere"/>
+<my-connector:oauth name="oauth2" consumerkey="..." consumerSecret="..." />
+
+<flow>
+  <my-connector:do-something config-ref="basic"/>
+</flow>
+----
+
+Behind the two elements `:basic-auth` and `:oauth` are two different pools for MyConnector classes configured to be injected with BasicStrategy and OAuthStrategy instances respectively. This could be accomplished by using generics on MyConnector<Strategy>. The flowchart for the execution on this alternative is presented below.
+
+. Spring Bean injection from :basic-auth element to MyConnectorPool<BasicStrategy> bean object.
+. Spring Bean injection from :do-something to DoSomethingMessageProcessor (with a reference to the MyConnectorPool).
+. Later on the DoSomethingMessageProcessor.doProcess() call. A MyConnector instance is taken from the MyConnectorPool<ConnectionManagement> containing a ConnectionManagement connection already connected. If there's none, a new one is created.
+
+See also: <<AnnotationReference-connan,@Connector>> <<AnnotationReference-confan,@Configurable>> <<AnnotationReference-cnctan,@Connect>> <<AnnotationReference-coidan,@ConnectionIdentifier>> <<AnnotationReference-connmgmtan,@ConnectionManagement>> <<AnnotationReference-discan,@Disconnect>> <<AnnotationReference-invan,@InvalidateConnectionOn>> <<AnnotationReference-recan,@ReconnectOn>> <<AnnotationReference-valcan,@ValidateConnection>>
+
+== @Connector
+
+Category: General +
+Mule Version: 3.5 and later
+
+Defines a class that exports its functionality as a Mule connector. When you first create an Anypoint Connector Project in Studio, Maven generates a scaffold @Connector class for you. Creating a connector assumes that you enhance this class to enable your code to access a target resource.
+
+This class-level annotation identifies a Java class as a Cloud Connector.
+
+@Connector restrictions:
+
+* Do not apply to an interface
+* Do not apply to final classes
+* Apply only to a public class
+* Cannot have a typed parameter (no generics)
+* A class with `@Connector` must contain exactly one method annotated with `@Connect`
+* A class with `@Connector` must contain exactly one method annotated with `@Disconnect`
+
+[source,java,linenums]
+----
+@Connector(name = "hello", schemaVersion = "1.0", friendlyName = "Hello", minMuleVersion = "3.6")
 public class HelloConnector {
   ...
 }
 ----
-|`@Expr` a|Binds a parameter in a `@Processor` method to an expression.
 
-Binding a parameter to an expression works similar to `@Payload` in the sense that the user of the module won't be able to alter the expression or the value of the parameter from the XML. A binding is hardcoded and the user cannot change it.
+*@Connector Parameters:*
+
+[%header,cols="4*a"]
+|===
+|Annotation Type Element
+|Description
+|Required?
+|Default Value
+
+|`name`
+|The name of the connector. This value must be a simple string, with no spaces.
+|✓
+|
+
+|`schemaVersion`
+|The version of the schema as generated by the DevKit.
+|
+|`1.0-SNAPSHOT`
+
+|`friendlyName`
+|This is the human-readable name of the connector. It can contain spaces. Mule uses it only to label the connector in the Studio Palette.
+|✓
+|
+
+|`description`
+|A longer string describing the connector and its operation. Mule Studio displays the description as a tool tip.
+|
+|
+
+|`namespace`
+|The namespace of the connector.
+|
+|`+http://www.mulesoft.org/schema/mule/name+`
+
+|`schemaLocation`
+|The location of the schema file that writes to the `spring.schemas` file.
+|
+|`+http://www.mulesoft.org/schema/mule/name/schemaVersion/mule-name.xsd+`
+
+And:
+
+`+http://www.mulesoft.org/schema/mule/name/current/mule-name.xsd+`
+
+|`minMuleVersion`
+|The minimum Mule version with which the connector can be used. Mule checks the version at runtime and throws an error if versions are incompatible.
+|
+|Latest stable Mule runtime release
+|===
+
+See also: <<AnnotationReference-catan,@Category>>  <<AnnotationReference-confan,@Configurable>>  <<AnnotationReference-expran,@Expr>>  <<AnnotationReference-expenan,@ExpressionEnricher>>  <<AnnotationReference-exevan,@ExpressionEvaluator>>   +
+ <<AnnotationReference-exlan,@ExpressionLanguage>>  <<AnnotationReference-filan,@Filter>>  <<AnnotationReference-iconan,@Icons>>  <<AnnotationReference-ignan,@Ignore>>  <<AnnotationReference-mimean,@Mime>>  <<AnnotationReference-modulean,@Module>>  <<AnnotationReference-pagean,@Paged>>  <<AnnotationReference-procan,@Processor>>   +
+  <<AnnotationReference-srcan,@Source>>  <<AnnotationReference-tranan,@Transformer>>  <<AnnotationReference-trsan,@TransformerResolver>>
+
+== @Default
+
+Category: Parameters +
+Mule Version: 3.5 and later
+
+Specifies a default value to a @Configurable field or a @Processor or @Source parameter.
+
+[source,java,linenums]
+----
+@Configurable
+@Default("mule")
+private String type;
+----
+
+Or:
+
+[source,java,linenums]
+----
+@Processor
+public abstract String listAnimals(@Default("mule") String type) throws IOException;
+----
+
+See also:  <<AnnotationReference-conkan,@ConnectionKey>>  <<AnnotationReference-eman,@Email>> <<AnnotationReference-excpan,@ExceptionPayload>> <<AnnotationReference-mtskan,@MetaDataStaticKey>>
+
+<<AnnotationReference-optan,@Optional>> <<AnnotationReference-refan,@RefOnly>>
+
+== @Disconnect
+
+Category: Connection Management +
+Mule Version: 3.5 and later
+
+Marks a method inside a @Connector class that is responsible for disposing the connection. Called by the connector's connection manager when the connector is shut down or a connection terminates.
+
+A method annotated with `@Disconnect` must:
+
+* Be `public`
+* Take no input parameters
+* Have a `void` return type
+
+If connection management (username and password) is used for authentication, the `@Connector` class must have exactly one annotated `@Disconnect` method; otherwise compilation fails.
+
+In 3.6 and later, the @Disconnect method only supports RuntimeException, any other exception causes a failure in a connector's compilation:
+
+[source,java,linenums]
+----
+@Connector(...)
+public myConnector(){
+    ...
+    @Disconnect
+    public void disconnect() throws RuntimeException{
+        ...
+    }
+    ...
+}
+----
+
+This method is invoked as part of the maintenance of the Connection Pool. The pool is configured with a maximum idle time value.
+
+When a connection lies in the pool without use for more than the configured time, then the method annotated with @Disconnect is invoked and subsequently the @Connect method. Also, when the @InvalidateConnectionOn annotation is used on a method to catch Exceptions, then the @Disconnect method likewise is invoked with the subsequent reconnect.
+
+[source,java,linenums]
+----
+@Disconnect
+public void disconnect() {
+   if (connection != null)
+   {
+      try
+         {
+         connection.logout();
+         }
+      catch (ConnectionException e)
+         {
+         e.printStackTrace();
+         }
+      finally
+         {
+         connection = null;
+         }
+   }
+}
+----
+
+See also:  xref:connection-management.adoc[Connection Management]   <<AnnotationReference-cnctan,@Connect>>   <<AnnotationReference-coidan,@ConnectionIdentifier>>   <<AnnotationReference-invan,@InvalidateConnectionOn>>   +
+ <<AnnotationReference-recan,@ReconnectOn>>   <<AnnotationReference-valcan,@ValidateConnection>>
+
+== @Dispose
+
+Category: LifeCycle +
+Mule Version: 3.5 and later
+
+Mark a method to be disposed during a method's `org.mule.lifecycle.Disposable` phase.
+
+[source,java,linenums]
+----
+@Dispose
+public void mydispose()  {
+    if ( this.sessionId != null ) {
+        serviceProvider.dispose(sessionId);
+    }
+}
+----
+
+*Note:* `dispose` is a reserved word that cannot be used as the method's name.
+
+See also: <<AnnotationReference-initan,@Initialise>>   <<AnnotationReference-stan,@Start>>   <<AnnotationReference-stopan,@Stop>>
+
+== @Email
+
+Category: Parameters +
+Mule Version: 3.5 and later
+
+Specifies a default email pattern.
+
+See also:  <<AnnotationReference-conkan,@ConnectionKey>>  <<AnnotationReference-defan,@Default>>   <<AnnotationReference-excpan,@ExceptionPayload>>   <<AnnotationReference-mtskan,@MetaDataStaticKey>>   <<AnnotationReference-optan,@Optional>>   <<AnnotationReference-refan,@RefOnly>>
+
+== @ExceptionPayload
+
+Category: Parameters +
+Mule Version: 3.5 and later
+
+Specifies the payload for an exception.
+
+[source,java,linenums]
+----
+@Processor
+public Object returnExceptionPayload(@ExceptionPayload Object payload) {
+    return payload;
+}
+----
+
+See also:  <<AnnotationReference-conkan,@ConnectionKey>>    <<AnnotationReference-defan,@Default>>  <<AnnotationReference-eman,@Email>>   <<AnnotationReference-mtskan,@MetaDataStaticKey>>   <<AnnotationReference-optan,@Optional>>   <<AnnotationReference-refan,@RefOnly>>
+
+== @Expr
+
+Category: General +
+Mule Version: 3.5 and later
+
+Binds a parameter in a <<AnnotationReference-procan,@Processor>> method to an expression.
+
+Binding a parameter to an expression works similar to <<AnnotationReference-payan,@Payload>>  in the sense that the user of the module won't be able to alter the expression or the value of the parameter from the XML. A binding is hardcoded and the user cannot change it.
 
 The following example maps the `myFlowVarXXX` parameter to the result of the expression `flowVars['xxx']`:
 
 [source,java,linenums]
 ----
 @Processor
- public String myProcessor(@Expr("flowVars['xxx']")
+public String myProcessor(@Expr("flowVars['xxx']")
    String myFlowVarXXX) {
      ...
    }
 ----
-|`@ExpressionLanguage` a|efines a class that exports its functionality as a Mule Expression Language.
 
-`@ExpressionLanguage` restrictions on which types are valid:
+See also:  <<AnnotationReference-catan,@Category>>   <<AnnotationReference-confan,@Configurable>>   <<AnnotationReference-connan,@Connector>>   <<AnnotationReference-expenan,@ExpressionEnricher>>   <<AnnotationReference-exevan,@ExpressionEvaluator>>   +
+ <<AnnotationReference-exlan,@ExpressionLanguage>>   <<AnnotationReference-filan,@Filter>>   <<AnnotationReference-iconan,@Icons>>   <<AnnotationReference-ignan,@Ignore>>   <<AnnotationReference-mimean,@Mime>>   <<AnnotationReference-modulean,@Module>>   <<AnnotationReference-pagean,@Paged>>   <<AnnotationReference-procan,@Processor>>   +
+ <<AnnotationReference-srcan,@Source>>   <<AnnotationReference-tranan,@Transformer>>   <<AnnotationReference-trsan,@TransformerResolver>>
+
+== @ExpressionEnricher
+
+Category: General +
+Mule Version: 3.5 and later
+
+Marks a method inside an <<AnnotationReference-exlan,@ExpressionLanguage>>  as the responsible for enriching mule messages based on an expression.
+
+The following example shows how to use the @ExpressionEnricher annotation to set the payload (which is expected to be a map) in the `enrich()` method using the `map-payload` expression language:
+
+[source,java,linenums]
+----
+@ExpressionLanguage(name = "map-payload")
+public class MapPayloadExpressionLanguage {
+    @ExpressionEnricher
+    public void enrich() {
+        ...
+    }
+}
+----
+
+See also:  <<AnnotationReference-catan,@Category>>    <<AnnotationReference-confan,@Configurable>>    <<AnnotationReference-connan,@Connector>>    <<AnnotationReference-expran,@Expr>>    <<AnnotationReference-exevan,@ExpressionEvaluator>>   +
+ <<AnnotationReference-exlan,@ExpressionLanguage>>    <<AnnotationReference-filan,@Filter>>    <<AnnotationReference-iconan,@Icons>>    <<AnnotationReference-ignan,@Ignore>>    <<AnnotationReference-mimean,@Mime>>    <<AnnotationReference-modulean,@Module>>    <<AnnotationReference-pagean,@Paged>>   +
+ <<AnnotationReference-procan,@Processor>> <<AnnotationReference-srcan,@Source>>   <<AnnotationReference-tranan,@Transformer>>   <<AnnotationReference-trsan,@TransformerResolver>>
+
+== @ExpressionEvaluator
+
+Category: General +
+Mule Version: 3.5 and later
+
+Marks a method inside an <<AnnotationReference-exlan,@ExpressionLanguage>> annotation as being responsible for evaluating expressions.
+
+[source,java,linenums]
+----
+@ExpressionLanguage(name = "expr")
+public class ExprExpressionLanguage {
+    @ExpressionEvaluator
+    public Object evaluate() {
+        ...
+    }
+}
+----
+
+See also:  <<AnnotationReference-catan,@Category>>    <<AnnotationReference-confan,@Configurable>>    <<AnnotationReference-connan,@Connector>>    <<AnnotationReference-expran,@Expr>>    <<AnnotationReference-expenan,@ExpressionEnricher>>   +
+ <<AnnotationReference-exlan,@ExpressionLanguage>>    <<AnnotationReference-filan,@Filter>>    <<AnnotationReference-iconan,@Icons>>    <<AnnotationReference-ignan,@Ignore>>    <<AnnotationReference-mimean,@Mime>>    <<AnnotationReference-modulean,@Module>>    <<AnnotationReference-pagean,@Paged>>    +
+ <<AnnotationReference-procan,@Processor>>    <<AnnotationReference-srcan,@Source>>    <<AnnotationReference-tranan,@Transformer>>    <<AnnotationReference-trsan,@TransformerResolver>>
+
+== @ExpressionLanguage
+
+Category: General +
+Mule Version: 3.5 and later
+
+Defines a class that exports its functionality as a Mule Expression Language.
+
+@ExpressionLanguage restrictions on which types are valid:
 
 * Cannot be an interface
-* Must be `public`
+* Must be public
 * Cannot have a typed parameter (no generics)
 
 [source,java,linenums]
@@ -119,33 +831,238 @@ The following example maps the `myFlowVarXXX` parameter to the result of the exp
 public class ExprExpressionLanguage {
     @ExpressionEvaluator
     public Object evaluate() {
+        ...
+    }
 }
 ----
-|@ExpressionEnricher a|Marks a method inside an `@ExpressionLanguage` as the responsible for enriching mule messages based on an expression.
 
-The following example shows how to use the `@ExpressionEnricher` annotation to set the payload (which is expected to be a map) in the `enrich()` method using the “map-payload” expression language:
+See also:  <<AnnotationReference-catan,@Category>>    <<AnnotationReference-confan,@Configurable>>    <<AnnotationReference-connan,@Connector>>   <<AnnotationReference-expran,@Expr>>    <<AnnotationReference-expenan,@ExpressionEnricher>>   +
+ <<AnnotationReference-exevan,@ExpressionEvaluator>>    <<AnnotationReference-filan,@Filter>>    <<AnnotationReference-iconan,@Icons>>   <<AnnotationReference-ignan,@Ignore>>    <<AnnotationReference-mimean,@Mime>>   <<AnnotationReference-modulean,@Module>>    <<AnnotationReference-pagean,@Paged>>    +
+ <<AnnotationReference-procan,@Processor>> <<AnnotationReference-srcan,@Source>>    <<AnnotationReference-tranan,@Transformer>>    <<AnnotationReference-trsan,@TransformerResolver>>
 
-[source,java,linenums]
-----
-@ExpressionLanguage(name = "map-payload")
-public class MapPayloadExpressionLanguage {
+== @Filter
 
-    @ExpressionEnricher
-    public void enrich() {
-}
-----
-|`@Filter` a|Marks a method inside a `@Connector` as a callable from within a Mule flow that filters a message. Each parameter on this method is featured as an attribute on the Mule XML invocation.
+Category: General +
+Mule Version: 3.5 and later
 
-By adding this annotation to a method inside `@Connector`, a filter is created which may be used from within a Mule flow to filter messages based on implementation of this method.
+Marks a method inside a @Connector as a callable from within a Mule flow that filters a message. Each parameter on this method is featured as an attribute on the Mule XML invocation.
+
+By adding this annotation to a method inside @Connector, a filter is created which may be used from within a Mule flow to filter messages based on implementation of this method.
 
 [source,java,linenums]
 ----
 @Filter
     public boolean shouldFilter() throws Exception {
-...
+        ...
    }
 ----
-|`@Ignore` a|Ignores a filed inside a complex object.
+
+See also:  <<AnnotationReference-catan,@Category>>    <<AnnotationReference-confan,@Configurable>>    <<AnnotationReference-connan,@Connector>>    <<AnnotationReference-expran,@Expr>>   <<AnnotationReference-expenan,@ExpressionEnricher>>    +
+ <<AnnotationReference-exevan,@ExpressionEvaluator>>    <<AnnotationReference-exlan,@ExpressionLanguage>>    <<AnnotationReference-iconan,@Icons>>    <<AnnotationReference-ignan,@Ignore>>   <<AnnotationReference-mimean,@Mime>>    +
+ <<AnnotationReference-modulean,@Module>>    <<AnnotationReference-pagean,@Paged>>    <<AnnotationReference-procan,@Processor>>  <<AnnotationReference-srcan,@Source>>   <<AnnotationReference-tranan,@Transformer>>    <<AnnotationReference-trsan,@TransformerResolver>>
+
+== @FriendlyName
+
+Category: Display +
+Mule Version: 3.5 and later
+
+Gives a short name to an annotated element. If a value is not specified, the name is inferred from the annotated element's name.
+
+Use this annotation to instance variables and method parameters to provide a way to override the default inferred nickname for a <<AnnotationReference-confan,@Configurable>> variable or a <<AnnotationReference-procan,@Processor>>, <<AnnotationReference-srcan,@Source>>, <<AnnotationReference-tranan,@Transformer>> method parameter. Provide a parameter if annotated with this.
+
+Example:
+
+[source,java,linenums]
+----
+@FriendlyName("Consumer Key")
+private String consumerKey;
+// Alternate: Declare in a method's arguments:
+  public abstract String getByTypeAndName(
+  @RestQueryParam("name") @FriendlyName("name") String uname)
+      throws IOException;
+----
+
+Another example illustrates how the friendlyName appears in the Anypoint Studio connector list:
+
+[source,java,linenums]
+----
+@Connector(name="barn", schemaVersion="1.0", friendlyName="Barn", minMuleVersion="3.6")
+public class BarnConnector
+{
+    ...
+}
+----
+
+The example Barn connector appears in Anypoint Studio's list of connectors as:
+
+image::friendlyname-screenshot.png[friendlyName-screenshot]
+
+See also: <<AnnotationReference-passan,@Password>>   <<AnnotationReference-pathan,@Path>>   <<AnnotationReference-plcan,@Placement>>   <<AnnotationReference-suman,@Summary>>   <<AnnotationReference-textan,@Text>>
+
+== @Handle
+
+Category: Exception Management +
+Mule Version: 3.6 and later
+
+Indicates a method for handling and describing exceptions. There is one @Handle per @Handler class.
+
+Use with <<AnnotationReference-handleran,@Handler>>:
+
+[source,java,linenums]
+----
+@Handler
+public class GenericHandler
+{
+   @Inject                    //optional
+   FooConnector fooConnector; //optional
+
+   @Handle
+   public void customHandler (Exception e) throws Exception
+   {
+      // Analyze the stack within "e"...
+      throw new MyDescriptiveException(e);
+   }
+
+   public void setFooConnector(Foo foo)
+   {
+      this.fooConnector=foo;
+   }
+}
+----
+
+The @Handle method can return two results:
+
+* RECONNECT - Retry the operation if the @Processor has <<AnnotationReference-recan,@ReconnectOn>>, and the @Handle throws an exception of that kind.
+* FAIL - Fail the operation by throwing an exception that does not belongs to the <<AnnotationReference-recan,@ReconnectOn>>, or the processors don't support reconnection.
+
+*Note*: If a method annotated with @Handle does not throw an exception during its execution, the original exception are re-thrown.
+
+See also: <<AnnotationReference-onexceptionan,@OnException>>     <<AnnotationReference-handleran,@Handler>>
+
+
+
+== @Handler
+
+Category: Exception Management +
+Mule Version: 3.6 and later
+
+Indicates a class that handles an exception. Use with <<AnnotationReference-onexceptionan,@OnException>>  and  <<AnnotationReference-handlean,@Handle>>.
+
+[source,java,linenums]
+----
+@OnException (handler=GenericHandler.class)
+@Connector (name = "foo", friendlyName = "Foo")
+{
+   @Processor
+   public void someOp (...)
+   {
+      ...
+   }
+   @OnException (handler=CustomHandler.class)
+   @Processor
+   public void anotherOp ()
+   {
+      ...
+   }
+}
+----
+
+The constraints for @Handler class are:
+
+* Must be public
+* Must be annotated with @Handler
+* Must have an empty constructor
+* Might have an @Inject parameter with the same type of the connector
+* Must have an method annotated with @Handle
+** The annotated method with @Handle must receive an Exception as parameter
+** The annotated method must return void
+** The annotated method must be declared with `throws Exception`
+
+See also: <<AnnotationReference-onexceptionan,@OnException>> <<AnnotationReference-handlean,@Handle>>
+
+== @HTTPBasicAuth
+
+Category: Authentication +
+Mule Version: 3.6 and later
+
+Indicates an implementation of http://tools.ietf.org/html/rfc2617[RFC-2617] "HTTP Authentication: Basic and Digest Access Authentication".
+
+[source,java,linenums]
+----
+@HTTPBasicAuth(headerName = "Authorization", prefix="Basic ", friendlyName="Http Basic Auth")
+public class HTTPBasicAuthStrategy implements BaseConnectionStrategy {
+   ...
+
+ @Configurable
+ @BasicAuthUsername
+ private String username;
+
+ @Configurable
+ @BasicAuthPassword
+ private String password;
+}
+----
+
+Usage:
+
+* Username and password are combined into a string "username:password".
+* The resulting string is then encoded using the RFC-2045 MIME variant of Base64.
+* Default value for the header param name: "Authorization", and default value for prefix param: "Basic "
+* The value of the header param and the prefix param can be changed by user.
+* Support for empty passwords, example: Stripe.
+* @BasicAuthUsername is only valid under @HTTPBasicAuth.
+* @BasicAuthPassword is only valid if @BasicAuthUsername exists and vice versa.
+* This only works for @RestCall connectors.
+
+Sample APIs: +
+Stripe: https://stripe.com/docs/api/curl#authentication +
+Twilio: http://www.twilio.com/docs/security +
+JIRA: https://developer.atlassian.com/display/JIRADEV/JIRA+REST+API+Example+-+Basic+Authentication
+
+The JIRAs API expects an Authorization header with content "Basic " followed by the encoded string. For example, the string "fred:fred" encodes to "ZnJlZDpmcmVk" in base64, so make the request as follows.
+
+[source,text,linenums]
+----
+curl -D- -X GET -H "Authorization: Basic ZnJlZDpmcmVk" -H "Content-
+Type: application/json" "http://<url>"
+----
+
+See also: <<AnnotationReference-rstcan,@RestCall>>  <<AnnotationReference-oa2an,@OAuth2>> <<AnnotationReference-oatan,@OAuthAccessToken>> <<AnnotationReference-oatian,@OAuthAccessTokenIdentifier>>
+
+<<AnnotationReference-oatsan,@OAuthAccessTokenSecret>>   <<AnnotationReference-oaupan,@OAuthAuthorizationParameter>>    +
+ <<AnnotationReference-oacban,@OAuthCallbackParameter>>   <<AnnotationReference-oackan,@OAuthConsumerKey>>   <<AnnotationReference-oacsan,@OAuthConsumerSecret>>    +
+ <<AnnotationReference-oaitan,@OAuthInvalidateAccessTokenOn>>   <<AnnotationReference-oapan,@OAuthPostAuthorization>>    +
+ <<AnnotationReference-oapran,@OAuthProtected>>   <<AnnotationReference-oasan,@OAuthScope>>  <<AnnotationReference-httpbasicauthan,@HTTPBasicAuth>>
+
+== @Icons
+
+Category: General +
+Mule Version: 3.5 and later
+
+Custom palette and flow editor icons.
+
+Use this annotation on the connector class to override the default location of one or more of the required icons. The path needs to be relative to the `/src/main/java` directory.
+
+[source,java,linenums]
+----
+@Icons(connectorLarge="barn-icon-large.png", connectorSmall="barn-icon-small.png")
+@Connector(name="barn", schemaVersion="1.0", friendlyName="Barn", minMuleVersion="3.6")
+public class BarnConnector
+{
+   ...
+}
+----
+
+See also:  <<AnnotationReference-catan,@Category>>  <<AnnotationReference-confan,@Configurable>>  <<AnnotationReference-connan,@Connector>>  <<AnnotationReference-expran,@Expr>>  <<AnnotationReference-expenan,@ExpressionEnricher>>   +
+ <<AnnotationReference-exevan,@ExpressionEvaluator>>  <<AnnotationReference-exlan,@ExpressionLanguage>>  <<AnnotationReference-filan,@Filter>>   <<AnnotationReference-ignan,@Ignore>>  <<AnnotationReference-mimean,@Mime>>    <<AnnotationReference-modulean,@Module>>    +
+ <<AnnotationReference-pagean,@Paged>>  <<AnnotationReference-procan,@Processor>>   <<AnnotationReference-srcan,@Source>>  <<AnnotationReference-tranan,@Transformer>>  <<AnnotationReference-trsan,@TransformerResolver>>
+
+== @Ignore
+
+Category: General +
+Mule Version: 3.5 and later
+
+Ignores a field inside a complex object.
 
 [source,java,linenums]
 ----
@@ -158,13 +1075,315 @@ public class MyComplexType
 }
 
 @Processor
-public void receiveAComplexType(MyComplexType myComplexType) { ... }
+public void receiveAComplexType(MyComplexType myComplexType) {
+    ...
+}
 ----
-|`@Mime` a|Defines a class that exports its functionality as a Mule module.
 
-The class level annotation `@Module` indicates that a Java class needs to be processed by the DevKit Annotation Processing Tool and considered as a Mule Module.
+See also:  <<AnnotationReference-catan,@Category>>    <<AnnotationReference-confan,@Configurable>>    <<AnnotationReference-connan,@Connector>>    <<AnnotationReference-expran,@Expr>>    <<AnnotationReference-expenan,@ExpressionEnricher>>   +
+ <<AnnotationReference-exevan,@ExpressionEvaluator>>    <<AnnotationReference-exlan,@ExpressionLanguage>>    <<AnnotationReference-filan,@Filter>>    <<AnnotationReference-iconan,@Icons>>    <<AnnotationReference-mimean,@Mime>>    <<AnnotationReference-modulean,@Module>>    +
+ <<AnnotationReference-pagean,@Paged>>    <<AnnotationReference-procan,@Processor>>  <<AnnotationReference-srcan,@Source>>    <<AnnotationReference-tranan,@Transformer>>    <<AnnotationReference-trsan,@TransformerResolver>>
 
-@`Module` cannot be applied to:
+== @InboundHeaders
+
+Category: Argument Passing +
+Mule Version: 3.5 and later
+
+Passes inbound headers.
+
+[source,java,linenums]
+----
+@Processor
+public String getInboundHeaders(@InboundHeaders("myHeader") String myHeader) { ... }
+----
+
+See also: <<AnnotationReference-ivhean,@InvocationHeaders>>   <<AnnotationReference-outhan,@OutboundHeaders>>  <<AnnotationReference-payan,@Payload>>  <<AnnotationReference-sessa,@SessionHeaders>>
+
+== @Initialise
+
+Category: LifeCycle +
+Mule Version: 3.5 and later
+
+Mark a method to be initialized during a method's `org.mule.lifecycle.Initialisable` phase.
+
+[source,java,linenums]
+----
+@Initialise
+public void initialize() {
+    if ( this.sessionId != null ) {
+        serviceProvider.initialise(sessionId);
+    }
+}
+----
+
+*Note:* `initialise` is a reserved word that cannot be used as the method's name.
+
+See also: <<AnnotationReference-displ,@Dispose>>   <<AnnotationReference-stan,@Start>>   <<AnnotationReference-stopan,@Stop>>
+
+== @InvalidateConnectionOn
+
+Category: Connection Management +
+Mule version: 3.5 and later
+
+Used on a method to catch Exceptions - deprecated use <<AnnotationReference-recan,@ReconnectOn>> instead.
+
+[source,java,linenums]
+----
+@Processor
+@InvalidateConnectionOn(exception=AnimalException.class)
+public Animal getAnimal (String id ) {
+    ...
+}
+----
+
+See also:  xref:connection-management.adoc[Connection Management]   <<AnnotationReference-cnctan,@Connect>>    <<AnnotationReference-coidan,@ConnectionIdentifier>>    <<AnnotationReference-discan,@Disconnect>>    +
+ <<AnnotationReference-recan,@ReconnectOn>>   <<AnnotationReference-valcan,@ValidateConnection>>
+
+== @InvocationHeaders
+
+Category: Argument Passing +
+Mule Version: 3.5 and later
+
+Passes invocation headers. This can be a single header, a comma-separated list of header names, an asterisk '*' to denote all headers, or a comma-separated list of wildcard expressions. By default, if a named header is not present, an exception is thrown. However, if the header name is defined with the '?' post fix, it is marked as optional.
+
+[source,java,linenums]
+----
+@Processor
+public String getInvocationHeaders(@InvocationHeaders("myHeader")
+String myHeader) {
+    ...
+}
+----
+
+See also: <<AnnotationReference-inhean,@InboundHeaders>>    <<AnnotationReference-outhan,@OutboundHeaders>>  <<AnnotationReference-payan,@Payload>>  <<AnnotationReference-sessa,@SessionHeaders>>
+
+== @Literal
+
+Category: Parameters +
+Mule Version: 3.6 and later
+
+Specifies xref:3.6@mule-runtime::mule-expression-language-mel.adoc[Mule Expression Language (MEL)] as a method parameter without the DevKit resolving the expression. You can use any MEL code with this annotation.
+
+*Problem*
+
+Given the following Processor method:
+
+[source,java,linenums]
+----
+public void enrich(Object source, String targetExpression)
+----
+
+Given the following Mule XML:
+
+[source,xml,linenums]
+----
+<mymodule:enrich targetExpression="#[variable:myexpr]" ... />
+----
+
+The enrich method receives the result of evaluating the following expression:
+
+[source,java,linenums]
+----
+# [variable:myexpr]
+  And not this String:
+
+[ variable:myexpr]
+----
+
+This is because DevKit's generated code tries to automatically resolve the expression.
+
+*Solution*
+
+The @Literal annotation flags a method parameter so that its value coming from Mule XML does not get resolved if it's a Mule expression:
+
+[source,java,linenums]
+----
+public void enrich(Object source, @Literal String targetExpression)
+----
+
+In this case, expression evaluation does not apply to the value of the targetExpression parameter.
+
+Also, this annotation can be used for Lists of Strings, where each element is passed without evaluating the expression. For example:
+
+[source,java,linenums]
+----
+public void enrich(Object source, @Literal List<String> targetExpressions)
+----
+
+See also: <<AnnotationReference-inhean,@InboundHeaders>>   <<AnnotationReference-ivhean,@InvocationHeaders>>     <<AnnotationReference-outhan,@OutboundHeaders>> <<AnnotationReference-payan,@Payload>>  <<AnnotationReference-sessa,@SessionHeaders>>
+
+== @MetaDataCategory
+
+Category: DataSense +
+ Mule Version: 3.5 and later
+
+Describes a grouping DataSense concrete class, which returns the types and descriptions of any of those types.
+
+Mule 3.6 and later supports @MetaDataCategory both in @Module and @Connector annotations.
+
+Use to annotate a class that groups methods used for providing metadata about a connector using DataSense.
+
+[source,java,linenums]
+----
+@MetaDataCategory
+public class MyCategory {
+    ...
+}
+----
+
+See also: <<AnnotationReference-mtkpan,@MetaDataKeyParam>>   <<AnnotationReference-mtkran,@MetaDataKeyRetriever>> +
+ <<AnnotationReference-mtoran,@MetaDataOutputRetriever>>   <<AnnotationReference-mtran,@MetaDataRetriever>>   <<AnnotationReference-mtsan,@MetaDataScope>> +
+ <<AnnotationReference-noman,@NoMetaData>>   <<AnnotationReference-quan,@Query>>   <<AnnotationReference-qupan,@QueryPart>>   <<AnnotationReference-qutan,@QueryTranslator >>
+
+== @MetaDataKeyParam
+
+Category: DataSense +
+ Mule Version: 3.5 and later
+
+Marks a parameter inside @Processor as the key for a metadata lookup.
+
+[source,java,linenums]
+----
+public Object create(@MetaDataKeyParam String entityType, @Default("#[payload]") Object entityData) {
+    ...
+}
+----
+
+See also: <<AnnotationReference-metan,@MetaDataCategory>>   <<AnnotationReference-mtkran,@MetaDataKeyRetriever>> +
+ <<AnnotationReference-mtoran,@MetaDataOutputRetriever>>   <<AnnotationReference-mtran,@MetaDataRetriever>>   <<AnnotationReference-mtsan,@MetaDataScope>> +
+ <<AnnotationReference-noman,@NoMetaData>>   <<AnnotationReference-quan,@Query>>   <<AnnotationReference-qupan,@QueryPart>>   <<AnnotationReference-qutan,@QueryTranslator >>
+
+== @MetaDataKeyRetriever
+
+Category: DataSense +
+ Mule Version: 3.5 and later
+
+Use to annotate a method that is responsible to return a service’s entities names.
+
+Given the functionality of this annotation, the return type of this Java method must be a `List<MetaDataKey>`.
+
+The entities returned from this method are from a query after a detailed description obtained using @MetaDataRetriever.
+
+Use this annotation inside an @Connector context or inside an <<AnnotationReference-metan,@MetaDataCategory>>.
+
+[source,java,linenums]
+----
+@MetaDataKeyRetriever
+   public List<MetaDataKey> getMetaDataKeys() throws Exception {
+       ...
+   }
+----
+
+See also: <<AnnotationReference-metan,@MetaDataCategory>>   <<AnnotationReference-mtkpan,@MetaDataKeyParam>>   +
+ <<AnnotationReference-mtoran,@MetaDataOutputRetriever>>   <<AnnotationReference-mtran,@MetaDataRetriever>>   <<AnnotationReference-mtsan,@MetaDataScope>> +
+ <<AnnotationReference-noman,@NoMetaData>>   <<AnnotationReference-quan,@Query>>   <<AnnotationReference-qupan,@QueryPart>>   <<AnnotationReference-qutan,@QueryTranslator >>
+
+== @MetaDataOutputRetriever
+
+Category: DataSense +
+ Mule Version: 3.5 and later
+
+Marks a method as a describer for @MetaData for output scenarios, for a given @MetaDataKey.
+
+[source,java,linenums]
+----
+@MetaDataOutputRetriever
+public MetaData getMetaDataOutputRestImplCategory(MetaDataKey key) throws Exception {
+    checkProperConnectorInjection();
+    return new DefaultMetaData(resolveOutputMetaDataModel(key));
+    ...
+}
+----
+
+See also: <<AnnotationReference-metan,@MetaDataCategory>>   <<AnnotationReference-mtkpan,@MetaDataKeyParam>>   <<AnnotationReference-mtkran,@MetaDataKeyRetriever>> +
+ <<AnnotationReference-mtran,@MetaDataRetriever>>   <<AnnotationReference-mtsan,@MetaDataScope>> <<AnnotationReference-noman,@NoMetaData>>   <<AnnotationReference-quan,@Query>>   <<AnnotationReference-qupan,@QueryPart>>   <<AnnotationReference-qutan,@QueryTranslator>>
+
+== @MetaDataRetriever
+
+Category: DataSense +
+ Mule Version: 3.5 and later
+
+The method annotated with @MetaDataRetriever describes the metadata for the received metadata key parameter.
+
+Uses the list of metadata keys retrieved by @MetadataKeyRetriever to retrieve the entity composition of each entity Type.
+
+[source,java,linenums]
+----
+@MetaDataRetriever
+public MetaData getMetadata(MetaDataKey key) {
+    ...
+}
+----
+
+See also: <<AnnotationReference-metan,@MetaDataCategory>>   <<AnnotationReference-mtkpan,@MetaDataKeyParam>>   <<AnnotationReference-mtkran,@MetaDataKeyRetriever>> +
+ <<AnnotationReference-mtoran,@MetaDataOutputRetriever>>   <<AnnotationReference-mtsan,@MetaDataScope>> <<AnnotationReference-noman,@NoMetaData>>   <<AnnotationReference-quan,@Query>>   <<AnnotationReference-qupan,@QueryPart>>   <<AnnotationReference-qutan,@QueryTranslator >>
+
+== @MetaDataScope
+
+Category: DataSense +
+ Mule Version: 3.5 and later
+
+[source,java,linenums]
+----
+@MetaDataScope(DefaultCategory.class)
+@Connector(name = "my-connector", minMuleVersion = "3.6")
+public class MyConnector {
+   ...
+}
+----
+
+See also: <<AnnotationReference-metan,@MetaDataCategory>>   <<AnnotationReference-mtkpan,@MetaDataKeyParam>>   <<AnnotationReference-mtkran,@MetaDataKeyRetriever>> +
+ <<AnnotationReference-mtoran,@MetaDataOutputRetriever>>   <<AnnotationReference-mtran,@MetaDataRetriever>>   +
+ <<AnnotationReference-noman,@NoMetaData>>   <<AnnotationReference-quan,@Query>>   <<AnnotationReference-qupan,@QueryPart>>   <<AnnotationReference-qutan,@QueryTranslator >>
+
+== @MetaDataStaticKey
+
+Category: Parameters +
+Mule Version: 3.5 and later
+
+Defines the specific MetaData type of the annotated value. When applied to a <<AnnotationReference-procan,@Processor>> it affects (by default) just the Output, otherwise it affects the field parameter.
+
+[source,java,linenums]
+----
+@Processor
+@MetaDataStaticKey(type = "CLIENT")
+public Map<String, Object> getClient(String id) {
+    return createClientObject();
+}
+----
+
+See also:  <<AnnotationReference-conkan,@ConnectionKey,>>    <<AnnotationReference-defan,@Default,>> <<AnnotationReference-eman,@Email>>, <<AnnotationReference-excpan,@ExceptionPayload>>,   <<AnnotationReference-optan,@Optional>> ,  <<AnnotationReference-refan,@RefOnly>>
+
+== @Mime
+
+Category: General +
+ Mule Version: 3.5 and later
+
+Generates the appropriate message header.
+
+[source,java,linenums]
+----
+@Processor
+@Mime("application/json")
+public String search(String keyword) {
+    ...
+}
+----
+
+See also:  <<AnnotationReference-catan,@Category>>    <<AnnotationReference-confan,@Configurable>>    <<AnnotationReference-connan,@Connector>>   <<AnnotationReference-expran,@Expr>>    <<AnnotationReference-expenan,@ExpressionEnricher>>    +
+ <<AnnotationReference-exevan,@ExpressionEvaluator>>    <<AnnotationReference-exlan,@ExpressionLanguage>>    <<AnnotationReference-filan,@Filter>>    <<AnnotationReference-iconan,@Icons>>    <<AnnotationReference-ignan,@Ignore>>   +
+ <<AnnotationReference-modulean,@Module>>    <<AnnotationReference-pagean,@Paged>>    <<AnnotationReference-procan,@Processor>>  <<AnnotationReference-srcan,@Source>>    <<AnnotationReference-tranan,@Transformer>>   <<AnnotationReference-trsan,@TransformerResolver>>
+
+== @Module
+
+Category: General +
+Mule Version: 3.5 and later
+
+Defines a class that exports its functionality as a Mule module.
+
+The class level annotation @Module indicates that a Java class needs to be processed by the DevKit Annotation Processing Tool and considered as a Mule Module.
+
+@Module cannot be applied to:
 
 * Interfaces
 * Final classes
@@ -173,51 +1392,1073 @@ The class level annotation `@Module` indicates that a Java class needs to be pro
 
 [source,java,linenums]
 ----
-@Module(name="animal-search", schemaVersion="3.5.1")
-public class AnimalSearchModule { ... }
+@Module(name="animal-search", schemaVersion="3.6.1")
+public class AnimalSearchModule {
+    ...
+}
 ----
-|`@Ognl` |(Object graph navigation language). *Note*: @ognl is deprecated in Mule version 3.6 and is being removed in version 4.0.
-|`@Paged` a|Marks a method inside a `@Connector` as an operation that returns a paged result set. Methods annotated with this interface must also be annotated with `@Processor` and must return an instance of `@ProviderAwarePagingDelegate`.
+
+See also:  <<AnnotationReference-catan,@Category>>    <<AnnotationReference-confan,@Configurable>>    <<AnnotationReference-connan,@Connector>>   <<AnnotationReference-expran,@Expr>>   <<AnnotationReference-expenan,@ExpressionEnricher>>    +
+ <<AnnotationReference-exevan,@ExpressionEvaluator>>   <<AnnotationReference-exlan,@ExpressionLanguage>>  <<AnnotationReference-filan,@Filter>>   <<AnnotationReference-iconan,@Icons>>    <<AnnotationReference-ignan,@Ignore>>   <<AnnotationReference-mimean,@Mime>>   +
+ <<AnnotationReference-pagean,@Paged>>   <<AnnotationReference-procan,@Processor>>   <<AnnotationReference-srcan,@Source>>    <<AnnotationReference-tranan,@Transformer>>   <<AnnotationReference-trsan,@TransformerResolver>>
+
+== @NoMetaData
+
+Category: DataSense +
+ Mule Version: 3.5 and later
+
+Marks a <<AnnotationReference-procan,@Processor>> to avoid discovering metadata with @MetaDataRetriever and @MetaDataKeyRetriever mechanism.
+
+See also: <<AnnotationReference-metan,@MetaDataCategory>>   <<AnnotationReference-mtkpan,@MetaDataKeyParam>>   <<AnnotationReference-mtkran,@MetaDataKeyRetriever>> +
+ <<AnnotationReference-mtoran,@MetaDataOutputRetriever>>   <<AnnotationReference-mtran,@MetaDataRetriever>>   <<AnnotationReference-mtsan,@MetaDataScope>> +
+ <<AnnotationReference-quan,@Query>>   <<AnnotationReference-qupan,@QueryPart>>   <<AnnotationReference-qutan,@QueryTranslator >>
+
+== @OAuth
+
+Category: OAuth +
+ Mule Version: 3.5 and later
+
+Annotates connectors that uses the OAuth 1.0a protocol for authentication.
+
+[source,java,linenums]
+----
+@Connector(name = "myconnector", friendlyName = "MyConnector")
+@OAuth(requestTokenUrl = "https://api.me.com/uas/oauth/requestToken",
+accessTokenUrl = "https://api.me.com/uas/oauth/accessToken",
+authorizationUrl = "https://api.me.com/uas/oauth/authorize")
+public class MyConnector {
+    ...
+}
+----
+
+See also: <<AnnotationReference-oa2an,@OAuth2>>   <<AnnotationReference-oatan,@OAuthAccessToken>>   <<AnnotationReference-oatian,@OAuthAccessTokenIdentifier>>   +
+ <<AnnotationReference-oatsan,@OAuthAccessTokenSecret>>   <<AnnotationReference-oaupan,@OAuthAuthorizationParameter>>   +
+ <<AnnotationReference-oacban,@OAuthCallbackParameter>>   <<AnnotationReference-oackan,@OAuthConsumerKey>>   <<AnnotationReference-oacsan,@OAuthConsumerSecret>>   +
+ <<AnnotationReference-oaitan,@OAuthInvalidateAccessTokenOn>>   <<AnnotationReference-oapan,@OAuthPostAuthorization>>   +
+ <<AnnotationReference-oapran,@OAuthProtected>>   <<AnnotationReference-oasan,@OAuthScope>>
+
+== @OAuth2
+
+Category: OAuth +
+ Mule Version: 3.5 and later
+
+Annotates connectors that uses the OAuth 2 protocol for authentication.
+
+[source,java,linenums]
+----
+@Connector(name = "oauth2connector")
+@OAuth2(authorizationUrl = "http://someUrl", accessTokenUrl = "http://someOtherUrl")
+public class MyConnector {
+    ...
+}
+----
+
+See also: <<AnnotationReference-oa1an,@OAuth>>   <<AnnotationReference-oatan,@OAuthAccessToken>>   <<AnnotationReference-oatian,@OAuthAccessTokenIdentifier>>   +
+ <<AnnotationReference-oatsan,@OAuthAccessTokenSecret>>   <<AnnotationReference-oaupan,@OAuthAuthorizationParameter>>   +
+ <<AnnotationReference-oacban,@OAuthCallbackParameter>>   <<AnnotationReference-oackan,@OAuthConsumerKey>>   <<AnnotationReference-oacsan,@OAuthConsumerSecret>>   +
+ <<AnnotationReference-oaitan,@OAuthInvalidateAccessTokenOn>>   <<AnnotationReference-oapan,@OAuthPostAuthorization>>   +
+ <<AnnotationReference-oapran,@OAuthProtected>>   <<AnnotationReference-oasan,@OAuthScope>>
+
+== @OAuthAccessToken
+
+Category: OAuth +
+ Mule Version: 3.3 and later
+
+Holds an access token. When an <<AnnotationReference-procan,@Processor>> method is invoked, an OAuth access token is set in case the Resource Owner already authorized the Consumer; otherwise the method isn't invoked and the Resource Owner is redirected to the OAuth or OAuth2 authorization URL depending on the class level annotation used.
+
+*Note*: This annotation is only supported for class fields.
+
+A class annotated with <<AnnotationReference-oa1an,@OAuth>> or <<AnnotationReference-oa2an,@OAuth2>> needs to have exactly one field annotated with @OAuthAccessToken.
+
+The field must be of type String.
+
+[source,java,linenums]
+----
+@OAuthAccessToken private String accessToken;
+----
+
+
+See also: <<AnnotationReference-oa1an,@OAuth>>   <<AnnotationReference-oa2an,@OAuth2>>   <<AnnotationReference-oatian,@OAuthAccessTokenIdentifier>>   +
+ <<AnnotationReference-oatsan,@OAuthAccessTokenSecret>>   <<AnnotationReference-oaupan,@OAuthAuthorizationParameter>>   +
+ <<AnnotationReference-oacban,@OAuthCallbackParameter>>   <<AnnotationReference-oackan,@OAuthConsumerKey>>   <<AnnotationReference-oacsan,@OAuthConsumerSecret>>   +
+ <<AnnotationReference-oaitan,@OAuthInvalidateAccessTokenOn>>   <<AnnotationReference-oapan,@OAuthPostAuthorization>>   +
+ <<AnnotationReference-oapran,@OAuthProtected>>   <<AnnotationReference-oasan,@OAuthScope>>
+
+== @OAuthAccessTokenIdentifier
+
+Category: OAuth +
+ Mule Version: 3.5 and later
+
+Marks a method as responsible for identifying the user of an access token. The method is called by a connector's access token manager. This identification is used as a key to store access tokens.
+
+[source,java,linenums]
+----
+@OAuthAccessTokenIdentifier
+public String getUserId() {
+    return api.getUserId(myAccessToken);
+}
+----
+
+See also: <<AnnotationReference-oa1an,@OAuth>>   <<AnnotationReference-oa2an,@OAuth2>>   <<AnnotationReference-oatan,@OAuthAccessToken>> <<AnnotationReference-oatsan,@OAuthAccessTokenSecret>>   +
+ <<AnnotationReference-oaupan,@OAuthAuthorizationParameter>>   <<AnnotationReference-oacban,@OAuthCallbackParameter>>   <<AnnotationReference-oackan,@OAuthConsumerKey>>   +
+ <<AnnotationReference-oacsan,@OAuthConsumerSecret>>   <<AnnotationReference-oaitan,@OAuthInvalidateAccessTokenOn>>   <<AnnotationReference-oapan,@OAuthPostAuthorization>>   +
+ <<AnnotationReference-oapran,@OAuthProtected>>   <<AnnotationReference-oasan,@OAuthScope>>
+
+== @OAuthAccessTokenSecret
+
+Category: OAuth +
+ Mule Version: 3.5 and later
+
+Holds an access token secret.
+
+[source,java,linenums]
+----
+@OAuthAccessTokenSecret private String accessTokenSecret;
+----
+
+See also: <<AnnotationReference-oa1an,@OAuth>>   <<AnnotationReference-oa2an,@OAuth2>>   <<AnnotationReference-oatan,@OAuthAccessToken>>   <<AnnotationReference-oatian,@OAuthAccessTokenIdentifier>>   +
+ <<AnnotationReference-oaupan,@OAuthAuthorizationParameter>> <<AnnotationReference-oacban,@OAuthCallbackParameter>>   <<AnnotationReference-oackan,@OAuthConsumerKey>>   +
+ <<AnnotationReference-oacsan,@OAuthConsumerSecret>>   <<AnnotationReference-oaitan,@OAuthInvalidateAccessTokenOn>>   <<AnnotationReference-oapan,@OAuthPostAuthorization>>   +
+ <<AnnotationReference-oapran,@OAuthProtected>>   <<AnnotationReference-oasan,@OAuthScope>>
+
+== @OAuthAuthorizationParameter
+
+Category: OAuth +
+ Mule Version: 3.5 and later
+
+Appends an authorization parameter to authorize a URL.
+
+[source,java,linenums]
+----
+@OAuthAuthorizationParameter(name = "xxx", type = xxx, description = "xxx")
+----
+
+See also: <<AnnotationReference-oa1an,@OAuth>>   <<AnnotationReference-oa2an,@OAuth2>>   <<AnnotationReference-oatan,@OAuthAccessToken>>   <<AnnotationReference-oatian,@OAuthAccessTokenIdentifier>>   +
+ <<AnnotationReference-oatsan,@OAuthAccessTokenSecret>> <<AnnotationReference-oacban,@OAuthCallbackParameter>>   <<AnnotationReference-oackan,@OAuthConsumerKey>>   +
+ <<AnnotationReference-oacsan,@OAuthConsumerSecret>>   <<AnnotationReference-oaitan,@OAuthInvalidateAccessTokenOn>>   <<AnnotationReference-oapan,@OAuthPostAuthorization>>   +
+ <<AnnotationReference-oapran,@OAuthProtected>>   <<AnnotationReference-oasan,@OAuthScope>>
+
+== @OAuthCallbackParameter
+
+Category: OAuth +
+ Mule Version: 3.5 and later
+
+Identifies the module attribute that represent each parameter on the service OAuth response.
+
+[source,java,linenums]
+----
+@OAuthCallbackParameter(expression = "#[json:instance_url]")
+private String instanceId;
+----
+
+See also: <<AnnotationReference-oa1an,@OAuth>>   <<AnnotationReference-oa2an,@OAuth2>>   <<AnnotationReference-oatan,@OAuthAccessToken>>   <<AnnotationReference-oatian,@OAuthAccessTokenIdentifier>>   +
+ <<AnnotationReference-oatsan,@OAuthAccessTokenSecret>>   <<AnnotationReference-oaupan,@OAuthAuthorizationParameter>>   +
+ <<AnnotationReference-oackan,@OAuthConsumerKey>>   <<AnnotationReference-oacsan,@OAuthConsumerSecret>> <<AnnotationReference-oaitan,@OAuthInvalidateAccessTokenOn>>   +
+ <<AnnotationReference-oapan,@OAuthPostAuthorization>>   <<AnnotationReference-oapran,@OAuthProtected>>   <<AnnotationReference-oasan,@OAuthScope>>
+
+== @OAuthConsumerKey
+
+Category: OAuth +
+ Mule Version: 3.5 and later
+
+Holds an OAuth consumer key. This field must contain the OAuth Consumer Key as provided by the Service Provider and described in the OAuth specification.
+
+[source,java,linenums]
+----
+@Configurable @OAuthConsumerKey private String consumerKey;
+----
+
+See also: <<AnnotationReference-oa1an,@OAuth>>   <<AnnotationReference-oa2an,@OAuth2>>   <<AnnotationReference-oatan,@OAuthAccessToken>>   <<AnnotationReference-oatian,@OAuthAccessTokenIdentifier>>   +
+ <<AnnotationReference-oatsan,@OAuthAccessTokenSecret>>   <<AnnotationReference-oaupan,@OAuthAuthorizationParameter>>   +
+ <<AnnotationReference-oacban,@OAuthCallbackParameter>>   <<AnnotationReference-oacsan,@OAuthConsumerSecret>>   +
+ <<AnnotationReference-oaitan,@OAuthInvalidateAccessTokenOn>>   <<AnnotationReference-oapan,@OAuthPostAuthorization>>   +
+ <<AnnotationReference-oapran,@OAuthProtected>>   <<AnnotationReference-oasan,@OAuthScope>>
+
+== @OAuthConsumerSecret
+
+Category: OAuth +
+ Mule Version: 3.5 and later
+
+Holds an OAuth consumer secret. This field must contain the OAuth Consumer Key as provided by the Service Provider and described in the OAuth specification.
+
+[source,java,linenums]
+----
+@Configurable @OAuthConsumerSecret private String consumerSecret;
+----
+
+See also: <<AnnotationReference-oa1an,@OAuth>>   <<AnnotationReference-oa2an,@OAuth2>>   <<AnnotationReference-oatan,@OAuthAccessToken>>   <<AnnotationReference-oatian,@OAuthAccessTokenIdentifier>>   +
+ <<AnnotationReference-oatsan,@OAuthAccessTokenSecret>>   <<AnnotationReference-oaupan,@OAuthAuthorizationParameter>>   +
+ <<AnnotationReference-oacban,@OAuthCallbackParameter>>   <<AnnotationReference-oackan,@OAuthConsumerKey>>     +
+ <<AnnotationReference-oaitan,@OAuthInvalidateAccessTokenOn>>   <<AnnotationReference-oapan,@OAuthPostAuthorization>>   +
+ <<AnnotationReference-oapran,@OAuthProtected>>   <<AnnotationReference-oasan,@OAuthScope>>
+
+== @OAuthInvalidateAccessTokenOn
+
+Category: OAuth +
+ Mule Version: 3.5 and later
+
+Marks a method which automatically refreshes the tokens.
+
+*Note*: This annotation is deprecated. Use @ReconnectOn instead.
+
+[source,java,linenums]
+----
+@Processor
+@OAuthInvalidateAccessTokenOn(exception = RuntimeException.class)
+public void processor() {
+    ...
+}
+----
+
+See also: <<AnnotationReference-oa1an,@OAuth>>   <<AnnotationReference-oa2an,@OAuth2>>   <<AnnotationReference-oatan,@OAuthAccessToken>>   <<AnnotationReference-oatian,@OAuthAccessTokenIdentifier>>   +
+ <<AnnotationReference-oatsan,@OAuthAccessTokenSecret>>   <<AnnotationReference-oaupan,@OAuthAuthorizationParameter>>   +
+ <<AnnotationReference-oacban,@OAuthCallbackParameter>>   <<AnnotationReference-oackan,@OAuthConsumerKey>>   <<AnnotationReference-oacsan,@OAuthConsumerSecret>>   +
+ <<AnnotationReference-oapan,@OAuthPostAuthorization>> <<AnnotationReference-oapran,@OAuthProtected>>   <<AnnotationReference-oasan,@OAuthScope>>  <<AnnotationReference-httpbasicauthan,@HTTPBasicAuth>>
+
+== @OAuthPostAuthorization
+
+Category: OAuth +
+ Mule Version: 3.5 and later
+
+Marks a method inside OAuth as the responsible for setting up the connector _after_ OAuth completes.
+
+[source,java,linenums]
+----
+@OAuthPostAuthorization
+public void postAuthorize() throws ConnectionException, MalformedURLException, AsyncApiException {
+    ...
+}
+----
+
+See also: <<AnnotationReference-oa1an,@OAuth>>   <<AnnotationReference-oa2an,@OAuth2>>   <<AnnotationReference-oatan,@OAuthAccessToken>>   <<AnnotationReference-oatian,@OAuthAccessTokenIdentifier>>   +
+ <<AnnotationReference-oatsan,@OAuthAccessTokenSecret>>   <<AnnotationReference-oaupan,@OAuthAuthorizationParameter>>   +
+ <<AnnotationReference-oacban,@OAuthCallbackParameter>>   <<AnnotationReference-oackan,@OAuthConsumerKey>>   <<AnnotationReference-oacsan,@OAuthConsumerSecret>>   +
+ <<AnnotationReference-oaitan,@OAuthInvalidateAccessTokenOn>> <<AnnotationReference-oapran,@OAuthProtected>>   <<AnnotationReference-oasan,@OAuthScope>>
+
+== @OAuthProtected
+
+Category: OAuth +
+ Mule Version: 3.5 and later
+
+Marks a method inside a Connector as requiring an OAuth access token. Such a method fails to execute while the connector is not authorized. Therefore, forcing the OAuth to happen first.
+
+[source,java,linenums]
+----
+@OAuthProtected
+@Processor
+public void logInfo() {
+   logger.info(String.format("OAuthAccessToken=%s", getAccessToken()));
+   logger.info(String.format("OAuthAccessTokenSecret=%s", getAccessTokenSecret()));
+}
+----
+
+See also: <<AnnotationReference-oa1an,@OAuth>>   <<AnnotationReference-oa2an,@OAuth2>>   <<AnnotationReference-oatan,@OAuthAccessToken>>   <<AnnotationReference-oatian,@OAuthAccessTokenIdentifier>>   +
+ <<AnnotationReference-oatsan,@OAuthAccessTokenSecret>>   <<AnnotationReference-oaupan,@OAuthAuthorizationParameter>>   +
+ <<AnnotationReference-oacban,@OAuthCallbackParameter>>   <<AnnotationReference-oackan,@OAuthConsumerKey>>   <<AnnotationReference-oacsan,@OAuthConsumerSecret>>   +
+ <<AnnotationReference-oaitan,@OAuthInvalidateAccessTokenOn>>   <<AnnotationReference-oapan,@OAuthPostAuthorization>>   +
+ <<AnnotationReference-oasan,@OAuthScope>>
+
+== @OAuthScope
+
+Category: OAuth +
+ Mule Version: 3.5 and later
+
+Indicates that access to the Protected Resources must be restricted in scope. A field annotated with @OAuthScope must be present and contain a String indicating the desired scope.
+
+[source,java,linenums]
+----
+@Configurable
+@OAuthScope
+@Optional
+@Default("")
+private String scope;
+----
+
+See also: <<AnnotationReference-oa1an,@OAuth>>   <<AnnotationReference-oa2an,@OAuth2>>   <<AnnotationReference-oatan,@OAuthAccessToken>>   <<AnnotationReference-oatian,@OAuthAccessTokenIdentifier>>   +
+ <<AnnotationReference-oatsan,@OAuthAccessTokenSecret>>   <<AnnotationReference-oaupan,@OAuthAuthorizationParameter>>   +
+ <<AnnotationReference-oacban,@OAuthCallbackParameter>>   <<AnnotationReference-oackan,@OAuthConsumerKey>>   <<AnnotationReference-oacsan,@OAuthConsumerSecret>>   +
+ <<AnnotationReference-oaitan,@OAuthInvalidateAccessTokenOn>>   <<AnnotationReference-oapan,@OAuthPostAuthorization>>   <<AnnotationReference-oapran,@OAuthProtected>>
+
+== @OnException
+
+Category: Exception Handling +
+ Mule Version: 3.6 and later
+
+There are cases where, for unexpected scenarios, a connector can improve its user experience by centralizing exception handling in one or more methods.
+
+Those cases arise when an exception thrown by the external API contains information that causes:
+
+* RECONNECT - Retry an operation
+* FAIL - Fail an operation
+
+Prior to Mule version 3.6, DevKit provided only a mechanism for retrying the current operation, when a concrete and expected exception was raised using @InvalidateConnectionOn or @ReconnectOn. This required adding custom `try {} catch (){}` code** **for every @Processor and analyzing the stack.
+
+In Mule version 3.6 and later, the @OnException mechanism reduces a connector's code, as well as improves the granularity of the code so that you can define a concrete handler for different processors. @OnException identifies a handler. Use <<AnnotationReference-handleran,@Handler>> to designate an exception handling class, and use <<AnnotationReference-handlean,@Handle>> to identify the exception handling method.
+
+Example:
+
+[source,java,linenums]
+----
+@OnException (handler=GenericHandler.class)
+@Connector ( name = "foo", friendlyName = "Foo" )
+{
+   @Processor
+   public void someOp (...)
+   {
+      ...
+   }
+   @OnException (handler=CustomHandler.class)
+   @Processor
+   public void anotherOp ()
+   {
+      ...
+   }
+}
+----
+
+See also: <<AnnotationReference-handlean,@Handle>>     <<AnnotationReference-handleran,@Handler>>
+
+
+== @Optional
+
+Category: Parameters +
+ Mule Version: 3.5 and later
+
+Marks a @Configurable field or a @Processor or @Source parameters as optional.
+
+[source,java,linenums]
+----
+@Configurable
+@Optional
+String path;
+----
+
+See also:  <<AnnotationReference-conkan,@ConnectionKey>>   <<AnnotationReference-defan,@Default>>  <<AnnotationReference-eman,@Email>> <<AnnotationReference-excpan,@ExceptionPayload>>
+<<AnnotationReference-mtskan,@MetaDataStaticKey>>   <<AnnotationReference-refan,@RefOnly>>
+
+== @OutboundHeaders
+
+Category: Argument Passing +
+ Mule Version: 3.5 and later
+
+Used to pass outbound headers.
+
+[source,java,linenums]
+----
+@Processor
+public void outboundHeaders(@OutboundHeaders
+Map<String, Object> outboundHeaders) {
+    ...
+}
+----
+
+See also: <<AnnotationReference-inhean,@InboundHeaders>>   <<AnnotationReference-ivhean,@InvocationHeaders>>  <<AnnotationReference-payan,@Payload>> <<AnnotationReference-sessa,@SessionHeaders>>
+
+== @Paged
+
+Category: General +
+ Mule Version: 3.5 and later
+
+Marks a method inside a <<AnnotationReference-connan,@Connector>> as an operation that returns a paged result set. Methods annotated with this interface must also be annotated with <<AnnotationReference-procan,@Processor>> and must return an instance of @ProviderAwarePagingDelegate.
 
 [source,java,linenums]
 ----
 @Processor
 @Paged
-public ProviderAwarePagingDelegate paginationTestOperation (String ble, PagingConfiguration pagingConfiguration) throws WrongParameterConfiguredException { ... }
+public ProviderAwarePagingDelegate paginationTestOperation (String ble, PagingConfiguration pagingConfiguration) throws WrongParameterConfiguredException {
+    ...
+}
 ----
-|`@Processor` a|Marks a method as an operation in a connector. An `@Processor` method generates a general purpose message processor
+
+See also:  <<AnnotationReference-catan,@Category>>    <<AnnotationReference-confan,@Configurable>>    <<AnnotationReference-connan,@Connector>>    <<AnnotationReference-expran,@Expr>>   <<AnnotationReference-expenan,@ExpressionEnricher>>    +
+ <<AnnotationReference-exevan,@ExpressionEvaluator>>   <<AnnotationReference-exlan,@ExpressionLanguage>>    <<AnnotationReference-filan,@Filter>>   <<AnnotationReference-iconan,@Icons>>    <<AnnotationReference-ignan,@Ignore>>   <<AnnotationReference-mimean,@Mime>>    +
+ <<AnnotationReference-modulean,@Module>>    <<AnnotationReference-procan,@Processor>>  <<AnnotationReference-srcan,@Source>>    <<AnnotationReference-tranan,@Transformer>>   <<AnnotationReference-trsan,@TransformerResolver>>
+
+== @Password
+
+Category: Display +
+ Mule Version: 3.5 and later
+
+Identifies a field or method parameter as being a password, or more generally as a variable which contains data that cannot be displayed as plain text.
+
+[source,java,linenums]
+----
+@Connect
+public void connect(@ConnectionKey String username,
+  @Password String password)
+        throws ConnectionException {
+     ...
+}
+----
+
+The following shows how the password appears in the Global Element Properties:
+
+image::password-screenshot.png[]
+
+See also: <<AnnotationReference-fnan,@FriendlyName>>   <<AnnotationReference-pathan,@Path>>   <<AnnotationReference-plcan,@Placement>>   <<AnnotationReference-suman,@Summary>>   <<AnnotationReference-textan,@Text>>
+
+== @Path
+
+Category: Display +
+ Mule Version: 3.5 and later
+
+Identifies a field or method parameter as being a path to a file.  This displays a window at Studio to choose a file from the filesystem.
+
+[source,java,linenums]
+----
+@Configurable
+@Path
+String path;
+----
+
+See also: <<AnnotationReference-fnan,@FriendlyName>>   <<AnnotationReference-passan,@Password>>   <<AnnotationReference-plcan,@Placement>>   <<AnnotationReference-suman,@Summary>>   <<AnnotationReference-textan,@Text>>
+
+== @Payload
+
+Category: Argument Passing +
+ Mule Version: 3.5 and later
+
+Marks arguments to receive the payload.
 
 [source,java,linenums]
 ----
 @Processor
-    public String putInBarn(String animal) {
-        return animal + " has been placed in the barn";
-    }
+public String setPayload(@Payload String payload) {
+    ...
+}
 ----
-|`@Source` a|Marks a method inside a `@Connector` as a callable from within a Mule flow and capable of generating Mule events.
 
-This annotation marks a method inside a http://mulesoft.github.io/mule-devkit/3.5.3/apidocs/index.html[Module] as callable from within a Mule flow and capable of generating Mule events. Each marked method has an `org.mule.api.source.MessageSource` generated. The method must receive a SourceCallback as one of its arguments. It does not matter which parameter it is as long it is there.
+See also: <<AnnotationReference-inhean,@InboundHeaders>>    <<AnnotationReference-ivhean,@InvocationHeaders>>    <<AnnotationReference-outhan,@OutboundHeaders>>  <<AnnotationReference-sessa,@SessionHeaders>>
+
+== @Placement
+
+Category: Display +
+ Mule Version: 3.5 and later
+
+Defines the placement of a configurable attribute in the Anypoint Studio configuration.
+
+Use this annotation to instance variables and method parameters. It accepts the following parameters:
+
+* *order* — The relative order of the annotated element within its group. If the value provided is duplicated then the order of these elements is arbitrarily defined. Value is relative; an element with order 10 has higher precedence than an element with value 25.
+* *group* — A logical way to display one or more variables together. If you do not specify a group, then Mule assumes a default group. To place multiple elements in the same group, assign the same values to them for this attribute.
+* *tab* — A logical way to group annotated elements together. This attribute specifies the name of the tab in which to display the annotated element. If no tab is specified, then Mule assumes a default tab. To display multiple parameters in the same the tab, assign the same values to them for this attribute.
+
+[source,java,linenums]
+----
+@Configurable
+@Placement(group = "Basic Settings", order = 1)
+private String consumerKey;
+----
+
+The following code creates the *General* > *Basic Settings* for *Consumer Key* and *Consumer Secret* settings:
+
+[source,java,linenums]
+----
+@Configurable
+@Placement(group = "Basic Settings", order = 1)
+@FriendlyName("Consumer Key")
+private String consumerKey;
+
+@Configurable
+@Placement(group = "Basic Settings", order = 3)
+@FriendlyName("Consumer Secret")
+@Summary("consumer secret for authentication")
+private String consumerSecret;
+----
+
+The generated screen is:
+
+image::placement-1-screenshot.png[]
+
+This code creates the *Advanced Settings* > *Application Name* setting under the General Information section:
+
+[source,java,linenums]
+----
+@Configurable
+@Placement(tab="Advanced Settings", group = "General Information", order = 2)
+@Summary("the application name")
+@FriendlyName("Application Name")
+private String applicationName;
+----
+
+The generated screen is:
+
+image::placement-2-screenshot.png[]
+
+See also: <<AnnotationReference-fnan,@FriendlyName>>   <<AnnotationReference-passan,@Password>>   <<AnnotationReference-pathan,@Path>>   <<AnnotationReference-suman,@Summary>>   <<AnnotationReference-textan,@Text>>
+
+== @Processor
+
+Category: General +
+ Mule Version: 3.5 and later
+
+Marks a method as an operation in a connector. A @Processor method generates a general purpose message processor. The parameters for this annotation are optional. The friendlyName lets you specify the display name for the Operation.
+
+[source,java,linenums]
+----
+@Processor(friendlyName="OperationName", name="SchemaName")
+ public String putInBarn(String animal) {
+     return animal + " has been placed in the barn";
+ }
+----
+
+See also:  <<AnnotationReference-catan,@Category>>    <<AnnotationReference-confan,@Configurable>>   <<AnnotationReference-connan,@Connector>>   <<AnnotationReference-expran,@Expr>>    <<AnnotationReference-expenan,@ExpressionEnricher>>   +
+ <<AnnotationReference-exevan,@ExpressionEvaluator>>    <<AnnotationReference-exlan,@ExpressionLanguage>>    <<AnnotationReference-filan,@Filter>>    <<AnnotationReference-iconan,@Icons>>   <<AnnotationReference-ignan,@Ignore>>   <<AnnotationReference-mimean,@Mime>>    +
+ <<AnnotationReference-modulean,@Module>>    <<AnnotationReference-pagean,@Paged>>   <<AnnotationReference-srcan,@Source>>   <<AnnotationReference-tranan,@Transformer>>    <<AnnotationReference-trsan,@TransformerResolver>>
+
+== @Query
+
+Category: DataSense +
+ Mule Version: 3.5 and later
+
+Supports easy query building by using DataSense Query Language (DSQL). Define @Query within an <<AnnotationReference-connan,@Connector>> scope.
+
+[source,java,linenums]
+----
+@Processor
+public void setQuery(@Query DsglQuery query) {
+    ...
+}
+----
+
+See also: <<AnnotationReference-metan,@MetaDataCategory>>   <<AnnotationReference-mtkpan,@MetaDataKeyParam>>   <<AnnotationReference-mtkran,@MetaDataKeyRetriever>> +
+ <<AnnotationReference-mtoran,@MetaDataOutputRetriever>>   <<AnnotationReference-mtran,@MetaDataRetriever>>   <<AnnotationReference-mtsan,@MetaDataScope>> +
+ <<AnnotationReference-noman,@NoMetaData>>   <<AnnotationReference-qupan,@QueryPart>>   <<AnnotationReference-qutan,@QueryTranslator>>
+
+== @QueryPart
+
+Category: DataSense +
+ Mule Version: 3.5 and later
+
+Used in advanced @Query scenarios.
+
+See also: <<AnnotationReference-metan,@MetaDataCategory>>   <<AnnotationReference-mtkpan,@MetaDataKeyParam>>   <<AnnotationReference-mtkran,@MetaDataKeyRetriever>> +
+ <<AnnotationReference-mtoran,@MetaDataOutputRetriever>>   <<AnnotationReference-mtran,@MetaDataRetriever>>   <<AnnotationReference-mtsan,@MetaDataScope>> +
+ <<AnnotationReference-noman,@NoMetaData>>   <<AnnotationReference-quan,@Query>>   <<AnnotationReference-qutan,@QueryTranslator >>
+
+== @QueryTranslator
+
+Category: DataSense +
+ Mule Version: 3.5 and later
+
+Translates a DSQL query into a native one.
+
+[source,java,linenums]
+----
+@QueryTranslator
+public String toNativeQuery(DsqlQuery query){
+    SimpleSyntaxVisitor visitor = new SimpleSyntaxVisitor();
+    query.accept(visitor);
+    return visitor.dsqlQuery();
+}
+----
+
+See also: <<AnnotationReference-metan,@MetaDataCategory>>   <<AnnotationReference-mtkpan,@MetaDataKeyParam>>   <<AnnotationReference-mtkran,@MetaDataKeyRetriever>> +
+ <<AnnotationReference-mtoran,@MetaDataOutputRetriever>>   <<AnnotationReference-mtran,@MetaDataRetriever>>   <<AnnotationReference-mtsan,@MetaDataScope>> +
+ <<AnnotationReference-noman,@NoMetaData>>   <<AnnotationReference-quan,@Query>>   <<AnnotationReference-qupan,@QueryPart>>
+
+== @ReconnectOn
+
+Category: Connection Management +
+ Mule Version: 3.5 and later
+
+This annotation is used for exception handling related to connections. It can be used at a class level (annotated with the  `@Connector`  annotation) or at a method level (annotated with  `@Processor`  annotation) . If the Connector or  Processor  throws an exception of this class,  `@ReconnectOn`  automatically invalidates the connection.  `@ReconnectOn`  receives a list containing the classes of the exceptions to be caught (see below for an example). When an exception occurs, `@ReconnectOn`'s behavior is based on the configured reconnection strategy.
+
+Used to invalidate connections. You can attach this annotation to any method annotated with @Processor. If the Processor or Source throws an exception that matches any of the exceptions specified in the @ReconnectOn annotation, the connection is invalidated.
+
+[source,java,linenums]
+----
+@Processor
+@ReconnectOn(exceptions = {InvalidSessionFault.class, PasswordChangedException.class})
+public void myOperation(@Optional String source,
+  @Optional Object destination) throws InvalidSessionFault, PasswordChangedException, InvalidParameterException
+{
+    /**
+    * CODE FOR MY OPERATION
+    */
+}
+----
+
+See also:  xref:connection-management.adoc[Connection Management]  <<AnnotationReference-cnctan,@Connect>>   <<AnnotationReference-coidan,@ConnectionIdentifier>>  <<AnnotationReference-discan,@Disconnect>>    +
+ <<AnnotationReference-invan,@InvalidateConnectionOn>>  <<AnnotationReference-valcan,@ValidateConnection>>
+
+== @RefOnly
+
+Category: Parameters +
+ Mule Version: 3.5 and later
+
+Marks a <<AnnotationReference-confan,@Configurable>> field, a <<AnnotationReference-procan,@Processor>> parameter, or <<AnnotationReference-srcan,@Source>> parameter as being passed by reference only.
+
+See also:  <<AnnotationReference-conkan,@ConnectionKey>>   <<AnnotationReference-defan,@Default>>  <<AnnotationReference-eman,@Email>>  <<AnnotationReference-excpan,@ExceptionPayload>>   <<AnnotationReference-mtskan,@MetaDataStaticKey>>
+
+== @RequiresEntitlement
+
+Checks to see if a <<AnnotationReference-module,@Module>> or <<AnnotationReference-procan,@Processor>>  requires an Enterprise license with a particular entitlement. Works at connector level. Enterprise only.
+
+[source,java,linenums]
+----
+@RequiresEntitlement
+@Connector
+public class SuperConnector(){
+ .....
+}
+----
+
+== @RequiresEnterpriseLicense
+
+Checks to see if a <<AnnotationReference-module,@Module>> or <<AnnotationReference-procan,@Processor>>  requires an Enterprise license. The license can be an evaluation license or not. Works at connector level. Enterprise only.
+
+[source,java,linenums]
+----
+@RequiresEnterpriseLicense
+@Connector
+public class SuperConnector(){
+ ...
+}
+----
+
+== @RestCall
+
+Category: REST +
+ Mule Version: 3.5 and later
+
+Used with the <<AnnotationReference-procan,@Processor>> annotation. Indicates that upon invocation, the processor makes a RESTful request.
+
+DevKit provides a set of annotations to simplify working with RESTful APIs. These annotations handle all necessary operations, generating each REST call, and incorporating each REST call parameter.
+
+Required arguments:
+
+* *uri*: URI of the REST resource to query
+* *method*: HTTP method to use
+
+The generated code creates the URI based on the arguments passed to the @RestCall annotation, and makes a request using the verb specified by the method parameter of @RestCall.
+
+[source,java,linenums]
+----
+@Processor
+@RestCall(uri = "{url}/list", method = org.mule.api.annotations.rest.HttpMethod.GET)
+public abstract String showAll() throws IOException;
+----
+
+Optional arguments:
+
+* *contentType*:  The content-type of the response from this method call.
++
+[source,java,linenums]
+----
+@Processor
+@RestCall(uri = "{url}/list", method = HttpMethod.POST, contentType = "application/json")
+exceptions: A list of exceptions to throw, configured by pairing an exception type and an expression which is evaluated.
+----
+
+* *exceptions*: A list of exceptions to throw, configured by pairing an exception type and an expression which is evaluated.
++
+[source,java,linenums]
+----
+@Processor
+@RestCall(uri = "{url}/list", method = HttpMethod.POST, contentType = "application/json", exceptions = {@RestExceptionOn(expression="#[message.inboundProperties['http.status'] != 200]", exception = AnimalNotFoundException.class)})
+----
++
+In this case, the @RestExceptionOn annotation is used to throw an exception on a specified criteria. In the example above, if the HTTP status is not 200, an exception is thrown.
+
+See also: <<AnnotationReference-binpan,@BinaryParam>>  <<AnnotationReference-confan,@Configurable>> <<AnnotationReference-rstean,@RestExceptionOn>>    <<AnnotationReference-rstpan,@RestHeaderParam>>    <<AnnotationReference-rshcan,@RestHttpClient>>   +
+ <<AnnotationReference-rsppan,@RestPostParam>>    <<AnnotationReference-rsqpan,@RestQueryParam>>   <<AnnotationReference-rstoan,@RestTimeout>>   <<AnnotationReference-rsupan,@RestUriParam>>
+
+== @RestExceptionOn
+
+Category: REST +
+ Mule Version: 3.5 and later
+
+Throws an exception on specified criteria.
+
+[source,java,linenums]
+----
+@Processor
+@RestCall(uri = "{url}/animals", method = HttpMethod.GET, exceptions = {@RestExceptionOn(expression="#[message.inboundProperties['http.status'] != 200]", exception = AnimalNotFoundException.class)})
+public abstract List<Animal> listAnimals(@RestQueryParam("type") String type) throws IOException;
+----
+
+See also: <<AnnotationReference-binpan,@BinaryParam>>  <<AnnotationReference-rstcan,@RestCall>>   <<AnnotationReference-rstpan,@RestHeaderParam>>   <<AnnotationReference-rshcan,@RestHttpClient>>    <<AnnotationReference-rsppan,@RestPostParam>>    +
+ <<AnnotationReference-rsqpan,@RestQueryParam>>    <<AnnotationReference-rstoan,@RestTimeout>>    <<AnnotationReference-rsupan,@RestUriParam>>
+
+== @RestHeaderParam
+
+Category: REST +
+ Mule Version: 3.5 and later
+
+Allows you to insert custom headers in the HTTP request.  When using this annotation, you must specify the name of the header to include in the call. As with the @RestURIParam annotation, you can apply this annotation to @Processor methods arguments or to connector fields marked @Configurable.
+
+When annotating a specific configurable variable using the @RestHeaderParam, the variable is present in all HTTP requests.
+
+[source,java,linenums]
+----
+@Configurable
+@RestHeaderParam(value = "emptyHeaderField", ignoreIfEmpty = true)
+private String emptyHeaderField;
+----
+
+When you use the @RestHeaderParam on a specific argument in a method, the header is only included if the method is called.
+
+[source,java,linenums]
+----
+@Processor
+@RestCall(uri = "{url}/create", method = org.mule.api.annotations.rest.HttpMethod.POST)
+public abstract String create( @RestHeaderParam("age")
+int age)
+throws IOException;
+----
+
+See also: <<AnnotationReference-binpan,@BinaryParam>>  <<AnnotationReference-rstcan,@RestCall>>   <<AnnotationReference-rstean,@RestExceptionOn>>   <<AnnotationReference-rshcan,@RestHttpClient>>   <<AnnotationReference-rsppan,@RestPostParam>>    +
+ <<AnnotationReference-rsqpan,@RestQueryParam>>    <<AnnotationReference-rstoan,@RestTimeout>>    <<AnnotationReference-rsupan,@RestUriParam>>
+
+== @RestHttpClient
+
+Category: REST +
+ Mule Version: 3.5 and later
+
+An annotation to mark the HttpClient the module uses. This way, you avoid creating multiple clients and have the opportunity to perform your own calls or to configure the HttpClient to fulfill special needs:
+
+[source,java,linenums]
+----
+@RestHttpClient
+HttpClient client = new HttpClient();
+----
+
+See also: <<AnnotationReference-binpan,@BinaryParam>>  <<AnnotationReference-rstcan,@RestCall>>   <<AnnotationReference-rstean,@RestExceptionOn>>    <<AnnotationReference-rstpan,@RestHeaderParam>>    <<AnnotationReference-rsppan,@RestPostParam>>    +
+ <<AnnotationReference-rsqpan,@RestQueryParam>>    <<AnnotationReference-rstoan,@RestTimeout>>    <<AnnotationReference-rsupan,@RestUriParam>>
+
+== @RestPostParam
+
+Category: REST +
+ Mule Version: 3.5 and later
+
+Allows you to set parameters in the body of POST method calls. Define the POST method with @RestCall and set its parameters with @RestPostParam.
+
+You can apply this annotation to @Processor method arguments or to connector fields marked @Configurable. DevKit ensures that you apply this annotation only to POST methods.
+
+Processor methods annotated with @RestPostParam cannot use a non-annotated argument or a @Payload annotated argument.
+
+For example:
+
+[source,java,linenums]
+----
+@Processor
+@RestCall(uri = "{url}/form", method = HttpMethod.POST)
+public abstract String addAnimal(@RestPostParam("type") String type) throws IOException;
+----
+
+Another way is to annotate an @Configurable variable with @RestPostParam as follows:
+
+[source,java,linenums]
+----
+@Configurable
+@RestPostParam("category")
+private String category;
+
+@Processor
+@RestCall(uri = "http://localhost:8089/product/", method = HttpMethod.POST)
+  public abstract Result createProduct(String name) throws IOException;
+----
+
+See also: <<AnnotationReference-binpan,@BinaryParam>>  <<AnnotationReference-rstcan,@RestCall>>   <<AnnotationReference-rstean,@RestExceptionOn>> <<AnnotationReference-rstpan,@RestHeaderParam>> <<AnnotationReference-rshcan,@RestHttpClient>> <<AnnotationReference-rsqpan,@RestQueryParam>> <<AnnotationReference-rstoan,@RestTimeout>> <<AnnotationReference-rsupan,@RestUriParam>>
+
+== @RestQueryParam
+
+Category: REST +
+ Mule Version: 3.5 and later
+
+Specifies URI query parameters, which are appended to the path of the URI after a ? or & symbol. You can apply this annotation to @Processor method arguments or to connector fields marked @Configurable. This enables you to use dynamically-generated arguments as query parameters.
+
+Required argument:  String representation of the name of the parameter to append.
+
+[source,java,linenums]
+----
+@Processor
+@RestCall(uri = "{url}/listName", method = org.mule.api.annotations.rest.HttpMethod.GET)
+public abstract String getByType(
+@RestQueryParam("type") String type)
+throws IOException;
+----
+
+When the getByType message processor is called with `mule` as a parameter, the resultant call would be:
+
+[source,html,linenums]
+----
+http://localhost:8089/animals?type=mule
+----
+
+See also: <<AnnotationReference-binpan,@BinaryParam>>   <<AnnotationReference-rstcan,@RestCall>>   <<AnnotationReference-rstean,@RestExceptionOn>>  <<AnnotationReference-rstpan,@RestHeaderParam>>  <<AnnotationReference-rshcan,@RestHttpClient>>    +
+ <<AnnotationReference-rsppan,@RestPostParam>>  <<AnnotationReference-rstoan,@RestTimeout>>    <<AnnotationReference-rsupan,@RestUriParam>>
+
+== @RestTimeout
+
+Category: REST +
+ Mule Version: 3.5 and later
+
+Specifies a timeout for the rest call. This annotation can be attached to a @RestCall to optionally specify a timeout in milliseconds for the rest call. If the rest call exceeds the specified time, a RuntimeException is going to be thrown, unless an exception is specified for the timeout.
+
+[source,java,linenums]
+----
+@Processor
+@RestTimeout(timeout = 1, exception = TimeoutException.class)
+@RestCall(uri = "{url}/list/timeout", method = HttpMethod.GET)
+public abstract String listAnimalsTimeout() throws IOException;
+----
+
+See also: <<AnnotationReference-binpan,@BinaryParam>>   <<AnnotationReference-rstcan,@RestCall>>  <<AnnotationReference-rstean,@RestExceptionOn>>    <<AnnotationReference-rstpan,@RestHeaderParam>>   <<AnnotationReference-rshcan,@RestHttpClient>>    +
+ <<AnnotationReference-rsppan,@RestPostParam>>    <<AnnotationReference-rsqpan,@RestQueryParam>>    <<AnnotationReference-rsupan,@RestUriParam>>
+
+== @RestUriParam
+
+Category: REST +
+ Mule Version: 3.5 and later
+
+Allows you to dynamically generate URIs by inserting parameters which are annotated with the @RestUriParam annotation.
+
+You can use the <<AnnotationReference-rsupan,@RestUriParam>>  annotation, as well as other related annotations, on  `@Processor`  method arguments or <<AnnotationReference-confan,@Configurable>>  fields of the connector.
+
+When generating the request call, DevKit includes a non-annotated argument and an argument annotated with <<AnnotationReference-payan,@Payload>> as the body of the call.
+
+When applying annotations to @Processor methods, specify a placeholder in the URI by surrounding the placeholder with curly braces, for example  `{type}.`
+
+You can apply @RestUriParam to @Processor methods arguments as follows:
+
+[source,java,linenums]
+----
+@Processor
+@RestCall(uri = "{url}/create/{type}", method = org.mule.api.annotations.rest.HttpMethod.POST)
+public abstract String create(@RestUriParam("type") String type)  throws IOException;
+----
+
+Another way is to annotate the @Configurable variable with @RestUriParam as follows:
+
+[source,java,linenums]
+----
+@Configurable
+@RestUriParam("url")
+@Default("http://localhost:8089")
+private String url;
+
+@Processor
+@RestCall(uri = "{url}/listType", method = org.mule.api.annotations.rest.HttpMethod.GET)
+  public abstract String getByType(@RestQueryParam("type") String type)
+   throws IOException;
+----
+
+The next example replaces the path:
+
+[source,java,linenums]
+----
+@RestCall(uri = "http://myservice.com/{path}", method = HttpMethod.HEAD)
+----
+
+Reference the path argument:
+
+[source,java,linenums]
+----
+...
+Public abstract String setPath(@RestURIParam String path ...
+----
+
+See also: <<AnnotationReference-binpan,@BinaryParam>> <<AnnotationReference-rstcan,@RestCall>>  <<AnnotationReference-rstean,@RestExceptionOn>> <<AnnotationReference-rstpan,@RestHeaderParam>>   +
+ <<AnnotationReference-rshcan,@RestHttpClient>> <<AnnotationReference-rsppan,@RestPostParam>>   <<AnnotationReference-rsqpan,@RestQueryParam>>   <<AnnotationReference-rstoan,@RestTimeout>>
+
+== @SessionHeaders
+
+Category: Argument Passing +
+ Mule Version: 3.5 and later
+
+Marks a method parameter that passes in one or more received headers.
+
+This annotation value can define a single header, a comma-separated list of header names, an asterisk '*' to denote all headers, or a comma-separated list of wildcard expressions such as `MULE_*, X-*`. By default, if a named header is not present on the current message, an exception is thrown. However, if the header name is defined with the '?' post fix, it's marked as optional.
+
+When defining multiple header names or using wildcards, this parameter can be a Map or List. If a Map is used, the header name and value are passed. If List is used, just the header values are used.
+
+If a single header name is defined, the header type can be used as the parameter type, though List or Map can be used too.
+
+The Inbound headers collection is immutable, so the headers Map or List passed in are also immutable. Attempting to write to the Map or List results in an UnsupportedOperationException.
+
+See also: <<AnnotationReference-inhean,@InboundHeaders>>   <<AnnotationReference-ivhean,@InvocationHeaders>>   <<AnnotationReference-outhan,@OutboundHeaders>>  <<AnnotationReference-payan,@Payload>>
+
+== @Start
+
+Category: LifeCycle +
+ Mule Version: 3.5 and later
+
+Mark a method to be started during a method's `org.mule.lifecycle.Startable` phase. *Note:* `start` is a reserved word and cannot be used as the method's name.
+
+[source,java,linenums]
+----
+@Start
+public void mystart() {
+     this.sessionId = serviceProvider.login(username, password);
+}
+----
+
+See also: <<AnnotationReference-displ,@Dispose>>   <<AnnotationReference-initan,@Initialise>>   <<AnnotationReference-stopan,@Stop>>
+
+== @Stop
+
+Category: LifeCycle +
+ Mule Version: 3.5 and later
+
+Mark a method to be stopped during a method's `org.mule.lifecycle.Stoppable` phase. *Note:* `stop` is a reserved word and cannot be used as the method's name.
+
+[source,java,linenums]
+----
+@Start
+public void mystop() {
+    if ( this.sessionId != null ) {
+       serviceProvider.logout(sessionId);
+    }
+}
+----
+
+See also: <<AnnotationReference-displ,@Dispose>>   <<AnnotationReference-initan,@Initialise>>   <<AnnotationReference-stan,@Start>>
+
+== @Source
+
+Category: General +
+ Mule Version: 3.5 and later
+
+Marks a method inside a <<AnnotationReference-connan,@Connector>> as a callable from within a Mule flow and capable of generating Mule events.
+
+This annotation marks a method inside a http://mulesoft.github.io/mule-devkit/3.6.2/apidocs/org/mule/api/annotations/Module.html[Module] as callable from within a Mule flow and capable of generating Mule events. Each marked method has an `org.mule.api.source.MessageSource` generated. The method must receive a SourceCallback as one of its arguments. It does not matter which parameter it is as long it is there.
 
 [source,java,linenums]
 ----
 @Source
-   public void subscribeTopic(String topic,
-     final SourceCallback callback) {
-       getBayeuxClient().subscribe(topic,
-         new ClientSessionChannel.MessageListener() {
-         @Override
-           public void onMessage(ClientSessionChannel channel,
-             Message message) {
-               try {
-                 callback.process(message.getData());
-               } catch (Exception e) {
-                 LOGGER.error(e);
-               }
-             }
-         });
-     }
+public void subscribeTopic(String topic, final SourceCallback callback) {
+  getBayeuxClient().subscribe(topic, new ClientSessionChannel.MessageListener() {
+    @Override
+    public void onMessage(ClientSessionChannel channel, Message message) {
+      try {
+        callback.process(message.getData());
+      } catch (Exception e) {
+        LOGGER.error(e);
+      }
+    }
+  });
+}
 ----
-|`@Transformer` a|Marks a method as a Transformer of data-types or as data formats in the context of the connector.
+
+Invoke this method as follows:
+
+[source,xml,linenums]
+----
+<flow name="myFlow">
+  <sfdc:subscribe-topic topic="/someTopic"/>
+  <logger level="INFO" message="#[payload]"/>
+  ...
+</flow>
+----
+
+This flow subscribes to a topic and when an update appears, invokes the logger message processor.
+
+See also:  <<AnnotationReference-catan,@Category>>  <<AnnotationReference-confan,@Configurable>>    <<AnnotationReference-connan,@Connector>>    <<AnnotationReference-expran,@Expr>>  <<AnnotationReference-expenan,@ExpressionEnricher>>   +
+ <<AnnotationReference-exevan,@ExpressionEvaluator>>  <<AnnotationReference-exlan,@ExpressionLanguage>>  <<AnnotationReference-filan,@Filter>>  <<AnnotationReference-iconan,@Icons>>    <<AnnotationReference-ignan,@Ignore>>  <<AnnotationReference-mimean,@Mime>>   +
+ <<AnnotationReference-modulean,@Module>>  <<AnnotationReference-pagean,@Paged>>  <<AnnotationReference-procan,@Processor>>   <<AnnotationReference-tranan,@Transformer>>  <<AnnotationReference-trsan,@TransformerResolver>>
+
+
+
+== @Summary
+
+Category: Display +
+ Mule Version: 3.5 and later
+
+Adds display information to a field or parameter. Use this annotation to instance variables and method parameters to provide a way to override the default inferred description for a <<AnnotationReference-confan,@Configurable>> variable or a <<AnnotationReference-procan,@Processor>>, <<AnnotationReference-srcan,@Source>>, <<AnnotationReference-tranan,@Transformer>> method parameter.
+
+[source,java,linenums]
+----
+@Processor
+@Summary("This processor puts an animal in the barn")
+public String putInBarn(String animal)
+{
+    return animal + "has been placed in the barn";
+}
+----
+
+See also: <<AnnotationReference-fnan,@FriendlyName>>   <<AnnotationReference-passan,@Password>>   <<AnnotationReference-pathan,@Path>>   <<AnnotationReference-plcan,@Placement>>   <<AnnotationReference-textan,@Text>>
+
+== @TestConnectivity
+
+Category: Connection Management +
+Mule Version: 3.6 and later
+
+Indicates a class for testing connection connectivity. @TestConnectivity makes a connector simpler and helps build better connection strategies.
+
+The following example is for connectors with connection management and connectivity testing:
+
+[source,java,linenums]
+----
+@ConnectionManagement
+public class BasicAuthConnectionStrategy{
+  @Connect
+  @TestConnectivity //(active=true) default
+  //Connection management methods
+}
+----
+
+The following example is for connectors with connection management and no connectivity testing:
+
+[source,java,linenums]
+----
+@ConnectionManagement
+public class BasicAuthConnectionStrategy{
+  @Connect
+  @TestConnectivity(active=false)
+  //Connection management methods
+}
+----
+
+The following example is for connectors without connection management and connectivity testing:
+
+[source,java,linenums]
+----
+@Configuration
+public class BasicConnectionStrategy{
+  @TestConnectivity//(active=true) default
+  public void myCustomMethodForTestingConnectivity() throws ConnectionException{
+    //code that uses @Configurable
+    ..
+    if ("something went wrong"){
+      throw new ConnectionException(
+         ConnectionExceptionCode.CANNOT_REACH,
+         "what your API has returned, if it did..",
+         "some meaninful stuff about your API")
+    }
+    ...
+    //if we manage to get here, it means that the connection was
+    // successful, hence, no need to return a boolean
+  }
+}
+----
+
+The @TestConnectivity method must:
+
+* Receive zero parameters. This constraint does not applies for the @Connect method when being annotated with @TestConnectivity.
+* Throw `org.mule.api.ConnectionException`.
+* Be public and not static.
+* Not contain any state, use only @Configurable (or the @Connect parameters, if that was the annotated method).
+* Work in a @Connector without connection manager (as test connectivity scenario is covered in the @Connect method).
+
+See also: <<AnnotationReference-configan,@Configuration>> <<AnnotationReference-confan,@Configurable>> <<AnnotationReference-cnctan,@Connect>>
+
+== @Text
+
+Category: Display +
+ Mule Version: 3.5 and later
+
+Identifies a parameter as being large text input. This marker generates a child element instead of an attribute for the schema generation, but it also uses a text area instead of a text field in the Anypoint Studio dialog generation.
+
+See also: <<AnnotationReference-fnan,@FriendlyName>>   <<AnnotationReference-passan,@Password>>   <<AnnotationReference-pathan,@Path>>   <<AnnotationReference-plcan,@Placement>>   <<AnnotationReference-suman,@Summary>>
+
+== @Transformer
+
+Category: General +
+ Mule Version: 3.5 and later
+
+Marks a method as a Transformer of data-types or as data formats in the context of the connector.
 
 This annotation identifies a method that becomes a Mule transformer.
 
@@ -226,7 +2467,17 @@ This annotation identifies a method that becomes a Mule transformer.
 @Transformer(sourceTypes = { Object[].class })
 public static List transformArrayToList(@Payload Object[] payload)
 ----
-|`@TransformerResolver` a|Finds transformers that match a criteria in the registry. Implementations of this interface use some or all of the information passed in to discover a matching transformer.
+
+See also:  <<AnnotationReference-catan,@Category>>  <<AnnotationReference-confan,@Configurable>>  <<AnnotationReference-connan,@Connector>>  <<AnnotationReference-expran,@Expr>> <<AnnotationReference-expenan,@ExpressionEnricher>>  +
+ <<AnnotationReference-exevan,@ExpressionEvaluator>>  <<AnnotationReference-exlan,@ExpressionLanguage>>  <<AnnotationReference-filan,@Filter>>  <<AnnotationReference-iconan,@Icons>>  <<AnnotationReference-ignan,@Ignore>>   +
+ <<AnnotationReference-mimean,@Mime>>  <<AnnotationReference-modulean,@Module>>  <<AnnotationReference-pagean,@Paged>>  <<AnnotationReference-procan,@Processor>>   <<AnnotationReference-srcan,@Source>> <<AnnotationReference-trsan,@TransformerResolver>>
+
+== @TransformerResolver
+
+Category: General +
+ Mule Version: 3.5 and later
+
+Finds transformers that match a criteria in the registry. Implementations of this interface use some or all of the information passed in to discover a matching transformer.
 
 Register implementations of this interface with the registry before an implementation can be picked up. Typically this is done using `registry-bootstrap.properties`.
 
@@ -246,578 +2497,35 @@ public static org.mule.api.transformer.Transformer
       return null;
 }
 ----
-|===
 
-== Argument Passing Annotations
+See also:  <<AnnotationReference-catan,@Category>>  <<AnnotationReference-confan,@Configurable>>  <<AnnotationReference-connan,@Connector>>  <<AnnotationReference-expran,@Expr>>  <<AnnotationReference-expenan,@ExpressionEnricher>>  <<AnnotationReference-exevan,@ExpressionEvaluator>>  <<AnnotationReference-exlan,@ExpressionLanguage>>  <<AnnotationReference-filan,@Filter>>  <<AnnotationReference-iconan,@Icons>>  <<AnnotationReference-ignan,@Ignore>>  <<AnnotationReference-mimean,@Mime>>    +
+ <<AnnotationReference-modulean,@Module>>  <<AnnotationReference-pagean,@Paged>>  <<AnnotationReference-procan,@Processor>>   <<AnnotationReference-srcan,@Source>>  <<AnnotationReference-tranan,@Transformer>>
 
-[%header%autowidth.spread]
-|===
-|Annotation |Description
-|`@Payload` a|Marks arguments to receive the payload.
+== @ValidateConnection
 
-[source,java,linenums]
-----
-@Processor
-public String setPayload(@Payload String payload) { ... }
-----
-|`@InboundHeaders` a|Passes inbound headers.
+Category: Connection Management +
+ Mule Version: 3.5 and later
 
-[source,java,linenums]
-----
-@Processor
-public String getInboundHeaders(@InboundHeaders("myHeader") String myHeader) { ... }
-----
-|`@InvocationHeaders` a|Passes invocation headers. This can be single header, a comma-seperated list of header names, an astrick "*" to donate all headers, or a comma-seperated list of wildcard expressions. By default, if a named header is not present, an exception is thrown. However, if the header name is defined with the "?" post fix, it is marked as optional.
+Validates a connection prior to each invocation of the operations exposed by the <<AnnotationReference-procan,@Processor>> annotation.
 
-[source,java,linenums]
-----
-@Processor
-public String getInvocationHeaders(@InvocationHeaders("myHeader")
-  String myHeader) { ... }
-----
-|`@OutboundHeaders` a|Used to pass outbound headers.
+This method is called by Mule to check whether the connection is actually open or not.
 
-[source,java,linenums]
-----
-@Processor
-public void outboundHeaders(@OutboundHeaders
-  Map<String, Object> outboundHeaders) { ... }
-----
-|`@SessionHeaders` a|Marks a method parameter that passes in one or more received headers.
+A method annotated with `@ValidateConnection` must:
 
-This annotation value can define a single header, a comma-seperated list of header names, an asterisk * to denote all headers, or a comma-seperated list of wildcard expressions such as `MULE_*, X-*`. By default, if a named header is not present on the current message, an exception is thrown. However, if the header name is defined with the "?" post fix, it's marked as optional.
+* Be `public`
+* Take no input parameters
+* Return `boolean` or `java.lang.Boolean`
 
-When defining multiple header names or using wildcards, this parameter can be a Map or List. If a Map is used, the header name and value are passed. If List is used, just the header values are used.
+Only one method on a `@Connector` class can be annotated with `@ValidateConnection.`
 
-If a single header name is defined, the header type can be used as the parameter type, though List or Map can be used too.
-
-The Inbound headers collection is immutable, so the headers Map or List passed in are also immutable. Attempting to write to the Map or List results in an UnsupportedOperationException.
-|===
-
-== Connection Management
-
-For more information, see xref:basic-auth.adoc[Basic Authentication]
-
-[%header%autowidth.spread]
-|===
-|Annotation |Description
-|`@Connect` a|Marks a method inside a @Connector scope as responsible for creating a connection.
-
-This method can have several parameters and can contain annotations such as @ConnectionKey or @Password. The @Connect annotation guarantees that the method is called before calling any message processor.
-
-Restrictions:
-
-* The parameters cannot be of primitive type such as int, bool, short, etc.
-* The method's return type must be void.
-
-Example:
-
-[source,java,linenums]
-----
-@Connect
-public void connect(@ConnectionKey String username, String password) throws ConnectionException { ... }
-----
-|`@ConnectionIdentifier` a|Marks a method inside a @Connector as responsible for identifying the connection.
-
-The connector's connection manager calls the method annotated with @ConnectionIdentifier for debugging purposes.
-
-This annotation must be used on a non-static method without arguments and must return a String that contains the connection identifier representation.
-
-[source,java,linenums]
-----
-@ConnectionIdentifier
-  public String connectionId() {
-    return "001";
-  }
-----
-|`@Disconnect` a|Marks a method inside a @Connector as responsible for disposing the connection. Called by the connector's connection manager.
-
-This method is invoked as part of the maintenance of the Connection Pool. The pool is configured with a max idle time value.
-
-When a connection lies in the pool without use for more than the configured time, then the method annotated with @Disconnect is invoked and subsequently the @Connect method. Also, when the @InvalidateConnectionOn annotation is used on a method to catch Exceptions, then the @Disconnect method likewise is invoked with the subsequent reconnect.
-
-[source,java,linenums]
-----
-@Disconnect
-public void disconnect() { ... }
-----
-|`@InvalidateConnectionOn` a|Used a method to catch Exceptions - deprecated use @ReconnectOn instead.
-
-[source,java,linenums]
-----
-@Processor
-    @InvalidateConnectionOn(exception=AnimalException.class)
-    public Animal getAnimal (String id ) { ... }
-----
-|`@ReconnectOn` a|Used to invalidate connections. You can attach this annotation to any method annotated with @Processor. If the Processor or Source throws an exception that matches any of the exceptions specified in the @ReconnectOn annotation, the connection is invalidated.
-
-[source,java,linenums]
-----
-Processor
-@ReconnectOn(exceptions = {InvalidSessionFault.class, PasswordChangedException.class})
-public void myOperation(@Optional String source,
-                        @Optional Object destination) throws InvalidSessionFault, PasswordChangedException, InvalidParameterException
-{  ... }
-----
-|`@ValidateConnection` a|Validates a connection prior to each invocation of the operations exposed by the @Processor annotation.
+The following example determines whether a connection is active. The code simply checks if the connection parameter is null. A different implementation may be required for other connectors, depending on the protocol.
 
 [source,java,linenums]
 ----
 @ValidateConnection
-    public boolean isConnected() { ... }
-----
-|===
-
-== DataSense
-
-For information, see xref:3.5@mule-runtime::datasense.adoc[DataSense], xref:adding-datasense.adoc[Adding DataSense], and xref:adding-datasense-query-language.adoc[Adding DataSense Query Language]
-
-[%header%autowidth.spread]
-|===
-|Annotation |Description
-|`@MetaDataCategory` a|Describes a grouping DataSense concrete class, which returns the types and description of any of those types.
-
-Use to annotate a class that groups methods used for providing metadata about a connector using DataSense.
-
-[source,java,linenums]
-----
-@MetaDataCategory
-public class MyCategory {
-----
-|`@MetaDataKeyParam` a|Marks a parameter inside `@Processor` as the key for a metadata lookup.
-
-[source,java,linenums]
-----
-public Object create(@MetaDataKeyParam String entityType, @Default("#[payload]") Object entityData) {...}
-----
-|`@MetaDataKeyRetriever` a|Use to annotate a method that is responsible to return a service's entities names.
-
-Given the functionality of this annotation, the return type of this Java method must be a `List<MetaDataKey>`.
-
-The entities returned from this method are from a query after a detailed description obtained using `@MetaDataRetriever`.
-
-Use this annotation inside a `@Connector` context or inside an `@MetaDataCategory`.
-
-[source,java,linenums]
-----
-@MetaDataKeyRetriever
-    public List<MetaDataKey> getMetaDataKeys() throws Exception {
-----
-|`@MetaDataOutputRetriever` a|Marks a method as a describer for `@MetaData` for output scenarios, for a given `@MetaDataKey`.
-
-[source,java,linenums]
-----
-@MetaDataOutputRetriever
-    public MetaData getMetaDataOutputRestImplCategory(MetaDataKey key) throws Exception {
-        checkProperConnectorInjection();
-        return new DefaultMetaData(resolveOutputMetaDataModel(key));
-----
-|`@MetaDataRetriever` a|The method annotated with `@MetaDataRetriever` describes the metadata for the received metadata key parameter.
-
-Uses the list of metadata keys retrieved by `@MetaDataKeyRetriever` to retrieve the entity composition of each entity Type.
-
-[source,java,linenums]
-----
-@MetaDataRetriever
-public MetaData getMetadata(MetaDataKey key) {  }
-----
-|`@MetaDataScope` a|
-
-[source,java,linenums]
-----
-@MetaDataScope(DefaultCategory.class)
-@Connector(name = "my-connector", minMuleVersion = "3.5")
-public class MyConnector {
-...
+public boolean isConnected() {
+    return connection != null;
 }
 ----
-|`@NoMetaData` |Marks a `@Processor` to avoid discovering metadata with `@MetaDataRetriever` and `@MetaDataKeyRetriever` mechanism.
-|`@Query` a|Supports easy query building by DataSense Query Language (DSQL). Define `@Query` within an `@Connector` scope.
 
-[source,java,linenums]
-----
-@Processor
-public void setQuery(@Query DsglQuery query) {
-...
-}
-----
-|`@QueryPart` |Used in advanced `@Query` scenarios.
-|`@QueryTranslator` a|Translates a DSQL query into a native one.
-
-[source,java,linenums]
-----
-@QueryTranslator
-public String toNativeQuery(DsqlQuery query){
-    SimpleSyntaxVisitor visitor = new SimpleSyntaxVisitor();
-    query.accept(visitor);
-    return visitor.dsqlQuery();
-}
-----
-|===
-
-== Display
-
-[%header%autowidth.spread]
-|===
-|Annotation |Description
-|`@FriendlyName` a|Gives a short name to an annotated element. If a value is not specified, the name is inferred from the annotated element's name.
-
-[source,java,linenums]
-----
-@FriendlyName("Consumer Key")
-private String consumerKey;
-
-
-// Alternate: Declare in a method’s arguments:
-  public abstract String getByTypeAndName(
-    @RestQueryParam("name") @FriendlyName("name") String uname)
-            throws IOException;
-----
-|`@Password` a|Identifies a field or method parameter as being a password, or more generally as a variable which contains data that cannot be displayed as plain text.
-
-[source,java,linenums]
-----
-@Connect
-public void connect(@ConnectionKey String username,
-  @Password String password)
-        throws ConnectionException
-----
-|`@Path` a|Identifies a field or method parameter as being a path to a file. This displays a window at Studio to choose a file from the filesystem.
-
-[source,java,linenums]
-----
-@Configurable
-    @Path
-    String path;
-----
-|`@Placement` a|Defines the placement of a configurable attribute in the Anypoint Studio configuration.
-
-[source,java,linenums]
-----
-@Configurable
-@Placement(group = "Basic Settings", order = 1)
-private String consumerKey;
-----
-|`@Summary` a|Adds display information to a field or parameter.
-
-[source,java,linenums]
-----
-@Processor
-@Summary("This processor puts an animal in the barn")
-public String putInBarn(String animal)
-----
-|`@Text` a|Identifies a parameter as being large text input. This marker generates a child element instead of an attribute for the schema generation, but it also uses a text area instead of text field in the Anypoint Studio dialog generation.
-|===
-
-== LifeCycle
-
-You can use these annotations to mark a method for when `org.mule.lifecycle` events occur.
-
-[%header%autowidth.spread]
-|===
-|Annotation |Description
-|`@Start` a|Mark a method to be started during a method's `org.mule.lifecycle`. Startable phase. *Note:* `start` is a reserved word that cannot be used as the method's name.
-
-[source,java,linenums]
-----
-@Start
-public void mystart() {
-    this.sessionId = serviceProvider.login(username, password);
-}
-----
-|`@Stop` a|Mark a method to be stopped during a method's `org.mule.lifecycle`. Stoppable phase. *Note:* `stop` is a reserved word that cannot be used as the method's name.
-
-[source,java,linenums]
-----
-@Stop
-public void mystop() {
-    if ( this.sessionId != null ) {
-        serviceProvider.logout(sessionId);
-    }
-}
-----
-|`@Initialise` a|Mark a method to be initialized during a method's `org.mule.lifecycle`. Initialisable phase. *Note:* `initialise` is a reserved word that cannot be used as the method's name.
-
-[source,java,linenums]
-----
-@Initialise
-public void initialize() {
-    if ( this.sessionId != null ) {
-        serviceProvider.initialise(sessionId);
-    }
-}
-----
-|`@Dispose` a|Mark a method to be disposed during a method's `org.mule.lifecycle`. Disposable phase. *Note:* `dispose` is a reserved word that cannot be used as the method's name.
-
-[source,java,linenums]
-----
-@Dispose
-public void mydispose()  {
-    if ( this.sessionId != null ) {
-        serviceProvider.dispose(sessionId);
-    }
-}
-----
-|===
-
-== OAuth
-
-For more information, see xref:oauth-v1.adoc[OAuth V1] or xref:oauth-v2.adoc[OAuth V2].
-
-[%header%autowidth.spread]
-|===
-|Annotation |Description
-|`@OAuth` a|Annotates connectors that uses the OAuth 1.0a protocol for authentication.
-
-[source,java,linenums]
-----
-@Connector(name = "myconnector", friendlyName = "MyConnector")
-@OAuth(requestTokenUrl = "https://example.com/uas/oauth/requestToken",
-accessTokenUrl = "https://example.com/uas/oauth/accessToken",
-authorizationUrl = "https://example.com/uas/oauth/authorize")
-public class MyConnector { ... }
-----
-|`@OAuth2` a|Annotates connectors that uses the OAuth 2 protocol for authentication.
-
-[source,java,linenums]
-----
-@Connector(name = "oauth2connector")
-@OAuth2(authorizationUrl = "http://example.com", accessTokenUrl = "http://example.com")
-public class MyConnector { ... }
-----
-|`@OAuthAccessToken` a|Holds an access token. When an `@Processor` method is invoked, an OAuth access token is set in case the Resource Owner already authorized the Consumer; otherwise the method isn't invoked and the Resource Owner is redirected to the authorization URL.
-
-[source,java,linenums]
-----
-@Processor
-public Object accessProtectedResource(@OAuthAccessToken String accessToken, ...)
-{ ... }
-----
-
-Or:
-
-[source,java,linenums]
-----
-@OAuthAccessToken private String accessToken;
-----
-|`@OAuthAccessTokenIdentifier` a|Marks a method as responsible for identifying the users of an access token. The method is called by a connector's access token manager. This identification is used as a key to store access tokens.
-
-[source,java,linenums]
-----
-@OAuthAccessTokenIdentifier
-public String getUserId() {
-return api.getUserId(myAccessToken);
-}
-----
-|`@OAuthAccessTokenSecret` a|Holds an access token secret.
-
-[source,java,linenums]
-----
-@OAuthAccessTokenSecret private String accessTokenSecret;
-----
-|@`OAuthAuthorizationParameter` a|Appends an authorization parameter to authorize a URL.
-
-[source,java,linenums]
-----
-@OAuthAccessTokenSecret private String accessTokenSecret;
-----
-|`@OAuthAuthorizationParameter` a|Appends an authorization parameter to authorize a URL.
-
-[source,java,linenums]
-----
-@OAuthAuthorizationParameter(name = "xxx", type = xxx, description = "xxx")
-----
-|`@OAuthCallbackParameter` a|Identifies the module attribute that represent each parameter on the service OAuth response.
-
-[source,java,linenums]
-----
-@OAuthCallbackParameter(expression = "#[json:instance_url]")
-private String instanceId;
-----
-|`@OAuthConsumerKey` a|Holds an OAuth consumer key. This field must contain the OAuth Consumer Key as provided by the Service Provider and described in the OAuth specification.
-
-[source,java,linenums]
-----
-@Configurable @OAuthConsumerKey private String consumerKey;
-----
-|`@OAuthConsumerSecret` a|Holds an OAuth consumer secret. This field must contain the OAuth Consumer Key as provided by the Service Provider and described in the OAuth specification.
-
-[source,java,linenums]
-----
-@Configurable @OAuthConsumerSecret private String consumerSecret;
-----
-|`@OAuthInvalidateAccessTokenOn` a|Marks a method which automatically refreshes the tokens.
-
-*Note*: This annotation is deprecated. Use `@ReconnectOn` instead.
-
-[source,java,linenums]
-----
-@Processor
-@OAuthInvalidateAccessTokenOn(exception = RuntimeException.class)
-public void processor() { ... }
-----
-|`@OAuthPostAuthorization` a|Marks a method inside OAuth as the responsible for setting up the connector _after_ OAuth completes.
-
-[source,java,linenums]
-----
-@OAuthPostAuthorization
-    public void postAuthorize() throws ConnectionException, MalformedURLException, AsyncApiException { ... }
-----
-|`@OAuthProtected` a|Marks a method inside a Connector as requiring an OAuth access token. Such a method fails to execute while the connector is not authorized. Therefore, forcing the OAuth to happen first.
-
-[source,java,linenums]
-----
-@OAuthProtected
-@Processor
-    public void logInfo() {
-        logger.info(String.format("OAuthAccessToken=%s", getAccessToken()));
-        logger.info(String.format("OAuthAccessTokenSecret=%s", getAccessTokenSecret()));
-    }
-----
-|`@OAuthScope` a|Indicates that access to the Protected Resources must be restricted in scope. A field annotated with `@OAuthScope` must be present and contain a String indicating the desired scope.
-
-[source,java,linenums]
-----
-@Configurable
-    @OAuthScope
-    @Optional
-    @Default("")
-    private String scope;
-----
-|===
-
-== Parameters
-
-[%header%autowidth.spread]
-|===
-|Annotation |Description
-|`@ConnectionKey` a|Marks a parameter inside the connect method as part of the key for the connector lookup. This only can be used as part of the `@Connect` method.
-
-[source,java,linenums]
-----
-@Connect(strategy=ConnectStrategy.SINGLE_INSTANCE)
-    public void connect(@ConnectionKey String username, @Password String password)
-        throws ConnectionException { … }
-----
-|`@Default` a|Specifies a default value to a `@Configurable` field or a `@Processer` or `@Source` parameter.
-
-[source,java,linenums]
-----
-@Configurable
-@Default("mule")
-private String type;
-----
-
-Or:
-
-[source,java,linenums]
-----
-@Processor
-public abstract String listAnimals(@Default("mule") String type) throws IOException;
-----
-|`@Email` |Specifies a default email pattern.
-|`@ExceptionPayload` a|Specifies the payload for an exception.
-
-[source,java,linenums]
-----
-@Processor
-    public Object returnExceptionPayload(@ExceptionPayload Object payload) {
-        return payload;
-    }
-----
-|`@MetaDataStaticKey` a|Defines the specific MetaData type of the annotated value. When applied to a Processor it affects (by default) just the Output, otherwise it affects the field parameter.
-
-[source,java,linenums]
-----
-@Processor
-    @MetaDataStaticKey(type = "CLIENT")
-    public Map<String, Object> getClient(String id) {
-        return createClientObject();
-    }
-----
-|`@Optional` a|Marks a `@Configurable` field or a `@Processor` or `@Source` parameters as optional.
-
-[source,java,linenums]
-----
-@Configurable
-@Optional
-String path;
-----
-|`@RefOnly` a|Marks a `@Configurable` field or a `@Processor` or `@Source` parameters as being passed by reference only.
-|===
-
-== Rest
-
-[%header%autowidth.spread]
-|===
-|Annotation |Description
-|`@BinaryParam` |Specifies if a payload is a binary type.
-|`@RestCall` a|Indicates that upon invocation, the processor makes a RESTful request.
-
-[source,java,linenums]
-----
-@Processor
-@RestCall(uri = "{url}/list", method = org.mule.api.annotations.rest.HttpMethod.GET)
-    public abstract String showAll() throws IOException;
-----
-|`@RestExceptionOn` a|Throws an exception on specified criteria
-
-[source,java,linenums]
-----
-@Processor
-@RestCall(uri = "{url}/animals", method = HttpMethod.GET, exceptions = {@RestExceptionOn(expression="#[message.inboundProperties['http.status'] != 200]", exception = AnimalNotFoundException.class)})
-    public abstract List<Animal> listAnimals(@RestQueryParam("type") String type) throws IOException;
-----
-|`@RestHeaderParam` a|Allows you to insert custom headers in the call.
-
-[source,java,linenums]
-----
-@Processor
-@RestCall(uri = "{url}/create", method = org.mule.api.annotations.rest.HttpMethod.POST)
-  public abstract String create( @RestHeaderParam("age")
-    int age)
-throws IOException;
-----
-|`@RestHtppClient` a|An annotation to mark the HttpClient module uses. This way, you avoid creating multiple clients and have the opportunity to perform your own calls or to configure the HttpClient to fulfull special needs:
-
-[source,java,linenums]
-----
-@RestHttpClient
-HttpClient client = new HttpClient();
-----
-|`@RestPostParam` a|Allows you to set parameters in the body of POST method calls.
-
-[source,java,linenums]
-----
-@Processor
-    @RestCall(uri = "{url}/form", method = HttpMethod.POST)
-    public abstract String addAnimal(@RestPostParam("type") String type) throws IOException;
-----
-|`@RestQueryParam` a|Specifies URI query parameters, which are appended to the path of the URI after a ? or & symbol.
-
-[source,java,linenums]
-----
-@Processor
-    @RestCall(uri = "{url}/listName", method = org.mule.api.annotations.rest.HttpMethod.GET)
-    public abstract String getByType(
-            @RestQueryParam("type") String type)
-            throws IOException;
-----
-|`@RestTimeout` a|Specifies a timeout for the rest call. This annotation can be attached to a `@RestCall` to optionally specify a timeout in milliseconds for the rest call. If the rest call exceeds the specified time, a RuntimeException is going to be thrown, unless an exception is specified for the timeout.
-
-[source,java,linenums]
-----
-@Processor
-  @RestTimeout(timeout = 1, exception = TimeoutException.class)
-  @RestCall(uri = "{url}/list/timeout", method = HttpMethod.GET)
-  public abstract String listAnimalsTimeout() throws IOException;
-----
-|`@RestUriParam` a|Allows you to insert URI parameters.
-
-[source,java,linenums]
-----
-@Processor
-    @RestCall(uri = "{url}/create/{type}", method = org.mule.api.annotations.rest.HttpMethod.POST)
-    public abstract String create(@RestUriParam("type") String type)  throws IOException;
-----
-|===
+See also:  xref:connection-management.adoc[Connection Management]  <<AnnotationReference-cnctan,@Connect>>  <<AnnotationReference-coidan,@ConnectionIdentifier>>  <<AnnotationReference-discan,@Disconnect>>  <<AnnotationReference-invan,@InvalidateConnectionOn>>  <<AnnotationReference-recan,@ReconnectOn>>

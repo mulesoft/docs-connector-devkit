@@ -2,30 +2,27 @@
 ifndef::env-site,env-github[]
 include::_attributes.adoc[]
 endif::[]
+:keywords: devkit, connector, attributes
 
 Like all Mule elements, connectors have attributes that can be assigned in the connector's global configuration dialog.
 
-image::6-package.png[]
-
-== Assumptions
+== Prerequisites
 
 This document assumes you are familiar with the xref:index.adoc[Anypoint Connector DevKit] and you have already covered the connector's xref:authentication.adoc[authentication] methods.
 
-== @Configurable Annotation
+== `@Configurable` Annotation
 
-The connector's attributes are defined using the `@Configurable` annotation on the class private attributes. These attributes will later be assigned in the connector's global configuration dialog. In addition to the `@Configurable` annotation, these attributes need public getters and setters (not shown).
+The connector's attributes are defined using the `@Configurable` annotation on the class private attributes. These attributes are later assigned in the connector's global configuration dialog. In addition to the `@Configurable` annotation, these attributes need public getters and setters (not shown).
 
-[WARNING]
-====
+[NOTE]
 * A `@Connector` can have any number of simple or complex `@Configurable` attributes.
-* `@Configurable` attributes are mandatory from a user perspective
-====
+* `@Configurable` attributes are mandatory from a user perspective.
 
 For example:
 
 [source,java,linenums]
 ----
-@Connector(name="barn", schemaVersion="1.0", friendlyName="Barn", minMuleVersion="3.5")
+@Connector(name="barn", schemaVersion="1.0", friendlyName="Barn", minMuleVersion="3.6")
 public class BarnConnector
 {
     @Configurable
@@ -37,26 +34,25 @@ public class BarnConnector
     public void setKey(String key) {
         this.key = key;
     }
-
 }
 ----
 
-Then the XML configuration for the connector looks as follows:
+XML configuration:
 
-[source,xml]
+[source,xml,linenums]
 ----
 <barn:config name="Barn" key="myKey" doc:name="Barn"/>
 ----
 
 image::configurable-screenshot.png[]
 
-== @Optional Annotation
+== `@Optional `Annotation
 
 As mentioned before, @Configurable attributes are mandatory. If we want to make them optional we need to mark them with the `@Optional` annotation.
 
 [source,java,linenums]
 ----
-@Connector(name="barn", schemaVersion="1.0", friendlyName="Barn", minMuleVersion="3.5")
+@Connector(name="barn", schemaVersion="1.0", friendlyName="Barn", minMuleVersion="3.6")
 public class BarnConnector
 {
     @Configurable
@@ -69,35 +65,34 @@ public class BarnConnector
     public void setKey(String key) {
         this.key = key;
     }
-
 }
 ----
 
-Then the XML configuration for the connector looks as follows:
+XML configuration:
 
-[source,xml]
+[source,xml,linenums]
 ----
 <barn:config name="Barn" key="myKey" doc:name="Barn"/>
 ----
 
 The following is also valid since assigning a value is optional:
 
-[source,xml]
+[source,xml,linenums]
 ----
 <barn:config name="Barn" doc:name="Barn"/>
 ----
 
 image::optional-screenshot.png[]
 
-== @Default Annotation
+== `@Default` Annotation
 
-For optional attributes only, you can set a default value using the `@Default` annotation. This value will be used if no value is assigned to the attribute.
+For optional attributes only, you can set a default value using the `@Default` annotation. This value is used if no value is assigned to the attribute.
 
 For example:
 
 [source,java,linenums]
 ----
-@Connector(name="barn", schemaVersion="1.0", friendlyName="Barn", minMuleVersion="3.5")
+@Connector(name="barn", schemaVersion="1.0", friendlyName="Barn", minMuleVersion="3.6")
 public class BarnConnector
 {
     @Configurable
@@ -110,53 +105,54 @@ public class BarnConnector
     public void setKey(String key) {
         this.key = key;
     }
-
 }
 ----
 
-Then the XML configuration for the connector can be configured as follows:
+XML configuration:
 
-[source,xml]
+[source,xml,linenums]
 ----
 <barn:config name="Barn" key="myKey" doc:name="Barn"/>
 ----
 
-If the `key` attribute is not present it will implicitly be assigned the value `testKey` as defined by the `@Default` annotation:
+If the `key` attribute is not present it implicitly is assigned the value `testKey` as defined by the `@Default` annotation:
 
-[source,xml]
+[source,xml,linenums]
 ----
 <barn:config name="Barn" doc:name="Barn"/>
 ----
 
 image::default-screenshot.png[]
 
-[TIP]
-Whenever an attribute is marked as `@Default`, it will implicitly be `@Optional` as well.
+[NOTE]
+Whenever an attribute is marked as `@Default`, it's implicitly `@Optional` as well.
+
 
 == Customizing Attributes Look and Feel
 
 By default, Anypoint DevKit infers the names and labels for the Studio dialog boxes from methods, parameters, JavaDoc comments, and instance variable names in your Java files. However, you can also use annotations to customize many aspects of the look and feel of your component to improve the user experience.
 
 [NOTE]
-The package https://www.mulesoft.org/docs/site/3.5.0/apidocs/org/mule/api/annotations/package-summary.html[org.mule.api.annotations.display] defines the annotations that let you perform these customizations.
+The package` org.mule.api.annotations.display `defines the annotations that let you perform these customizations.
 
 You can (and should) use several annotations that control how the attribute appears in the connector's dialog in Studio and in your connector documentation.
 
-== @FriendlyName Annotation
+
+== `@FriendlyName `Annotation
 
 Use this annotation to instance variables and method parameters to provide a way to override the default inferred nickname for a `@Configurable` variable or a `@Processor`/`@Source`/`@Transformer` method parameter. It is required that you provide a parameter is annotated with this.
 
 [source,java,linenums]
 ----
-@Connector(name="barn", schemaVersion="1.0", friendlyName="Barn", minMuleVersion="3.5")
+@Connector(name="barn", schemaVersion="1.0", friendlyName="Barn", minMuleVersion="3.6")
 public class BarnConnector
 {
   ...
 ----
 
-image::friendlyname-screenshot.png[friendlyName-screenshot]
+image::friendlyname-screenshot-1.png[friendlyName-screenshot-1]
 
-== @Password Annotation
+== `@Password `Annotation
 
 Use this annotation to identify a field or method parameter as a password or, more generally, as a variable which contains data that should not be displayed as plain text.
 
@@ -171,7 +167,7 @@ public void connect(@ConnectionKey String username, @Password String password)
 
 image::password-screenshot.png[]
 
-== @Summary Annotation
+== `@Summary` Annotation
 
 Use this annotation to instance variables and method parameters to provide a way to override the default inferred description for a `@Configurable` variable or a `@Processor`/`@Source`/`@Transformer` method parameter.
 
@@ -185,20 +181,20 @@ public String putInBarn(String animal)
 }
 ----
 
-== @Icons: Custom Palette and Flow Editor Icons
+== `@Icons`: Custom Palette and Flow Editor Icons
 
 Use this annotation on the connector class to override the default location of one or more of the required icons. The path needs to be relative to `/src/main/java`.
 
 [source,java,linenums]
 ----
 @Icons(connectorLarge="barn-icon-large.png", connectorSmall="barn-icon-small.png")
-@Connector(name="barn", schemaVersion="1.0", friendlyName="Barn", minMuleVersion="3.5")
+@Connector(name="barn", schemaVersion="1.0", friendlyName="Barn", minMuleVersion="3.6")
 public class BarnConnector
 {
    ...
 ----
 
-== @Placement: Field Order, Grouping, and Tabs
+== `@Placement`: Field Order, Grouping, and Tabs
 
 Use this annotation to instance variables and method parameters. It accepts the following parameters:
 
@@ -232,6 +228,5 @@ image::placement-2-screenshot.png[]
 
 == See Also
 
-* *NEXT:* Learn more about xref:complex-data-types-attributes.adoc[complex data types] attribute support, such as enumerated types and collections.** +
-**
+* *NEXT:* Learn more about xref:complex-data-types-attributes.adoc[complex data types] attribute support, such as enumerated types and collections.
 * Learn more about xref:adding-datasense.adoc[Adding DataSense] to your connector.

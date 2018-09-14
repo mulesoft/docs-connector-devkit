@@ -2,12 +2,11 @@
 ifndef::env-site,env-github[]
 include::_attributes.adoc[]
 endif::[]
+:keywords: devkit, oauth v1, api, authentication
 
 This page presents a detailed discussion of DevKit's support for OAuth V1 authentication, and how to implement a connector that uses OAuth V1 to authenticate with your API.
 
-image::5-package.png[]
-
-== Assumptions
+== Prerequisites
 
 This document assumes you are familiar with the xref:index.adoc[Anypoint Connector DevKit] and you are ready to implement authentication on your connector. It assumes you are familiar with the various xref:authentication-methods.adoc[authentication methods] and you are using OAuth V1 to authenticate with your API.
 
@@ -25,27 +24,23 @@ From the service provider's API documentation, obtain the values for the variabl
 |`authorizationUrl` |URL from to obtain authorization to resource access
 |===
 
-You must also arrange access to the API.  The process is specific to each API provider and the typical steps for this process are described in xref:setting-up-your-api-access.adoc[Setting up your API access].
+You must also arrange access to the API.  The process is specific to each API provider and the typical steps for this process are described in xref:setting-up-api-access.adoc[Setting Up API Access].
 
 == @OAuth Annotation
 
-To implement OAuth V1 authentication on your Connector you need to use the `@OAuth` annotation on the @Connector class.
+To implement OAuth V1 authentication on your connector you need to use the `@OAuth` annotation on the @Connector class.
 
-[WARNING]
-During the building process, a connector annotated with @OAuth gets two additional auto-generated @Processor methods called `authorize` and `unauthorize`. These message processors are in charge of initiating and ending the OAuth session.
+[NOTE]
+During the building process, a connector annotated with @OAuth gets two additional auto-generated @Processor methods called  `authorize` and `unauthorize`. These message processors are in charge of initiating and ending the OAuth session.
 
-The following table describes all parameters for the `@OAuth` annotation.
+The following table describes parameters for the `@OAuth` annotation.
 
-[%header,cols="4*"]
+[%header,cols="4*a"]
 |===
-a|
-*Parameter*
-a|
-*Description*
-a|
-*Required?*
-a|
-*Default Value*
+|Parameter
+|Description
+|Required?
+|Default Value
 
 |`messageSigner` |The signature method for use in +
  the OAuth 1.0a flow; this method is included in the `auth_signature_method` parameter. |  |`HMAC_SHA1`
@@ -54,7 +49,7 @@ a|
 |`accessTokenUrl` |URL defined by the service provider to obtain an access token. |✓ |
 |`authorizationUrl` |URL defined by the service provider, where the resource owner is redirected in order to grant authorization to the consumer. |✓ |
 |`verifierRegex` |A Java regular expression used to extract the verifier from the service provider response, after the resource owner authorizes the consumer. |  |`oauth_verifier=([^&]+)`
-|`callbackPath` |If the service provider only accepts a known redirect URL. Assign this parameter to the path inside your domain (denoted by the `fullDomain` environment variable) that's registered with the service provider as a redirect URL. If left empty (meaning the service provider accepts any URL as redirect URL), Mule uses a random path. |  |`<random path>`
+|`callbackPath` |If the service provider only accepts a known redirect URL. Assign this parameter to the path inside your domain (denoted by the `fullDomain` environment variable) that's registered with the service provider as a redirect URL. If left empty (meaning the service provider accepts any URL as redirect URL), Mule uses a random path. |  |`<random path> `
 |===
 
 === Maven Project Dependencies
@@ -64,13 +59,15 @@ To implement authorization with OAuth 1.0 using DevKit, you must add the followi
 [source,xml,linenums]
 ----
 <dependency>
-       <groupId>oauth.signpost</groupId>
-       <artifactId>signpost-core</artifactId>
-       <version>1.2.1.1</version>
+   <groupId>oauth.signpost</groupId>
+   <artifactId>signpost-core</artifactId>
+   <version>1.2.1.1</version>
 </dependency>
 ----
 
 === Adding @OAuth Annotation on the @Connector Class
+
+*Note*: OAuth V1 cannot be implemented as a connection strategy like the rest of the authentication methods, you can only use the annotation at @Connector class level.
 
 [source,java,linenums]
 ----
@@ -85,12 +82,12 @@ public class MyConnector {
 }
 ----
 
-== @Connector Class Properties
+=== @Connector Class Properties
 
-Your @Connector class needs OAuth-related @Configurable instance properties to allow the user to specify their consumer key and secret when using the connector:
+Your `@Connector` class needs OAuth-related `@Configurable` instance properties to allow the user to specify their consumer key and secret when using the connector:
 
-* @OAuthConsumerKey to hold the OAuth consumer key
-* @OAuthConsumerSecret to hold the OAuth consumer secret
+* `@OAuthConsumerKey` to hold the OAuth consumer key
+* `@OAuthConsumerSecret` to hold the OAuth consumer secret
 
 [source,java,linenums]
 ----
@@ -108,7 +105,7 @@ It also needs String properties to hold the access token and access token secret
 
 === @Processor Method Annotations
 
-For any @Processor method to be protected, add the @OAuthProtected annotation, as shown:
+For any `@Processor` method to be protected, add the @OAuthProtected annotation, as shown:
 
 [source,java,linenums]
 ----
@@ -129,36 +126,36 @@ public void myOperation(String source, Object destination)
 }
 ----
 
-When invoked, an @OAuthProtected @Processor method initiates the following activities:
+When invoked, an `@OAuthProtected @Processor` method initiates the following activities:
 
 . The first time a protected resource is accessed, the user is redirected to the authorization URL of the service provider to grant or deny access for the consumer to the protected resource.
 . During subsequent access requests, Mule includes the *access token* and *access token secret* (contained within the parameters annotated with `@OAuthAccessToken` and `@OAuthAccessTokenSecret`) in the request to the service provider. Refer to the http://oauth.net/core/1.0/[OAuth 1.0a specification] for more details.
 
 == Including OAuth Headers in a Client Class
 
-Most OAuth 1.0 implementations use Jersey Client to access a RESTful API; some use a Java client library specific to the application. But whatever client you are using, add code at the client class level to send the consumer key, consumer secret, access token, and access token secret along with the request.
+Most OAuth 1.0 implementations use Jersey Client to access a RESTful API; some use a Java client library specific to the application. But whatever client you use, add code at the client class level to send the consumer key, consumer secret, access token, and access token secret along with the request.
 
 In our Jersey client sample, this is performed by a helper method `addSignHeader()` on the client class, shown here:
 
-[source,text,linenums]
+[source,java,linenums]
 ----
 private WebResource addSignHeader(WebResource webResource) {
-        OAuthParameters params = new OAuthParameters();
-        params.signatureMethod("PLAINTEXT");
-        params.consumerKey(getConnector().getConsumerKey());
-        params.setToken(getConnector().getAccessToken());
+  OAuthParameters params = new OAuthParameters();
+  params.signatureMethod("PLAINTEXT");
+  params.consumerKey(getConnector().getConsumerKey());
+  params.setToken(getConnector().getAccessToken());
 
-        OAuthSecrets secrets = new OAuthSecrets();
-        secrets.consumerSecret(getConnector().getConsumerSecret());
-        secrets.setTokenSecret(getConnector().getAccessTokenSecret());
-        OAuthClientFilter filter = new OAuthClientFilter(client.getProviders(), params, secrets);
+  OAuthSecrets secrets = new OAuthSecrets();
+  secrets.consumerSecret(getConnector().getConsumerSecret());
+  secrets.setTokenSecret(getConnector().getAccessTokenSecret());
+  OAuthClientFilter filter = new OAuthClientFilter(client.getProviders(), params, secrets);
 
-        webResource.addFilter(filter);
-        return webResource;
-    }
+  webResource.addFilter(filter);
+  return webResource;
+}
 ----
 
-The connector passes all calls to the Dropbox API through this method to add the authentication headers specified by the OAuth V1 standard. Because this is specific to the use of Jersey client, a detailed walkthrough of this method and how it fits into the client class is not presented here. See the xref:creating-a-connector-for-a-restful-api-using-jersey.adoc[Creating a Connector for a RESTful API Using Jersey] for the full details.
+The connector passes all calls to the Dropbox API through this method to add the authentication headers specified by the OAuth V1 standard. Because this is specific to the use of Jersey client, a detailed walkthrough of this method and how it fits into the client class is not presented here.
 
 == Using an OAuth V1 Connector
 
@@ -171,37 +168,33 @@ Before a consumer can execute any operation that requires authorization, the res
 [source,xml,linenums]
 ----
 <linkedin:config apiKey="${api.key}" apiSecret="${api.secret}"/>
-
 ...
-
-    <flow name="authorize">
-        <http:inbound-endpoint host="localhost" port="8080" path="/authorize"/>
-        <linkedin:authorize/>
-    </flow>
+  <flow name="authorize">
+      <http:inbound-endpoint host="localhost" port="8080" path="/authorize"/>
+      <linkedin:authorize/>
+  </flow>
 ----
 
 === Configuring the Connector in a Flow
 
-. Configure the extension by passing the *consumer key* and *consumer secret* for your application as supplied by the service provider. The code sample below illustrates an example of such configuration.
+. Configure the extension by passing the *consumer key* and *consumer secret* for your application as supplied by the service provider. The code sample below illustrates an example of such configuration:
 +
 [source,xml,linenums]
 ----
 <linkedin:config apiKey="${api.key}" apiSecret="${api.secret}"/>
-
 ...
-
-    <flow name="sampleFlow">
-        <linkedin:get-profile-for-current-user />
-    </flow>
+  <flow name="sampleFlow">
+      <linkedin:get-profile-for-current-user />
+  </flow>
 ----
-
++
 . Configure a simple flow that attempts to access a protected resource. If the connector has not been authorized by OAuth, the consumer operation throws a `NotAuthorizedException`.
 
 === Customizing the Callback
 
 When the user grants access to the protected resource, the service provider makes an HTTP Callbacks. The callback passes an authorization code that Mule uses later to obtain the access token. To handle the callback, Mule dynamically creates an HTTP inbound endpoint, then passes the endpoint's URL to the service provider. Thus, you do not need to complete any specific configuration to make an HTTP callback.
 
-By default, Mule uses a host and port (determined by the `fullDomain` environment variable and the `http.port` ) to construct a URL to send to the service provider. Where you need to use non-default values for host and port, add the configuration as per the code example below.
+By default, Mule uses a host and port (determined by the `fullDomain` environment variable and the `http.port`) to construct a URL to send to the service provider. Where you need to use non-default values for host and port, add the configuration as per the code example below.
 
 [source,xml,linenums]
 ----
@@ -216,25 +209,9 @@ For details on how Mule handles callbacks, see HTTP Callbacks.
 
 When Mule automatically launches an HTTP inbound endpoint to handle the OAuth callback, it uses the HTTP connector by default. Where the service provider requires *HTTPS*, you can configure Mule to pass your own HTTPS connector:
 
-[source,text,linenums]
-----
-...
-
-<https:connector name="httpsConnector">
-<https:tls-key-store path="keystore.jks" keyPassword="mule2014" storePassword="mule2014"/>
-</https:connector>
-
-...
-
-    <linkedin:config apiKey="${api.key}" apiSecret="${api.secret}">
-    <linkedin:oauth-callback-config domain="localhost" localPort="${http.port}" remotePort="${http.port}" async="true" connector-ref="httpsConnector"/>
-    </linkedin:config>
-...
-----
-
-[TIP]
-For more information on configuring an *HTTPS connector,* consult the xref:3.5@mule-runtime::https-transport-reference.adoc[HTTPS Transport Reference].
+[NOTE]
+For more information on configuring an *HTTPS connector,* see the xref:3.6@mule-runtime::https-transport-reference.adoc[HTTPS Transport Reference] and xref:3.6@mule-runtime::tls-configuration.adoc#examples-for-https[Examples for HTTPS].
 
 == See Also
 
-* *NEXT:* Continue to xref:defining-attributes-operations-and-data-model.adoc[Defining Attributes, Operations and Data Model] for your Connector.
+xref:defining-attributes-operations-and-data-model.adoc[Defining Attributes, Operations and Data Model]

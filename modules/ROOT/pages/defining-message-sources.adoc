@@ -88,4 +88,4 @@ This method subscribes to a topic with the given parameter name, and when an upd
 
 == See Also
 
-* xref:3.7@mule-runtime::salesforce-connector.adoc[Salesforce Connector]
+* xref:3.6@mule-runtime::salesforce-connector.adoc[Salesforce Connector]

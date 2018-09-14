@@ -1,17 +1,16 @@
-= Creating a Connector for a RESTful API using @RESTCall Annotations
+= Creating a Connector for a RESTful API using @RestCall Annotations
 ifndef::env-site,env-github[]
 include::_attributes.adoc[]
 endif::[]
+:keywords: devkit, rest, api, @RestCall
 
-This example walks you through the implementation of an Anypoint Connector for a RESTful API. Anypoint DevKit provides a convenient set of annotations called `@RESTCall` for creating a Connector for a RESTful API.
+This example walks you through the implementation of an Anypoint Connector for a RESTful API. Anypoint DevKit provides a convenient set of annotations called `@RestCall` for creating a Connector for a RESTful API.
 
 The `@RestCall` annotations are applied to methods (`@Processor`) in a Connector's `@Connector` class that declaratively describe the URLs for resources exposed on the API. At compile time, Anypoint DevKit generates client code for all the operations, and provides most of the functionality for the methods. For particularly well-defined RESTful APIs, this can be a convenient solution for quickly producing a connector.
 
 This discussion sketches the architecture of a `@RestCall`-based connector, introduces the `@RestCall` annotations and their use, and finally presents a sample Facebook connector that implements some basic operations.
 
-image::6-package.png[]
-
-== Assumptions
+== Prerequisites
 
 This document assumes you are familiar with RESTful APIs, and with the DevKit connector architecture described in xref:index.adoc[Anypoint Connector DevKit].
 
@@ -37,7 +36,7 @@ DevKit provides a set of annotations to simplify working with RESTful APIs. Thes
 
 The generated code creates the URI, which is based on the arguments passed to the `@RestCall` annotation, and makes a request using the verb specified by the `method` parameter of `@RestCall`.
 
-The URI is populated with every item annotated with the `@RestUriParam` annotation. In the example below, the `bucket` portion of the URI, indicated between braces, is replaced with the contents of `bucketName`, as specified in the `@RestUriParam` annotation on the last line. (The example below is based on the Amazon S3 connector.)
+The URI is populated with every item annotated with the `@RestUriParam` annotation. In the example below, the `bucket` portion of the URI, indicated between braces, is replaced with the contents of `bucketName`, as specified in the `@RestUriParam` annotation on the last line. The example below is based on the Amazon S3 connector.
 
 [source,java,linenums]
 ----
@@ -59,7 +58,7 @@ The sections below detail the full set of annotations for implementing a connect
 
 Used with the `@Processor` annotation. Indicates that upon invocation, the processor makes a RESTful request.
 
-==== Required Arguments
+==== Required arguments:
 
 * `uri`: URI of the REST resource to query
 * `method`: HTTP method to use
@@ -81,7 +80,7 @@ Specifies URI query parameters, which are appended to the path of the URI after 
 
 ==== Required Arguments
 
-* String representation of the name of the parameter to append
+String representation of the name of the parameter to append:
 
 [source,java,linenums]
 ----
@@ -98,7 +97,7 @@ Allows you to insert URI parameters that are part of the URI path itself, which 
 
 ==== Required Arguments
 
-* Argument to the message processor to replace using a URI parameter
+Argument to the message processor to replace using a URI parameter
 
 To use the `@RestURIParam` annotation, you must specify the argument in the URI to replace with the annotation, by surrounding it with curly braces. In the example below, the argument is `{path`}.
 
@@ -109,7 +108,7 @@ To use the `@RestURIParam` annotation, you must specify the argument in the URI 
 
 Reference the argument in the `@RestURIParam` annotation:
 
-[source,text,linenums]
+[source,java,linenums]
 ----
 ...
 Public abstract String setPath(@RestURIParam String path ...
@@ -121,7 +120,7 @@ Allows you to insert custom headers in the call. You can apply this annotation t
 
 ==== Required Arguments
 
-* Name of the header to include in the call.
+Name of the header to include in the call.
 
 [source,java,linenums]
 ----
@@ -151,7 +150,8 @@ The Facebook Graph API is the primary way for apps to get data into and out of F
 This discussion is built around a sample connector for the Facebook Graph API that uses OAuth authentication and exposes two operations:
 
 * Retrieve the profile information of a specified user as a User object
-* Post an update on the Facebook Timeline for a specified user +
+* Post an update on the Facebook Timeline for a specified user
+
 
 === Setting Up Access to the Facebook Graph API
 
@@ -168,7 +168,7 @@ The RestCall client can be used with the `@OAuth` authentication annotations or 
 
 The following code excerpt is taken from the `@Connector` class `FacebookConnector`:
 
-[source,text,linenums]
+[source,java,linenums]
 ----
 /**
  * Facebook OAuth2 connector
@@ -187,7 +187,6 @@ public abstract class FacebookConnector {
     @OAuthConsumerKey
     private String consumerKey;
 
-
     /**
      * Your application's client secret (consumer secret in Remote Access Detail).
      */
@@ -199,7 +198,6 @@ public abstract class FacebookConnector {
     @OAuthAccessToken
     private String accessToken;
 
-
     @OAuthCallbackParameter(expression = "#[json:id]")
     private String userId;
 
@@ -208,15 +206,14 @@ public abstract class FacebookConnector {
         return userId;
     }
 
-
     /* ...Getters and setters omitted */
 }
 ----
 
 Notes:
 
-* The class `FacebookConnector` is an abstract class, which is required for a `RestCall` connector
-* The OAuth2 annotations are used on the relevant methods and properties, as described in xref:oauth-v2.adoc[OAuth V2] +
+* The class `FacebookConnector` is an abstract class, which is required for a RestCall connector
+* The OAuth2 annotations are used on the relevant methods and properties, as described in xref:oauth-v2.adoc[OAuth V2]
 * Code for operations are omitted at this stage
 
 == Implementing Data Model Entity Classes
@@ -227,13 +224,13 @@ Given a JSON schema or sample documents for the service, you can generate classe
 
 After you create your data model classes, add them to your project, and import them into your `@Connector` class.
 
-=== Example: Facebook User Class
+=== Facebook User Class Example
 
 For our example, class `User` is the entity class that passes data about a Facebook user to the API. Define and add this class to the project before you implement the operations that use it.
 
 The full definition for `User.java` follows:
 
-[source,text,linenums]
+[source,java,linenums]
 ----
 package com.fb;
 import java.util.HashMap;
@@ -462,29 +459,29 @@ public class User {
 
 Notes:
 
-* The @Generated("com.googlecode.jsonschema2pojo") annotation indicates that this class was generated using the https://github.com/joelittlejohn/jsonschema2pojo/wiki/Getting-Started#the-maven-plugin[JSONSchema2POJO] tool, hosted at http://www.jsonschema2pojo.org/.
+* The `@Generated("com.googlecode.jsonschema2pojo")` annotation indicates that this class was generated using the https://github.com/joelittlejohn/jsonschema2pojo/wiki/Getting-Started#the-maven-plugin[JSONSchema2POJO] tool, hosted at http://www.jsonschema2pojo.org/.
 * The multiple imports from package `org.codehaus.jackson.annotate` and the specific annotations used (such as `@JsonProperty, @JsonAnySetter, @JsonAnyGetter`) reflect the fact that the RestCall client uses Jackson internally to serialize and deserialize JSON data exchanged with the service. Be sure to use JSONSchema2POJO in Jackson mode.
 
 == Adding Operations to the @Connector Class
 
-When implementing operations on the `@Connector` class, note that for `RESTCall` connectors the operation methods, like the class itself, are abstract. Annotations on the methods specify:
+When implementing operations on the `@Connector` class, note that for `RestCall` connectors the operation methods, like the class itself, are abstract. Annotations on the methods specify:
 
 * A template for the REST URL, with placeholders for parameters
-* Values to:  +
+* Values to:
 ** Substitute for the placeholders in the URL
 ** Append as GET query parameters
 ** Send in the POST body
 * The class to expect as the return value
 * The HTTP request method to use (such as GET, POST, or PUT)
 
-[IMPORTANT]
+[NOTE]
 ====
 *Apply a Test-Driven Approach* +
 
 Based on MuleSoft experience, most successful connector implementation projects follow a cycle similar to test-driven development when building out operations on a connector:
 
 * Determine detailed requirements for the operation – entities (POJOs or Maps with specific content) that a connector can accept as input or return as responses; any edge cases like invalid values, values of the wrong type, and so on; and what exceptions the operation may raise.
-* Implement jUnit tests that cover those requirements.
+* Implement JUnit tests that cover those requirements.
 * Implement enough of your operations to pass those tests, including creating new entity classes and exceptions.
 * Update your `@Connector` class and other code with the comments that populate the Javadoc related to each operation.
 
@@ -504,54 +501,53 @@ However, this does not diminish the value of the test-driven approach. Many conn
 For details on developing connector tests, see xref:developing-devkit-connector-tests.adoc[Developing DevKit Connector Tests].
 ====
 
-=== Example: FacebookConnector Operation Methods
+=== FacebookConnector Operation Methods Example
 
 The following connector exposes the `getUser()` and `publishWall()` operations:
 
 [source,java,linenums]
 ----
 /**
-     * GET a user profile.
-     * {@sample.xml ../../../examples/Facebook.default.xml.sample facebook-connector:default}
-     *
-     * @param user
-     * Represents the ID of the user object.
-     * @param metadata
-     * The Graph API supports introspection of objects, which lets
-     * you see all of the connections an object has without knowing
-     * its type ahead of time.
-     * @return  a User object.
-     * @throws IOException
-     * when the call fails
-     */
-    @Processor
-    @RestCall(uri = "https://graph.facebook.com/{user}", method = HttpMethod.GET)
-    public abstract User getUser(
-        @RestUriParam("user") String user,
-        @RestQueryParam("metadata") String metadata)
-        throws IOException
-    ;
-
-    /**
-     * Post a message on a user's wall
-     * {@sample.xml ../../../examples/Facebook.default.xml.sample facebook-connector:default}
-     *
-     * @param message
-     * Message to be published
-     * @param user
-     * User ID
-     * @return  No return information available
-     * @throws IOException
-     * when the call fails
-     */
-    @OAuthProtected
-    @Processor
-    @RestCall(uri = "https://graph.facebook.com/{user}/feed", method = HttpMethod.POST, contentType = "application/json")
-    public abstract String publishWall(
-        @RestUriParam("user") String user,
-        @RestPostParam("message") String message)
-        throws IOException
-    ;
+ * GET a user profile.
+ * {@sample.xml ../../../examples/Facebook.default.xml.sample facebook-connector:default}
+ *
+ * @param user
+ * Represents the ID of the user object.
+ * @param metadata
+ * The Graph API supports introspection of objects, which lets
+ * you see all of the connections an object has without knowing
+ * its type ahead of time.
+ * @return  a User object.
+ * @throws IOException
+ * when the call fails
+ */
+@Processor
+@RestCall(uri = "https://graph.facebook.com/{user}", method = HttpMethod.GET)
+public abstract User getUser(
+    @RestUriParam("user") String user,
+    @RestQueryParam("metadata") String metadata)
+    throws IOException
+;
+/**
+ * Post a message on a user's wall
+ * {@sample.xml ../../../examples/Facebook.default.xml.sample facebook-connector:default}
+ *
+ * @param message
+ * Message to be published
+ * @param user
+ * User ID
+ * @return  No return information available
+ * @throws IOException
+ * when the call fails
+ */
+@OAuthProtected
+@Processor
+@RestCall(uri = "https://graph.facebook.com/{user}/feed", method = HttpMethod.POST, contentType = "application/json")
+public abstract String publishWall(
+    @RestUriParam("user") String user,
+    @RestPostParam("message") String message)
+    throws IOException
+;
 ----
 
 Notes:
