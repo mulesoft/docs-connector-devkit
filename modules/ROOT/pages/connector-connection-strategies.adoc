@@ -1,36 +1,36 @@
-= Connector Connection Strategies
+= Connector Configs
 ifndef::env-site,env-github[]
 include::_attributes.adoc[]
 endif::[]
-:keywords: devkit, strategy, connector, oauth
+:keywords: devkit, strategy, connector, oauth, config, connection, authentication
 
-Since Devkit 3.6, connections are no longer supported at the `@Connector` level (excluding OAuth V1), but now are defined in another component and injected to the `@Connector` by annotating a field with `@ConnectionStrategy`. This provides a better environment for developing a connector and the easiest way to create multiple authentication types.
+Since Devkit 3.6, connections are no longer supported at the `@Connector` level (excluding OAuth V1), but now are defined in another component and injected to the `@Connector` by annotating a field with `@Config`. This provides a better environment for developing a connector and the easiest way to create multiple authentication types.
 
-*Note*: OAuth V1 is not supported as a `@ConnectionStrategy`.
+*Note*: OAuth V1 is *not* supported as a `@Config`.
 
 == Prerequisites
 
 This document assumes you are familiar with the xref:index.adoc[Anypoint Connector DevKit] and you are ready to implement authentication on your connector. You should also be familiar with xref:authentication-methods.adoc[authentication methods].
 
-== Adding a @ConnectionStrategy to a @Connector
+== Adding a @Config to a @Connector
 
-To add a `@ConnectionStrategy`:
+To add a `@Config`:
 
 . Create a new Java class for the connection strategy.
 . Annotate the class with the one of the DevKit authentication methods. In the example we are using `@ConnectionManagement`.
 . Develop your authentication logic or connection management.
-. Finally, set `@Connector` to reference the connection strategy class by creating a `@ConnectionStategy` field with the reference to the new strategy. The `@Connector` is then detached from how it connects with the service.
+. Finally, set `@Connector` to reference the connection strategy class by creating a `@Config` field with the reference to the new strategy. The `@Connector` is then detached from how it connects with the service.
 
 == Examples
 
-The following example shows the `@Connector` and `@ConnectionStrategy` blocks in a connector:
+The following example shows the `@Connector` and `@Config` blocks in a connector:
 
 [source,java,linenums]
 ----
 @Connector(name="myconnector", schemaVersion="1.0", friendlyName="Connector")
 public class MyConnector
 {
-    @ConnectionStrategy
+    @Config
     private ConnectionManagementStrategy strategy;
 
     public void setMyProperty(ConnectionManagementStrategy strategy)
@@ -46,7 +46,7 @@ public class MyConnector
 }
 ----
 
-The next example declares the Connection Management block in a connector:
+The next example declares the `@ConnectionManagement` block in a connector:
 
 [source,java,linenums]
 ----

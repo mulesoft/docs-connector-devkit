@@ -4,11 +4,15 @@ include::_attributes.adoc[]
 endif::[]
 :keywords: devkit, setup, studio, maven, devkit plugin, plugin
 
-This document explains how to prepare a development environment that includes all the components required to develop Anypoint Connectors. You must have the following components installed and working in your local environment:
+This topic explains how to prepare a development environment that includes all the components required to develop Anypoint Connectors.
 
-* http://www.oracle.com/technetwork/java/javase/archive-139210.html[Java Development Kit (JDK)] *version 7* only to compile and build your Java code
+== Prerequisites
+
+You must have the following components installed and working in your local environment:
+
+* http://www.oracle.com/technetwork/java/javase/archive-139210.html[Java Development Kit (JDK)] *version 7 or 8* to compile and build your Java code
 * <<Apache Maven>> to manage your project's build
-* http://www.mulesoft.org/download-mule-esb-community-edition[Anypoint Studio] as the IDE to build and test your connector
+* https://www.mulesoft.com/platform/studio[Anypoint Studio] as the IDE to build and test your connector
 * Anypoint DevKit Plugin
 
 The sections below describe the specific details necessary for setting up your connector development environment.
@@ -20,7 +24,7 @@ Although you can use any Java IDE with Maven support, it's strongly recommended 
 [NOTE]
 To build connector projects, you must first install the Anypoint Connector DevKit add-on into Anypoint Studio.
 
-If you have not already installed Anypoint Studio, follow the xref:3.6@mule-runtime::installing.adoc[detailed instructions] to install. For a quick introduction to Anypoint Studio, review xref:6@studio::index.adoc[Anypoint Studio Essentials].
+If you have not already installed Anypoint Studio, follow the xref:3.7@mule-runtime::installing.adoc[detailed instructions] to install. For a quick introduction to Anypoint Studio, review xref:5@studio::index.adoc[Anypoint Studio Essentials].
 
 == JDK 7
 
@@ -67,12 +71,12 @@ To install the DevKit Plugin:
 +
 image::installnewsoftware.png[InstallNewSoftware]
 +
-. In the Install menu's *Work with* drop-down menu, click the down arrow and click *Anypoint Addons Update Site*. Click the checkbox for *Anypoint DevKit Plugin*, and click *Next*.
+. In the Install menu's *Work with* drop-down menu, click the down arrow and click *Anypoint DevKit Update Site*. Click the checkbox for Anypoint DevKit Plugin, and click *Next*.
 +
 [NOTE]
-If the Anypoint Addons Update Site is not available in the dropdown list, click *Add* and copy this URL to the repository.
+If the Anypoint DevKit Update Site is not available in the dropdown list, click *Add* and copy this URL to the repository.
 +
-image::addons-update-site.png[AddOns+Update+Site]
+image::devkit-update-site.png[]
 +
 . Proceed through the remaining steps in the wizard to install.
 . Restart Studio.

@@ -32,7 +32,7 @@ If this file is not found, Maven goes through the following steps to locate a li
 
 In addition to the global license file, the DevKit requires that your source files also contains a license header. To apply the license header to every source file in your project, run the following command in a command console at the root of your project, which contains your connector project's `pom.xml` file:
 
-[source,console,linenums]
+[source,text,linenums]
 ----
 mvn license:format
 ----
@@ -41,25 +41,25 @@ This command goes through your whole project and applies the license header defi
 
 Run the following command to install your connector with your updated license information into your local Maven repository.
 
-*Important*: Run *mvn license:format* before running this Maven install command because Maven verifies the license headers first before installing:
+[IMPORTANT]
+Run `mvn license:format` before running this Maven install command because Maven verifies the license headers first before installing:
 
-[source,console,linenums]
 ----
 mvn clean install
 ----
 
+[NOTE]
+====
 To enable verbose logging, use:
 
-[source,console,linenums]
-----
-mvn clean install -Ddevkit.verbose.logging=true
-----
+`mvn clean install -Ddevkit.verbose.logging=true`
+====
+
 
 You can also use the following Maven command to package the connector instead of installing. This creates an update site that you can use to install the connector in Anypoint Studio. This update site contains everything you need to use the connector inside your Mule applications (icons for the palette, XSDs, source files, etc.) Therefore it is important that your source files have the license headers before packaging.
 
 *Note*: Packaging the connector does not check for license headers in your source files. To package your connector, run the following command at the root folder:
 
-[source,console,linenums]
 ----
 mvn clean package
 ----
@@ -70,7 +70,7 @@ To create a compressed file of your project:
 
 . In Anypoint Studio, right-click your project name in the Package Explorer, and click *Export*.
 . Click *General* > *Archive* File with these settings. Choose whether you want a TAR file (for Linux or Mac) or a ZIP file for Mac or Windows. (Windows users can also uncompress TAR files using third-party software such as 7zip.) +
-*Important*: Uncheck the *target* folder. +
+IMPORTANT: Uncheck the *target* folder.
 +
 image::archivefile.png[ArchiveFile]
 
@@ -91,11 +91,9 @@ Documentation tips:
 * *Use Cases*: Explain why, when, and how a customer uses your connector. For each use case, provide examples with explanations. For information, see http://en.wikipedia.org/wiki/Use_case[Wikipedia's Use Case] topic.
 * *Release Notes*: Ensure your connector is versioned and that you help customers understand what changes between releases. We recommend that you list new features, known issues, and what issues were fixed.
 
-
 == Certify and Publish Your Connector
 
-MuleSoft's program certifies and publishes third party connectors to be distributed to the community on mulesoft.org. For more information about this program, mailto:connectors-certification@mulesoft.com[contact us].
-
+MuleSoft's program certifies and publishes third party connectors to be distributed through Anypoint Exchange. For more information about this program, please move on to xref:connector-certification-program-guidelines.adoc[Connector Certification Program Guidelines].
 
 
 == Uploading your Connector to Exchange

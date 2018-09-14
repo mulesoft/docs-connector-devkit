@@ -10,7 +10,7 @@ image::devkit-steps-operations.png[]
 
 == Prerequisites
 
-This document assumes that you are familiar with the connector architecture presented in xref:index.adoc[Anypoint Connector DevKit], and that you are familiar with xref:3.6@mule-runtime::datasense.adoc[DataSense] from an end-user's perspective.
+This document assumes that you are familiar with the connector architecture presented in xref:index.adoc[Anypoint Connector DevKit], and that you are familiar with xref:5@studio::datasense.adoc[DataSense] from an end-user's perspective.
 
 == Connectors with DataSense
 
@@ -19,10 +19,10 @@ Integration developers often spend great amounts of time simply trying to determ
 DataSense provides entities and their internal structure to Studio, which, in turn, presents this information to users employing the connector. DataSense also works with other Anypoint Studio features to:
 
 * Access a connector's metadata so that when the context is right, Studio intelligently makes suggestions for expected values in fields returned by the connector.
-* Use DataMapper's ability to automatically infer the input or output data within a mapping (when used in conjunction with a connector that is DataSense-enabled).
+* Use DataWeave's ability to automatically infer the input or output data within a mapping (when used in conjunction with a connector that is DataSense-enabled).
 
 [NOTE]
- Learn more about xref:3.6@mule-runtime::datasense.adoc[DataSense].
+ Learn more about xref:5@studio::datasense.adoc[DataSense].
 
 The fundamental advantage of DataSense is the ability to extract metadata from the data model exposed by an application through the connector. The two key steps to implementing DataSense:
 
@@ -266,11 +266,11 @@ private Object createBook(Book entityData) {
 }
 ----
 
-The output metadata changes according to the entity type selected in Studio. This is especially useful when used in conjunction with a DataMapper transformer. Because of this method, all the entities returned by `@MetaDataRetriever` display in a dropdown in Studio.
+The output metadata changes according to the entity type selected in Studio. This is especially useful when used in conjunction with DataMapper or DataWeave (the Transform Message component). Because of this method, all the entities returned by `@MetaDataRetriever` display in a dropdown in Studio.
 
 image::dsimage.png[DSimage]
 
-Also, the metadata about the entity can then be passed on to other Mule elements such as DataMapper.
+Also, the metadata about the entity can then be passed on to other Mule elements such as DataMapper or DataWeave (the Transform Message component).
 
 image::image2.png[]
 
@@ -369,7 +369,7 @@ In this method, Studio displays all the entities returned by `@MetaDataRetriever
 
 image::image3.png[]
 
-Also, the metadata about the entity can then be passed on to other Mule elements such as DataMapper.
+Also, the metadata about the entity can then be passed on to other Mule elements such as DataMapper or DataWeave (the Transform Message component).
 
 image::image4.png[]
 

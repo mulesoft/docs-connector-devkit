@@ -24,7 +24,7 @@ The examples below are accurate at the time of writing this guide; however, bear
 
 === Salesforce Example
 
-. https://developer.salesforce.com/signup[Register for a Salesforce account]. You need to provide an email address to receive a confirmation email.
+. http://www.developerforce.com/events/regular/registration.php[Register for a Salesforce account]. You need to provide an email address to receive a confirmation email.
 . After you've filled out the registration form, open the confirmation email and click the link provided to enable you to set a password and log in to Salesforce Developer Edition.
 . To enable remote applications to log in to Salesforce, you must reset your security token on Salesforce by completing the following steps:
 .. From the Salesforce UI, select _Your Name_ > *My Settings* in the upper right corner.
@@ -46,6 +46,7 @@ Twitter is a good example of a relatively simple API to access from a connector 
 ** Access secret
 ** Consumer key
 ** Consumer secret
+. For detailed instructions on creating an application on the Twitter platform, see <<twitter-example,Configure Twitter for API Access>>.
 
 == SOAP-Based APIs
 

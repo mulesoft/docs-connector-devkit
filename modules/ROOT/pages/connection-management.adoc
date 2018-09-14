@@ -4,7 +4,7 @@ include::_attributes.adoc[]
 endif::[]
 :keywords: devkit, connection, authentication, annotations, test connectivity, pooling, disconnect, validate, identify, reconnect on
 
-The Connection Management framework provides multi-tenancy capabilities for a connector (managing multiple simultaneous connections with different credentials for each connector within your application), as well as connection pooling and instance pooling. These benefits are available for most authentication schemes other than OAuth, and for APIs that do not require authentication. Basic Authentication is designated in a connector with the @ConnectionManagement attribute.
+The Connection Management framework provides multi-tenancy capabilities for a connector (managing multiple simultaneous connections with different credentials for each connector within your application), as well as connection pooling and instance pooling. These benefits are available for most authentication schemes other than OAuth, and for APIs that do not require authentication. Basic Authentication is designated in a connector with the `@ConnectionManagement` attribute.
 
 This document describes the Connection Management framework, the Java annotations through which it is exposed, and how to implement Basic Authentication support in your connector to authenticate with your service. Examples in this discussion show the use of Basic Authentication with basic username and password authentication (most common), but they can easily be generalized to other non-OAuth protocols such as SAML, Kerberos, LDAP, NTLM, or to create a custom connection.
 
@@ -26,7 +26,7 @@ The Connection Management framework provides the following benefits with minimal
 
 You can use the Connection Management framework in conjunction with most authentication protocols, such as username and password authentication (most common), SAML, Kerberos, LDAP, and NTLM.
 
-For OAuth-based authentication DevKit provides functionality using OAuth-related annotations. See xref:oauth-v1.adoc[OAuth V1] and xref:oauth-v2.adoc[OAuth V2] for details.
+For OAuth-based authentication DevKit provides functionality using OAuth-related annotations. See xref:oauth-v1.adoc[OAuth V1]  and xref:oauth-v2.adoc[OAuth V2] for details.
 
 == Connection Management Annotation
 
@@ -40,11 +40,11 @@ The following table describes the parameters for the `@ConnectionManagement` ann
 a|
 *friendlyName*
 
-|Defines the name that is going to be displayed in the connector configuration pop up. |Yes |
+ |Defines the name that is going to be displayed in the connector configuration pop up. | ✓ |
 a|
 *configElementName*
 
-|Defines the name for the configuration that is going to be used in the Mule app. |No | config
+ |Defines the name for the configuration that is going to be used in the Mule app. |  | config
 |===
 
 == Connection Management DevKit Annotations
@@ -147,7 +147,7 @@ The parameters required by this method are the credentials needed for authentica
 
 `@TestConnectivity` can be easily disabled by setting:
 
-[source,java]
+[source,java,linenums]
 ----
 @TestConnectivity(active = false)
 ----
@@ -196,7 +196,7 @@ public void disconnect()
 }
 ----
 
-If the connector currently has a connection open, this code calls `connection.logout()`,  a client method that explicitly de-authenticates and closes the connection. The finally block ensures that, if the logout fails for any reason, the connection is still set to null, so the connector does not again try to reference that connector instance.
+If the connector currently has a connection open, this code calls `connection.logout()`,  a client method that explicitly de-authenticates and closes the connection. The final block ensures that, if the logout fails for any reason, the connection is still set to null, so the connector does not again try to reference that connector instance.
 
 === @ValidateConnection Method
 
@@ -250,7 +250,9 @@ if (connection != null){
 
 This annotation deprecates `@InvalidateConnectionOn` annotation. It now receives a list of exceptions instead of just a single exception, and can be used at both the class and processor levels.
 
-This annotation is used for exception handling related to connections. It can be used at class level or at a method level. If the Connector or Processor throws an exception of this class, `@ReconnectOn` automatically invalidates the connection. `@ReconnectOn` receives a list containing the classes of the exceptions to be caught (see below for an example). When an exception occurs, the `@ReconnectOn` behavior is based on the configured reconnection strategy. See xref:3.8@connector-connection-strategies.adoc[Configuring Reconnection Strategies] for more details.
+This annotation is used for exception handling related to connections. It can be used at class level or at a method level. If the Connector or Processor throws an exception of this class, `@ReconnectOn` automatically invalidates the connection. `@ReconnectOn` receives a list containing the classes of the exceptions to be caught (see below for an example). When an exception occurs, the `@ReconnectOn` behavior is based on the configured reconnection strategy. See
+xref:3.7@mule-runtime::configuring-reconnection-strategies.adoc[Configuring Reconnection Strategies]
+for more details.
 
 [source,java,linenums]
 ----

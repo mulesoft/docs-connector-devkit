@@ -2,7 +2,7 @@
 ifndef::env-site,env-github[]
 include::_attributes.adoc[]
 endif::[]
-:keywords: devkit, install, test, connector, connection strategy
+:keywords: devkit, install, test, connector, connection strategy, connector config
 
 Having built a project with the Anypoint DevKit plugin, you can install the skeletal connector in Anypoint Studio to confirm its basic functionality before adding more operations to it. This document describes the steps to take to build, then install and test your connector in Anypoint Studio.
 
@@ -62,12 +62,11 @@ The identifier  `name` is reserved and cannot be used as a parameter.
  * included with this distribution in the LICENSE.md file.
  */
 package org.mule.modules.barn;
-import org.mule.api.annotations.ConnectionStrategy;
+import org.mule.api.annotations.Config;
 import org.mule.api.annotations.Connector;
 import org.mule.api.annotations.Configurable;
 import org.mule.api.annotations.Processor;
 import org.mule.api.annotations.param.Default;
-import org.mule.modules.myproject.strategy.ConnectorConnectionStrategy;
 /**
  * Anypoint Connector
  *
@@ -82,8 +81,8 @@ public class BarnConnector
     @Configurable
     @Default("value")
     private String myProperty;
-    @ConnectionStrategy
-    ConnectorConnectionStrategy connectionStrategy;
+    @Config
+    ConnectorConfig config;
 
     /**
      * Custom processor
@@ -126,17 +125,17 @@ public class BarnConnector
     public String getMyProperty() {
         return this.myProperty;
     }
-    public ConnectorConnectionStrategy getConnectionStrategy() {
-        return connectionStrategy;
+    public ConnectorConfig getConnectorConfig() {
+        return this.config;
     }
-    public void setConnectionStrategy(ConnectorConnectionStrategy
-     connectionStrategy) {
-        this.connectionStrategy = connectionStrategy;
+    public void setConnectorConfig(ConnectorConfig
+      connectorConfig) {
+        this.config = connectorConfig;
     }
 }
 ----
 +
-. In Anypoint Studio, select `ConnectorConnectionStrategy` in the code, and on a Mac press the CMD key, or in Windows, press the Ctrl key. The `ConnectorConnectionStrategy.java` file opens and you can see the connection management implementation for this connector.
+. In Anypoint Studio, select `ConnectorConfig` in the code, and on a Mac press the CMD key, or in Windows, press the Ctrl key. The `ConnectorConfig.java` file opens and you can see the connection management implementation for this connector.
 
 
 === Documenting the Operation
@@ -170,18 +169,32 @@ Because DevKit enforces proper documentation of all projects, you must provide a
 
 At this point the connector is ready to be built and used for the first time. The DevKit plugin for Anypoint Studio automates the process of building the connector, running tests, and packaging it to be used in Anypoint Studio.
 
-To compile and install your connector, right-click your project and select *Anypoint Connector* > *Install or Update*. This is equivalent to running the command below from the command console from within the project folder:
+To compile and install your connector, right-click your project and select *Anypoint Connector* > *Install or Update*. The *Install or Update* feature can suggest automatic updates to your connector in Anypoint Studio.
 
+For manual installation, run the below command from the command console from within the connector project directory:
+
+[source,text,linenums]
 ----
 mvn clean package
 ----
 
-This command creates an update site that you can use to install the connector in Anypoint Studio. For more information about how to package your connector, check xref:packaging-your-connector-for-release.adoc[Packaging Your Connector for Release].
+This command creates an "update site" that you can use to install the connector in Anypoint Studio. For more information about how to package your connector, check xref:packaging-your-connector-for-release.adoc[Packaging Your Connector for Release].
 
-The *Install or Update*  feature also automatically installs your connector in Anypoint Studio.
+=== Installation from Update Site
 
-image::barn-studio-icon.png[]
+[NOTE]
+====
+After running the `mvn clean package` command:
 
+. Go to *Help* > *Install New Software* +
+. Click *Add*. Locate the `.zip` file/archive in which your connector is packaged.
+. Ensure the connector appears in the central pane, and is selected. Click *Next*.
++
+image::installing-and-testing-your-connector-in-studio-69499.png[]
++
+. Again, ensure the connector is selected on the next screen. Click *Next*, accept the License(s), accept the terms and *Finish*.
+
+====
 
 
 == Testing the Connector
@@ -193,7 +206,7 @@ To see your new connector function, create, then run a Mule application which us
 [discrete.view]
 === Studio Visual Editor
 
-. Create a simple flow using an *HTTP* connector and your new *Barn Connector*. Use the default values configured in the HTTP endpoint (*port*:`8081`, *host*: `localhost`).
+. Create a simple flow using an *HTTP* connector and your new *Barn Connector*. Use the default values configured in the HTTP endpoint (*port*: `8081`, *host*: `localhost`).
 +
 image::36barnconnector.png[36BarnConnector]
 +
@@ -215,8 +228,8 @@ image::config1.png[]
 image::config.png[]
 +
 . In the *My Property*, *Username*, and *Password* fields, enter any string as the value, then click *OK*. +
-+
-image::global-elements.png[]
+ +
+image::global-elements.png[]
 +
 . Save, then run the project as a Mule Application (right-click project name, then select *Run As* > *Mule Application*).
 . From a browser, navigate to `http://localhost:8081/?animal=Mule`
@@ -257,7 +270,6 @@ http://www.mulesoft.org/schema/mule/barn http://www.mulesoft.org/schema/mule/bar
     </flow>
 </mule>
 ----
-+
 . Save, then run the project.
 . From a browser, navigate to `http://localhost:8081/?animal=Mule`
 . The application returns the response in your browser (see below).

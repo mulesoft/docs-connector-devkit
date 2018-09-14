@@ -20,6 +20,10 @@ DevKit has built-in client functionality that can handle many "well-behaved" RES
 
 The client is exposed through a set of annotations (the `@RestCall` annotations) that you apply to your `@Connector` class and its methods.
 
+The architecture of a connector built using the `@RestCall` annotations looks like the image below.
+
+image::restcall-connector-arch.png[]
+
 Compared to most connectors, creating these connectors requires writing very little code. You still define a `@Connector` class, with properties and methods; but in this case, the `@Connector` class and its methods are all abstract. (Any entity classes passed to the operations are still concrete classes, as with other connector types.) For each operation, apply the `@RestCall` annotations to provide:
 
 * A URI template for the target resource
@@ -91,7 +95,7 @@ String representation of the name of the parameter to append:
    String numID)
 ----
 
-=== @RestURIParam
+=== `@RestURIParam`
 
 Allows you to insert URI parameters that are part of the URI path itself, which is required by some URIs. As with the `@RestQueryParam` annotation, you can apply this annotation to `@Processor` methods arguments or to connector fields marked `@Configurable`. This enables you to use dynamically-generated arguments as URI parameters.
 
@@ -220,7 +224,7 @@ Notes:
 
 Define any entity classes that represent the data passed to and returned from the Web service requests, and how JSON documents map to Java classes used with the connector.
 
-Given a JSON schema or sample documents for the service, you can generate classes using the tool *JSONSchema2POJO*, available at http://www.jsonschema2pojo.org/. (The https://github.com/joelittlejohn/jsonschema2pojo/wiki[wiki on GitHub] provides getting started and reference documentation for JSONSchema2POJO.)
+Given a JSON schema or sample documents for the service, you can generate classes using the tool *JSONSchema2POJO*, available at `+http://www.jsonschema2pojo.org/+`. (The https://github.com/joelittlejohn/jsonschema2pojo/wiki[wiki on GitHub] provides getting started and reference documentation for JSONSchema2POJO.)
 
 After you create your data model classes, add them to your project, and import them into your `@Connector` class.
 
@@ -501,7 +505,7 @@ However, this does not diminish the value of the test-driven approach. Many conn
 For details on developing connector tests, see xref:developing-devkit-connector-tests.adoc[Developing DevKit Connector Tests].
 ====
 
-=== FacebookConnector Operation Methods Example
+=== Example FacebookConnector Operation Methods
 
 The following connector exposes the `getUser()` and `publishWall()` operations:
 
@@ -526,8 +530,7 @@ The following connector exposes the `getUser()` and `publishWall()` operations:
 public abstract User getUser(
     @RestUriParam("user") String user,
     @RestQueryParam("metadata") String metadata)
-    throws IOException
-;
+    throws IOException;
 /**
  * Post a message on a user's wall
  * {@sample.xml ../../../examples/Facebook.default.xml.sample facebook-connector:default}
@@ -540,18 +543,17 @@ public abstract User getUser(
  * @throws IOException
  * when the call fails
  */
+
 @OAuthProtected
 @Processor
 @RestCall(uri = "https://graph.facebook.com/{user}/feed", method = HttpMethod.POST, contentType = "application/json")
 public abstract String publishWall(
     @RestUriParam("user") String user,
     @RestPostParam("message") String message)
-    throws IOException
-;
+    throws IOException;
 ----
 
-Notes:
-
+[NOTE]
 * `getUser()` does not have the `@OAuthProtected` annotation. Facebook permits getting some user information even without authentication (though a more complete response may be returned with authentication, depending on the authenticated user's relationship to the requested user, the privacy settings of the requested user, and so on)
 * Posting to a wall requires authentication, so it is annotated `@OAuthProtected`
 

@@ -4,7 +4,7 @@ include::_attributes.adoc[]
 endif::[]
 :keywords: devkit, connector, development, api, authentication, project
 
-This document quickly walks you through the decisions to make and the steps to take to get an Anypoint Connector development project started, get the connector working, and enhance it with the functionality you need.
+This document quickly walks you through the decisions to make and the steps to take to get an Anypoint Connector development project started, get the connector working, and enhance it with the functionality you need. You can use this as a roadmap for your connector development effort.
 
 == Prerequisites
 
@@ -16,25 +16,25 @@ When you develop a connector using DevKit, your use cases drive a series of deci
 
 == Step 1 - Setting Up Your Development Environment
 
-. Install http://www.oracle.com/technetwork/java/javase/downloads/java-archive-downloads-javase7-521261.html[JDK 7].
+. Install http://www.oracle.com/technetwork/java/javase/downloads/java-archive-downloads-javase7-521261.html[JDK 7] for DevKit 3.6 or 3.7.
 . Install http://maven.apache.org/download.cgi[Maven].
 . Install http://www.mulesoft.com/platform/mule-studio[Anypoint Studio].
-. Install the xref:setting-up-your-dev-environment.adoc#installing-the-devkit-plugin-in-studio[Anypoint DevKit Plugin].
+. Install the xref:setting-up-your-dev-environment.adoc[Anypoint DevKit Plugin].
 
-Refer to <<Step 1 - Setting Up Your Development Environment>> for detailed instructions.
+Refer to xref:setting-up-your-dev-environment.adoc[Setting Up Your Development Environment] for detailed instructions.
 
 == Step 2 - Setting Up Your API Access
 
 . Prepare a test environment for your connector. Details vary greatly based on the target system.
 . *SaaS* – For some SaaS applications, the sandbox may be a separate account from the production account, or may answer at a different endpoint.
-. *On-premise* – For some on-premise systems or Web services, you may simply have a separate standalone installation with dummy data instead of production data.  +
+. *On-premise* – For some on-premise systems or Web services, you may simply have a separate standalone installation with dummy data instead of production data.
 . Acquire any existing documentation for your target system, such as API documentation.
 
 Refer to xref:setting-up-api-access.adoc[Setting Up API Access] for detailed instructions.
 
 == Step 3 - Creating an Anypoint Connector Project
 
-. Follow the process in xref:creating-an-anypoint-connector-project.adoc[Creating an Anypoint Connector Project] to start a connector development project in your development environment.
+. Follow the process in xref:creating-a-java-sdk-based-connector.adoc[Creating a Java SDK-Based Connector] to start a connector development project in your development environment.
 . Add any required Java libraries for your target system, such as client libraries or class libraries provided for the target system.
 
 When finished, you should have a scaffold project, containing a Java class with the most basic functionality for a connector in place.
@@ -51,7 +51,7 @@ If your API requires authentication, understand the authentication methods your 
 |xref:oauth-v2.adoc[OAuth V2] |Popular among RESTful Web services and cloud applications.
 |===
 
-== Step 5 - Defining Attributes, Operations, and Data Model
+== Step 5 - Defining Attributes, Operations, and a Data Model
 
 Most of the Java code you write for your connector relates to how you call your API inside the connector's operations and how the connector must pass data between those operations and Mule. This is the area that varies most among connectors, based on your API.
 
@@ -65,14 +65,14 @@ Use the table below to select an approach for building your connector based on t
 |xref:creating-a-connector-for-a-restful-api-using-restcall-annotations.adoc[RESTful API] |Anypoint DevKit provides a built-in client for RESTful APIs. Useful for cleanly designed RESTful APIs.
 |===
 
-For more details, refer to xref:defining-attributes-operations-and-data-model.adoc[Defining Attributes Operations and Data Model].
+For more details, refer to xref:connector-attributes-and-operations.adoc[Connector Attributes and Operations].
 
 == Step 6 - Building Unit and Functional Tests
 
 A production-ready connector must have a suite of unit and functional tests; connectors use the standard JUnit framework. In practice, build your unit tests as you implement your connector's operations. Most successful connector implementations use a test-driven approach to development.
 
 . Develop one or more Mule flows that use the connector.
-. Create an instance of xref:connector-testing-framework.adoc[FunctionalTestCase] to run the test. For DevKit testing, run Mule inside a JUnit test case. Each test case you build extends the class xref:connector-testing-framework.adoc[FunctionalTestCase] (a subclass of JUnit). The test case manages the lifecycle of a Mule runtime instance and calls flows to carry out the test.
+. Create an instance of xref:3.7@mule-runtime::functional-testing.adoc[FunctionalTestCase] to run the test. For DevKit testing, run Mule inside a JUnit test case. Each test case you build extends the class xref:3.7@mule-runtime::functional-testing.adoc[FunctionalTestCase] (a subclass of JUnit). The test case manages the lifecycle of a Mule runtime instance and calls flows to carry out the test.
 . Programmatically examine the results of each test case to determine success or failure.
 
 Before releasing the connector to the world, run a thorough test suite that covers all operations and exercises each major code path. The Maven-generated project contains one sample test case under the `src/test/java` directory to get you started.
@@ -94,10 +94,10 @@ When your connector is ready for release to a broad audience, take the following
 
 . Before releasing a connector, ensure your license agreement is in place.
 . If your connector is intended only for internal use, you can share it as an Eclipse update site.
-. To share your connector with the community, see https://www.anypoint.mulesoft.com/exchange/?type=connector&search=communityAnypoint Exchange].
+. To share your connector with the community, see https://www.anypoint.mulesoft.com/exchange/?type=connector&search=community[Anypoint Exchange].
 
 Refer to xref:packaging-your-connector-for-release.adoc[Packaging Your Connector for Release] for full details.
 
 == See Also
 
-See xref:setting-up-your-dev-environment.adoc[Setting Up Your Development Environment].
+* Understand xref:setting-up-your-dev-environment.adoc[Setting Up Your Development Environment].

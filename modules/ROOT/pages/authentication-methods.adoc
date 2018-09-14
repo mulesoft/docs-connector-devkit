@@ -12,7 +12,7 @@ This authentication method demands that a client prove authenticity by entering 
 
 While this authentication method meets the need of the application, it also opens the door for the application to do much more than simply check for "self-liked" posts. With that in mind, this method may be unacceptable, as providing username and password credentials potentially enables nefarious activity.
 
-In DevKit, basic authentication is enabled using the Connection Management framework.
+In DevKit, basic authentication is enabled using the xref:connection-management.adoc[Connection Management] framework.
 
 == OAuth 1.0 & 2.0
 
@@ -69,4 +69,4 @@ Usernames and passwords are stored in a database on an LDAP server, not by the s
 
 == See Also
 
-xref:defining-attributes-operations-and-data-model.adoc[Defining Attributes Operations and Data Model]
+xref:connector-attributes-and-operations.adoc[Adding Connector Functionality]

@@ -2,14 +2,16 @@
 ifndef::env-site,env-github[]
 include::_attributes.adoc[]
 endif::[]
+:keywords: oauth v2, devkit, authentication, connector, api
 
 This page presents a detailed discussion of DevKit's support for OAuth V2 authentication and how to implement a connector that uses OAuth V2 to authenticate with your API.
 
 == Prerequisites
 
-This document assumes you are familiar with the  xref:index.adoc[Anypoint Connector Essentials]  and are ready to implement authentication on your connector. It assumes you are familiar with the various  xref:authentication-methods.adoc[authentication methods]  and may be using OAuth V1 to authenticate with your API.
+This document assumes you are familiar with the  xref:5@studio::index.adoc[Anypoint Connector Essentials]  and are ready to implement authentication on your connector. It assumes you are familiar with the various  xref:authentication-methods.adoc[authentication methods] and may be using OAuth V1 to authenticate with your API.
 
-If you are not familiar with OAuth V1 authentication, what it is or how it works, we recommend visiting http://tools.ietf.org/html/rfc5849[OAuth 1.0 protocol/RFC-5849]. Also see xref:oauth-v1.adoc[OAuth V1].
+If you are not familiar with OAuth V1 authentication, what it is or how it works, we recommend visiting link:
+http://tools.ietf.org/html/rfc5849[OAuth 1.0 protocol/RFC-5849]. Also see xref:oauth-v1.adoc[OAuth V1].
 
 == Required API Information
 
@@ -24,14 +26,14 @@ From the service provider's API documentation, obtain the precise values for the
 
 === @OAuth2 Annotation
 
-To implement OAuth V2 authentication on your Connector you need to create a new @ConnectionStrategy. Create a new class and annotate it with the the @OAuth2 annotation.
+To implement OAuth V2 authentication on your Connector you need to create a new `@ConnectionStrategy`. Create a new class and annotate it with the the `@OAuth2` annotation.
 
 [NOTE]
-During the building process, a connector annotated with @OAuth2 gets two additional auto-generated @Processor methods called  `authorize`  and  `unauthorize` . These message processors are in charge of initiating and ending the OAuth session.
+During the building process, a connector annotated with `@OAuth2` gets two additional auto-generated `@Processor` methods called  `authorize`  and  `unauthorize` . These message processors are in charge of initiating and ending the OAuth session.
 
 The following table describes all parameters for the `@OAuth2` annotation.
 
-[%header,cols="4*"]
+[%header,cols="25,50,10,15"]
 |===
 a|
 *Parameter*
@@ -83,7 +85,7 @@ public class MyConnector
     */
 }
 ----
-+
+
 . Add the OAuth access URL, access token URL, and the OAuth strategy:
 
 [source,java,linenums]
@@ -113,10 +115,10 @@ public class OAuth2Strategy
 
 === @OAuth2 Class Properties
 
-Your Strategy class needs @Configurable instance properties to allow the user to specify their private consumer key and secret when using the connector as shown above:
+Your Strategy class needs `@Configurable` instance properties to allow the user to specify their private consumer key and secret when using the connector as shown above:
 
-* @OAuthConsumerKey to hold the OAuth consumer key
-* @OAuthConsumerSecret to hold the OAuth consumer secret
+* `@OAuthConsumerKey` to hold the OAuth consumer key
+* `@OAuthConsumerSecret` to hold the OAuth consumer secret
 
 Ensure these instance variables have public getters and setters (not shown).
 
@@ -174,7 +176,7 @@ Other services require similar changes at the client level, but differ in detail
 
 === Authorizing the Connector
 
-Before a consumer can execute any operation that requires authorization, the resource owner must grant access to the connector to access the protected resource. When it receives an authorization request, Mule redirects the resource owner's browser to the service provider authorization page. Any subsequent attempts to access a protected resource fills the parameters annotated with `@OAuthAccessToken`. Mule includes the access token in the request to the service provider:
+Before a consumer can execute any operation that requires authorization, the resource owner must grant access to the connector to access the protected resource. When it receives an authorization request, Mule redirects the resource owner's browser to the service provider authorization page. Any subsequent attempts to access a protected resource fills the parameters annotated with `@OAuthAccessToken`. Mule includes the access token in the request to the service provider: +
 
 [source,xml,linenums]
 ----
@@ -203,7 +205,7 @@ When a user grants access to the protected resource, the service provider makes 
 
 The callback passes an authorization code that Mule uses later to obtain the access token. To handle the callback, Mule dynamically creates an HTTP inbound endpoint, then passes the endpoint's URL to the service provider. Thus, you do not need to complete any specific configuration to make an HTTP callback.
 
-By default, Mule uses a host and port (determined by the `fullDomain` environment variable and the `http.port`) to construct a URL to send to the service provider. Where you need to use non-default values for host and port, add the configuration:
+By default, Mule uses a host and port (determined by the `fullDomain` environment variable and the `http.port`) to construct a URL to send to the service provider. Where you need to use non-default values for host and port, add the configuration: +
 
 [source,xml,linenums]
 ----
@@ -215,7 +217,7 @@ By default, Mule uses a host and port (determined by the `fullDomain` environmen
 
 === Adding Secure Socket Layer (SSL)
 
-When Mule automatically launches an HTTP listener request to handle the OAuth callback, it uses the HTTP connector by default. Where the service provider requires *HTTPS*, you can configure Mule to pass your own HTTPS connector:
+When Mule automatically launches an HTTP listener request to handle the OAuth callback, it uses the HTTP connector by default. Where the service provider requires *HTTPS*, you can configure Mule to pass your own HTTPS connector: +
 
 [source,xml,linenums]
 ----
@@ -227,12 +229,11 @@ When Mule automatically launches an HTTP listener request to handle the OAuth ca
 </http:listener-config>
 ...
 <connector:config-oauth name="oauth2" apiKey="${api.key}" apiSecret="${api.secret}">
-<connector:oauth-callback-config domain="localhost" localPort="${http.port}" remotePort="${http.port}" async="true" connector-ref="httpsConnector"/>
+  <connector:oauth-callback-config domain="localhost" localPort="${http.port}" remotePort="${http.port}" async="true" connector-ref="httpsConnector"/>
 </connector:config-oauth>
 ...
 ----
 
 == See Also
 
-* xref:3.6@mule-runtime::http-transport-reference.adoc[HTTPS Transport Reference]
-* xref:3.6@mule-runtime::tls-configuration.adoc#examples-for-https[HTTPS Examples]
+* xref:3.7@mule-runtime::http-connector-reference.adoc[HTTPS Connector Reference]

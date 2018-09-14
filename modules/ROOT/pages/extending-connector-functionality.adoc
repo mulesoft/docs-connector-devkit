@@ -1,0 +1,15 @@
+= Extending Connector Functionality
+ifndef::env-site,env-github[]
+include::_attributes.adoc[]
+endif::[]
+:keywords: devkit, extend, connector
+
+* xref:adding-datasense.adoc[Adding DataSense]
+* xref:adding-datasense-query-language.adoc[Adding DataSense Query Language]
+* xref:adding-query-pagination-support.adoc[Adding Query Pagination Support]
+* xref:building-a-batch-enabled-connector.adoc[Building a Batch Enabled Connector]
+* xref:shading-libraries.adoc[Shading Libraries]
+
+'''''
+
+*xref:index.adoc[Return to Anypoint Connector DevKit]*

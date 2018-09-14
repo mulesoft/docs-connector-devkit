@@ -12,12 +12,13 @@ image::6-package.png[]
 
 == Prerequisites
 
-* Familiarity with Anypoint Connectors, xref:3.6@mule-runtime::datasense.adoc[DataSense], xref:3.6@mule-runtime::datasense-query-editor.adoc[DataSense Query Editor], and xref:adding-datasense-query-language.adoc[Adding DataSense Query Language] from a user level.
+* Familiarity with Anypoint Connectors, xref:5@studio::datasense.adoc[DataSense], xref:5@studio::datasense-query-editor.adoc[DataSense Query Editor], and xref:adding-datasense-query-language.adoc[Adding DataSense Query Language] from a user level.
 * Understand Java "@" annotations. See xref:annotation-reference.adoc[Annotation Reference].
 * Experience with implementing a basic connector with xref:index.adoc[Anypoint DevKit].
 * Understand the visitor pattern, which is fundamental to the workings of DSQL-to-native query language translation.
 See:
 ** http://java.dzone.com/articles/design-patterns-visitor[Design Patterns Uncovered: the Visitor Pattern]
+** http://en.wikipedia.org/wiki/Visitor_pattern[Visitor pattern] Wikipedia article
 
 == Enabling DSQL on Your Connector
 

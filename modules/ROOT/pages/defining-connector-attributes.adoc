@@ -10,32 +10,11 @@ Like all Mule elements, connectors have attributes that can be assigned in the c
 
 This document assumes you are familiar with the xref:index.adoc[Anypoint Connector DevKit] and you have already covered the connector's xref:authentication.adoc[authentication] methods.
 
-== `@Configurable` Annotation
+== @Configurable Annotation
 
-The connector's attributes are defined using the `@Configurable` annotation on the class private attributes. These attributes are later assigned in the connector's global configuration dialog. In addition to the `@Configurable` annotation, these attributes need public getters and setters (not shown).
+The connector's attributes are defined using the `@Configurable` annotation, which provide for essential fields, at least from a user perspective. Since DevKit 3.7, all `@Configurable` parameters must be placed inside the "Config" class _instead of_ the `@Connector` class, normally defined in a separate Java file. These attributes are user assigned in the connector's global configuration dialog, if not set by default. In addition to the `@Configurable` annotation for each attribute, the attributes need public getters and setters.
 
-[NOTE]
-* A `@Connector` can have any number of simple or complex `@Configurable` attributes.
-* `@Configurable` attributes are mandatory from a user perspective.
-
-For example:
-
-[source,java,linenums]
-----
-@Connector(name="barn", schemaVersion="1.0", friendlyName="Barn", minMuleVersion="3.6")
-public class BarnConnector
-{
-    @Configurable
-    private String key;
-
-    public String getKey() {
-        return key;
-    }
-    public void setKey(String key) {
-        this.key = key;
-    }
-}
-----
+*Note*: A connector may make use of any number of simple or complex `@Configurable` attributes you define when writing code for the connector.
 
 XML configuration:
 
@@ -46,45 +25,46 @@ XML configuration:
 
 image::configurable-screenshot.png[]
 
-== `@Optional `Annotation
+== @Optional Annotation
 
-As mentioned before, @Configurable attributes are mandatory. If we want to make them optional we need to mark them with the `@Optional` annotation.
+As mentioned before, `@Configurable` attributes are mandatory. If we want to make them optional we need to mark them with the `@Optional` annotation.
 
 [source,java,linenums]
 ----
-@Connector(name="barn", schemaVersion="1.0", friendlyName="Barn", minMuleVersion="3.6")
-public class BarnConnector
-{
-    @Configurable
-    @Optional
-    private String key;
+public abstract class AbstractAnalyticsConfig {
 
-    public String getKey() {
-        return key;
-    }
-    public void setKey(String key) {
-        this.key = key;
-    }
+...
+  /**
+  * Hostname of the proxy. If this property is not set then no proxy is used, otherwise proxy is going to be used but host can not be empty.
+  */
+  @Configurable
+  @Optional
+  @Placement(group = "Proxy Settings")
+  @FriendlyName(value = "Host")
+  private String proxyHost;
+
+  /**
+  * Port of the proxy. If host is set then this property has to be set and can not be a negative number.
+  */
+  @Configurable
+  @Optional
+  @Default("3128")
+  @Placement(group = "Proxy Settings")
+  @FriendlyName(value = "Port")
+  private Integer proxyPort;
 }
 ----
 
-XML configuration:
+XML configuration for a partially complete configuration with some sample proxy settings defined:
 
 [source,xml,linenums]
 ----
-<barn:config name="Barn" key="myKey" doc:name="Barn"/>
+<sfdc-analytics:config name="Salesforce_Analytics_Cloud__Basic_authentication" username="" password="" securityToken="" metadataFileName="" proxyHost="127.3.4.12" proxyUsername="dearuser" proxyPassword="asdfaesfasf" doc:name="Salesforce Analytics Cloud: Basic authentication" proxyPort="3127"/>
 ----
 
-The following is also valid since assigning a value is optional:
+If unchanged, the default port number does not show up in the configuration. If changed, for example, `proxyPort="3127"` (default port number is "3128") it shows in the XML configuration line. See above.
 
-[source,xml,linenums]
-----
-<barn:config name="Barn" doc:name="Barn"/>
-----
-
-image::optional-screenshot.png[]
-
-== `@Default` Annotation
+== @Default Annotation
 
 For optional attributes only, you can set a default value using the `@Default` annotation. This value is used if no value is assigned to the attribute.
 
@@ -92,40 +72,16 @@ For example:
 
 [source,java,linenums]
 ----
-@Connector(name="barn", schemaVersion="1.0", friendlyName="Barn", minMuleVersion="3.6")
-public class BarnConnector
-{
+public abstract class AbstractAnalyticsConfig {
+    ...
     @Configurable
-    @Default("testKey")
-    private String key;
-
-    public String getKey() {
-        return key;
+    @Default("0")
+    @Placement(group = "Connection")
+    private int connectionTimeout;
     }
-    public void setKey(String key) {
-        this.key = key;
-    }
-}
 ----
 
-XML configuration:
-
-[source,xml,linenums]
-----
-<barn:config name="Barn" key="myKey" doc:name="Barn"/>
-----
-
-If the `key` attribute is not present it implicitly is assigned the value `testKey` as defined by the `@Default` annotation:
-
-[source,xml,linenums]
-----
-<barn:config name="Barn" doc:name="Barn"/>
-----
-
-image::default-screenshot.png[]
-
-[NOTE]
-Whenever an attribute is marked as `@Default`, it's implicitly `@Optional` as well.
+*Note:* Whenever an attribute is marked as `@Default`, it's implicitly `@Optional` as well.
 
 
 == Customizing Attributes Look and Feel
@@ -133,14 +89,14 @@ Whenever an attribute is marked as `@Default`, it's implicitly `@Optional` as we
 By default, Anypoint DevKit infers the names and labels for the Studio dialog boxes from methods, parameters, JavaDoc comments, and instance variable names in your Java files. However, you can also use annotations to customize many aspects of the look and feel of your component to improve the user experience.
 
 [NOTE]
-The package` org.mule.api.annotations.display `defines the annotations that let you perform these customizations.
+The package `org.mule.api.annotations.display` defines the annotations that let you perform these customizations.
 
 You can (and should) use several annotations that control how the attribute appears in the connector's dialog in Studio and in your connector documentation.
 
 
-== `@FriendlyName `Annotation
+== @FriendlyName Annotation
 
-Use this annotation to instance variables and method parameters to provide a way to override the default inferred nickname for a `@Configurable` variable or a `@Processor`/`@Source`/`@Transformer` method parameter. It is required that you provide a parameter is annotated with this.
+Use this annotation on variables and method parameters to override the default inferred nickname for a `@Configurable` variable or a `@Processor`/`@Source`/`@Transformer` method parameter. Providing a parameter with this annotation is required.
 
 [source,java,linenums]
 ----
@@ -152,24 +108,28 @@ public class BarnConnector
 
 image::friendlyname-screenshot-1.png[friendlyName-screenshot-1]
 
-== `@Password `Annotation
+== @Password Annotation
 
 Use this annotation to identify a field or method parameter as a password or, more generally, as a variable which contains data that should not be displayed as plain text.
 
 [source,java,linenums]
 ----
-@Connect
-public void connect(@ConnectionKey String username, @Password String password)
-        throws ConnectionException {
-     ...
-}
+    /**
+     * Password used to authenticate against the proxy.
+     */
+    @Configurable
+    @Optional
+    @Password
+    @Placement(group = "Proxy Settings")
+    @FriendlyName(value = "Password")
+    private String proxyPassword;
 ----
 
-image::password-screenshot.png[]
+//image:password-screenshot.png[]
 
-== `@Summary` Annotation
+== @Summary Annotation
 
-Use this annotation to instance variables and method parameters to provide a way to override the default inferred description for a `@Configurable` variable or a `@Processor`/`@Source`/`@Transformer` method parameter.
+Use this annotation on variables and method parameters to override the default inferred description for a `@Configurable` variable or a `@Processor`/`@Source`/`@Transformer` method parameter.
 
 [source,java,linenums]
 ----
@@ -181,7 +141,7 @@ public String putInBarn(String animal)
 }
 ----
 
-== `@Icons`: Custom Palette and Flow Editor Icons
+== @Icons Custom Palette and Flow Editor Icons
 
 Use this annotation on the connector class to override the default location of one or more of the required icons. The path needs to be relative to `/src/main/java`.
 
@@ -194,9 +154,9 @@ public class BarnConnector
    ...
 ----
 
-== `@Placement`: Field Order, Grouping, and Tabs
+== @Placement Field Order, Grouping, and Tabs
 
-Use this annotation to instance variables and method parameters. It accepts the following parameters:
+Use this annotation on variables and method parameters. It accepts the following parameters:
 
 * *order* — The relative order of the annotated element within its group. If the value provided is duplicated then the order of these elements is arbitrarily defined. Value is relative; an element with order 10 has higher precedence than an element with value 25.
 * *group* — A logical way to display one or more variables together. If you do not specify a group, then Mule assumes a default group. To place multiple elements in the same group, assign the same values to them for this attribute.
@@ -226,7 +186,10 @@ image::placement-1-screenshot.png[]
 
 image::placement-2-screenshot.png[]
 
+== Next
+
+* xref:complex-data-types-attributes.adoc[complex data types]
+
 == See Also
 
-* *NEXT:* Learn more about xref:complex-data-types-attributes.adoc[complex data types] attribute support, such as enumerated types and collections.
 * Learn more about xref:adding-datasense.adoc[Adding DataSense] to your connector.
