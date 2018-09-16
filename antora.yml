@@ -1,5 +1,5 @@
 name: connector-devkit
 title: Connector DevKit
-version: latest
+version: 'latest'
 nav:
 - modules/ROOT/nav.adoc
