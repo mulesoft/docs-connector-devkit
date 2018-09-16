@@ -1,4 +1,5 @@
 .xref:index.adoc[Anypoint Connector DevKit]
+* xref:index.adoc[About Anypoint Connector DevKit]
 * xref:index.adoc[Anypoint Connector DevKit]
 * xref:setup.adoc[Setup]
  ** xref:setting-up-your-dev-environment.adoc[Setting Up Your Development Environment]
