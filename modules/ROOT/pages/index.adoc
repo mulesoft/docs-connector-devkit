@@ -1,4 +1,4 @@
-= Anypoint Connector DevKit
+= About Anypoint Connector DevKit
 ifndef::env-site,env-github[]
 include::_attributes.adoc[]
 endif::[]
