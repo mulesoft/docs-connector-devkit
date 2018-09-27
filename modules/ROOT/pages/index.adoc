@@ -28,7 +28,7 @@ This is what you need to develop *DevKit-based Anypoint Connectors* on your syst
 _Existing Connector:_
 * Click *File* > *Import* > *Anypoint Studio* > *Anypoint Connector Project from External Location*, choose a URL or a .zip file, and complete the wizard to locate and import the project.
 +
-See also xref:creating-a-soap-connector.adoc[Creating a SOAP Connector] or link:/anypoint-connector-devkit/v/3.8/creating-a-connector-for-a-restful-api-using-jersey[Creating a REST Connector Using Jersey].
+See also xref:creating-a-soap-connector.adoc[Creating a SOAP Connector] or xref:devkit-tutorial.adoc[Creating a REST Connector Using Jersey].
 . xref:setting-up-api-access.adoc[Determine resource access] - Each resource has a different access method, such as REST, SOAP, FTP, or the Java SDK features.
 . xref:authentication.adoc[Choose an authentication mechanism] - Mule supports OAuth V1 or V2, and username and password authentication (known as xref:connection-management.adoc[connection management]), which can be used for protocols such as API Key, SAML, NTLM, Kerberos, or LDAP.
 . xref:connector-attributes-and-operations.adoc[Choose the connector's data model] - Models can be static Java objects or dynamic objects. You can use xref:5@studio::datasense.adoc[DataSense] - Determine what information the target resource expects.
@@ -96,7 +96,7 @@ The data model for the connector consists of the objects passed into and out of 
 
 REST simplifies access to HTTP using POST, GET, PUT, and DELETE calls to provide access to creating, getting, putting, and deleting information on a resource.
 
-DevKit currently provides a strategy for link:/anypoint-connector-devkit/v/3.8/creating-a-connector-for-a-restful-api-using-jersey[Creating a Connector for a RESTful API Using Jersey] to build a REST API-supported connector.
+DevKit currently provides a strategy for xref:devkit-tutorial.adoc[Creating a Connector for a RESTful API Using Jersey] to build a REST API-supported connector.
 
 SOAP is a traditional means of communicating with a resource and requires a WSDL file, which is an XML file that specifies all aspects of a Java class’s structure, methods, properties, and documentation. SOAP is an industry standard with tools for governance, building, and schema information. DevKit provides a tools that helps building a connector using a WSDL file.
 

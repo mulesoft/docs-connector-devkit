@@ -156,7 +156,7 @@ private WebResource addSignHeader(WebResource webResource) {
 }
 ----
 
-The connector passes all calls to the Dropbox API through this method to add the authentication headers specified by the OAuth V1 standard. Because this is specific to the use of Jersey client, a detailed walkthrough of this method and how it fits into the client class is not presented here. See the link:/anypoint-connector-devkit/v/3.8/creating-a-connector-for-a-restful-api-using-jersey[Creating a Connector for a RESTful API Using Jersey] for the full details.
+The connector passes all calls to the Dropbox API through this method to add the authentication headers specified by the OAuth V1 standard. Because this is specific to the use of Jersey client, a detailed walkthrough of this method and how it fits into the client class is not presented here. See the xref:devkit-tutorial.adoc[Creating a Connector for a RESTful API Using Jersey] for the full details.
 
 == Using an OAuth V1 Connector
 
