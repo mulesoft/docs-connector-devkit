@@ -1,0 +1,30 @@
+= Mule DevKit
+ifndef::env-site,env-github[]
+include::_attributes.adoc[]
+endif::[]
+
+The web has introduced thousands of new applications for business, IT, collaboration, social media, e-commerce and productivity and many of them now expose web APIs to integrate and automate the use of these applications and the data they manage.
+
+Mule Runtime supports a growing number of Cloud Connectors but you or your customers might require connectivity to a application API which is not currently listed. To help with this, there is the Mule DevKit which guides the developer though the setup and creation of a Cloud Connector.
+
+In addition to creating connectors, the DevKit can help you build transformers, filters, transports, and much... much more.
+
+== Where should I start?
+
+Look at our xref:your-first-cloud-connector.adoc[Your First Cloud Connector] section to get started.
+
+== Need Help?
+
+If you need help while developing your Cloud Connector you can always visit the http://forums.mulesoft.com/[Forums] and post your question to the community.
+
+== Reference Guide
+
+The document includes the following sections:
+
+* xref:configuring-extensions.adoc[Writing Mule Extensions] explains how to code, document, and package Mule extensions using the Mule DevKit.
+
+* xref:contribute.adoc[Contribute] explains how the Community can help improve the Mule DevKit. The Mule DevKit project source code is open to the entire Community.
+
+* xref:how-the-devkit-works.adoc[How the Devkit Works] shows how the DevKit works under the covers.
+
+* xref:glossary.adoc[Glossary] provides quick reference for key terms used in this documentation.
