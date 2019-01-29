@@ -1,0 +1,142 @@
+= Defining @Configurable Attributes on Connectors
+ifndef::env-site,env-github[]
+include::_attributes.adoc[]
+endif::[]
+
+Like all Mule elements, connectors have attributes that can be assigned in Mule configuration XML files and set in the element's property dialog. The `@Configurable`  DevKit annotation defines attributes on the connector that can be set when the connector is used. A `@Connector` can have any number of simple or complex `@Configurable` attributes.
+
+
+
+== Assumptions
+
+You are familiar with Mule's XML syntax for configuring elements.
+
+== Creating a @Configurable Attribute
+
+The `@Configurable` annotation signals the generator to create a property configurable for each instance of your connector through XML syntax or a connector configuration dialog box. In addition to the `@Configurable` annotation, you need a public getter and a public setter.
+
+For example:
+
+[source,java,linenums]
+----
+import org.mule.api.annotations.Configurable;
+import org.mule.api.annotations.Connector;
+
+@Connector(name = "myconnector")
+public class MyConnector {
+
+    @Configurable
+    private String key;
+
+    public String getKey(){
+        return this.key;
+    }
+    public void setKey(String key) {
+       this.key = key;
+    }
+----
+
+Then configure the module or connector as follows:
+
+[source,xml,linenums]
+----
+<myconnector:config key="myKey" />
+----
+
+== Making an Attribute @Optional
+
+`@Configurable` attributes are mandatory, unless marked with the `@Optional` annotation. `@Optional` `@Configurable` attributes may be omitted when using the connector.
+
+For example:
+
+[source,java,linenums]
+----
+@Module(name = "mymodule")
+public class MyModule {
+
+    @Configurable
+    @Optional
+    private String key;
+
+    public String getKey(){
+        return this.key;
+    }
+    public void setKey(String key) {
+       this.key = key;
+    }
+----
+
+Then configure the connector as follows:
+
+[source,xml,linenums]
+----
+<myconnector:config key="myKey" />
+----
+
+ The following is also valid since assigning a value is optional:
+
+[source,xml,linenums]
+----
+<myconnector:config />
+----
+
+== Adding a @Default Attribute Value
+
+For `@Optional` configurable attributes, use the `@Default` annotation to specify a default value if the attribute is omitted.
+
+For example:
+
+[source,java,linenums]
+----
+@Module(name = "mymodule")
+public class MyModule {
+
+    @Configurable
+    @Optional
+    @Default("testKey")
+    private String key;
+
+    public String getKey(){
+        return this.key;
+    }
+    public void setKey(String key) {
+       this.key = key;
+    }
+----
+
+Then the connector can be configured as follows:
+
+[source,xml,linenums]
+----
+<myconnector:config key="myKey" />
+----
+
+If the `key` attribute is not present it will implicitly be assigned the value `testKey` as defined by the `@Default` annotation:
+
+[source,xml,linenums]
+----
+<myconnector:config />
+----
+
+== Customizing Attributes for Better Usability
+
+You can (and should) use several annotations that control how the attribute appears in the property dialog in Studio and in your connector documentation:
+
+* `@FriendlyName` sets the attribute name shown in the property dialog
+* `@Placement` affects the position in the property dialog
+* `@Summary` provides a short description for the operation (used as a tooltip in Studio)
+
+See xref:customizing-connector-integration-with-esb-and-studio.adoc[Customizing Connector Integration with ESB and Studio] for more on these annotations.
+
+== Complex Data Types and Configurable Attributes
+
+DevKit supports configurable attributes of complex types, such as enumerated types and collections. See xref:handling-data-types-for-configurable-properties.adoc[Handling Data Types for Configurable Properties] for more details.
+
+== Next Steps
+
+Choose a client implementation style to follow, based on your use case:
+
+* xref:connector-to-java-client-library-example.adoc[Connector to Java Client Library Example]
+* xref:connector-to-soap-service-via-cxf-client-example.adoc[Connector to SOAP Service via CXF Client Example]
+* xref:connector-to-restful-service-with-jersey-client-example.adoc[Connector to RESTful Service with Jersey Client Example]
+* xref:connector-to-restful-api-with-restcall-annotations-example.adoc[Connector to RESTful API with RESTCall Annotations Example]

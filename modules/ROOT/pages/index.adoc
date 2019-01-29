@@ -1,4 +1,4 @@
-= Anypoint Connector DevKit
+= Anypoint Connector DevKit (v3.4 Archives)
 ifndef::env-site,env-github[]
 include::_attributes.adoc[]
 endif::[]
@@ -12,7 +12,7 @@ This documentation contains all the information you need to build custom Anypoin
 * Provide advanced design-time functionality such as Mule xref:3.4@mule-runtime::mule-datasense.adoc[DataSense] support
 * Support runtime attributes like connection pooling, instance pooling, and multi-tenancy (needed to run in CloudHub)
 
-*xref:3.4@devkit-shortcut-to-success.adoc[Ready to Write Code?]*
+*xref:devkit-shortcut-to-success.adoc[Ready to Write Code?]*
 
 == Assumptions
 
@@ -22,8 +22,8 @@ In addition to a general familiarity with the Java language, you specifically ne
 
 == Get Started
 
-* Begin at the beginning with the xref:3.4@anypoint-connector-concepts.adoc[Anypoint Connector Concepts].
-* If you're eager to jump in and start writing code immediately, picking up the concepts as you go, begin with the xref:3.4@devkit-shortcut-to-success.adoc[DevKit Shortcut to Success].
+* Begin at the beginning with the xref:anypoint-connector-concepts.adoc[Anypoint Connector Concepts].
+* If you're eager to jump in and start writing code immediately, picking up the concepts as you go, begin with the xref:devkit-shortcut-to-success.adoc[DevKit Shortcut to Success].
 
 [TIP]
 ====

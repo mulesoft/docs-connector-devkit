@@ -1,0 +1,14 @@
+= DevKit Advanced Topics
+ifndef::env-site,env-github[]
+include::_attributes.adoc[]
+endif::[]
+
+The following advanced topics can add valuable functionality to complex connectors.
+
+* xref:http-callbacks.adoc[HTTP Callbacks]
+* xref:integrating-connectors-with-the-mule-lifecycle.adoc[Integrating Connectors with the Mule Lifecycle]
+* xref:handling-data-types-for-configurable-properties.adoc[Handling Data Types for Configurable Properties]
+* xref:architectural-considerations-with-connectors-and-the-mule-container.adoc[Architectural Considerations with Connectors and the Mule Container]
+* xref:injecting-mule-managers-into-anypoint-connectors.adoc[Injecting Mule Managers into Anypoint Connectors]
+* xref:supporting-datasense-with-dynamic-data-models.adoc[Supporting DataSense with Dynamic Data Models]
+* xref:implementing-datasense-query-language-support.adoc[Implementing DataSense Query Language Support]

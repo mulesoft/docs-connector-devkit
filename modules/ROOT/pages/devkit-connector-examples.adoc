@@ -1,0 +1,32 @@
+= DevKit Connector Examples
+ifndef::env-site,env-github[]
+include::_attributes.adoc[]
+endif::[]
+
+The set of example connectors provided with the Anypoint Connector DevKit documentation illustrate a range of concepts and techniques to apply when building connectors for a variety of use cases. This document summarizes the available example connectors and what topics each one illustrates.
+
+== Assumptions
+
+This document assumes that you are familiar with:
+
+* xref:anypoint-connector-concepts.adoc[Anypoint Connector Concepts]
+* xref:connector-attributes-operations-and-data-model.adoc[Connector Attributes, Operations, and Data Model]
+
+To work with these samples, create a development environment with the instructions in xref:setting-up-a-devkit-development-environment.adoc[Setting Up a DevKit Development Environment].
+
+== Connector Examples
+
+[%header%autowidth.spread]
+|===
+|Connector |Example |Description
+|Dropbox |https://github.com/mulesoft/connector-documentation-oauth1-example[OAuth1 Example Connector] |A simple connector to Dropbox that implements OAuth1.
+|Twitter |xref:connector-to-java-client-library-example.adoc[Java Client Library Example Connector] |Official MuleSoft Twitter connector based on the widely used, unofficial twitter4j client library.
+|SunSetRise |xref:connector-to-soap-service-via-cxf-client-example.adoc[SOAP Service Example Connector with CXF] |The _de facto_ standard for building and consuming SOAP Web services.
+|Dropbox |xref:connector-to-restful-service-with-jersey-client-example.adoc[Example Connector to RESTful Service with Jersey Client] |Flexible access to any RESTful API.
+|@RESTCall Annotations |xref:connector-to-restful-api-with-restcall-annotations-example.adoc[Example Connector using RESTCall Annotations] |DevKit's built-in client for simple RESTful APIs.
+|===
+
+== See Also
+
+* xref:supporting-datasense-with-dynamic-data-models.adoc[Add DataSense] (design-time metadata awareness) to your connector.
+* Research other xref:devkit-advanced-topics.adoc[advanced topics].

@@ -1,0 +1,60 @@
+= Packaging Your Connector for Release
+ifndef::env-site,env-github[]
+include::_attributes.adoc[]
+endif::[]
+
+When your connector is ready for release to a broad audience, take the following additional steps to ensure user success:
+
+* Create a license agreement for your connector.
+* Develop end-to-end walkthroughs to illustrate performing common use cases with your connector.
+
+== Assumptions
+
+This document assumes that you have successfully developed your connectors and documented them in preparation for their release.
+
+== Customize License Agreement
+
+During connector installation, Studio presents the user with a license agreement. Customize the contents of this agreement to reflect your terms.
+
+Maven first searches for a `LICENSE.md` file in the same directory as the `pom.xml` file during the build process.
+
+If this file is not found, Maven goes through the following series of steps to locate a license agreement:
+
+. It checks for a `LICENSE.txt` file in the same directory as the `pom.xml` .
+. If the `pom.xml` file contains a *Licenses* section (as described in the http://maven.apache.org/pom.html#Licenses[Maven documentation]), DevKit attempts to to download the text from the license's URL, then saves the downloaded content as a new `LICENSE.md` file.
+. If no license text is found by the above steps, the build fails.
+
+== Create End-to-End Use Case Examples
+
+One or more end-to-end demos can be extremely useful in helping users succeed with your connector.
+
+////
+The https://github.com/mulesoft/box-connector/blob/master/doc/sample.md[Box connector] provides an excellent example of an effective connector use case, including a step-by-step walkthrough of installing and using the connector.
+////
+
+== Certify and Publish Your Connector
+
+MuleSoft's program certifies and publishes third party connectors to be distributed to the community on MuleSoft.org. For more information about this program, please mailto:connector_team@mulesoft.com[contact us].
+
+
+
+== Uploading your Connector to Exchange
+
+Anypoint Studio identifies each connector by a *Feature ID* that spans all versions of the connector. In order to expose your connector via the https://docs.mulesoft.com/anypoint-exchange[Anypoint Exchange], you will be prompted by the Exchange to provide this Feature ID when uploading your connector asset, as well as a version number.
+
+Follow the steps below to obtain this ID:
+
+. Unzip the file containing your connector's Update Site
+. In the created folder, look for the `context.xml` file and open it with a text editor
+
+. In this file, search for a string that follows the following pattern: `id=’org.mule.tooling.ui.extension.<connector name>.feature.group’`. That entire value is your connector’s Feature ID. As a more concrete example, your Feature ID could be something like ’org.mule.tooling.ui.extension.cloudhub.3.6.0.feature.group’
+
+
+In this same `context.xml` file you will find a tag named *version* next to the Feature ID. Provide this value in the *Connector Version* field in Exchange. Consumers will later only see a beautified and simpler version number. For example if the version number you provide is 2.0.1.201606101417, they will just see 2.0.1. The full version number will be displayed ONLY when are editing a specific version.
+
+
+
+== Next Steps
+
+* xref:supporting-datasense-with-dynamic-data-models.adoc[Add DataSense] (design-time metadata awareness) to your connector.
+* Research other xref:devkit-advanced-topics.adoc[advanced topics].
