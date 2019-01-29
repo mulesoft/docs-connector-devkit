@@ -1,5 +1,5 @@
 name: connector-devkit
 title: Anypoint Connector DevKit
-version: '3.2'
+version: '3.3'
 nav:
 - modules/ROOT/nav.adoc

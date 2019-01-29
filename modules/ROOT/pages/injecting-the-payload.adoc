@@ -11,32 +11,8 @@ A method annotated with `@Processor` can have *at most* one parameter annotated 
 
 For example this is not possible:
 
-[source,java,linenums]
-----
-@Processor
- public Object myMethod(@Payload Object payload, @InvocationHeaders("*") Map<?, ?> headers) {
-----
-
 == Examples
 
 Inject the payload without specifying the type:
 
-[source,java,linenums]
-----
-@Processor
-public Object myMethod(@Payload Object payload) {
-    // code here
-    return payload;
-}
-----
-
 Inject the payload which is of type `byte[]` and return a `java.lang.String`
-
-[source,java,linenums]
-----
-@Processor
-public String myMethod(@Payload byte[] payload) {
-    // code here
-    return new String(payload);
-}
-----

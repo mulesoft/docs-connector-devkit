@@ -1,16 +1,16 @@
-= Using the Archetype
+= Using the Module Archetype
 ifndef::env-site,env-github[]
 include::_attributes.adoc[]
 endif::[]
 
-[IMPORTANT]
-It is required the use of Maven 3.x
+*Mule DevKit* provides a *Maven Archetype* to simplify the creation of Mule extensions. Running the archetype sets up a new Maven project with all the necessary dependencies to create a custom Module. It also creates a proper directory structure and class skeletons to help you start coding quickly.
 
-The DevKit provides a Maven Archetype to simplify the creation of Mule extensions. Running the archetype will set up a new Maven project with all the necessary dependencies to create a custom Module. It will also create a proper directory structure and class skeletons to quickly start coding.
+[WARNING]
+To use Mule DevKit's Maven Archetype, ensure that you are using **Maven 3.x**.
 
-The archetype's group id, artifact id and version are:
+The archetype's group id, artifact id and version are listed in the table below.
 
-[%header,cols="2*",width=80%]
+[%header,cols="2*"]
 |===
 |Parameter |Value
 |archetypeGroupId |org.mule.tools.devkit
@@ -18,26 +18,23 @@ The archetype's group id, artifact id and version are:
 |archetypeVersion |3.2
 |===
 
-In order for the archetype to set up the new project correctly, the following properties have to set:
+For the archetype to set up the new project correctly, you must set the properties listed in the table below.
 
-[%header,cols="2*",width=80%]
+[%header,cols="2*"]
 |===
 |Parameter |Description
-|groupId |The group id of the new project.
-|artifactId |The artifact id of the new project
-|version |The version of the new project.
-|muleVersion |The Mule version for which this Cloud Connector been developed.
-|muleModuleName |The name of the Module in camel case with first letter capitalized.
-|muleModulePackage |The base package of the project. For example: com.mycompany
+|groupId |group id of the new project
+|artifactId |artifact id of the new project
+|version |version of the new project
+|muleVersion |Mule version for which this Connector has been developed
+|muleModuleName |name of the Module in camel case, first letter capitalized
+|muleModulePackage |base package of the project (for example: com.mycompany)
 |===
-
-*IMPORTANT*: It is required to use Maven 3.x
 
 == Example
 
-The following command is an example of how to create a custom Module project:
+The command that follows is an example that creates a custom Module project.
 
-[source,text,linenums]
 ----
   mvn archetype:generate -DarchetypeGroupId=org.mule.tools.devkit \ -DarchetypeArtifactId=mule-devkit-archetype-generic -DarchetypeVersion=3.2 \-DarchetypeRepository=http://repository.mulesoft.org/releases/ \ -DgroupId=com.mycompany -DartifactId=cool-module -Dversion=1.0-SNAPSHOT \-DmuleVersion=3.2.1 -DmuleModuleName=CoolExtension \-Dpackage=com.mycompany.coolextension \-DarchetypeRepository=http://repository.mulesoft.org/releases
 ----

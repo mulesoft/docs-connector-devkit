@@ -5,7 +5,7 @@ endif::[]
 
 Normally a Mule extension will have global configuration parameters and operation specific parameters. The former, is related to instance variables or global state meaning that is state persistent across operations.
 
-Instance variables that need to be exposed to Mule need to have a special metedata to signal the Annotation Processor that the field can be assigned inside a Mule configuration XML file. The DevKit provides the `@Configurable` annotation for this case. In other words, any instance variable of a Cloud Connector or Module that needs to be configured by the users has to marked with `@Configurable`
+Instance variables that need to be exposed to Mule need to have a special metedata to signal the Annotation Processor that the field can be assigned inside a Mule configuration XML file. The DevKit provides the `@Configurable` annotation for this case. In other words, any instance variable of a Connector or Module that needs to be configured by the users has to marked with `@Configurable`
 
 An extension can have any number of `@Configurable` fields and these fields can be of primitive or complex types. Additionally, a `@Configurable` field can be optionally set from Mule and can take a default value in case a value is not assigned to it.
 
@@ -113,7 +113,7 @@ Or if the `key` attribute is not present it will implicitly be assigned the valu
 
 == Multiple Configurations
 
-It is possible to have more than one configuration. Such case may be the Mongo Cloud Connector having one configuration to access a database in one server (username, host, port, etc.) and another one for a different server. When multiple configurations are present it is necessary to provide a name to them so that they can be referenced later.
+It is possible to have more than one configuration. Such case may be the Mongo Connector having one configuration to access a database in one server (username, host, port, etc.) and another one for a different server. When multiple configurations are present it is necessary to provide a name to them so that they can be referenced later.
 
 One configuration, notice that the invoking a message processor it is not required to specify a name for the configuration because there is only one:
 

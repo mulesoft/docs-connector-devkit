@@ -3,7 +3,7 @@ ifndef::env-site,env-github[]
 include::_attributes.adoc[]
 endif::[]
 
-**Anypoint Connector DevKit **provides the tools and interfaces for building custom xref:3.4@mule-runtime::anypoint-connectors.adoc[Anypoint Connectors] for use with Mule Runtime. As reusable components that hide API complexity from the integration developer, custom connectors facilitate integration with SaaS and on-premise Web services, applications and data sources. Connectors built using DevKit function in Mule Studio and Mule runtime environments as extensions of the core product. +
+*Anypoint Connector DevKit* provides the tools and interfaces for building custom xref:3.4@mule-runtime::anypoint-connectors.adoc[Anypoint Connectors] for use with Mule ESB. As reusable components that hide API complexity from the integration developer, custom connectors facilitate integration with SaaS and on-premise Web services, applications and data sources. Connectors built using DevKit function in Mule Studio and Mule ESB runtime environments as extensions of the core product. +
 
 This documentation contains all the information you need to build custom Anypoint Connectors which:
 

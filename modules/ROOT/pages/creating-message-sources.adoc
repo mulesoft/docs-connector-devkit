@@ -3,29 +3,29 @@ ifndef::env-site,env-github[]
 include::_attributes.adoc[]
 endif::[]
 
-In some cases it is necessary to create xref:3.2@mule-runtime::message-sources-and-message-processors.adoc#message-sources[Message Sources] instead of xref:3.2@mule-runtime::message-sources-and-message-processors.adoc#message-processors[Message Processors]. Basically, a Message Source receives or generates new messages to be processed by Mule.
+In some cases it is necessary to create xref:3.3@mule-runtime::message-sources-and-message-processors.adoc[Message Sources] instead of xref:3.3@mule-runtime::message-sources-and-message-processors.adoc[Message Processors]. Basically, a Message Source receives or generates new messages to be processed by Mule.
 
 On of the use cases of Message Sources is implementing Streaming APIs. The `@Source` annotation marks a method inside a `@Module` or `@Connector` annotated class as callable from a Mule flow and capable of generating Mule events. Each marked method will have a Message Source generated. The method must receive a `SourceCallback` as one of its arguments that represents the next message processor in the chain. It does not matter the order in which this parameter appears as long it is present in the method signature.
 
 == Example
 
-For example the SalesForce Cloud Connector supports the SalesForce Streaming API in which users can subscribe to topics and receive notifications when a new event related to that topic happens.
+For example the SalesForce Connector supports the SalesForce Streaming API in which users can suscribe to topics and receive notifications when a new event related to that topic happens.
 
 [source,java,linenums]
 ----
 @Source
-   public void subscribeTopic(String topic, final SourceCallback callback) {
-       getBayeuxClient().subscribe(topic, new ClientSessionChannel.MessageListener() {
-           @Override
-           public void onMessage(ClientSessionChannel channel, Message message) {
-               try {
-                   callback.process(message.getData());
-               } catch (Exception e) {
-                   LOGGER.error(e);
-               }
-           }
-       });
-   }
+    public void subscribeTopic(String topic, final SourceCallback callback) {
+        getBayeuxClient().subscribe(topic, new ClientSessionChannel.MessageListener() {
+            @Override
+            public void onMessage(ClientSessionChannel channel, Message message) {
+                try {
+                    callback.process(message.getData());
+                } catch (Exception e) {
+                    LOGGER.error(e);
+                }
+            }
+        });
+    }
 ----
 
 This method can be invoked from Mule as follows:
@@ -39,10 +39,10 @@ This method can be invoked from Mule as follows:
     </flow>
 ----
 
-It subscribes to a topic with the given parameter name, and when an update is received it will invoke the next message processor in the chain which in this case is a logger.
+It suscribes to a topic with the given parameter name, and when an update is received it will invoke the next message processor in the chain which in this case is a logger.
 
 
 == More information
 
-* xref:3.2@mule-runtime::message-sources-and-message-processors.adoc#message-sources[Message Sources]
-* xref:3.2@mule-runtime::message-sources-and-message-processors.adoc#message-processors[Message Processors]
+* xref:3.3@mule-runtime::message-sources-and-message-processors.adoc[Message Processors]
+* xref:3.3@mule-runtime::message-sources-and-message-processors.adoc[Message Sources]

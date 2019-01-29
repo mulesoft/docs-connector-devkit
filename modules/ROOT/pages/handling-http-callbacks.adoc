@@ -23,7 +23,7 @@ Note that the flows referenced do not have any inbound endpoint.
 
 If the default configuration is not suitable, the following settings can be used in the Mule configuration file:
 
-[%header%autowidth.spread]
+[%header,cols="10,85"]
 |===
 |Attribute Name |Description
 |localPort |the port to be used to create the HTTP inbound endpoint. Defaults to environment variable `http.port` +

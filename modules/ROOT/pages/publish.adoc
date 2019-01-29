@@ -1,11 +1,11 @@
-= Promoting Your Module
+= Publishing Your Module
 ifndef::env-site,env-github[]
 include::_attributes.adoc[]
 endif::[]
 
-After you create a new extension, you can create a project on Git. You can share it with the Mule community so you can get feedback on the quality and design of the module before putting it into production. By submitting to a GitHub site, you get the benefit of others trying out your module, and others get the benefit of your work.
+After you have create a new extension, you can submit it as a project in GitHub. This allows you to share it with the Mule community so you can get feedback on the quality and design of the module before putting it into production.
 
-Just as you may have made use of the available Mule extensions created by others, the extension you create can help others.
+Just as you may have made use of the available extensions that were submitted by others, the extension you create can help others.
 
 == Submitting Extensions
 

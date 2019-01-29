@@ -9,10 +9,10 @@ The Inbound headers collection is immutable, so the headers `Map` or `List` pass
 
 The `@InboundHeaders` annotation supports the following parameters:
 
-[%header%autowidth.spread]
+[%header,cols="10,85"]
 |===
 |Parameter |Description
-|value + |*Required*. Defines the headers that should be injected into the parameter.
+|value |*Required*. Defines the headers that should be injected into the parameter.
 |===
 
 == Restrictions
@@ -50,7 +50,7 @@ Inject the `foo` and `bar` headers from the inbound scope with their values:
 [source,java,linenums]
 ----
 @Processor
-   public Object myMethod(@InboundHeaders("foo, bar") Map<?, ?> myHeaders) {
+    public Object myMethod(@InboundHeaders("foo, bar") Map<?, ?> myHeaders) {
 ----
 
 Inject all the headers from the inbound scope with their values:

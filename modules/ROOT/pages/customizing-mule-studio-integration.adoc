@@ -3,34 +3,57 @@ ifndef::env-site,env-github[]
 include::_attributes.adoc[]
 endif::[]
 
-The Mule DevKit allows you to integrate your Cloud Connector with Mule Studio out of the box by running:
+*Mule DevKit* enables you to integrate your connector with *Mule Studio* applications.
 
+== Customizing Mule Studio
+
+. Run the following command in the directory in which your connector's `pom.xml` file is stored. +
++
 ----
-mvn clean package -Ddevkit.studio.package.skip=false
+ mvn clean package -Ddevkit.studio.package.skip=false
 ----
 
-By default names are inferred from Java method, parameter and instance variable names as well as JavaDoc comments. The following annotations can be used to customize Mule Studio dialogs and override the default inferred values.
+. By default, DevKit infers names from Java method, parameter and instance variable names, and JavaDoc comments.
 
-== @Placement
+The following sections describe annotations which customize Mule Studio dialogues and override the inferred values. +
+ +
 
-This annotation can be applied to instance variables and method parameters. It has the following parameters:
+=== The @Placement Annotation
 
-* _order_: gives the annotated element a relative order within its group. The value provided may be repeated and in that case the order is not guaranteed. The value is relative meaning that an element with order 10 has higher predence than one with value 25.
-* _group_: a group is a logical way to display one or more variables together. If no group is specified then a default group is assumed. To place more than one element in the same group, use the exact same values for this attribute.
-* _tab_: a tab is a logical way to groups together. This attributes specifies the name of the tab in which the annotated element should be displayed. If no tab is specified then a default tab is assumed. To display more than one parameter or field in the same the tab then this value should be exactly the same for all of them.
+Apply this annotation to instance variables and method parameters. It contains the following parameters:
 
-== @FriendlyName
+* *order* — The order is the relative order of the annotated element within its group. The value provided may be repeated and in that case the order is not guaranteed. The value is relative, meaning that an element with order 10 has higher precedence than one with value 25.
+* *group* — A group is a logical way to display one or more variables together. If no group is specified, then Mule assumes a default group. To place more than one element in the same group, use the exact same values for this attribute.
+* *tab* — A tab is a logical way to group annotated elements together. This attributes specifies the name of the tab in which the annotated element should be displayed. If no tab is specified, then Mule assumes a default tab. To display more than one parameter or field in the same the tab, use the exact same values for each of them.
 
-This annotation can be applied to instance variables and method parameters. It provides a way to override the default inferred short name for a @Configurable variable or a @Processor/@Source/@Transformer method parameter.
+=== The @FriendlyName Annotation
 
-== @Summary
+Apply this annotation to instance variables and method parameters to provide a way to override the default inferred short name for a `@Configurable` variable or a `@Processor`/`@Source`/`@Transformer` method parameter. +
+ +
 
-This annotation can be applied to instance variables and method parameters. It provides a way to override the default inferred description for a @Configurable variable or a @Processor/@Source/@Transformer method parameter.
+=== The @Summary Annotation
 
-== @Password
+Apply this annotation to instance variables and method parameters to provide a way to override the default inferred description for a `@Configurable` variable or a `@Processor`/`@Source`/`@Transformer` method parameter. +
+ +
 
-Identifies a field or method parameter as being a password or more generally as a variable which contains data that should not be displayed as plain text.
+=== The @Password Annotation
 
-== @Icons
+Apply this annotation to identify a field or method parameter as a password or, more generally, as a variable which contains data that should not be displayed as plain text. +
+ +
 
-This is a class level annotation and it is used to override the default location of the icons. You may override the location of one or more of the required icons. The path needs to be relative to /src/main/java
+=== The @Icons Annotation
+
+Apply this is a class-level annotation to override the default location of one or more of the required icons. The path needs to be relative to `/src/main/java`. +
+ +
+
+== Providing the Text of a License Agreement
+
+When users download your connector from your repository, they must accept a license agreement that you supply. The default location of the `LICENSE.md` file is in the same directory as the `pom.xml` file. DevKit accesses this directory to search for a `LICENSE.md` file first; if it finds none, it fetches the license text from elsewhere, then creates a new `LICENSE.md` file. The following sequence describes DevKit's activities as it searches for license agreement text.
+
+. If a `LICENSE.md` exists in the same directory as the `pom.xml`, DevKit uses that file and searches no further.
+
+. If a `license.txt` exists in the same directory as the `pom.xml`, DevKit uses that file and searches no further.
+
+. If the `pom.xml` file contains a *Licenses* section, DevKit attempts to to download the text from the license's URL, then saves the downloaded content as a new {{LICENSE.md}{ file and searches no further￼.
+
+. If all attempts to locate license agreement text fails, the build fails. +

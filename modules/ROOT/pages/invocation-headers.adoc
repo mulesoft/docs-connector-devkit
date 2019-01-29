@@ -9,7 +9,7 @@ If `java.util.List` is used, just the header values are used. If a single header
 
 The `@InvocationHeaders` annotation supports the following parameters:
 
-[%header,cols="10a,90a",width=60%]
+[%header,cols="10,85"]
 |===
 |Parameter |Description
 |value |*Optional*. Defines the headers that should be injected into the parameter.
@@ -24,7 +24,7 @@ For example this is not possible:
 [source,java,linenums]
 ----
 @Processor
-  public Object myMethod(@Payload Object payload, @InvocationHeaders("*") Map<?, ?> headers) {
+    public Object myMethod(@Payload Object payload, @InvocationHeaders("*") Map<?, ?> headers) {
 ----
 
 == Examples
@@ -34,7 +34,7 @@ Inject the `url` header value from the invocation scope:
 [source,java,linenums]
 ----
 @Processor
- public Object myMethod(@InvocationHeaders("url") URL url) {
+    public Object myMethod(@InvocationHeaders("url") URL url) {
 ----
 
 Inject the value of the header `faz` from the invocation scope if present:
@@ -42,7 +42,7 @@ Inject the value of the header `faz` from the invocation scope if present:
 [source,java,linenums]
 ----
 @Processor
-  public Object myMethod(@InvocationHeaders("faz?") String faz) {
+    public Object myMethod(@InvocationHeaders("faz?") String faz) {
 ----
 
 Inject the `foo` and `bar` headers from the invocation scope with their values:
@@ -50,7 +50,7 @@ Inject the `foo` and `bar` headers from the invocation scope with their values:
 [source,java,linenums]
 ----
 @Processor
- public Object myMethod(@InvocationHeaders("foo, bar") Map<?, ?> myHeaders) {
+    public Object myMethod(@InvocationHeaders("foo, bar") Map<?, ?> myHeaders) {
 ----
 
 Inject all the headers from the invocation scope with their values:
@@ -58,7 +58,7 @@ Inject all the headers from the invocation scope with their values:
 [source,java,linenums]
 ----
 @Processor
-public Object myMethod(@InvocationHeaders("*") Map<?, ?> headers) {
+    public Object myMethod(@InvocationHeaders("*") Map<?, ?> headers) {
 ----
 
 Inject all the headers from the invocation scope with names starting with `MULE_` or `ba`
@@ -66,7 +66,7 @@ Inject all the headers from the invocation scope with names starting with `MULE_
 [source,java,linenums]
 ----
 @Processor
-   public Object myMethod(@InvocationHeaders("MULE_*, ba*") Map<?, ?> headers) {
+    public Object myMethod(@InvocationHeaders("MULE_*, ba*") Map<?, ?> headers) {
 ----
 
 Inject the value of `foo` and `bar` headers, and if present the `baz` header value, all from the invocation scope:
@@ -74,5 +74,5 @@ Inject the value of `foo` and `bar` headers, and if present the `baz` header val
 [source,java,linenums]
 ----
 @Processor
-  public Object process(@InvocationHeaders("foo, bar, baz?") List<?> headers) {
+    public Object process(@InvocationHeaders("foo, bar, baz?") List<?> headers) {
 ----

@@ -22,7 +22,6 @@ Federicos-MacBook-Pro:myproject federico$ mvn clean install -Ddevkit.javadoc.che
 Follow these steps to use a Cloud Connector within a Mule application.
 
 . Add a Maven dependency for the Cloud Connector:
-+
 
 [source,xml,linenums]
 ----
@@ -38,17 +37,17 @@ Follow these steps to use a Cloud Connector within a Mule application.
 [source,xml,linenums]
 ----
 <plugin>
-              <groupId>org.mule.tools</groupId>
-              <artifactId>maven-mule-plugin</artifactId>
-              <version>${mule.plugin.version}</version>
-              <extensions>true</extensions>
-              <configuration>
-                  <inclusions>
-                      <inclusion>
-                          <groupId>my.group.id</groupId>
-                          <artifactId>my.artifact.id</artifactId>
-                      </inclusion>
-                  </inclusions>
-              </configuration>
-          </plugin>
+                <groupId>org.mule.tools</groupId>
+                <artifactId>maven-mule-plugin</artifactId>
+                <version>${mule.plugin.version}</version>
+                <extensions>true</extensions>
+                <configuration>
+                    <inclusions>
+                        <inclusion>
+                            <groupId>my.group.id</groupId>
+                            <artifactId>my.artifact.id</artifactId>
+                        </inclusion>
+                    </inclusions>
+                </configuration>
+            </plugin>
 ----

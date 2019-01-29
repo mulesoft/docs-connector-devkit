@@ -14,5 +14,5 @@ For example this is not possible:
 [source,java,linenums]
 ----
 @Processor
-   public Object myMethod(@Payload Object payload, @OutboundHeaders Map<String, Object> headers) {
+    public Object myMethod(@Payload Object payload, @OutboundHeaders Map<String, Object> headers) {
 ----

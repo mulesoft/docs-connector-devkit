@@ -73,6 +73,6 @@ Also, the schema file generated adds restrictions as to what values can enums at
 [source,xml,linenums]
 ----
 <flow name="getPropertyValue">
-    <enums:get-property-value property="COUNTRY"/>
+    <enums:get-property-value property="LAST_NAME"/>
 </flow>
 ----

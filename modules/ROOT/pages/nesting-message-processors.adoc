@@ -1,4 +1,4 @@
-= Nesting Message Processors
+= Nesting Message Processor
 ifndef::env-site,env-github[]
 include::_attributes.adoc[]
 endif::[]
@@ -26,7 +26,7 @@ The previous example can be called from a Mule flow as follows:
 
 Upon Mule config parsing, the expression-transfomer will be wrapped inside a class implementing the NestedProcessor interface and passed along to your code. You code can then optionally execute the nested processor.
 
-This example code shows how to execute the nested processor
+This example code shows how to execute the nested processor:
 
 [source,java,linenums]
 ----
