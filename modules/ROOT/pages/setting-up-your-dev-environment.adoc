@@ -71,7 +71,8 @@ To install the DevKit Plugin:
 +
 image::installnewsoftware.png[InstallNewSoftware]
 +
-. In the Install menu's *Work with* drop-down menu, click the down arrow and click *Anypoint DevKit Update Site*. Click the checkbox for Anypoint DevKit Plugin, and click *Next*.
+. In the Install menu's *Work with* drop-down menu, click the down arrow and click *Anypoint DevKit Update Site*. 
+. Click the checkbox for Anypoint DevKit Plugin, and click *Next*.
 +
 image::devkit-update-site.png[]
 +
