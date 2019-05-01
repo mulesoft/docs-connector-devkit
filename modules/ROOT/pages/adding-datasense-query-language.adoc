@@ -16,7 +16,9 @@ image::6-package.png[]
 * Understand Java "@" annotations. See http://mulesoft.github.io/mule-devkit/[Anypoint DevKit API Reference].
 * Experience with implementing a basic connector with xref:index.adoc[Anypoint DevKit].
 * Understand the visitor pattern, which is fundamental to the workings of DSQL-to-native query language translation.
-
+See:
+** http://java.dzone.com/articles/design-patterns-visitor[Design Patterns Uncovered: the Visitor Pattern]
+** http://en.wikipedia.org/wiki/Visitor_pattern[Visitor pattern] Wikipedia article
 
 == Enabling DSQL on Your Connector
 

@@ -3,7 +3,7 @@ ifndef::env-site,env-github[]
 include::_attributes.adoc[]
 endif::[]
 
-One of the key concepts in Mule is the Message Processor. You can add @ annotations to your code that Mule uses to designate Java methods. The Message Processor interprets the attributes.
+One of the key concepts in Mule is the Message Processor. You can add @ annotations to your code that Mule uses to designate Java methods. The Message Processor interprets the attributes.  See http://en.wikipedia.org/wiki/Java_annotation[Java annotations] for how annotations work.
 
 For example, the `@Processor` annotation works with the Annotation Processor to indicate the method to consume as a Message Processor.
 
