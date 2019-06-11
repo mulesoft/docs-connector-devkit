@@ -344,7 +344,7 @@ Our example in this case looks like this:
 
 Make a simple app that listens at an HTTP endpoint; when the endpoint is hit, the app retrieves the list of recently added items from the cookbook service using the connector.
 
-. Create a Mule application in Studio and add an HTTP listener and specify `/get-recently` for the path. If this is your first Mule app, take a look at our xref:general:getting-started:build-a-hello-world-application.adoc[Hello World Application].
+. Create a Mule application in Studio and add an HTTP listener and specify `/get-recently` for the path.
 . Drop the connector onto the canvas and configure using `admin` and `admin` as the credentials (this is for non-OAuth configuration).
 +
 image::devkit-tutorial-4cb84.png[]
