@@ -57,7 +57,7 @@ The `@Source` methods provide support for a reconnection strategy using `@Reconn
 
 == Example
 
-The http://mulesoft.github.io/mule-salesforce-connector/[SalesForce Connector] supports the SalesForce Streaming API in which users can subscribe to topics and receive notifications when a new event related to that topic occurs.
+The http://mulesoft.github.io/mule3-salesforce-connector/[SalesForce Connector] supports the SalesForce Streaming API in which users can subscribe to topics and receive notifications when a new event related to that topic occurs.
 
 [source,java,linenums]
 ----
