@@ -20,12 +20,12 @@ In DevKit, basic authentication is enabled using the xref:connection-management.
 
 A broadly-used alternative to username-password authentication is http://oauth.net/[OAuth] (Open standard for Authorization). The OAuth protocol allows third-party applications limited access to a resource through an alternative and restricted token. Using OAuth, an application can access a user's account, for example, without knowing the user's actual login credentials, thus limiting the application to perform selected operations.
 
-Unlike other protocols, OAuth retains a state (for example, connected) in a cookie and, therefore, doesn't need to send token information with each request it submits. Commonly, APIs employ one of two versions of OAuth: http://oauth.net/core/1.0a/[OAuth 1.0a] and  http://tools.ietf.org/html/rfc6749[Oauth 2.0]; connecting to each of these is subtly different.
+Unlike other protocols, OAuth retains a state (for example, connected) in a cookie and, therefore, doesn't need to send token information with each request it submits. Commonly, APIs employ one of two versions of OAuth: http://oauth.net/core/1.0a/[OAuth 1.0a] and  http://tools.ietf.org/html/rfc6749[Oauth 2.0]; connecting to each of these is subtly different. +
+
+Note that DevKit doesn't support OAuth Client Credentials grant type.
 
 For more information, see xref:oauth-v1.adoc[OAuth V1] or xref:oauth-v2.adoc[OAuth V2].
 
-[NOTE]
-DevKit doesn't support Oauth Client Credentials grant type.
 
 == HTTP Basic Authentication
 
