@@ -16,7 +16,7 @@ Connector documentation usually consists of:
 * Reference documentation (created by DevKit APIdoc; see <<Generating Documentation, Generating Documentation>>)
 * README
 * Release notes
-* User guide including use cases - for examples see xref:packaging-your-connector-for-release.adoc#documenting-with-use-cases[Documenting with Use Cases]
+* User guide including use cases - for examples see xref:packaging-your-connector-for-release.adoc#documenting-use-cases-before-packaging[Documenting Use Cases Before Packaging]
 
 [NOTE]
 Mule builds on http://en.wikipedia.org/wiki/Javadoc[Javadoc] to automate and simplify the creation of technical reference documentation for your connector, by adding a custom Javadoc Doclet and some DevKit-specific Java annotations.

@@ -10,7 +10,7 @@ To support SOAP-based connector development, *DevKit 3.9.0* comes equipped with 
 
 Create a session token from your connector code within the `@Connect` method, and utilize it according to any operations the SOAP service requires.
 
-This is a means to managing user access to the service through the connector. For more information on session token placement inside the body see <<enriching-soap-body-with-session-token,Enriching SOAP Body with Session Token>>.
+This is a means to managing user access to the service through the connector. For more information on session token placement inside the body see <<enriching-the-soap-body-with-session-token,Enriching the SOAP Body With Session Token>>.
 
 Session management allows you to:
 

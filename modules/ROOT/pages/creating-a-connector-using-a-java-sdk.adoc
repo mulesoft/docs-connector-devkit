@@ -330,6 +330,6 @@ If you are merely reviewing the different connector implementation types, you ca
 
 Once you have implemented your connector with its operations, as well as created some documentation and a test suite, you can:
 
-* Return to the xref:index.adoc#development-steps[DevKit Development Steps] to continue the development process described there
+* Return to xref:anypoint-connector-development.adoc[Connector Development] to continue the development process described there
 * Build out the test suite to improve coverage, based on information in xref:developing-devkit-connector-tests.adoc[Developing DevKit Connector Tests]
 * Build out the documentation examples to show more samples, based on information in xref:connector-reference-documentation.adoc[Connector Reference Documentation]

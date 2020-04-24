@@ -1406,4 +1406,4 @@ System.out.println(response.readEntity(String.class));
 
 If testing the three resources included in the Cookbook REST server, set up your connector to be SDK-based and select OAuth v2 as the authentication mechanism.
 
-For more information, see the http://repo1.maven.org/maven2/com/sun/jersey/jersey-documentation/1.6/jersey-documentation-1.6-user-guide.pdf[Jersey client] documentation.
+For more information, see the https://eclipse-ee4j.github.io/jersey.github.io/documentation/2.11/index.html[Jersey client] documentation.
