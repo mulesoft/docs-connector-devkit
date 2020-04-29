@@ -5,4 +5,4 @@ endif::[]
 :keywords: devkit, annotation, reference, javadoc
 
 [WARNING]
-For the most up to date information on DevKit core Java annotations, see the http://mulesoft.github.io/mule-devkit/3.8.0/apidocs/index.html[DevKit 3.8 Annotation Reference] or access the annotation documentation for other releases http://mulesoft.github.io/mule-devkit/[here].
+For the most up to date information on DevKit core Java annotations, see the http://mulesoft.github.io/mule-devkit/3.9.0/apidocs/index.html[DevKit 3.9 Annotation Reference] or access the annotation documentation for other releases http://mulesoft.github.io/mule-devkit/[here].
