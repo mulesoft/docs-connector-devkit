@@ -62,4 +62,4 @@ You may not use or otherwise export or re-export any MuleSoft Confidential Infor
 
 == Development and certification
 
-Please share with us which connector you want to develop and get certified by filling out https://www.mulesoft.com/platform/cloud-connectors/certified#certification[this form.] We will contact you with further information.
+Please share with us which connector you want to develop and get certified by following https://www.mulesoft.com/platform/cloud-connectors/certified[this guide].
