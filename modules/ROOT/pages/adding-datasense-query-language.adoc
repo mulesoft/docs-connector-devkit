@@ -20,7 +20,7 @@ You can find the source code for the example below https://github.com/mulesoft/e
 +
 Read more:
 
-** http://java.dzone.com/articles/design-patterns-visitor[Design Patterns Uncovered: the Visitor Pattern]
+** https://dzone.com/articles/visitor-design-pattern-in-java[Visitor Design Pattern in Java]
 ** Wikipedia's http://en.wikipedia.org/wiki/Visitor_pattern[Visitor pattern] article
 
 == Enabling DSQL on Your Connector

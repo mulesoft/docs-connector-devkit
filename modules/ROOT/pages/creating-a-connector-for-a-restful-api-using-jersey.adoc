@@ -43,9 +43,9 @@ image::devkit-connector-jersey.png[]
 
 == Dropbox RESTful Example Connector
 
-The sample connector used in this discussion connects to https://www.dropbox.com/developers/core/docs[DropBox's Core API]. Find the connector source code on https://github.com/mulesoft/devkit-documentation-rest-jersey[GitHub].
+The sample connector used in this discussion connects to https://www.dropbox.com/developers/reference[DropBox's Core API]. Find the connector source code on https://github.com/mulesoft/devkit-documentation-rest-jersey[GitHub].
 
-The connector exposes the API operation `GET https://api.dropbox.com/1/account/info` which retrieves information about the Dropbox Account resource, described in the https://www.dropbox.com/developers/core/docs#account-info[Dropbox documentation].
+The connector exposes the API operation `GET` which retrieves information about the Dropbox Account resource, described in the https://www.dropbox.com/developers/documentation[Dropbox documentation].
 
 A typical response to this method looks like this:
 
