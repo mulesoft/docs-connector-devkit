@@ -6,7 +6,7 @@ endif::[]
 
 include::partial$devkit-important.adoc[]
 
-Since DevKit 3.6, connections are no longer supported at the `@Connector` level (excluding OAuth V1), but now are defined in a "configuration" class and injected into the `@Connector`.
+Connections are no longer supported at the `@Connector` level (excluding OAuth V1) starting with DevKit 3.6. Connections are now defined in a "configuration" class and injected into the `@Connector`.
 
 Inject this configuration class into the connector by annotating a field in the Connector class with `@Config`.
 
