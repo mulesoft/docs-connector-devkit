@@ -4,6 +4,8 @@ include::_attributes.adoc[]
 endif::[]
 :keywords: devkit, soap, connector, maven
 
+include::partial$devkit-important.adoc[]
+
 The *SOAP Connect* wizard generates a WSDL-based connector that receives XML elements and responds likewise. This kind of connector only runs on Mule versions 3.7 or newer.
 
 == Create a SOAP Project

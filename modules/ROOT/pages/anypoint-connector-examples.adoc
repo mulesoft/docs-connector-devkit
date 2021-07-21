@@ -4,6 +4,8 @@ include::_attributes.adoc[]
 endif::[]
 :keywords: devkit, examples
 
+include::partial$devkit-important.adoc[]
+
 The set of example connectors provided with the Anypoint Connector DevKit documentation illustrate a range of concepts and techniques to apply when building connectors for a variety of use cases. This document summarizes the available example connectors and what topics each one illustrates.
 
 *Note*: To work with these samples, create a development environment with the instructions in Setting Up a DevKit Development Environment.

@@ -4,6 +4,8 @@ include::_attributes.adoc[]
 endif::[]
 :keywords: devkit, oauth v1, api, authentication
 
+include::partial$devkit-important.adoc[]
+
 This page presents a detailed discussion of DevKit's support for OAuth V1 authentication, and how to implement a connector that uses OAuth V1 to authenticate with your API.
 
 == Prerequisites

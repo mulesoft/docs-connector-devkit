@@ -4,6 +4,8 @@ include::_attributes.adoc[]
 endif::[]
 :keywords: devkit, message sources, polling, source strategy, module, verifiers
 
+include::partial$devkit-important.adoc[]
+
 Using DevKit, you can create message sources, which receive or generate new messages for Mule to process.
 
 One of the use cases of message sources is implementing Streaming APIs. The `@Source` annotation marks a method inside a `@Module` or `@Connector` annotated class as callable from a Mule flow and capable of generating Mule events. Each marked method generates a message source. The method must receive a `SourceCallback` as one of its arguments that represents the next message processor in the chain. The order in which this parameter appears doesn't matter as long as it is present in the method signature.

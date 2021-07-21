@@ -4,6 +4,8 @@ include::_attributes.adoc[]
 endif::[]
 :keywords: devkit, setup, studio, maven, devkit plugin, plugin, com.sun.tools
 
+include::partial$devkit-important.adoc[]
+
 This topic explains how to prepare a development environment that includes all the components required to develop Anypoint Connectors.
 
 == Prerequisites

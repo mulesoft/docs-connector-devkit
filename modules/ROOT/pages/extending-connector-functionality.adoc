@@ -4,6 +4,8 @@ include::_attributes.adoc[]
 endif::[]
 :keywords: devkit, extend, connector
 
+include::partial$devkit-important.adoc[]
+
 Improve the efficacy, efficiency and reliability of your connector by implementing the following DevKit-supported features.
 
 * xref:adding-datasense.adoc[Adding DataSense]

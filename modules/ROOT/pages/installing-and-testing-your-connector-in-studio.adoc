@@ -4,6 +4,8 @@ include::_attributes.adoc[]
 endif::[]
 :keywords: devkit, install, test, connector, connection strategy, connector config
 
+include::partial$devkit-important.adoc[]
+
 Having built a project with the Anypoint DevKit plugin, you can install the skeletal connector in Anypoint Studio to confirm its basic functionality before adding more operations to it. This document describes the steps to take to build, then install and test your connector in Anypoint Studio.
 
 The steps of this procedure are:

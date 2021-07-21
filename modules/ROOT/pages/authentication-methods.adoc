@@ -4,6 +4,8 @@ include::_attributes.adoc[]
 endif::[]
 :keywords: devkit, authentication, oauth, saml, kerberos, ntlm, ldap
 
+include::partial$devkit-important.adoc[]
+
 //todo: give note for each method and which devkit connector-building strategies are supported
 
 There are several common authentication protocols that APIs generally use. In most cases, you can implement at least one authentication method in your Anypoint Connector.  To help you understand the differences between these methods, this document offers a brief description of each of the most popular ones.
