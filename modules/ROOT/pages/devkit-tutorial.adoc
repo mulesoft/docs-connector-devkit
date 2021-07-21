@@ -3,11 +3,12 @@ ifndef::env-site,env-github[]
 include::_attributes.adoc[]
 endif::[]
 :keywords: devkit tutorial, features, cookbook
-
-include::partial$devkit-important.adoc[]
 :resourcesDir: resources
 :tutorial: Cookbook
 :author: MuleSoft Inc.
+
+include::partial$devkit-important.adoc[]
+
 
 == Tutorial Goals
 
