@@ -6,7 +6,7 @@ endif::[]
 
 include::partial$devkit-important.adoc[]
 
-Once you have your authentication working, you can start adding functionality to your connector. Adding functionality requires the following steps:
+After you have authentication working, you can start adding functionality to your connector by:
 
 * Adding configurable attributes that provide state information on the connector that can be used in operations
 * Implementing the operations available on the connector
