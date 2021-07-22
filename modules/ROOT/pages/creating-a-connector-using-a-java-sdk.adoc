@@ -4,6 +4,8 @@ include::_attributes.adoc[]
 endif::[]
 :keywords: devkit, java, sdk, entity classes, data model, connector
 
+include::partial$devkit-important.adoc[]
+
 This example discusses the implementation of an Anypoint Connector for an API exposed through a Java SDK. Follow the process in this document to build a Java SDK-based connector for any service.
 
 Java client libraries are in many cases the best option for integrating with a remote service. If the client library is officially supported by the application provider, or even if it is unofficial but widely used, it likely implements best practices for integrating with the application in common use cases.

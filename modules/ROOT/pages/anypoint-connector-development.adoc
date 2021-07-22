@@ -4,6 +4,8 @@ include::_attributes.adoc[]
 endif::[]
 :keywords: devkit, connector, development, api, authentication, project
 
+include::partial$devkit-important.adoc[]
+
 This document quickly walks you through the decisions to make and the steps to take to get an Anypoint Connector development project started, get the connector working, and enhance it with the functionality you need. You can use this as a roadmap for your connector development effort.
 
 == Prerequisites

@@ -4,6 +4,8 @@ include::_attributes.adoc[]
 endif::[]
 :keywords: devkit, reference documentation
 
+include::partial$devkit-important.adoc[]
+
 After creating your connector, documenting its functionality helps customers use your connector effectively and can help reduce customer support and training costs.
 
 Documenting a connector consists of creating:

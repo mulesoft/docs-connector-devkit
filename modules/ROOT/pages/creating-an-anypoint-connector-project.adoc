@@ -4,6 +4,8 @@ include::_attributes.adoc[]
 endif::[]
 :keywords: devkit, create, connector, project
 
+include::partial$devkit-important.adoc[]
+
 * xref:creating-a-java-sdk-based-connector.adoc[Creating a Java SDK-Based Connector]
 * xref:creating-a-soap-connector.adoc[Creating a SOAP Connector]
 * xref:creating-a-rest-connector.adoc[Creating a REST Connector]

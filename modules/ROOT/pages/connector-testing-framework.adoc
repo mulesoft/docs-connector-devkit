@@ -4,6 +4,8 @@ include::_attributes.adoc[]
 endif::[]
 :keywords: devkit, test, framework
 
+include::partial$devkit-important.adoc[]
+
 This page lists Mule 3.7 changes to the DevKit connector testing framework.
 
 See https://mulesoft.github.io/connector-testing-framework/[Connector Testing Framework].

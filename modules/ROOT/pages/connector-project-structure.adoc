@@ -4,6 +4,8 @@ include::_attributes.adoc[]
 endif::[]
 :keywords: devkit, connector, class, folder, structure, license, readme, reference documentation, apidocs, best practices
 
+include::partial$devkit-important.adoc[]
+
 This document describes the folder structure and files generated for you after xref:creating-an-anypoint-connector-project.adoc[creating an Anypoint Connector project].
 
 == Prerequisites

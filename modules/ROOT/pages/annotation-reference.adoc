@@ -4,6 +4,8 @@ include::_attributes.adoc[]
 endif::[]
 :keywords: devkit, annotation, reference
 
+include::partial$devkit-important.adoc[]
+
 This document lists MuleSoft DevKit core Java Annotations.
 
 *http://mulesoft.github.io/mule-devkit/3.7.2/apidocs/index.html[DevKit 3.7 Javadoc]*

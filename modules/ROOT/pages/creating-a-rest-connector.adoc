@@ -4,6 +4,8 @@ include::_attributes.adoc[]
 endif::[]
 :keywords: devkit, rest, connector, restcall, api
 
+include::partial$devkit-important.adoc[]
+
 Anypoint Connector DevKit provides a convenient set of annotations called @RESTCall for creating a Connector for a RESTful API.
 
 You can apply @RestCall annotations to methods (@Processor) in a Connector's @Connector class that declaratively describes the URLs for resources exposed on the API.
