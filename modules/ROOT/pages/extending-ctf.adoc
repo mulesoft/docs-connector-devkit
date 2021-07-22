@@ -4,6 +4,8 @@ include::_attributes.adoc[]
 endif::[]
 :keywords: connector testing framework, ctf, devkit, mule, esb, runtime
 
+include::partial$devkit-important.adoc[]
+
 == Overview
 
 The purpose of the connector testing framework (CTF) is to perform functional testing in as many deployment scenarios as possible. The framework runs a Mule app "externally", unbound to the versions of DevKit and the Mule runtime the connector was developed on.

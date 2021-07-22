@@ -4,6 +4,8 @@ include::_attributes.adoc[]
 endif::[]
 :keywords: native, jars, library, devkit, connector
 
+include::partial$devkit-important.adoc[]
+
 When building connectors with dependencies that cannot be bundled within the same JAR, you can instruct Anypoint Studio to prompt users to add the files to your connector.
 
 To add native libraries and JAR files to a build:

@@ -4,9 +4,11 @@ include::_attributes.adoc[]
 endif::[]
 :keywords: devkit, datasense, multiple level, multi-level
 
-As seen before, Mule DataSense is a feature that allows you to displays the metadata of entities included in a service in a friendly manner. In its original form, DataSense uses a single key to identify the entity for which the MetaData has to be retrieved. This single-key approach might be a restriction for complex cases, where the entities to be describe through MetaData are identified in a nested way, with more than one identifiers and that most of the time work in a closely related way, creating a selection tree based on the previously selected key.
+include::partial$devkit-important.adoc[]
 
-For example, if you want to describe a state in the world, a single key with the name of the state is not going to be enough to uniquely identify it. A better id for a state would be a nested combination of "region->country->state", where the user would first select the region, then a country from the ones available for that region, and finally a state in the previously selected country.
+As previously mentioned, Mule DataSense is a feature that allows you to display the metadata of entities that are included in a service in a friendly manner. In its original form, DataSense uses a single key to identify the entity for which the metadata must be retrieved. This single-key approach might be a restriction for complex cases, where the entities to describe through metadata are identified in a nested way, with more than one identifier, and that most of the time work in a closely related way, creating a selection tree based on the previously selected key.
+
+For example, if you want to describe a state in the world, a single key with the name of the state is not going to be enough to uniquely identify it. A better ID to uniquely identify a state would be a nested combination of "region->country->state", where the user must first select the region, then a country from the available countries for that region, and finally a state that is available in the previously selected country.
 
 DevKit 3.7 and later adds support for MultiLevel DataSense, a feature that allows the developer to easily provide a set of multi-level nested keys, that greatly improves the user experience when selecting a complex-key for an entity.
 

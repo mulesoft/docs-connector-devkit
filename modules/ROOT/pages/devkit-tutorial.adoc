@@ -7,6 +7,9 @@ endif::[]
 :tutorial: Cookbook
 :author: MuleSoft Inc.
 
+include::partial$devkit-important.adoc[]
+
+
 == Tutorial Goals
 
 Learn how to create a connector to a web service using the Anypoint Connector DevKit.

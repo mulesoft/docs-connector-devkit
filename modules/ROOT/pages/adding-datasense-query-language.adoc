@@ -4,6 +4,8 @@ include::_attributes.adoc[]
 endif::[]
 :keywords: devkit, datasense, dsql
 
+include::partial$devkit-important.adoc[]
+
 Many SaaS applications either implement a proper query language, such as SOQL or Salesforce Object Query Language, or support for selecting resources through their API in a way that corresponds to querying. DataSense Query Language (DSQL) provides a uniform query language so you can query data in any application with a compatible Anypoint™ Connector.
 
 image::6-package.png[]

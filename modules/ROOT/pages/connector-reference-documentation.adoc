@@ -4,6 +4,8 @@ include::_attributes.adoc[]
 endif::[]
 :keywords: devkit, reference documentation, apidoc, javadoc
 
+include::partial$devkit-important.adoc[]
+
 This document describes how to write Javadoc comments in your connector code and generate readable documentation for your connector users.
 
 

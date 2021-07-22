@@ -15,8 +15,7 @@ xref:release-notes::connector-devkit/anypoint-connector-devkit-3.9.x-release-not
 DevKit versioning does not follow Mule versioning. Connectors built with DevKit 3.9 work with Mule 3.5.3 to 3.9.
 ====
 
-[IMPORTANT]
-DevKit is compatible only with Studio 6 and Mule 3. To build Mule 4 connectors, see https://docs.mulesoft.com/mule-sdk[Mule SDK].
+include::partial$devkit-important.adoc[]
 
 == Developing Connectors with DevKit
 
