@@ -4,6 +4,8 @@ include::_attributes.adoc[]
 endif::[]
 :keywords: devkit, strategy, connector, oauth
 
+include::partial$devkit-important.adoc[]
+
 Since Devkit 3.6, connections are no longer supported at the `@Connector` level (excluding OAuth V1), but now are defined in another component and injected to the `@Connector` by annotating a field with `@ConnectionStrategy`. This provides a better environment for developing a connector and the easiest way to create multiple authentication types.
 
 *Note*: OAuth V1 is not supported as a `@ConnectionStrategy`.

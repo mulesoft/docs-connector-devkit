@@ -4,6 +4,8 @@ include::_attributes.adoc[]
 endif::[]
 :keywords: devkit, soap, cxf
 
+include::partial$devkit-important.adoc[]
+
 This example demonstrates how to build a connector for a SOAP service, given a WSDL file. The client is built using Apache CXF, which can generate most of the required code for you from the WSDL metadata.
 
 *Notes*:

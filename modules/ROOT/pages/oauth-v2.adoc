@@ -3,6 +3,8 @@ ifndef::env-site,env-github[]
 include::_attributes.adoc[]
 endif::[]
 
+include::partial$devkit-important.adoc[]
+
 This page presents a detailed discussion of DevKit's support for OAuth V2 authentication and how to implement a connector that uses OAuth V2 to authenticate with your API.
 
 == Prerequisites

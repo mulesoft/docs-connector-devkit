@@ -4,6 +4,8 @@ include::_attributes.adoc[]
 endif::[]
 :keywords: devkit, development, features, architecture
 
+include::partial$devkit-important.adoc[]
+
 The *MuleSoft Anypoint DevKit*, or simply *DevKit*, enables the development of MuleSoft Anypoint Connectors.
 
 A MuleSoft connector is an extension module to the MuleSoft Anypoint Platform, with modules that ease the interconnection of third-party systems and APIs with Mule applications.

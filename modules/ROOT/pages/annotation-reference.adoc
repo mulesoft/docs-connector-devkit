@@ -4,6 +4,8 @@ include::_attributes.adoc[]
 endif::[]
 :keywords: devkit, annotation, reference
 
+include::partial$devkit-important.adoc[]
+
 This document lists MuleSoft elements that start with an at sign (@). For more information on annotations, see http://docs.oracle.com/javase/7/docs/api/index.html?java/lang/annotation/Annotation.html[java.lang.annotation.Annotation]. For Mule annotations not in the DevKit, see  xref:3.6@mule-runtime::creating-flow-objects-and-transformers-using-annotations.adoc[Creating Flow Objects and Transformers Using Annotations].
 
 *http://mulesoft.github.io/mule-devkit/3.6.2/apidocs/index.html[DevKit 3.6 API]*
