@@ -3,6 +3,8 @@ ifndef::env-site,env-github[]
 include::_attributes.adoc[]
 endif::[]
 
+include::partial$devkit-important.adoc[]
+
 This example demonstrates how to build a connector for a SOAP service, given a WSDL file. The client is built using Apache CXF, which can generate most of the required code for you from the WSDL metadata.
 
 Apache CXF is a complex framework that enables many different models for accessing Web services. The focus here is on a straightforward path that should produce results for any service for which you have a WSDL. For more details on the full range of possible client models using CXF, see the Apache CXF documentation for http://cxf.apache.org/docs/how-do-i-develop-a-client.html[building clients], especially http://cxf.apache.org/docs/developing-a-consumer.html[Developing a Consumer with CXF].

@@ -3,6 +3,8 @@ ifndef::env-site,env-github[]
 include::_attributes.adoc[]
 endif::[]
 
+include::partial$devkit-important.adoc[]
+
 Mule builds on Javadoc to automate and simplify the creation of technical reference documentation for your connector, adding a custom Javadoc doclet and some DevKit-specific Java annotations. This document describes how to generate documentation and what to include.
 
 

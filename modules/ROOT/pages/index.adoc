@@ -5,6 +5,8 @@ endif::[]
 
 image::devkit-tool-symbol.png[]
 
+include::partial$devkit-important.adoc[]
+
 The *MuleSoft Anypoint(TM) Connector DevKit* provides the following features to help you develop or maintain a connector:
 
 * Visual design and implementation using Anypoint Studio with an Eclipse-oriented interface that helps simplify and speed up development

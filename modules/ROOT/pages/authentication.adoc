@@ -3,6 +3,8 @@ ifndef::env-site,env-github[]
 include::_attributes.adoc[]
 endif::[]
 
+include::partial$devkit-important.adoc[]
+
 Your API probably enforces some kind of authentication in order for applications to talk to it on behalf of a user. Anypoint(TM) DevKit supports the following authentication schemes:
 
 * xref:basic-auth.adoc[BasicAuth]

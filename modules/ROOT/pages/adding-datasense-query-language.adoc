@@ -3,6 +3,8 @@ ifndef::env-site,env-github[]
 include::_attributes.adoc[]
 endif::[]
 
+include::partial$devkit-important.adoc[]
+
 Many SaaS applications either implement a proper query language (such as SOQL, Salesforce Object Query Language) or support selecting resources through their API in a way that corresponds to querying. DataSense Query Language (DSQL) provides a uniform query language that can be used to query data in any application with a compatible Anypoint(TM) Connector.
 
 image::6-package.png[]

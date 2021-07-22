@@ -3,6 +3,8 @@ ifndef::env-site,env-github[]
 include::_attributes.adoc[]
 endif::[]
 
+include::partial$devkit-important.adoc[]
+
 This document aims to give you a brief overview of the steps you need to perform to get your system ready for connectors development. It goes all the way, from explaining how to set up the system from scratch to how to create a project using the Anypoint DevKit plugin inside Anypoint Studio.
 
 image::2-package.png[]

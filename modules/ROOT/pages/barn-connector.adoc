@@ -3,6 +3,8 @@ ifndef::env-site,env-github[]
 include::_attributes.adoc[]
 endif::[]
 
+include::partial$devkit-important.adoc[]
+
 Once you have built a project, you can install the skeletal connector in Anypoint(TM) Studio to confirm its basic functionality before adding more operations to it. This document describes the steps needed to build, install and test your connector in Anypoint Studio. The macro steps of this procedure are:
 
 . Set required `@Connector` annotations.

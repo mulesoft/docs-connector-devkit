@@ -3,6 +3,8 @@ ifndef::env-site,env-github[]
 include::_attributes.adoc[]
 endif::[]
 
+include::partial$devkit-important.adoc[]
+
 Like all Mule elements, connectors have attributes that can be assigned in the connector's global configuration dialog.
 
 image::6-package.png[]

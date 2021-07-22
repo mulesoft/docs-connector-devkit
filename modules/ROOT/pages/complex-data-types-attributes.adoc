@@ -4,6 +4,8 @@ include::_attributes.adoc[]
 endif::[]
 :keywords: devkit, data, complex data types, enumerated types, enum class, collections, list, map, spring beans
 
+include::partial$devkit-important.adoc[]
+
 One integration point between Mule and your connector is the data passing between the connector and Mule ESB, such as when configuring a component. Primitive data types are straightforward; however enumerated types, arrays, and complex types require special handling.
 
 == Enumerated Types
