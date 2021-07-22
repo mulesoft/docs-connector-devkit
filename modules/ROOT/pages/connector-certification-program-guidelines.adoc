@@ -4,6 +4,8 @@ include::_attributes.adoc[]
 endif::[]
 :keywords: connector, certification, devkit, program guidelines
 
+include::partial$devkit-important.adoc[]
+
 The sections below describe the specific details necessary for connector certification. For a full overview of the process, visit https://www.mulesoft.com/platform/cloud-connectors/certified[this page].
 
 == What is the MuleSoft Connector Certification Program?

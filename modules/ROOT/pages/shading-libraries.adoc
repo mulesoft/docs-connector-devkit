@@ -4,6 +4,8 @@ include::_attributes.adoc[]
 endif::[]
 :keywords: devkit, shading, library, jar, plugin, artifacts, shade, maven, classpath, collision, conflict
 
+include::partial$devkit-important.adoc[]
+
 DevKit version 3.5.3 and later supports creating a "shaded" .jar file (i.e. an "uber" .jar containing the classes and packages of its dependency libraries with optional relocation of various packages and classes) using the http://maven.apache.org/plugins/maven-shade-plugin/examples/includes-excludes.html[Apache Maven Shade Plugin].
 
 The Maven Shade plugin can be used to build your custom connector library .jar bundled with all of its library class dependencies which ensures its library class dependencies do not collide/conflict at runtime with other versions of any libraries already being used within Mule.
