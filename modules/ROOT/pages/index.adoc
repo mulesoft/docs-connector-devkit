@@ -16,6 +16,8 @@ xref:release-notes::connector-devkit/anypoint-connector-devkit-3.9.x-release-not
 [IMPORTANT]
 *DevKit version number* does not follow Mule versioning. *DevKit 3.8*-built connectors work with *Mule 3.5.3 onward*.
 
+include::partial$devkit-important.adoc[]
+
 == Developing Connectors with DevKit
 
 This is what you need to develop *DevKit-based Anypoint Connectors* on your system with your instance of Anypoint Studio.

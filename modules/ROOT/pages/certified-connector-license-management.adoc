@@ -4,6 +4,8 @@ include::_attributes.adoc[]
 endif::[]
 :keywords: connector, devkit, license, key, keygen, partner, paid
 
+include::partial$devkit-important.adoc[]
+
 //todo: link to sample connectors and Mule app
 == Introduction
 

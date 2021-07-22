@@ -4,6 +4,8 @@ include::_attributes.adoc[]
 endif::[]
 :keywords: devkit, java, sdk, connector
 
+include::partial$devkit-important.adoc[]
+
 To build your own Anypoint Connector for Studio, you can use the  Anypoint Connector DevKit. In Anypoint Studio, you can add an extension module that enables you to use xref:index.adoc[Anypoint Connector DevKit].
 
 == Creating a New Java SDK-Based Connector Project

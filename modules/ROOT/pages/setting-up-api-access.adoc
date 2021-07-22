@@ -4,6 +4,8 @@ include::_attributes.adoc[]
 endif::[]
 :keywords: devkit, api, access, connector, cloud, salesforce, twitter
 
+include::partial$devkit-important.adoc[]
+
 Before starting a connector project, research the API to which you wish to connect. Beyond collecting and reading any API documentation offered by the target's provider, prepare access to an instance so you can test against it.
 
 Sandbox access, supporting code and documentation, and other support required for building a connector to a local enterprise application or other Web service is usually provided by your local administrator or the application vendor. SaaS applications usually provide a self-service process for accessing the API, which varies from service to service.

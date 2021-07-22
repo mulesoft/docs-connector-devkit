@@ -4,6 +4,8 @@ include::_attributes.adoc[]
 endif::[]
 :keywords: devkit, connector, packaging, documenting use cases, readme
 
+include::partial$devkit-important.adoc[]
+
 When your connector is ready for release to a broad audience, take the following additional steps to ensure user success:
 
 * Create a license agreement for your connector.

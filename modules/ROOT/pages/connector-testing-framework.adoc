@@ -4,4 +4,6 @@ include::_attributes.adoc[]
 endif::[]
 :keywords: devkit, test, framework, ctf, functional testing,
 
+include::partial$devkit-important.adoc[]
+
 For background information on connector functional testing and to understand its most recent implementation, read on at https://mulesoft.github.io/connector-testing-framework/[Connector Testing Framework].

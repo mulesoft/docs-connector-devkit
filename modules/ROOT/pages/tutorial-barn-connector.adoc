@@ -4,6 +4,8 @@ include::_attributes.adoc[]
 endif::[]
 :keywords: devkit, barn, connector, javadoc, studio, ui
 
+include::partial$devkit-important.adoc[]
+
 This document describes the steps needed to build, install, and test a connector in Anypoint Studio.
 
 The following tutorial describes how to create a simple connector that displays "Mule has been placed in the barn" in a browser. You can use the user interface for the connector in Anypoint Studio to change which animal is put in the barn.
