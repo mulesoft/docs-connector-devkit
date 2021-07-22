@@ -4,6 +4,8 @@ include::_attributes.adoc[]
 endif::[]
 :keywords: devkit, rest, api, @RestCall
 
+include::partial$devkit-important.adoc[]
+
 This example walks you through the implementation of an Anypoint Connector for a RESTful API. Anypoint DevKit provides a convenient set of annotations called `@RestCall` for creating a Connector for a RESTful API.
 
 The `@RestCall` annotations are applied to methods (`@Processor`) in a Connector's `@Connector` class that declaratively describe the URLs for resources exposed on the API. At compile time, Anypoint DevKit generates client code for all the operations, and provides most of the functionality for the methods. For particularly well-defined RESTful APIs, this can be a convenient solution for quickly producing a connector.

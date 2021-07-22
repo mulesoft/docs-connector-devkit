@@ -4,6 +4,8 @@ include::_attributes.adoc[]
 endif::[]
 :keywords: devkit, batch, bulk
 
+include::partial$devkit-important.adoc[]
+
 One of Mule's abilities is to process messages in xref:3.6@mule-runtime::batch-processing.adoc[batches]. This functionality, which is provided by the `<batch:commit>` block, is particularly useful when you need to collect a subset of records for bulk upsert to an external source or service. However, unless the connector in question supports bulk operations, it cannot be used inside a batch block.
 
 Batch benefits include:

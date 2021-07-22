@@ -5,6 +5,8 @@ endif::[]
 :keywords: devkit, test, framework
 :imagessdir: ./img/
 
+include::partial$devkit-important.adoc[]
+
 The Connector Testing Framework eases the creation of a connector functional tests, where the developer is not necessarily involved with Mule's internals, such as flows, configuration and Spring beans. The objective of this framework is twofold. On the one hand, we decouple how Mule works and how functional tests are written. On the other hand, we enable a runtime platform to run connector tests with multiple Mule versions by executing the tests in remote Mule instances, achieving a decoupled runtime environment.
 
 The document is organized as follows:

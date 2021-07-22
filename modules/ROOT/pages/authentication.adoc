@@ -4,6 +4,8 @@ include::_attributes.adoc[]
 endif::[]
 :keywords: devkit, authentication, basic authentication, connection management framework, http basic, oauth
 
+include::partial$devkit-important.adoc[]
+
 Your service probably enforces some kind of authentication in order for applications to talk to your service on behalf of a user. Anypoint DevKit supports the following authentication schemes:
 
 * xref:authentication-methods.adoc[Authentication Methods]

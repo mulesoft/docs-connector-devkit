@@ -4,6 +4,8 @@ include::_attributes.adoc[]
 endif::[]
 :keywords: devkit, connector, attributes
 
+include::partial$devkit-important.adoc[]
+
 Like all Mule elements, connectors have attributes that can be assigned in the connector's global configuration dialog.
 
 == Prerequisites

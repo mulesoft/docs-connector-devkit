@@ -4,6 +4,8 @@ include::_attributes.adoc[]
 endif::[]
 :keywords: devkit, datasense, connectors, metadata, annotations, pojo
 
+include::partial$devkit-important.adoc[]
+
 Mule DataSense displays the metadata for the entities in a service. Although this feature is optional, Mule strongly recommends that you use DataSense in your connector to make its implementation much easier for users.
 
 image::devkit-steps-operations.png[]

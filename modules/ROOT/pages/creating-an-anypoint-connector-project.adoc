@@ -4,6 +4,8 @@ include::_attributes.adoc[]
 endif::[]
 :keywords: devkit, connector, project, wsdl to connector, structure
 
+include::partial$devkit-important.adoc[]
+
 To build a custom Anypoint Connector for Studio, you can use the Anypoint Connector DevKit. In Anypoint Studio, you can add an extension module that enables you to use xref:index.adoc[Anypoint Connector DevKit].
 
 == Prerequisites
