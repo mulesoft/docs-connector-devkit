@@ -3,6 +3,8 @@ ifndef::env-site,env-github[]
 include::_attributes.adoc[]
 endif::[]
 
+include::partial$devkit-important.adoc[]
+
 This discussion presents the steps required to build a Jersey Client connector for a RESTful Web service. Jersey interacts with the service, and maps JSON to and from Java objects.
 
 This example uses Dropbox's RESTful service. In practice, building a Dropbox connector might be more simply achieved using an existing Java client library, but nonetheless this serves as a useful example.

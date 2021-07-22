@@ -3,6 +3,8 @@ ifndef::env-site,env-github[]
 include::_attributes.adoc[]
 endif::[]
 
+include::partial$devkit-important.adoc[]
+
 While DevKit doesn't enforce writing tests, you should develop unit and functional tests for your connector as part of the development process. A connector should not be considered production-ready without a test suite.
 
 While testing strategy may vary extensively based on your specific needs, this document introduces the basics of what Mule and DevKit make available to support testing efforts.

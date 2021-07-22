@@ -3,6 +3,8 @@ ifndef::env-site,env-github[]
 include::_attributes.adoc[]
 endif::[]
 
+include::partial$devkit-important.adoc[]
+
 When your connector is ready for release to a broad audience, take the following additional steps to ensure user success:
 
 * Create a license agreement for your connector.

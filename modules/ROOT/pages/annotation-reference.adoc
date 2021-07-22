@@ -3,6 +3,8 @@ ifndef::env-site,env-github[]
 include::_attributes.adoc[]
 endif::[]
 
+include::partial$devkit-important.adoc[]
+
 This document lists MuleSoft elements that start with an at sign (@). For more information on annotations, see http://docs.oracle.com/javase/7/docs/api/index.html?java/lang/annotation/Annotation.html[java.lang.annotation.Annotation].
 
 *http://mulesoft.github.io/mule-devkit/3.5.3/apidocs/index.html[DevKit 3.5 API]*

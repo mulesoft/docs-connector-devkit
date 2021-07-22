@@ -4,6 +4,8 @@ include::_attributes.adoc[]
 endif::[]
 :keywords: devkit, pagination, @Paged, @Processor
 
+include::partial$devkit-important.adoc[]
+
 Query Pagination comes as a need when dealing with a high quantity of records. The main advantage is performance as Mule runtime partially processes chunks of records at a time instead of trying to process all the records in memory at the same time.
 
 [NOTE]

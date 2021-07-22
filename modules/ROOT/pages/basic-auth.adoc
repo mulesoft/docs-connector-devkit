@@ -3,6 +3,8 @@ ifndef::env-site,env-github[]
 include::_attributes.adoc[]
 endif::[]
 
+include::partial$devkit-important.adoc[]
+
 Basic Auth refers to the classic authentication method, where in order to authenticate with your API users simply provide the Anypoint(TM) Connector their username and password. This is also the scheme you want to use if your API relies on Basic Auth, using atypical values for the username and password. For instance, an API that uses a security token on top of the username and password would still use Basic Auth for its connecting applications.
 
 The Anypoint DevKit Basic Auth framework provides multi-tenancy capabilities for a connector (managing multiple simultaneous connections with different credentials for a given connector within your application), as well as connection pooling and instance pooling. These benefits are available for most authentication schemes other than OAuth, and for APIs that do not require authentication.

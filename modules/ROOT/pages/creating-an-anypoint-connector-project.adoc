@@ -3,6 +3,8 @@ ifndef::env-site,env-github[]
 include::_attributes.adoc[]
 endif::[]
 
+include::partial$devkit-important.adoc[]
+
 To build your own Anypoint™ Connector for Studio, you can use the  Anypoint Connector DevKit. In Anypoint Studio, you can add an extension module that enables you to use xref:index.adoc[Anypoint Connector DevKit].
 
 image::create-a-project.png[]

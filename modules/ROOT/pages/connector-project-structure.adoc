@@ -3,6 +3,8 @@ ifndef::env-site,env-github[]
 include::_attributes.adoc[]
 endif::[]
 
+include::partial$devkit-important.adoc[]
+
 This document describes the folder structure and files generated for you after xref:creating-an-anypoint-connector-project.adoc[creating an Anypoint™ Connector project].
 
 == Assumptions

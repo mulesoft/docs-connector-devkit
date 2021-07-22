@@ -3,6 +3,8 @@ ifndef::env-site,env-github[]
 include::_attributes.adoc[]
 endif::[]
 
+include::partial$devkit-important.adoc[]
+
 There are several common authentication protocols that APIs generally use. In most cases, you will implement at least one authentication method in your Anypoint(TM) Connector. To help you understand the difference between these methods, this document offers a brief description of each of the most popular ones.
 
 == Basic Authentication

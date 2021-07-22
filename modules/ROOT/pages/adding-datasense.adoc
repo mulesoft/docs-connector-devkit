@@ -3,6 +3,8 @@ ifndef::env-site,env-github[]
 include::_attributes.adoc[]
 endif::[]
 
+include::partial$devkit-important.adoc[]
+
 Mule DataSense is a feature that displays the metadata of entities included in the service in a friendly manner. Although this feature is optional, Mule strongly recommends that you DataSense-enable your connector to make its implementation must easier for users.
 
 image::devkit-steps-operations.png[]
