@@ -4,6 +4,8 @@ include::_attributes.adoc[]
 endif::[]
 :keywords: devkit, connector, tests, data validation, api
 
+include::partial$devkit-important.adoc[]
+
 While DevKit does not enforce writing tests, you should develop unit and functional tests for your connector as part of the development process. A connector should not be considered production-ready without a proper test suite.
 
 While testing strategy may vary extensively based on your specific needs, this document introduces the basics of what Mule and DevKit make available to support connector testing approaches.

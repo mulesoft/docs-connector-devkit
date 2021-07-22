@@ -4,6 +4,8 @@ include::_attributes.adoc[]
 endif::[]
 :keywords: devkit, extend, connector
 
+include::partial$devkit-important.adoc[]
+
 * xref:adding-datasense.adoc[Adding DataSense]
 * xref:adding-datasense-query-language.adoc[Adding DataSense Query Language]
 * xref:adding-query-pagination-support.adoc[Adding Query Pagination Support]

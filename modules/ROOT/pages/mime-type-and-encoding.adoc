@@ -4,6 +4,8 @@ include::_attributes.adoc[]
 endif::[]
 :keywords: devkit, mime, processor
 
+include::partial$devkit-important.adoc[]
+
 In Mule 3.7 and newer, you can define the MIME type and encoding of a given return object from @Processor. See the xref:annotation-reference.adoc[Annotation Reference] for more information on annotations.
 
 While DevKit has the @Mime annotation, that element fetches that information at compile time, it's not useful when the connector implements proxy or wrapping to a filesystem type of API.
