@@ -6,7 +6,7 @@ endif::[]
 
 include::partial$devkit-important.adoc[]
 
-This topic explains how to prepare a development environment that includes all the components required to develop Anypoint Connectors.
+Before developing Anypoint Connectors, you must prepare a development environment that includes all the required components.
 
 == Prerequisites
 
