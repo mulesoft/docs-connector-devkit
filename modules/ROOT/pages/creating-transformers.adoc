@@ -46,4 +46,4 @@ The `@Transformer` annotated method must follow certain rules:
 
 == More Information
 
-* xref:3.2@mule-runtime::using-transformers.adoc[Mule Transfomers]
+* xref:3.2@mule-runtime::using-transformers.adoc[Mule Transformers]

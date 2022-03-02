@@ -9,7 +9,7 @@ On of the use cases of Message Sources is implementing Streaming APIs. The `@Sou
 
 == Example
 
-For example the SalesForce Connector supports the SalesForce Streaming API in which users can suscribe to topics and receive notifications when a new event related to that topic happens.
+For example the SalesForce Connector supports the SalesForce Streaming API in which users can subscribe to topics and receive notifications when a new event related to that topic happens.
 
 [source,java,linenums]
 ----
@@ -39,7 +39,7 @@ This method can be invoked from Mule as follows:
     </flow>
 ----
 
-It suscribes to a topic with the given parameter name, and when an update is received it will invoke the next message processor in the chain which in this case is a logger.
+It subscribes to a topic with the given parameter name, and when an update is received it will invoke the next message processor in the chain which in this case is a logger.
 
 
 == More information
