@@ -107,7 +107,7 @@ The following example maps the `myFlowVarXXX` parameter to the result of the exp
      ...
    }
 ----
-|`@ExpressionLanguage` a|defines a class that exports its functionality as a Mule Expression Language.
+|`@ExpressionLanguage` a|Defines a class that exports its functionality as a Mule Expression Language.
 
 `@ExpressionLanguage` restrictions on which types are valid:
 
