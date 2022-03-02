@@ -19,7 +19,7 @@ When you create a new project a test case skeleton is created in the project.
 
 == Testing Mule integration
 
-When you create a new project a Mule namespacehandler class and a schema will be automatically generated from your cloud connector class. Along with the other unit tests you should also test this Mule integration. As a rule of thumb, add at least one test for each element that is generated into the Mule schema.
+When you create a new project a Mule namespacehandler class and a schema will be automatically generated from your cloud connector class. Along with the other unit tests you should also test this Mule integration. As best practice, add at least one test for each element that is generated into the Mule schema.
 
 A test class for the namespace handler is created in the project when it is created. The test class has some helper methods and comments that give you an idea of how to get started with writing unit tests using flows in Mule configuration.
 
