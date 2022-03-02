@@ -15,7 +15,7 @@ By default names are inferred from Java method, parameter and instance variable 
 
 This annotation can be applied to instance variables and method parameters. It has the following parameters:
 
-* _order_: gives the annotated element a relative order within its group. The value provided may be repeated and in that case the order is not guaranteed. The value is relative meaning that an element with order 10 has higher predence than one with value 25.
+* _order_: gives the annotated element a relative order within its group. The value provided may be repeated and in that case the order is not guaranteed. The value is relative meaning that an element with order 10 has higher precedence than one with value 25.
 * _group_: a group is a logical way to display one or more variables together. If no group is specified then a default group is assumed. To place more than one element in the same group, use the exact same values for this attribute.
 * _tab_: a tab is a logical way to groups together. This attributes specifies the name of the tab in which the annotated element should be displayed. If no tab is specified then a default tab is assumed. To display more than one parameter or field in the same the tab then this value should be exactly the same for all of them.
 
