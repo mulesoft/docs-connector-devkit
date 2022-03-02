@@ -538,7 +538,7 @@ public void mystop() {
     }
 }
 ----
-|`@Initialise` a|Mark a method to be initialized during a method's `org.mule.lifecycle`. initializable phase. *Note:* `initialise` is a reserved word that cannot be used as the method's name.
+|`@Initialise` a|Mark a method to be initialized during a method's `org.mule.lifecycle` initializable phase. *Note:* `initialise` is a reserved word that cannot be used as the method's name.
 
 [source,java,linenums]
 ----
