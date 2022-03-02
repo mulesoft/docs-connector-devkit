@@ -2427,7 +2427,7 @@ public class BasicConnectionStrategy{
       throw new ConnectionException(
          ConnectionExceptionCode.CANNOT_REACH,
          "what your API has returned, if it did..",
-         "some meaninful stuff about your API")
+         "some meaningful stuff about your API")
     }
     ...
     //if we manage to get here, it means that the connection was

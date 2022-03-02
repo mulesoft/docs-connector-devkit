@@ -48,7 +48,7 @@ The following example shows the use of the plugin for shading artifacts:
        <relocations>
          <relocation>
             <pattern>org.some.library</pattern>
-            <shadedPattern>org.some.library.new.pakage.name.shade</shadedPattern>
+            <shadedPattern>org.some.library.new.package.name.shade</shadedPattern>
          </relocation>
        </relocations>
       </configuration>

@@ -16,7 +16,7 @@ Your service probably enforces some kind of authentication in order for applicat
 * xref:http-basic-authentication.adoc[HTTP Basic Authentication]
 * xref:no-authentication.adoc[No Authentication]
 
-*Note*: DevKit lets you create more than one authenticatiion method for your connector using multiple @ConnectionStrategy annotations.
+*Note*: DevKit lets you create more than one authentication method for your connector using multiple @ConnectionStrategy annotations.
 
 On the client side, many Mule applications need to manage multiple connections to the same target –for example, a developer of an application interacting with an e-commerce site on behalf of thousands of users need sto efficiently manage the many connections that might be live at any given moment.
 

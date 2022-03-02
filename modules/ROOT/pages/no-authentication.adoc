@@ -6,7 +6,7 @@ endif::[]
 
 include::partial$devkit-important.adoc[]
 
-When a connector does not use authentiation, you can use `@Connector` with `@Configuration`.
+When a connector does not use authentication, you can use `@Connector` with `@Configuration`.
 
 `@Configuration` adds a set of `@Configurable` fields to your connector as a connector configuration.
 
