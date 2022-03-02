@@ -269,7 +269,7 @@ public String setPayload(@Payload String payload) { ... }
 @Processor
 public String getInboundHeaders(@InboundHeaders("myHeader") String myHeader) { ... }
 ----
-|`@InvocationHeaders` a|Passes invocation headers. This can be single header, a comma-seperated list of header names, an asterisk "*" to donate all headers, or a comma-seperated list of wildcard expressions. By default, if a named header is not present, an exception is thrown. However, if the header name is defined with the "?" post fix, it is marked as optional.
+|`@InvocationHeaders` a|Passes invocation headers. This can be a single header, a comma-seperated list of header names, an asterisk "*" to denote all headers, or a comma-seperated list of wildcard expressions. By default, if a named header is not present, an exception is thrown. However, if the header name is defined with the "?" post fix, it is marked as optional.
 
 [source,java,linenums]
 ----
