@@ -2241,7 +2241,7 @@ You can use the <<rsupan,@RestUriParam>>  annotation, as well as other related a
 
 When generating the request call, DevKit includes a non-annotated argument and an argument annotated with <<payan,@Payload>> as the body of the call.
 
-When applying annotations to @Processor methods, specify a placeholder in the URI by surrounding the placeholder with curly braces, for example  ` {type}. `
+When applying annotations to @Processor methods, specify a placeholder in the URI by surrounding the placeholder with curly braces, for example  ` \{type}. `
 
 You can apply @RestUriParam to @Processor methods arguments as follows:
 
