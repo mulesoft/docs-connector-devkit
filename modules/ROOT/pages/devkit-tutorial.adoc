@@ -1078,9 +1078,9 @@ See:
 
 * xref:authentication.adoc[Authentication] documentation.
 * xref:oauth-v2.adoc[OAuth V2].
-* <<mutiple-connection-strategies,Supporting Multiple Connection Strategies>>.
+* <<multiple-connection-strategies,Supporting Multiple Connection Strategies>>.
 
-[[mutiple-connection-strategies]]
+[[multiple-connection-strategies]]
 
 == Multiple Configurations
 
