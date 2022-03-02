@@ -44,7 +44,7 @@ Anypoint Studio must be configured to reference the location of your JDK rather 
 
 image::installed-jres-jdk.png[installed jres]
 
-NOTE: When referencing the root of your JRE instead of a JDK, Maven will be unable to resolve the DevKit-required depenency `com.sun:tools:jar:1.6`. An error describing the inability to resolve this dependency will show up in the console when the build process kicks off.
+NOTE: When referencing the root of your JRE instead of a JDK, Maven will be unable to resolve the DevKit-required dependency `com.sun:tools:jar:1.6`. An error describing the inability to resolve this dependency will show up in the console when the build process kicks off.
 
 == Apache Maven
 
