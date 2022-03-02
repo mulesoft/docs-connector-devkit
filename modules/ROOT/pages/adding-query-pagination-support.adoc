@@ -53,7 +53,7 @@ public abstract class ProviderAwarePagingDelegate<T, P> implements Closeable
      * no more items are available
      *
      * @param provider The provider to be used to do the query.
-     * You can assume this provider is already properly initialised
+     * You can assume this provider is already properly initialized
      * @return a populated list of elements. <code>null</code>
      * or an empty list, then it means no more items are available
      * @throws Exception
@@ -67,7 +67,7 @@ public abstract class ProviderAwarePagingDelegate<T, P> implements Closeable
      * returned in such a case.
      *
      * @param provider The provider to be used to do the query.
-     * You can assume this provider is already properly initialised.
+     * You can assume this provider is already properly initialized.
      */
     public abstract int getTotalResults(P provider) throws Exception;
 

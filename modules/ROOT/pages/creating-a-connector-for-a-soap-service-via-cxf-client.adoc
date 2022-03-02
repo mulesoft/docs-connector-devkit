@@ -103,7 +103,7 @@ Note that SunSetTime and SunRiseTime are in decimal rather than hours, minutes a
 
 All SOAP APIs provide a WSDL file that defines how and at what endpoint and ports a SOAP Web service can be called, what operations and parameters it expects, and what data types (simple or complex) the operations return.
 
-CXF includes the wsdl2java utility that can generate Java stub client code to call any method on the service, and marshall and unmarshall request parameters and responses as Java objects for further processing. This generated stub client becomes the core of your connector.
+CXF includes the wsdl2java utility that can generate Java stub client code to call any method on the service, and marshall and unmarshal request parameters and responses as Java objects for further processing. This generated stub client becomes the core of your connector.
 
 The sections below describe the steps to create the stub client and add it to your project.
 

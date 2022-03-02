@@ -107,7 +107,7 @@ The following example maps the `myFlowVarXXX` parameter to the result of the exp
      ...
    }
 ----
-|`@ExpressionLanguage` a|efines a class that exports its functionality as a Mule Expression Language.
+|`@ExpressionLanguage` a|defines a class that exports its functionality as a Mule Expression Language.
 
 `@ExpressionLanguage` restrictions on which types are valid:
 
@@ -269,7 +269,7 @@ public String setPayload(@Payload String payload) { ... }
 @Processor
 public String getInboundHeaders(@InboundHeaders("myHeader") String myHeader) { ... }
 ----
-|`@InvocationHeaders` a|Passes invocation headers. This can be single header, a comma-seperated list of header names, an astrick "*" to donate all headers, or a comma-seperated list of wildcard expressions. By default, if a named header is not present, an exception is thrown. However, if the header name is defined with the "?" post fix, it is marked as optional.
+|`@InvocationHeaders` a|Passes invocation headers. This can be single header, a comma-seperated list of header names, an asterisk "*" to donate all headers, or a comma-seperated list of wildcard expressions. By default, if a named header is not present, an exception is thrown. However, if the header name is defined with the "?" post fix, it is marked as optional.
 
 [source,java,linenums]
 ----
@@ -538,7 +538,7 @@ public void mystop() {
     }
 }
 ----
-|`@Initialise` a|Mark a method to be initialized during a method's `org.mule.lifecycle`. Initialisable phase. *Note:* `initialise` is a reserved word that cannot be used as the method's name.
+|`@Initialise` a|Mark a method to be initialized during a method's `org.mule.lifecycle`. initializable phase. *Note:* `initialise` is a reserved word that cannot be used as the method's name.
 
 [source,java,linenums]
 ----
@@ -701,7 +701,7 @@ public void processor() { ... }
     public void connect(@ConnectionKey String username, @Password String password)
         throws ConnectionException { … }
 ----
-|`@Default` a|Specifies a default value to a `@Configurable` field or a `@Processer` or `@Source` parameter.
+|`@Default` a|Specifies a default value to a `@Configurable` field or a `@Processor` or `@Source` parameter.
 
 [source,java,linenums]
 ----
@@ -780,7 +780,7 @@ String path;
     int age)
 throws IOException;
 ----
-|`@RestHtppClient` a|An annotation to mark the HttpClient module uses. This way, you avoid creating multiple clients and have the opportunity to perform your own calls or to configure the HttpClient to fulfull special needs:
+|`@RestHttpClient` a|An annotation to mark the HttpClient module uses. This way, you avoid creating multiple clients and have the opportunity to perform your own calls or to configure the HttpClient to fulfill special needs:
 
 [source,java,linenums]
 ----

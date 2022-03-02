@@ -286,7 +286,7 @@ If you obtain the metadata dynamically through an API call, the `@Connect` metho
 
 Thus far, you have implemented the describing mechanism for all of the entities in the service you aim to connect. Now you must make this information accessible to the message processor.
 
-The message processor must receive the operation's type as a parameter annotated with `@MetaDataKeyParam` (Studio displays the operations in a drop-down with all the entities returned by `@MetaDataRetreiver`). The message processor must also receive the entity data (returned by `@MetadataRetriever`) as a `Map<String,Object>` parameter, annotated as `@Default ("#[payload]")`.
+The message processor must receive the operation's type as a parameter annotated with `@MetaDataKeyParam` (Studio displays the operations in a drop-down with all the entities returned by `@MetaDataRetriever`). The message processor must also receive the entity data (returned by `@MetadataRetriever`) as a `Map<String,Object>` parameter, annotated as `@Default ("#[payload]")`.
 
 [WARNING]
 When building connectors for Mule runtimes prior to *3.5.0*, all `@Default` parameters must also be marked with `@Optional`. In newer versions, this second annotation is considered redundant, but it is required on mule runtime 3.4.2 and older.
@@ -314,7 +314,7 @@ When building connectors for Mule runtimes prior to *3.5.0*, all `@Default` para
     }
 ----
 
-Thanks to this method, Studio displays all the entities returned by `@MetaDataRetreiver` as items in a drop-down field.
+Thanks to this method, Studio displays all the entities returned by `@MetaDataRetriever` as items in a drop-down field.
 
 image::image3.png[]
 

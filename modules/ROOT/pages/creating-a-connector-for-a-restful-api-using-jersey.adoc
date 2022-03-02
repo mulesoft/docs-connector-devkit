@@ -608,7 +608,7 @@ Making any request requires:
 
 * Marshaling inbound objects to JSON
 * Calling the Web service
-* Unmarshaling the response
+* Unmarshalling the response
 * Handling response status codes and exceptions
 
 As with authentication, use a helper method to encapsulate all these repeated steps. In the sample client class, method `execute()` implements all this logic, as shown below.
