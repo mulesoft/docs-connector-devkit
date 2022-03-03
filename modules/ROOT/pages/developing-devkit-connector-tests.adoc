@@ -516,7 +516,7 @@ Call this method after initializing the TestRunMessage and prior to an operation
 
 Most general case, generally applies filter to the responses test.
 
-Use a `&#x0023;{null}` expression to handle the different cases in the AutomationSpringBeans file.
+Use a `&#x0023;\{null}` expression to handle the different cases in the AutomationSpringBeans file.
 
 [source,xml,linenums]
 ----

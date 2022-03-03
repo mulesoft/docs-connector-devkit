@@ -85,7 +85,7 @@ Refer to xref:developing-devkit-connector-tests.adoc[Developing DevKit Connector
 
 == Step 7: Documenting Your Connector
 
-A full-feautred connector should have documentation. DevKit enables the creation of complete reference documentation including code samples.
+A full-featured connector should have documentation. DevKit enables the creation of complete reference documentation including code samples.
 
 . Each time you add an operation to the connector (Step 3, above), DevKit adds sample XML code snippets in comments in the source code. These snippets appear in the auto-generated connector documentation.
 . Review the auto-generated documentation to determine if you want to expand upon it, offering more than information that the simple documentation of individual operations.

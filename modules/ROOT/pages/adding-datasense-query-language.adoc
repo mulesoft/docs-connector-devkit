@@ -132,7 +132,7 @@ Define a new class in your connector that extends https://github.com/mulesoft/mu
 
 [%header%autowidth.spread]
 |===
-^|Class DefaultOperatorVistor
+^|Class DefaultOperatorVisitor
 a|
 [source,java,linenums]
 ----

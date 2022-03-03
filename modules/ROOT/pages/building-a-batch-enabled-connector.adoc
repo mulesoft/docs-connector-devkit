@@ -11,7 +11,7 @@ Some of the benefits of using Batch include:
 
 * the parallel processing of records
 * handling of large quantities of incoming data from an API into a legacy system
-* the synchronisation of data sets between business applications
+* the synchronization of data sets between business applications
 
 Some of the already existing connectors, such as xref:3.5@mule-runtime::salesforce-connector.adoc[Salesforce] and http://www.mulesoft.com/cloud-connectors/netsuite-integration-connector[NetSuite], have been supporting batch operations for years. However, with the introduction of the new batch module, developers no longer need to parse the response of the connector to determine which of the records failed. Instead, this is handled automatically by `<batch:commit>`.
 
@@ -37,7 +37,7 @@ The implementation of this feature for new connectors is pretty straightforward.
  * needs to match the ordering of the original objects. For example, if the bulk
  * operation consisted of 10 person objects in which number X corresponded to the
  * person 'John Doe', then the Xth item in the {@link #items} list must reference to
- * the result of procesing the same 'John Doe'
+ * the result of processing the same 'John Doe'
  */
 public final class BulkOperationResult<T> implements Serializable
 {

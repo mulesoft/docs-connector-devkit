@@ -50,7 +50,7 @@ Additional annotations define authentication-related functionality and connectio
 
 Anypoint DevKit generates a skeleton connector when you create your Anypoint Connector project in Studio. The skeleton connector includes the `@Connector` class, the `@Configurable` attributes, the `@Processor` methods, and authentication logic to build out your connector. During the build process, the annotation processor extends your code with functionality to integrate with Mule.
 
-=== Traget-Facing Functionality
+=== Target-Facing Functionality
 
 The target facing or client facing side of a connector depends on the client technology that enables access to the resource. This functionality consists of a class library and one or more classes that Mule-facing `@Connector` class uses to access client functionality. This functionality is called the client class.
 
@@ -114,7 +114,7 @@ Anypoint Connector DevKit supports:
 * xref:building-a-batch-enabled-connector.adoc[Batch]
 * xref:installing-and-testing-your-connector-in-studio.adoc[Anypoint Studio Support]
 
-*Connector Development Lifecylce*
+*Connector Development Lifecycle*
 
 * xref:setting-up-your-dev-environment.adoc[Setting Up a Connector Project]
 * xref:creating-an-anypoint-connector-project.adoc[Writing Connector Code]
