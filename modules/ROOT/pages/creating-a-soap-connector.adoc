@@ -570,7 +570,7 @@ public class TShirtWSDLProvider {
 }
 ----
 
-The key part about this strategies, within @WsdlSecurity, is that a connector developer must rely on the @Configurables already in place. This means that if it want to use username token profile, then it must have a way to parametrize the connector with username, password, etc. Once the concrete instances of @WsdlSecurityStrategy initialize, DevKit takes care of the rest, parameterizing each to the underlying engine in the Web Service Consumer.
+The key part about this strategies, within @WsdlSecurity, is that a connector developer must rely on the @Configurables already in place. To use the username token profile, there must be a way to parametrize the connector with a username, a password, and so on. Once the concrete instances of @WsdlSecurityStrategy initialize, DevKit takes care of the rest, parameterizing each to the underlying engine in the Web Service Consumer.
 
 === Transport Authentication with HTTP Basic Authentication
 
