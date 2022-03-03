@@ -49,4 +49,4 @@ Provides short definitions of the most commonly used terms across the documentat
 
 * @Transformer: method annotation to signal the generation of a wrapper [https://www.mulesoft.org/docs/site/current3/apidocs/org/mule/api/transformer/Transformer.html[Transformer]] around the method of the POJO. This annotation requires a specific method signature and will not work on every method.
 
-* User: OAuth terminology that referes to an individual who has an account with the Service Provider.
+* User: OAuth terminology that refers to an individual who has an account with the Service Provider.

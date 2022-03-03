@@ -33,7 +33,7 @@ The attributes for the `pooling-profile` element have the following meaning:
 
 [%header,cols="10a,90a"]
 |===
-|Attribute Name |Descriptipn
+|Attribute Name |Description
 |maxActive |*Required.* Controls the maximum number of Mule components that can be borrowed from a session at one time. When set to a negative value, there is no limit to the number of components that may be active at one time. When `maxActive` is exceeded, the pool is said to be exhausted.
 |maxIdle |*Required.* Controls the maximum number of Mule components that can sit idle in the pool at any time. When set to a negative value, there is no limit to the number of Mule components that may be idle at one time.
 |initialisationPolicy |*Optional.* Determines how components in a pool should be initialized. The possible values are: `INITIALISE_NONE` (will not load any components into the pool on startup), `INITIALISE_ONE` (will load one initial component into the pool on startup), or `INITIALISE_ALL` (will load all components in the pool on startup). *Default value is:* `INITIALISE_ONE`
