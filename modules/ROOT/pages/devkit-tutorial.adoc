@@ -615,7 +615,7 @@ In this tutorial, we use a static DataSense model, which means that the entities
 
 To use DataSense in the cookbook:
 
-. Analyze the entities in {mule} service. We only have two simple entities, Recipe and Ingredient that both extend from CookBookEntity.
+. Analyze the entities in \{mule} service. We only have two simple entities, Recipe and Ingredient that both extend from CookBookEntity.
 . Look at how our createIngredient operation looks inside Anypoint Studio, and how it interacts with other components.
 +
 [source,java,linenums]
@@ -722,7 +722,7 @@ include::{examplesdir}/java/v5/CookbookConnector.java[lines=115..121]
 +
 image::datasense-static.png[width="800"]
 +
-Now even the {dataWeave} knows how to interact with our @Connector:
+Now even the \{dataWeave} knows how to interact with our @Connector:
 +
 image::datasense-static2.png[width="800"]
 
@@ -1078,9 +1078,9 @@ See:
 
 * xref:authentication.adoc[Authentication] documentation.
 * xref:oauth-v2.adoc[OAuth V2].
-* <<mutiple-connection-strategies,Supporting Multiple Connection Strategies>>.
+* <<multiple-connection-strategies,Supporting Multiple Connection Strategies>>.
 
-[[mutiple-connection-strategies]]
+[[multiple-connection-strategies]]
 
 == Multiple Configurations
 

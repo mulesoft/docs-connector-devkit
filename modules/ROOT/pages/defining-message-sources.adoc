@@ -113,7 +113,7 @@ callback.process("testMessage", properties);
 }
 ----
 
-After this is built into a connector, it contains an inbound property called originalFiname with value `123.txt` after the message source.
+After this is built into a connector, it contains an inbound property called originalFilename with value `123.txt` after the message source.
 
 == See Also
 
