@@ -273,7 +273,7 @@ public abstract class AbstractTShirtWSDLProvider {
 }
 ----
 +
-. Code a first provider implementation of the abstract class, for example, for women's Tshirts:
+. Code a first provider implementation of the abstract class, for example, for women's T-shirts:
 +
 [source,java,linenums]
 ----
@@ -288,7 +288,7 @@ public class TShirtWSDLProvider extends AbstractTShirtWSDLProvider {
 }
 ----
 +
-. Code the next provider implementation of the abstract class, in this case, for men's Tshirts:
+. Code the next provider implementation of the abstract class, in this case, for men's T-shirts:
 +
 [source,java,linenums]
 ----
@@ -307,7 +307,7 @@ Both steps 3 and 4 generate two global elements, one for each type of configurat
 
 === Multiple Level DataSense for WSDL Provider
 
-When implementing a WSDL-based connector using a @WsdProvider, the developer provides one or many service definitions retrieved from one or many WSLDProvider strategies. For each of this ServiceDefinitions, the connector presents multiple operations.
+When implementing a WSDL-based connector using a @WsdlProvider, the developer provides one or many service definitions retrieved from one or many WSDLProvider strategies. For each of this ServiceDefinitions, the connector presents multiple operations.
 
 Using this connector, then, implies that the user selects a Service and an Operation to be invoked.
 
@@ -399,15 +399,15 @@ public ServiceDefinition getDefinitions() {
 }
 ----
 
-==== Multiple WSLDProviders Restriction
+==== Multiple WSDLProviders Restriction
 
 When declaring multiple WSDLProvider strategies, all must be consistent in the ServiceDefinitionRetriever declaration.
 
 This includes:
 
 * Return type must be the same for all the strategies, that is either all return List<ServiceDefinition> or all return ServiceDefinition.
-* If overrided labels must be the same for all the retrievers.
-* If overrided keySeparator must be the same for all the retrievers.
+* If overridden, labels must be the same for all the retrievers.
+* If overridden, the keySeparator must be the same for all the retrievers.
 
 ==== Separator and Labels Restrictions
 
@@ -570,7 +570,7 @@ public class TShirtWSDLProvider {
 }
 ----
 
-The key part about this strategies, within @WsdlSecurity, is that a connector developer must rely on the @Configurables already in place. This means that if it want to use username token profile, then it must have a way to parametrize the connector with username, password, etc. Once the concrete instances of @WsdlSecurityStrategy initialize, DevKit takes care of the rest, parametrizing each to the underlying engine in the Web Service Consumer.
+The key part about this strategies, within @WsdlSecurity, is that a connector developer must rely on the @Configurables already in place. To use the username token profile, there must be a way to parametrize the connector with a username, a password, and so on. Once the concrete instances of @WsdlSecurityStrategy initialize, DevKit takes care of the rest, parameterizing each to the underlying engine in the Web Service Consumer.
 
 === Transport Authentication with HTTP Basic Authentication
 

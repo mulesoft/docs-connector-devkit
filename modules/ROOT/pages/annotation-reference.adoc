@@ -1100,7 +1100,7 @@ public void initialize() {
 }
 ----
 
-*Note:* `iniitalise` is a reserved word that cannot be used as the method's name.
+*Note:* `initialise` is a reserved word that cannot be used as the method's name.
 
 See also: <<displ,@Dispose>>   <<stan,@Start>>   <<stopan,@Stop>>
 
@@ -2241,7 +2241,7 @@ You can use the <<rsupan,@RestUriParam>>  annotation, as well as other related a
 
 When generating the request call, DevKit includes a non-annotated argument and an argument annotated with <<payan,@Payload>> as the body of the call.
 
-When applying annotations to @Processor methods, specify a placeholder in the URI by surrounding the placeholder with curly braces, for example  ` {type}. `
+When applying annotations to @Processor methods, specify a placeholder in the URI by surrounding the placeholder with curly braces, for example  ` \{type}. `
 
 You can apply @RestUriParam to @Processor methods arguments as follows:
 
@@ -2458,7 +2458,7 @@ public void connect(@ConnectionKey String username, @Password String password,
     ServiceClient client = new ServiceClient(username, password);
     try {
         client.connect(url, optionalConnectionParams);
-    } catch (SerivceConnectionException e) {
+    } catch (ServiceConnectionException e) {
         throw new ConnectionException(getExceptionCode(e.getCause()), e.getCode(), e.getMessage(), e);
     }
 }
@@ -2510,7 +2510,7 @@ public class BasicConnectionStrategy{
       throw new ConnectionException(
          ConnectionExceptionCode.CANNOT_REACH,
          "what your API has returned, if it did..",
-         "some meaninful stuff about your API")
+         "some meaningful stuff about your API")
     }
     ...
     //if we manage to get here, it means that the connection was

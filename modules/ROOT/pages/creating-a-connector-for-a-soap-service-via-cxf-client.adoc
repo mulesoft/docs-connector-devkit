@@ -49,7 +49,7 @@ image::image2013-8-11-173a213a7.png[image2013-8-11+173A213A7]
 
 == Example Service: SunSetRiseService
 
-Example files are available in the attached link:{attachmentsdir}/CxfExampleFiles.zip[CxfExampleFiies.zip] file for the sections of this document that follow.
+Example files are available in the attached link:{attachmentsdir}/CxfExampleFiles.zip[CxfExampleFiles.zip] file for the sections of this document that follow.
 
 The request and response are both represented by an XML document that specifies:
 
@@ -878,7 +878,7 @@ Once you get through the process above, you have a working SOAP CXF connector. Y
 
 * Add more operations using the same process
 * Check out some of the other xref:anypoint-connector-examples.adoc[examples]
-* Example files are available in the attached link:{attachmentsdir}/CxfExampleFiles.zip[CxfExampleFiies.zip] file for the WSDL2Java sections of this document
+* Example files are available in the attached link:{attachmentsdir}/CxfExampleFiles.zip[CxfExampleFiles.zip] file for the WSDL2Java sections of this document
 
 == Appendix - sunsetriseservice WSDL
 
