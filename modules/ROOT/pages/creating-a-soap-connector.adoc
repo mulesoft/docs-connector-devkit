@@ -435,7 +435,7 @@ This includes:
 
 * Return type must be the same for all the strategies, that is either all return List<ServiceDefinition> or all return ServiceDefinition.
 * If overridden, labels must be the same for all the retrievers.
-* If overridden, keySeparator must be the same for all the retrievers.
+* If overridden, the keySeparator must be the same for all the retrievers.
 
 ==== Separator and Labels Restrictions
 
