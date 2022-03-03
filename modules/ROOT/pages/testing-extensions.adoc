@@ -11,7 +11,7 @@ As your cloud service accepts data that will be sent to the cloud service it may
 
 == Testing the interaction with the cloud service
 
-The main purpose of your cloud connector is integration of a local API with a remote one. Through the local API developers can use the web serivce in the same way they use a local service.
+The main purpose of your cloud connector is integration of a local API with a remote one. Through the local API developers can use the web service in the same way they use a local service.
 
 The cloud connector, however, typically talks over the internet with some remote service. This means that errors in the connection with the service may occur such as timeouts or network packet loss. Your cloud connector could handle these types of errors either gracefully by retrying or simply throw an exception. Whatever type of error handling you choose, make sure you test the error handling. Often, you may need to mock out the web service you are testing against as you won't be able to reproduce certain error conditions (e.g. timeouts, connection loss) from your side.
 
@@ -19,7 +19,7 @@ When you create a new project a test case skeleton is created in the project.
 
 == Testing Mule integration
 
-When you create a new project a Mule namespacehandler class and a schema will be automatically generated from your cloud connector class. Along with the other unit tests you should also test this Mule integration. As a rule of tumb, add at least one test for each element that is generated into the Muel schema.
+When you create a new project a Mule namespacehandler class and a schema will be automatically generated from your cloud connector class. Along with the other unit tests you should also test this Mule integration. As best practice, add at least one test for each element that is generated into the Mule schema.
 
 A test class for the namespace handler is created in the project when it is created. The test class has some helper methods and comments that give you an idea of how to get started with writing unit tests using flows in Mule configuration.
 
@@ -76,7 +76,7 @@ Nothing fancy here, it is just setting a variable with some payload. We do recom
 SimpleFlowConstruct flow = lookupFlowConstruct("search");
 ----
 
-This line will use the convienienve method lookupFlowConstruct (that in turns uses Mule's Registry) to lookup for the flow that you defined inside your XML configuration.
+This line will use the convenient method lookupFlowConstruct (that in turns uses Mule's Registry) to lookup for the flow that you defined inside your XML configuration.
 
 [source,text,linenums]
 ----

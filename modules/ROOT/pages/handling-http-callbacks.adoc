@@ -40,7 +40,7 @@ All the attributes are optional and take default values as explained above.
 
 == How It Works
 
-Behind the scenes a Mule flow is created dynamically containing a Message Processor that invokes the desired flow. By default, this Message Processor is wrapped in a async message processor chain. This behavior can be overriden using the 'async' option.
+Behind the scenes a Mule flow is created dynamically containing a Message Processor that invokes the desired flow. By default, this Message Processor is wrapped in a async message processor chain. This behavior can be overridden using the 'async' option.
 
 The URL of the HTTP inbound endpoint is built using 'localhost' as host and 'http.port' environment variable or 'localPort' value as port. The path of the URL is a random string.
 

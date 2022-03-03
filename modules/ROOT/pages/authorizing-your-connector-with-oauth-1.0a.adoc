@@ -25,7 +25,7 @@ In order to use OAuth support, ensure that you have the following dependency in 
 
 == The `@OAuth` Annotation
 
-If a Cloud Connector or Custom Module is to take advantage of the OAuth facilites the DevKit provides, the class level annotation `@OAuth` needs to be present. Some parameters are required; others are optional and take default values that are suitable for most of the scenarios.
+If a Cloud Connector or Custom Module is to take advantage of the OAuth facilities the DevKit provides, the class level annotation `@OAuth` needs to be present. Some parameters are required; others are optional and take default values that are suitable for most of the scenarios.
 
 This annotation triggers DevKit to create message processors called *authorize* and *unauthorize*. Using the unauthorize processor kills the active OAuth session.
 
@@ -40,7 +40,7 @@ the OAuth 1.0a flow; this method is included in the `auth_signature_method` para
 |requestTokenUrl + |URL defined by the service provider used to obtain an un-authorized request Token + |REQUIRED |
 |accessTokenUrl + |URL defined by the service provider to obtain an Access Token + |REQUIRED |
 |authorizationUrl |URL defined by the service provider to redirected the resource owner to grant authorization to the consumer |REQUIRED |
-|verifierRegex |s Java regular expression used to extract the verifer from the service provider response after the resource owner authorizes the consumer |OPTIONAL |oauth_verifier=([^&]+)
+|verifierRegex | Java regular expression used to extract the verifier from the service provider response after the resource owner authorizes the consumer |OPTIONAL |oauth_verifier=([^&]+)
 |callbackPath |where the service provider only accepts a known redirect URL, assign this parameter to the path inside your domain (denoted by the `fullDomain` environment variable) that will be registered with service provider as a redirect URL. If left empty (meaning the service provider accepts any URL as redirect URL), a random path will be used. |OPTIONAL |_random path _
 |===
 

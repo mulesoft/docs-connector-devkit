@@ -9,7 +9,7 @@ For a detailed explanation of how OAuth 1 works go to http://oauth.net/2[Oauth 2
 
 == The `@OAuth2` Annotation
 
-If a Cloud Connector or Custom Module is to take advantage of the OAuth facilites the DevKit provides, the class level annotation `@OAuth2` needs to be present. Some parameters are required; others are optional and use default values that are suitable for most of the scenarios.
+If a Cloud Connector or Custom Module is to take advantage of the OAuth facilities the DevKit provides, the class level annotation `@OAuth2` needs to be present. Some parameters are required; others are optional and use default values that are suitable for most of the scenarios.
 
 This annotation triggers DevKit to create message processors called *authorize* and *unauthorize*. Using the unauthorize processor kills the active OAuth session.
 
@@ -25,11 +25,11 @@ The following table describes the `@OAuth2` parameters.
 |accessTokenUrl + |URL defined by the service provider to obtain an access token + |REQUIRED |
 |authorizationUrl |URL defined by the service provider where the resource owner is redirected to grant authorization to the consumer. You can override this value when configuring the processor by including it with a different value in the config element. And you can override that value when creating a flow by placing it in the authorize element. |REQUIRED |
 |authorizationParameters |comma-delimited list of annotations of the form @OAuthAuthorizationParameter(name = "xxx", type = xxx, description = "xxx"). The type cannot be a collection or a complex type. |OPTIONAL |
-|verifierRegex |a Java regular expression used to extract the verifer from the service provider response after the resource owner authorizes the consumer |OPTIONAL |code=([^&]+) +
+|verifierRegex |a Java regular expression used to extract the verifier from the service provider response after the resource owner authorizes the consumer |OPTIONAL |code=([^&]+) +
 |accessTokenRegex |a Java regular expression used to extract the access token from the service provider response + |OPTIONAL |"access_token":"([^&]+?)" +
 |expirationRegex + |a Java regular expression used to extract the expiration time of the access token (in seconds) from the service provider response. If this regular expression is not found in the service provider response (because the regular expression is wrong or the access token never expires), the access token will be treated as if it would never expire. |OPTIONAL |"expires_in":([^&]+?),
 |refreshTokenRegex + |a Java regular expression used to extract a refresh token from the callback during the authorization flow. |OPTIONAL |"\"refresh_token\":\"([^&]+?)\""
-|callbackPath |Iwhere the service provider only accepts a known redirect URL, assign this parameter to the path inside your domain (denoted by the `fullDomain` environment variable) that will be registered with service provider as a redirect URL. If left empty (meaning the service provider accepts any URL as redirect URL), a random path will be used. |OPTIONAL |_ random path _
+|callbackPath |If the service provider accepts only a known redirect URL for this parameter, use the path inside your domain (denoted by the `fullDomain` environment variable). If left empty and the service provider accepts any URL as a redirect URL for this parameter, a random path is used. |OPTIONAL |_ random path _
 |===
 
 == Adding OAuth 2 Support
