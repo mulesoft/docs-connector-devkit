@@ -52,7 +52,7 @@ image::image2013-8-11-173a213a7.png[image2013-8-11+173A213A7]
 The web service for the demo is the SunSetRise Web service. The <<Appendix - sunsetriseservice WSDL>> provides access information.
 
 [TIP]
-Example files are available in the attached link:{attachmentsdir}/CxfExampleFiles.zip[CxfExampleFiies.zip] file for the sections of this document that follow.
+Example files are available in the attached link:{attachmentsdir}/CxfExampleFiles.zip[CxfExampleFiles.zip] file for the sections of this document that follow.
 
 
 The request and response are both represented by an XML document that specifies:
@@ -882,7 +882,7 @@ http://www.mulesoft.org/schema/mule/json http://www.mulesoft.org/schema/mule/jso
 Once you get through the process above, you have a working SOAP CXF connector. You can:
 
 * Add more operations using the same process
-* Example files are available in the attached link:{attachmentsdir}/CxfExampleFiles.zip[CxfExampleFiies.zip] file for the WSDL2Java sections of this document
+* Example files are available in the attached link:{attachmentsdir}/CxfExampleFiles.zip[CxfExampleFiles.zip] file for the WSDL2Java sections of this document
 
 == Appendix - sunsetriseservice WSDL
 
