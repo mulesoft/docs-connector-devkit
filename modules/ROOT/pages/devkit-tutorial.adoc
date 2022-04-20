@@ -194,7 +194,7 @@ image::new1.png[width="550"]
 +
 This generates a project containing the structure and all required elements including a skeleton connector, icons, sample docs file, but no basic tests for your connector.
 +
-image::new-connector-3.png[width="600","new-connector-3"]
+image::new-connector-3.png["",width="600"]
 
 [TIP]
 You can enable the DevKit view by clicking from the top bar *Window* > *Show View* > *Other*, and look for DevKit in the *MuleSoft* dropdown.
@@ -965,13 +965,13 @@ In this image you can see how most of the code maps into UI elements.
 
 // TODO: Use 2 images of screenshots with the default layout
 
-image::split-1-high.png[caption="Figure 1: ", title="View Structure and UI", alt="Image1", width="800", "split-1-high.png"]
+image::split-1-high.png[caption="Figure 1: ", title="View Structure and UI", alt="", width="800", "split-1-high.png"]
 
 In this example, you can check how the code matches to XML and other UI elements.
 
 // TODO: Use 2 images of screenshots with the default layout
 
-image::split-2-high.png[caption="Figure 2: ", title="View configuration and XML", alt="Image2", width="800", "split2"]
+image::split-2-high.png[caption="Figure 2: ", title="View configuration and XML", alt="", width="800", "split2"]
 
 [NOTE]
 ====
