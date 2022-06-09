@@ -80,7 +80,7 @@ public List<MetaDataKey> getMetaDataKeys() throws Exception {
 }
 ----
 
-`List<MetaDataKey>` keys store https://github.com/mulesoft/mule-common/blob/master/src/main/java/org/mule/common/metadata/DefaultMetaDataKey.java[DefaultMetadataKey] instances. DefaultMetadataKey's constructor identifies metadata keys by a `String id`:
+`List<MetaDataKey>` keys store https://github.com/mulesoft/mule-common/blob/support/3.x/src/main/java/org/mule/common/metadata/DefaultMetaDataKey.java[DefaultMetadataKey] instances. DefaultMetadataKey's constructor identifies metadata keys by a `String id`:
 
 [source,text,linenums]
 ----
