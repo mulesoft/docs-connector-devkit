@@ -180,7 +180,7 @@ Creating a new query visitor class lets you define the query syntax for expressi
 
 . Define a new class in your connector that extends one of the existing QueryVisitor classes.
 +
-It is usually simplest to extend https://github.com/mulesoft/mule-common/blob/master/src/main/java/org/mule/common/query/DsqlQueryVisitor.java[DsqlQueryVisitor]; at a minimum, extend https://github.com/mulesoft/mule-common/tree/3.x/src/main/java/org/mule/common/query/DefaultQueryVisitor.java[DefaultQueryVisitor ]and model your implementation on DsqlQueryVisitor, importing the classes that represent the query model and a couple of utility classes:
+It is usually simplest to extend https://github.com/mulesoft/mule-common/blob/support/3.x/src/main/java/org/mule/common/query/DsqlQueryVisitor.java[DsqlQueryVisitor]; at a minimum, extend https://github.com/mulesoft/mule-common/tree/3.x/src/main/java/org/mule/common/query/DefaultQueryVisitor.java[DefaultQueryVisitor ]and model your implementation on DsqlQueryVisitor, importing the classes that represent the query model and a couple of utility classes:
 +
 [source,java,linenums]
 ----
