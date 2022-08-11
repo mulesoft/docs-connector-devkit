@@ -23,7 +23,7 @@ More details can be found in xref:defining-connector-attributes.adoc[Defining Co
 
 == Static Versus Dynamic Data Models
 
-The underlying data model for the API you connect to often drives design decisions about the best way to represent data going to and from your connector. The goal in general is to choose a representation that fits the underlying data, while still supporting the necessary metadata to work with xref:5@studio::datasense.adoc[DataSense].
+The underlying data model for the API you connect to often drives design decisions about the best way to represent data going to and from your connector. The goal in general is to choose a representation that fits the underlying data, while still supporting the necessary metadata to work with xref:5.x@studio::datasense.adoc[DataSense].
 
 * *Static data models* have fixed definitions of all the objects and their attributes supported by the target. Most services, particularly relatively simple ones, implement static data models. For APIs using static data models, it is recommended to create Plain Old Java Objects (POJOs) that correspond to the objects exposed through the connector's operations. Short of a revision to the target APIs, these classes do not need to change in individual deployments.
 * *Dynamic data models* enable the customization of the application objects and their attributes. Complex ERP applications often implement dynamic data models so that they can be customized from one customer to the next. In the case of a dynamic data model, it is recommended that you use Java key-value Maps to represent application objects in Mule.
