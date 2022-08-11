@@ -42,7 +42,7 @@ Here is why you might want to build your own connector:
 
 == Prerequisites
 
-Before developing a connector you should have a working knowledge of Mule, xref:6@studio::to-download-and-install-studio.adoc[Anypoint Studio], and Java development in general, specifically the use of https://docs.oracle.com/javase/tutorial/java/annotations/basics.html[Java annotations].
+Before developing a connector you should have a working knowledge of Mule, xref:6.5@studio::to-download-and-install-studio.adoc[Anypoint Studio], and Java development in general, specifically the use of https://docs.oracle.com/javase/tutorial/java/annotations/basics.html[Java annotations].
 
 [NOTE]
 ====
