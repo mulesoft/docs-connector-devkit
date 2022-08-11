@@ -19,7 +19,7 @@ image::5-package.png[]
 
 == Assumptions
 
-This document assumes you have already xref:creating-an-anypoint-connector-project.adoc[created a connector project] with at least some xref:barn-connector.adoc[basic] functionality, and are now ready to implement authentication on your connector. At this point you may have already attempted to xref:5@studio::installing-extensions.adoc[install your connector in Studio to test it].
+This document assumes you have already xref:creating-an-anypoint-connector-project.adoc[created a connector project] with at least some xref:barn-connector.adoc[basic] functionality, and are now ready to implement authentication on your connector. At this point you may have already attempted to xref:5.x@studio::installing-extensions.adoc[install your connector in Studio to test it].
 
 == Basic Authentication
 

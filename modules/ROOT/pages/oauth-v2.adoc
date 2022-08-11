@@ -11,7 +11,7 @@ image::5-package.png[]
 
 == Assumptions
 
-This document assumes you are familiar with the xref:5@studio::basic-studio-tutorial.adoc[Anypoint Connector Essentials] and you are ready to implement authentication on your connector. It assumes you are familiar with the various xref:authentication-methods.adoc[authentication methods] and you are using OAuth V1 to authenticate with your API.
+This document assumes you are familiar with the xref:5.x@studio::basic-studio-tutorial.adoc[Anypoint Connector Essentials] and you are ready to implement authentication on your connector. It assumes you are familiar with the various xref:authentication-methods.adoc[authentication methods] and you are using OAuth V1 to authenticate with your API.
 
 If you are not familiar with OAuth V1 authentication, what it is or how it works, we recommend visiting http://oauth.net/2/[OAuth 2.0 documentation].
 
