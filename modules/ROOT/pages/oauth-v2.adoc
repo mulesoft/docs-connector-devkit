@@ -10,7 +10,7 @@ This page presents a detailed discussion of DevKit's support for OAuth V2 authen
 
 == Prerequisites
 
-This document assumes you are familiar with the xref:5.x@studio::index.adoc[Anypoint Connector Essentials] and are ready to implement authentication on your connector. It assumes you are familiar with the various xref:authentication-methods.adoc[authentication methods] and may be using OAuth V1 to authenticate with your API.
+This document assumes you are familiar with the xref:studio::index.adoc[Anypoint Connector Essentials] and are ready to implement authentication on your connector. It assumes you are familiar with the various xref:authentication-methods.adoc[authentication methods] and may be using OAuth V1 to authenticate with your API.
 
 If you are not familiar with OAuth V1 authentication, what it is or how it works, we recommend visiting http://tools.ietf.org/html/rfc5849[OAuth 1.0 protocol/RFC-5849]. Also see xref:oauth-v1.adoc[OAuth V1].
 
@@ -237,5 +237,5 @@ When Mule automatically launches an HTTP listener request to handle the OAuth ca
 
 == See Also
 
-* xref:3.7@mule-runtime::http-connector-reference.adoc[HTTPS Connector Reference]
-* xref:3.7@mule-runtime::tls-configuration.adoc[HTTPS Examples]
+* xref:3.9@mule-runtime::http-connector-reference.adoc[HTTPS Connector Reference]
+* xref:3.9@mule-runtime::tls-configuration.adoc[HTTPS Examples]

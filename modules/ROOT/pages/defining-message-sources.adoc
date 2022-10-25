@@ -117,6 +117,6 @@ After this is built into a connector, it contains an inbound property called ori
 
 == See Also
 
-* xref:3.7@mule-runtime::salesforce-connector.adoc[Salesforce Connector Documentation]
+* xref:3.9@mule-runtime::salesforce-connector.adoc[Salesforce Connector Documentation]
 * https://www.anypoint.mulesoft.com/exchange/?type=connector&search=salesforce[SalesForce Connector]
 * https://www.anypoint.mulesoft.com/exchange/?type=connector&search=freshbooks[FreshBooks Connector].
