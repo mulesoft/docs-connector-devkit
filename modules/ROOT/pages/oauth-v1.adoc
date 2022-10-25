@@ -213,7 +213,7 @@ For details on how Mule handles callbacks, see HTTP Callbacks.
 When Mule automatically launches an HTTP inbound endpoint to handle the OAuth callback, it uses the HTTP connector by default. Where the service provider requires *HTTPS*, you can configure Mule to pass your own HTTPS connector:
 
 NOTE:
-For more information on configuring an *HTTPS connector*, see the xref:3.7@mule-runtime::https-transport-reference.adoc[HTTPS Transport Reference] and xref:http-basic-authentication.adoc[Examples for HTTPS].
+For more information on configuring an *HTTPS connector*, see the xref:3.9@mule-runtime::https-transport-reference.adoc[HTTPS Transport Reference] and xref:http-basic-authentication.adoc[Examples for HTTPS].
 
 == See Also
 
