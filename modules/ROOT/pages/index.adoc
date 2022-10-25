@@ -32,7 +32,7 @@ _Existing Connector:_
 See also xref:creating-a-soap-connector.adoc[Creating a SOAP Connector].
 . xref:setting-up-api-access.adoc[Determine resource access] - Each resource has a different access method, such as REST, SOAP, FTP, or the Java SDK features.
 . xref:authentication.adoc[Choose an authentication mechanism] - Mule supports OAuth V1 or V2, and username and password authentication (known as xref:connection-management.adoc[connection management]), which can be used for protocols such as API Key, SAML, NTLM, Kerberos, or LDAP.
-. xref:connector-attributes-and-operations.adoc[Choose the connector's data model] - Models can be static Java objects or dynamic objects. You can use xref:5@studio::datasense.adoc[DataSense] - Determine what information the target resource expects.
+. xref:connector-attributes-and-operations.adoc[Choose the connector's data model] - Models can be static Java objects or dynamic objects. You can use xref:5.x@studio::datasense.adoc[DataSense] - Determine what information the target resource expects.
 . xref:defining-connector-attributes.adoc[Add connector @ attribute annotations] - Create code for your connector containing the @ attributes that Mule uses to designate the important parts of your connector.
 . xref:developing-devkit-connector-tests.adoc[Code tests] - Tests can be unit tests, functional tests, and Studio interoperability tests.
 . xref:connector-reference-documentation.adoc[Document your connector] - MuleSoft provides a template that helps you fill in the blanks to create documentation to help your staff and others understand the features and use of your connector.
@@ -283,4 +283,4 @@ The `pom.xml` file for a DevKit 3.9 project. The `<parent>` section shows DevKit
 * xref:3.9@mule-runtime::anypoint-connectors.adoc[Anypoint Connectors]
 * https://www.anypoint.mulesoft.com/exchange/?type=connector[Connectors on Exchange]
 * http://blogs.mulesoft.com/dev/anypoint-studio-dev/change-the-studio-category-of-your-devkit-component/[Blog post on how to change the DevKit extension category]
-* xref:6@studio::datasense-enabled-connectors.adoc[DataSense-Enabled Connectors]
+* xref:6.x@studio::datasense-enabled-connectors.adoc[DataSense-Enabled Connectors]
