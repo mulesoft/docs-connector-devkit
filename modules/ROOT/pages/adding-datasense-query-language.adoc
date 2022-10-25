@@ -14,7 +14,7 @@ image::6-package.png[]
 
 == Prerequisites
 
-* Familiarity with Anypoint Connectors, xref:studio::datasense.adoc[DataSense], xref:studio::datasense-query-editor.adoc[DataSense Query Editor], and this topic from a user level.
+* Familiarity with Anypoint Connectors, xref:studio::datasense-concept.adoc[DataSense] and this topic from a user level.
 * Understand Java "@" annotations. See http://mulesoft.github.io/mule-devkit/[Anypoint DevKit API Reference].
 * Experience with implementing a basic connector with xref:index.adoc[Anypoint DevKit].
 * Understand the visitor pattern, which is fundamental to the workings of DSQL-to-native query language translation.
