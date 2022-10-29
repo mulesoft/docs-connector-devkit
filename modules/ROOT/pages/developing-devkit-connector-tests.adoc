@@ -15,7 +15,7 @@ While testing strategy may vary extensively based on your specific needs, this d
 This document assumes that you:
 
 * Installed the Anypoint Connector DevKit Plugin as described in  xref:creating-an-anypoint-connector-project.adoc[Creating an Anypoint Connector Project]
-* Are familiar with xref:5.x@studio::index.adoc[Anypoint Studio]
+* Are familiar with xref:studio::index.adoc[Anypoint Studio]
 * Are familiar with https://maven.apache.org/[Maven] build manager for Java
 * Are familiar with http://junit.org/[JUnit]
 
