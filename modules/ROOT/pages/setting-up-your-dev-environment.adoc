@@ -26,7 +26,7 @@ Although you can use any Java IDE with Maven support, it's strongly recommended 
 [NOTE]
 To build connector projects, you must first install the Anypoint Connector DevKit add-on into Anypoint Studio.
 
-If you have not already installed Anypoint Studio, follow the xref:3.7@mule-runtime::installing.adoc[detailed instructions] to install. For a quick introduction to Anypoint Studio, review xref:5.x@studio::index.adoc[Anypoint Studio Essentials].
+If you have not already installed Anypoint Studio, follow the xref:3.9@mule-runtime::installing.adoc[detailed instructions] to install. For a quick introduction to Anypoint Studio, review xref:studio::index.adoc[Anypoint Studio Essentials].
 
 == JDK
 
