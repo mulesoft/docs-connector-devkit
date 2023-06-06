@@ -1,0 +1,1 @@
+include::release-notes::partial$connector-devkit/connector-devkit-rn-landing-page.adoc[]

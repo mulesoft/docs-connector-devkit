@@ -1,5 +1,6 @@
 .xref:index.adoc[Anypoint Connector DevKit]
 * xref:index.adoc[About Anypoint Connector DevKit]
+* xref:connector-devkit-release-notes.adoc[Release Notes]
 * xref:anypoint-connector-development.adoc[Getting Started with Anypoint Connector Development]
  ** xref:setting-up-your-dev-environment.adoc[Setting Up Your Development Environment]
  ** xref:devkit-tutorial.adoc[Anypoint Connector DevKit Tutorial]
