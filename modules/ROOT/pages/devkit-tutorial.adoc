@@ -6,6 +6,7 @@ endif::[]
 :resourcesDir: resources
 :tutorial: Cookbook
 :author: MuleSoft Inc.
+:page-aliases: creating-a-connector-for-a-restful-api-using-jersey.adoc
 
 include::partial$devkit-important.adoc[]
 
