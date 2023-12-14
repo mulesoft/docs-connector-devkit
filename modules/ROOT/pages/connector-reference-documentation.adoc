@@ -51,7 +51,7 @@ or instead +
 `* @api.doc <a href="http://www.salesforce.com/us/developer/docs/api/Content/sforce_api_calls_create.htm">create()</a>`
 
 image::apidoc-ref-sample.png[]
-|`@javadoc` | Can be used on the connector class, for example, `@javadoc.url`, followed by the name of a Java package name and the Javadoc URL, which the `@link` tag can use to reference a data type referenced in javadoc | See <<Annotation for Non-Java Data Types,Annotation for Non-Java Data Types>> for the code comment snippet.
+|`@javadoc` | Can be used on the connector class, for example, `@javadoc.url`, followed by the name of a Java package name and the Javadoc URL, which the `@link` tag can use to reference a data type referenced in javadoc | See xref:annotation-reference.adoc[] for the code comment snippet.
 |`@param` | Used underneath the description of a method. `@param` adds the parameter name and its description to the reference material. The description should be listed on the line below a|
 `* @param collection`
 
