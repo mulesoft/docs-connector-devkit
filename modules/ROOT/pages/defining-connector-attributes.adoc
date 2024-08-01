@@ -129,7 +129,6 @@ Use this annotation to identify a field or method parameter as a password or, mo
     private String proxyPassword;
 ----
 
-//image:password-screenshot.png[]
 
 == @Summary Annotation
 
