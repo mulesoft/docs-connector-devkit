@@ -125,7 +125,7 @@ Caused by: org.mule.devkit.3.9.0.internal.lic.exception.InvalidLicenseException:
 
 Attempting to deploy the Mule application using the unlicensed connector to *CloudHub* fails with a status indicator:
 
-image::cloudhub-lic-status.png[cloudhub license status]
+image::cloudhub-lic-status.png["Statuses of CloudHub licenses"]
 
 == See Also
 * Review the section on xref:packaging-your-connector-for-release.adoc[Packaging Your Connector For Release]

@@ -45,6 +45,6 @@ In this example, for the PeopleSoft connector, the *jar* element contains these 
 +
 . Specifying a required libraries XML file causes Anypoint Studio to modify your configuration description so that Studio displays an option for installing libraries:
 +
-image::36reqddeps.png[36ReqdDeps]
+image::36reqddeps.png["Example of a required dependency"]
 
 NOTE: If a library is not required for a particular configuration, do not create a required-libs.xml file for that configuration.
