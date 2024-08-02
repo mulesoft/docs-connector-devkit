@@ -228,7 +228,7 @@ image::config1.png["Config panel for Barn Connector"]
 +
 . Click the plus sign next to the *Config Reference* field to create a new global element for your connector to use.
 +
-image::config.png["Config panel for Barn Connector with an arrow pointing to the green plus icon"]
+image::config.png["Config panel for Barn Connector with an arrow pointing to the plus icon"]
 +
 . In the *My Property*, *Username*, and *Password* fields, enter any string as the value, then click *OK*. +
  +
