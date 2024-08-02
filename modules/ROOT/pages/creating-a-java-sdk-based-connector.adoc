@@ -142,7 +142,7 @@ To configure:
 . Double-click the connector to open its properties editor
 . Click the green plus sign next to the *Connector Configuration* field: +
 +
-image::add-global-element.jpg["Screen that shows how to add a global element by clicking the green plus sign"]
+image::add-global-element.jpg["Screen that shows how to add a global element by clicking the plus sign"]
 +
 . Set a value for the field. The default value you configure in the connector is presented as the initial value in the connector's configuration field *My Property*:
 +
