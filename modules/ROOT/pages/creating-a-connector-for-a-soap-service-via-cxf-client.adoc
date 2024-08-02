@@ -45,7 +45,7 @@ Starting with a new connector project (possibly with authentication logic built 
 
 The final architecture is:
 
-image::image2013-8-11-173a213a7.png[image2013-8-11+173A213A7]
+image::image2013-8-11-173a213a7.png["Example architecture of connector"]
 
 == Example Service: SunSetRiseService
 
@@ -419,7 +419,7 @@ Your preferred IDE should include support for this process as well. For example,
 
 When the build completes, the files that Maven generates using `wsdl2java` are in the folder `target/generated-sources/cxf:`
 
-image::sunsetfiles.png[SunsetFiles]
+image::sunsetfiles.png["Example of new folder structure of connector after rebuilding the project"]
 
 ==== Adding the Generated Source Folder to the IDE Build Path
 
@@ -432,7 +432,7 @@ You must add the `target/generated-sources/cxf` folder from the previous step to
 . Look for the folder `target/generated-sources/cxf`.
 . Right-click the folder name, then select *Build Path* > *Use as Source Folder*.
 +
-image::soap1.png[SOAP1]
+image::soap1.png["A dropdown menu with options to Build Path and then Use as Source Folder"]
 
 This tells your IDE that this folder should by default be treated as part of the source code.
 
@@ -847,9 +847,9 @@ You can build a simple flow to demo the connector, as shown below.
 [discrete.view]
 === Studio Visual Editor
 
-image::sunsetriseflow.png[SunsetRiseFlow]
+image::sunsetriseflow.png["Example flow of the connector"]
 
-image::studio-config.png[]
+image::studio-config.png["Example configuration window of the connector"]
 
 [discrete.view]
 === XML Editor

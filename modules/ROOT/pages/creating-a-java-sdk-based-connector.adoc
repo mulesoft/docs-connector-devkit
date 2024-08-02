@@ -14,7 +14,7 @@ To build your own Anypoint Connector for Studio, you can use the  Anypoint Conne
 
 . Click *File > New*, then select *Anypoint Connector Project*:
 +
-image::new-proj2.png[new+proj2]
+image::new-proj2.png["Dropdown menu showing how to create a new connector project"]
 +
 Create an Anypoint Connector Project:
 +
@@ -30,7 +30,7 @@ Create an Anypoint Connector Project:
 
 * *Java SDK*. See xref:creating-a-connector-using-a-java-sdk.adoc[Creating a Connector Using a Java SDK]:
 +
-image::generictype.png[GenericType]
+image::generictype.png["API type with the Generic option selected"]
 
 * *SOAP*. See xref:creating-a-soap-connector.adoc[Creating a SOAP Connector].
 |*Authentication* |Click an authentication choice for how your connector accesses its resource: xref:connection-management.adoc[Connection Management], xref:oauth-v1.adoc[OAuth V1], or xref:oauth-v2.adoc[OAuth V2].
@@ -50,10 +50,10 @@ image::generictype.png[GenericType]
 |===
 . Click *Next* and choose how the connector's icon appears in Anypoint Studio when users build projects using your connector:
 +
-image::creating-a-java-sdk-based-connector-71fef.png[Icon set]
+image::creating-a-java-sdk-based-connector-71fef.png["Window for setting a connector icon"]
 . Click *Finish*. This generates a project containing the structure with all the required elements such as images, sample docs, and some basic tests for your connector. Refer to the DevKit documentation to build upon this initial, basic structure in xref:installing-and-testing-your-connector-in-studio.adoc[Installing and Testing Your Connector in Studio].
 +
-image::screen05.png[]
+image::screen05.png["Example of generated project"]
 
 
 == More DevKit Actions
