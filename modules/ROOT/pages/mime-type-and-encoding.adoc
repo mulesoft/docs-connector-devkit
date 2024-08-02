@@ -45,4 +45,4 @@ public class FileChooserConnector {
 
 Metadata tab:
 
-image::metadatatab.png[MetadataTab]
+image::metadatatab.png["Metadata Tab selected"]

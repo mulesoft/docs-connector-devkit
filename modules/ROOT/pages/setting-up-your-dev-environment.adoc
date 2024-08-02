@@ -42,7 +42,7 @@ Anypoint Studio must be configured to reference the location of your JDK rather 
 . Select *Installed JREs*.
 . If Anypoint Studio is referencing the JRE rather than the JDK, edit the record and remap it to the root of your JDK installation.
 
-image::installed-jres-jdk.png[installed jres]
+image::installed-jres-jdk.png["Installed JREs"]
 
 NOTE: When referencing the root of your JRE instead of a JDK, Maven will be unable to resolve the DevKit-required dependency `com.sun:tools:jar:1.6`. An error describing the inability to resolve this dependency will show up in the console when the build process kicks off.
 
@@ -73,7 +73,7 @@ To install the DevKit Plugin:
 .. Click *Test Maven Configuration* to ensure that Maven is correctly configured.
 . From the `Help` menu in *Anypoint Studio*, click *Install New Software*:
 +
-image::installnewsoftware.png[InstallNewSoftware]
+image::installnewsoftware.png["Dropdown menu with the Install New Software option highlighted"]
 +
 . In the Install menu's *Work with* drop-down menu, click the down arrow and click *Anypoint DevKit Update Site*. Click the checkbox for Anypoint DevKit Plugin, and click *Next*.
 +
@@ -81,7 +81,7 @@ image::installnewsoftware.png[InstallNewSoftware]
 If the Anypoint DevKit Update Site is not available in the dropdown list, click *Add* and copy this URL to the repository +
 *Location*: `+http://studio.mulesoft.org/r5/devkit+`
 +
-image::devkit-update-site.png[AddOns-Update-Site]
+image::devkit-update-site.png["Install window for Anypoint DevKit Update Site"]
 +
 . Proceed through the remaining steps in the wizard to install.
 . Restart Studio.
