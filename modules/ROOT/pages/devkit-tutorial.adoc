@@ -972,13 +972,13 @@ In this image you can see how most of the code maps into UI elements.
 
 // TODO: Use 2 images of screenshots with the default layout
 
-image::split-1-high.png[caption="Figure 1: ", title="View Structure and UI", alt="", width="800", "split-1-high.png"]
+image::split-1-high.png["View structure and UI", width="800"]
 
 In this example, you can check how the code matches to XML and other UI elements.
 
 // TODO: Use 2 images of screenshots with the default layout
 
-image::split-2-high.png[caption="Figure 2: ", title="View configuration and XML", alt="", width="800", "split2"]
+image::split-2-high.png["View configuration and XML", width="800"]
 
 [NOTE]
 ====
@@ -1094,7 +1094,7 @@ If your configuration has common fields, they can be defined at a parent class.
 
 In our connector, after the refactor the classes would look like this:
 
-image::model.png[uml-model]
+image::model.png["Layout of connector with multiple configurations"]
 ////
 [plantuml,model,png]
 ----
@@ -1149,7 +1149,7 @@ As an example, we are going to use the GetRecentlyAdded method.
 
 . Inside your `@Connector` type source and use Ctrl + Space bar to display the templates.
 +
-image::source-template.png[width="600"]
+image::source-template.png["Template for configuring a source", width="600"]
 
 . Create a `@Source` that consumes the Get Recently Updated on the Connector using a callback
 +
@@ -1162,7 +1162,7 @@ include::{examplesdir}/java/v7/CookbookConnector.java[lines=73..90]
 
 . On your flow now just drag and drop the Cookbook Connector, and you will see that is automatically while generate a flow.
 +
-image::source-example.png[width="600"]
+image::source-example.png["Example of flow with Object to JSON and Logger", width="600"]
 
 . Add a logger and debug to see that the payload now has your recipes.
 +
@@ -1171,7 +1171,7 @@ image::source-example.png[width="600"]
 [discrete.view]
 === Mule App
 
-image::source-debug.png[width="600"]
+image::source-debug.png["Mule Debugger panel for Logger", width="600"]
 
 [discrete.view]
 === XML
@@ -1219,7 +1219,7 @@ To use your transformer, just drag and drop it from the palette and build a flow
 [discrete.view]
 === Mule App
 
-image::transformer-explicit.png[width="600"]
+image::transformer-explicit.png["Mule flow with Transformer", width="600"]
 
 [discrete.view]
 === XML
@@ -1248,7 +1248,7 @@ include::{examplesdir}/java/v8/CookbookConnector.java[lines=226..232]
 [discrete.view]
 === Mule App
 
-image::transformer-implicitly.png[width="600"]
+image::transformer-implicitly.png["Mule flow with Transformer used implicitly", width="600"]
 
 [discrete.view]
 === XML
@@ -1272,7 +1272,7 @@ include::{examplesdir}/java/v2/ConnectorConfig.java[lines=41..43]
 
 In Studio this translates into:
 
-image::password.png[width="500"]
+image::password.png["Global Elements Properties window for configuration with password entered", width="500"]
 
 // ==== Using @Placement
 
