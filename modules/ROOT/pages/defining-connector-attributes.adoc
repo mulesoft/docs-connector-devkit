@@ -26,7 +26,7 @@ Example connector configuration:
 <barn:config name="Barn" key="myKey" doc:name="Barn"/>
 ----
 
-image::configurable-screenshot.png[]
+image::configurable-screenshot.png["A dialog box for global element properties"]
 
 == @Optional Annotation
 
@@ -61,7 +61,7 @@ public abstract class AbstractAnalyticsConfig {
 XML configuration for a partially complete configuration with some sample proxy settings defined:
 
 
-image::defining-connector-attributes-5ea65.png[proxy settings defined]
+image::defining-connector-attributes-5ea65.png["A configuration window with fields for connection details, including username, password, authorization URL, and proxy settings"]
 
 [source,xml,linenums]
 ----
@@ -110,7 +110,7 @@ public class BarnConnector
   ...
 ----
 
-image::friendlyname-screenshot-1.png[friendlyName-screenshot-1]
+image::friendlyname-screenshot-1.png["A list of connectors with friendly names"]
 
 == @Password Annotation
 
@@ -185,9 +185,9 @@ private String applicationName;
 private String consumerSecret;
 ----
 
-image::placement-1-screenshot.png[]
+image::placement-1-screenshot.png["A global elements properties window on the General tab"]
 
-image::placement-2-screenshot.png[]
+image::placement-2-screenshot.png["A global elements properties window on the Advanced tab"]
 
 == See Also
 

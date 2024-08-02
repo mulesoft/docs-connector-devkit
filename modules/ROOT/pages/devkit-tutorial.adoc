@@ -94,7 +94,7 @@ todo
 ////
 . When done, open Anypoint Studio, import the `mule-cookbook` directory as an existing project. *File* > *Import* > *Existing Projects into Workspace*.
 +
-image::devkit-tutorial-30756.png[import existing - mule-cookbook]
+image::devkit-tutorial-30756.png["A dialog box with options to import existing projects"]
 
 This should create the several folders you see on the above screen in your workspace in Studio, which is visible in the *Package Explorer*.
 
@@ -184,11 +184,11 @@ With the `mule-cookbook` directory imported as an existing project into your wor
 
 . In Anypoint Studio, click *File* > *New* > *Anypoint Connector Project* or right-click your project name in Package Explorer and click *New* > *Anypoint Connector Project*:
 +
-image::new-connector-1.png[width="500"]
+image::new-connector-1.png["A dropdown menu for creating a new connector project", width="500"]
 +
 . Select the project type you want to create. In this case, select *SDK Based*:
 +
-image::new0.png[width="500"]
+image::new0.png["A dialog box with the SDK Based option selected", width="500"]
 +
 . Specify the name of your connector and don't forget to uncheck the default generation before clicking *Finish*:
 +

@@ -59,11 +59,11 @@ A test scaffold is a set of Java files that appear under `src/test/java` after y
 
 . Right-click your project in Package Explorer and click *Anypoint Connector* > *Generate Tests*:
 +
-image::generatetests.png[GenerateTests]
+image::generatetests.png["A dropdown menu with the Generate Test options selected"]
 +
 . Click the methods that you want to create a test scaffold for, or click *Select All*. The wizard displays choices from test-ready methods in your application. If you do not see a desired method, be sure you annotated the function properly, for example, placed `@Processor` above your method.
 +
-image::testscaffoldinggeneration.png[TestScaffoldingGeneration]
+image::testscaffoldinggeneration.png["A configuration window for test scaffolding generation"]
 +
 . Click *Generate Test Case Scaffolding* to create the scaffold files.
 . Click additional choices if you want Studio to create test data that you can use to test your connector:
