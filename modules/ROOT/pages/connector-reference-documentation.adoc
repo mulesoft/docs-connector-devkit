@@ -43,21 +43,21 @@ The DevKit-supported Javadoc tags are described in this table and are used in ex
 `* @param document`
 `* a {@link org.bson.Document} instance.`
 
-image::javadoc-link-sample.png[javadoc-link]
+image::javadoc-link-sample.png["Example inline link to Javadoc"]
 |`@see` | Provides an in-line link to a URL, for example to a page where a related class or method is described a| If you want URLs inside your Javadoc comments to be parsed as hyperlinks, you can use the Javadoc tag `@see` to create an in-line link that will parse `+{@see http://example.com}+` +
 or instead +
 `{@see <a href="http://example.com">http://example.com</a>}` to display the full URL. For a more detailed discussion of its usage, see http://docs.oracle.com/javase/7/docs/technotes/tools/windows/javadoc.html#see[Javadoc reference]
 |`@api.doc`|Adds a new section to the documentation intended to provide a link to a service API’s documentation. You have the option whether or not to use html after the tag a|
 `* @api.doc <a href="http://www.salesforce.com/us/developer/docs/api/Content/sforce_api_calls_create.htm">create()</a>`
 
-image::apidoc-ref-sample.png[]
+image::apidoc-ref-sample.png["Example APIDoc reference link"]
 |`@javadoc` | Can be used on the connector class, for example, `@javadoc.url`, followed by the name of a Java package name and the Javadoc URL, which the `@link` tag can use to reference a data type referenced in javadoc | See xref:annotation-reference.adoc[] for the code comment snippet.
 |`@param` | Used underneath the description of a method. `@param` adds the parameter name and its description to the reference material. The description should be listed on the line below a|
 `* @param collection`
 
 `* the name of the collection to update`
 
-image::apidoc-param-sample.png[apidoc-param]
+image::apidoc-param-sample.png["Example doc that includes parameter name, type, and parameter description"]
 |`@return` | Adds the description of the function's return type to the "Returns" section of the documentation. a|
 `* @return the id that was just inserted`
 
@@ -65,7 +65,7 @@ image::apidoc-param-sample.png[apidoc-param]
 
 For visual reference, have a look at the DevKit 3.9.0 generated documentation for one of the Salesforce connector's operations:
 
-image::apidoc-look.png[]
+image::apidoc-look.png["Example of connector operation generated documentation"]
 
 [NOTE]
 Documentation is not mandatory, however, unless you disable the Javadoc Check, errors display. To disable Javadoc Check and show errors as warnings, right-click your project, and click *Anypoint Connector* > *Disable Javadoc check*.
@@ -133,13 +133,13 @@ The `@Default` annotation puts the value between parentheses under the "Default 
 
 The above comments populate the attribute table like so:
 
-image::host-attr.png[]
+image::host-attr.png["Example of attribute table of connector operation doc"]
 
 === Documenting Connection Strategies
 
 With version 3.9.0 of DevKit, it is possible to generate documentation for as many connection strategies as are supported by the connector, and will appear under the *Configs* heading:
 
-image::multiple-configs.png[]
+image::multiple-configs.png["List of documentation for multiple configuration types"]
 
 === Documenting @Processor Methods and Parameters
 
@@ -217,7 +217,7 @@ public String insertDocument(final String collection, @RefOnly @Default("#[paylo
 
 DevKit concatenates the base URL for the MongoDB Java API, the path to the particular package, and the specific class to form a proper URL.
 
-image::apidoc-mongo-document-attr.png[]
+image::apidoc-mongo-document-attr.png["Example of attributes table"]
 
 Clicking *Document* from the documentation shown above would direct the user to the reference material for this class: `+https://api.mongodb.org/java/3.1/org/bson/Document.html+`.
 
@@ -272,7 +272,7 @@ The generated documentation should have been created in a new `target/apidocs` d
 
 The same Javadoc comments are also consumed by DevKit to provide contextual help for the user within Studio at design time, as shown here:
 
-image::contextual-help-box.png[contextual help]
+image::contextual-help-box.png["Example of contextual help in Studio with links to documentation and other resources"]
 
 As you build out your connector, perform a review of the generated documentation to ensure that the contents are sane and correct. If you find it lacking, you can always include more detail in the Javadoc comments in your code and regenerate the documentation.
 

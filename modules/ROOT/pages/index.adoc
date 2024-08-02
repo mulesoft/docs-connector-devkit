@@ -63,7 +63,7 @@ As reusable components that hide API complexity from the integration developer, 
 
 Connectors operate within Mule applications, which are built up from Mule Flows, and external resources, which are the targeted resources.
 
-image::devkitoverviewarchitecture.png[DevKitOverviewArchitecture]
+image::devkitoverviewarchitecture.png["DevKit architecture overview"]
 
 A Mule connector has two operational sides. The Mule-facing side communicates with a resource’s target-facing client side to enable content to travel between the Mule applications, and the external target-facing resource.
 

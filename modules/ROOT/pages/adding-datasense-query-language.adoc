@@ -8,7 +8,7 @@ include::partial$devkit-important.adoc[]
 
 Many SaaS applications either implement a proper query language, such as SOQL or Salesforce Object Query Language, or support for selecting resources through their API in a way that corresponds to querying. DataSense Query Language (DSQL) provides a uniform query language so you can query data in any application with a compatible Anypoint™ Connector.
 
-image::6-package.png[]
+image::6-package.png["A flowchart showing the steps in a development process"]
 
 *https://github.com/mulesoft/example-connector/tree/basic-dsql[Source Code]*
 
@@ -307,21 +307,21 @@ public String toNativeQuery(DsqlQuery query){
 
 After you build your connector and install it in Anypoint Studio, the connector is available for use in Mule projects. Add it to a flow, and open its property editor:
 
-image::qb2.png[]
+image::qb2.png["A property editor with text fields labeled Connection, Notes, Config Reference, Operation, Language, Query Builder, and Query Text"]
 
 You can select a language for your query, in this case, you can choose between the service's Native Query Language or DSQL. When having DSQL selected, you can use the Query Builder tool to automatically generate a query by simply selecting amongst the existing fields.
 
-image::query-builder.png[query+builder]
+image::query-builder.png["A window with Query Builder configuration"]
 
 The query you build populates the connector's *Query Text* field. You can also edit the text in this field.
 
 After you create a Query in DSQL, you can change the query language to the service's Native Query Language to verify that the translation is being correctly executed:
 
-image::qb3.png[]
+image::qb3.png["A property editor with the Native Query Language selected"]
 
 Thanks to DataSense, if you include a DataMapper element after your connector, DataMapper interprets your query and only presents the fields that are returned by it:
 
-image::dm.png[]
+image::dm.png["DataMapper configuration window"]
 
 In this case, DataMapper handles a list of Authors that only have a firstName field.
 

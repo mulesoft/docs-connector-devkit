@@ -28,15 +28,15 @@ To configure DevKit View:
 
 . Click the *Add View* icon in the upper right of the screen and click *Other*.
 +
-image::viewbutton.png[ViewButton]
+image::viewbutton.png["The Other button selected"]
 +
 . Click *Devkit* and *OK* to open the DevKit Perspective.
 +
-image::devkitview.png[DevKitView]
+image::devkitview.png["The Devkit option selected"]
 +
 . Click any item in the *Devkit* perspective to display the code which defines it, for example:
 +
-image::devkitperspective.png[DevKitPerspective]
+image::devkitperspective.png["The Devkit view"]
 
 The DevKit view lets you:
 
@@ -51,7 +51,7 @@ When editing your connector's main Java file, the auto-complete function provide
 
 With your cursor on the @Connector class or any other @ annotation, type CTRL + spacebar to view a list of suggested entries:
 
-image::connectorhelpinfo.png[ConnectorHelpInfo]
+image::connectorhelpinfo.png["Autocomplete function to help you create your connector project"]
 
 For more information on @Connector and other Anypoint Connector DevKit annotations, see the http://mulesoft.github.io/mule-devkit/[Anypoint DevKit API Reference].
 
@@ -59,7 +59,7 @@ For more information on @Connector and other Anypoint Connector DevKit annotatio
 
 Templates are customizable pieces of code that you can add to your connector, and which provide a basic structure for elements you commonly use. Type the name or part of it and press `[ Command | Ctrl ] + space` to insert the template into the current Connector Class.
 
-image::screen23.png[]
+image::screen23.png["Example of a code template for a field name"]
 
 === Available DevKit Templates
 
@@ -80,7 +80,7 @@ After coding your connector, you can install it in Anypoint Studio and give it a
 . In the package explorer of Anypoint Studio, right-click your project root.
 . Select *Anypoint Connector* > *Install or Update*:
 +
-image::connector-install-update.png[]
+image::connector-install-update.png["Dropdown menu to install or update your connector"]
 +
 . At *Check the items you wish to install*, click *Next*.
 . At *Review the items to be installed*, click *Next*.
@@ -97,13 +97,13 @@ To try your connector out:
 +
 For example:
 +
-image::connector-display.png[]
+image::connector-display.png["Custom connector added to the list of connectors"]
 
 == Importing An Existing Connector Project
 
 To import an existing connector project, click *File* > *Import* >  *Anypoint Studio*  >  *Anypoint Connector Project from External Location*, choose a URL or a .zip file, and complete the wizard to locate and import the project.
 
-image::import.jpg[]
+image::import.jpg["Window that shows how to import an existing project"]
 
 
 == Exporting a Compressed Project File
@@ -114,11 +114,11 @@ To create a compressed file of your project:
 . Click *General* > *Archive* File with these settings. Choose whether you want a TAR file (for Linux or Mac) or a ZIP file for Mac or Windows. (Windows users can also uncompress TAR files using third-party software such as 7zip.) +
 IMPORTANT: Uncheck the *target* folder.
 +
-image::archivefile.png[ArchiveFile]
+image::archivefile.png["Window for exporting resources to an archive file on the local file system"]
 
 . Click the down arrow next to your project name and unclick *target*: +
 +
-image::archivedirs.png[ArchiveDirs]
+image::archivedirs.png["Folder structure with the target folder unselected"]
 
 . Click *Browse* in *To archive file* and choose the name and location of the zip or tar file.
 . Click *Finish* to create the compressed file.

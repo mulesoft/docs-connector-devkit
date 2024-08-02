@@ -14,7 +14,7 @@ To build your own Anypoint Connector for Studio, you can use the  Anypoint Conne
 
 . Click *File > New*, then select *Anypoint Connector Project*:
 +
-image::new-proj2.png[new+proj2]
+image::new-proj2.png["Dropdown menu showing how to create a new connector project"]
 +
 Create an Anypoint Connector Project:
 +
@@ -30,7 +30,7 @@ Create an Anypoint Connector Project:
 
 * *Java SDK*. See xref:creating-a-connector-using-a-java-sdk.adoc[Creating a Connector Using a Java SDK]:
 +
-image::generictype.png[GenericType]
+image::generictype.png["API type with the Generic option selected"]
 
 * *SOAP*. See xref:creating-a-soap-connector.adoc[Creating a SOAP Connector].
 |*Authentication* |Click an authentication choice for how your connector accesses its resource: xref:connection-management.adoc[Connection Management], xref:oauth-v1.adoc[OAuth V1], or xref:oauth-v2.adoc[OAuth V2].
@@ -50,21 +50,21 @@ image::generictype.png[GenericType]
 |===
 . Click *Next* and choose how the connector's icon appears in Anypoint Studio when users build projects using your connector:
 +
-image::creating-a-java-sdk-based-connector-71fef.png[Icon set]
+image::creating-a-java-sdk-based-connector-71fef.png["Window for setting a connector icon"]
 . Click *Finish*. This generates a project containing the structure with all the required elements such as images, sample docs, and some basic tests for your connector. Refer to the DevKit documentation to build upon this initial, basic structure in xref:installing-and-testing-your-connector-in-studio.adoc[Installing and Testing Your Connector in Studio].
 +
-image::screen05.png[]
+image::screen05.png["Example of generated project"]
 
 
 == More DevKit Actions
 
 The plugin also provides actions in the tool bar:
 
-image::actions.jpg[]
+image::actions.jpg["Toolbar with actions"]
 
 The same actions can be accessed by right-clicking your project in the package explorer:
 
-image::screen21.png[]
+image::screen21.png["Dropdown menu with actions"]
 
 Actions that are enabled when selecting the root of a DevKit project:
 
@@ -81,7 +81,7 @@ Actions that are enabled when selecting the root of a DevKit project:
 
 You can copy your connector into Anypoint Studio by right-clicking your project and selecting *Anypoint Connector* > *Install or Update*. To easily find it in the palette, type the name in the search box:
 
-image::screen18.png[]
+image::screen18.png["Screen for searching and selecting a connector and adding it to the palette"]
 
 === Previewing Documentation
 
@@ -116,11 +116,11 @@ To navigate to a sample, click a sample link while holding the *command key* pre
 
 If you enable the Javadoc check, quickfix helps you add the missing samples, which you can trigger by typing `control + space`.
 
-image::screen24.png[]
+image::screen24.png["Screen for how to add a sample"]
 
 This is what a sample looks like, which is an XML file. There are a few simple templates you can use within them:
 
-image::screen25.png[]
+image::screen25.png["Types of samples you can create"]
 
 == Understanding the Generated Connector
 
@@ -130,7 +130,7 @@ Your Connector basically consists of a set of operations and configurable elemen
 
 A configurable field in your connector looks like this in the DevKit view:
 
-image::screen11_1.png[]
+image::screen11_1.png["Example of a configurable field"]
 
 Users can configure its fields in Studio when adding a configuration global element for the connector.
 
@@ -142,21 +142,21 @@ To configure:
 . Double-click the connector to open its properties editor
 . Click the green plus sign next to the *Connector Configuration* field: +
 +
-image::add-global-element.jpg[add+global+element]
+image::add-global-element.jpg["Screen that shows how to add a global element by clicking the plus sign"]
 +
 . Set a value for the field. The default value you configure in the connector is presented as the initial value in the connector's configuration field *My Property*:
 +
-image::devkitproperty.png[DevKitProperty]
+image::devkitproperty.png["Screen that shows setting values for fields"]
 
 == Processors
 
 When users configure a Mule Project created from a connector, the Operation field options correspond to the @Processor code in the connector. In the top view of the illustration, the Demo connector has as its Operation, My Processor. The lower part of the illustration shows the processor values in the connector.
 
-image::myprocessor.png[MyProcessor]
+image::myprocessor.png["Screen that shows how to configure a processor and how the processor looks in the UI after it is configured"]
 
 In this example, a single string was configured as an input in the method for this processor. "String" displays as an input field once the operation is selected:
 
-image::content.png[Content]
+image::content.png["The Content field with a String value specified"]
 
 == See Also
 

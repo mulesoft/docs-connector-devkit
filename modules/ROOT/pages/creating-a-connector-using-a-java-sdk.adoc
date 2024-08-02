@@ -18,7 +18,7 @@ This document assumes familiarity with the Anypoint connector architecture as de
 
 The overall architecture of a SDK-based connector looks like this:
 
-image::java-client-architecture2.png[java_client_architecture2]
+image::java-client-architecture2.png["Example architecture of an SDK based connector"]
 
 The components of the connector include:
 

@@ -94,7 +94,7 @@ todo
 ////
 . When done, open Anypoint Studio, import the `mule-cookbook` directory as an existing project. *File* > *Import* > *Existing Projects into Workspace*.
 +
-image::devkit-tutorial-30756.png[import existing - mule-cookbook]
+image::devkit-tutorial-30756.png["A dialog box with options to import existing projects"]
 
 This should create the several folders you see on the above screen in your workspace in Studio, which is visible in the *Package Explorer*.
 
@@ -184,26 +184,26 @@ With the `mule-cookbook` directory imported as an existing project into your wor
 
 . In Anypoint Studio, click *File* > *New* > *Anypoint Connector Project* or right-click your project name in Package Explorer and click *New* > *Anypoint Connector Project*:
 +
-image::new-connector-1.png[width="500"]
+image::new-connector-1.png["A dropdown menu for creating a new connector project", width="500"]
 +
 . Select the project type you want to create. In this case, select *SDK Based*:
 +
-image::new0.png[width="500"]
+image::new0.png["A dialog box with the SDK Based option selected", width="500"]
 +
 . Specify the name of your connector and don't forget to uncheck the default generation before clicking *Finish*:
 +
-image::new1.png[width="550"]
+image::new1.png["A window for creating a connector project with the default generation unselected"]
 +
 This generates a project containing the structure and all required elements including a skeleton connector, icons, sample docs file, but no basic tests for your connector.
 +
-image::new-connector-3.png["",width="600"]
+image::new-connector-3.png["Screen that shows project with skeleton structure",width="600"]
 
 [TIP]
 You can enable the DevKit view by clicking from the top bar *Window* > *Show View* > *Other*, and look for DevKit in the *MuleSoft* dropdown.
 
 
 .DevKit View shows a compact view of the connector.
-image::enable-view.png[width="300"]
+image::enable-view.png["List of views of the connector", width="300"]
 
 [[using-config]]
 == Connection Configuration
@@ -247,7 +247,7 @@ In the `ConnectorConfig.java` file add the @Configurable annotation for the addr
 
 . Type *conf* at the editor of your connector config and use `control` + `space` to display the templates.
 +
-image::config-field.png[width="600"]
+image::config-field.png["Example of configuration for field", width="600"]
 +
 . Define a configurable field inside the `@Configuration`-annotated class with a default value for the endpoint our client connects to, for example, `+@Default("http://devkit-cookbook.cloudhub.io/soap")+`
 . Any field marked with the `@Configurable` annotation must have a getter and a setter for that field.
@@ -279,7 +279,7 @@ When a method is annotated with one of these annotations, DevKit invokes it duri
 +
 . To add a processor simply type `proc` in the Studio code editor and use `ctrl` + `space` to display the templates and pick the simple processor.
 +
-image::processor1.png[width="600"]
+image::processor1.png["Example of configuration for processor", width="600"]
 +
 . Change it to reflect the `getRecentlyAdded` method signature (see example implementation https://github.com/mulesoft/mule-cookbook-tutorial/blob/master/src/main/asciidoc/resources/java/v1/CookbookConnector.java#L46[here]), and at this point you have the code in place to build your first connector, which should then be ready for testing.
 . Run the xref:creating-a-java-sdk-based-connector.adoc#generating-sources[Generate Sources] Action.
@@ -293,7 +293,7 @@ Resolve any package import errors by right-clicking your connector project in th
 
 You can check references in the properties for your project.
 
-image::devkit-tutorial-af283.png[properties for cookbook connector project]
+image::devkit-tutorial-af283.png["Properties for Cookbook Connector project"]
 
 At this point you can <<install-guide,install>> this Connector and try it in Studio if you want.
 
@@ -333,7 +333,7 @@ If you have the "Javadoc check" enabled, the DevKit plugin marks the missing exa
 
 Otherwise, open the file and type *<* at the editor and use `control` + `space` to display the templates and pick the one that best suits our operation.
 
-image::sample1.png[width="600"]
+image::sample1.png["Screen for how to add a sample", width="600"]
 
 Our example in this case looks like this:
 
@@ -351,11 +351,11 @@ Make a simple app that listens at an HTTP endpoint; when the endpoint is hit, th
 . Create a Mule application in Studio and add an HTTP listener and specify `/get-recently` for the path.
 . Drop the connector onto the canvas and configure using `admin` and `admin` as the credentials (this is for non-OAuth configuration).
 +
-image::devkit-tutorial-4cb84.png[]
+image::devkit-tutorial-4cb84.png["Configuration window for connector"]
 +
 . Drag and drop an *Object to JSON* transformer after the connector, and run the app. (Play icon or *Run As* > *Mule Application*)
 +
-image::devkit-tutorial-1c0f8.png[]
+image::devkit-tutorial-1c0f8.png["Example Mule flow for the connector"]
 +
 [source,xml,linenums]
 ----
@@ -486,7 +486,7 @@ If you install this version and try to run the Mule app we created earlier, you 
 
 Just open the global configuration of your connector and check that there are two new fields, username and password. Configure them and you can run the app again.
 
-image::connection-management.png[width="600"]
+image::connection-management.png["Connection configuration window", width="600"]
 
 This is the updated Mule app XML:
 
@@ -546,11 +546,11 @@ To see how it works, let's create a handler in the connector code for the `Inval
 
 . Create a new *Anypoint Connector Component* by right-clicking and navigating to that item in the menu, or via *New* > *Other*, selecting this option in the wizard.
 +
-image::new-component.png[width="600"]
+image::new-component.png["Dropdown menu to add a new Anypoint Connector Component", width="600"]
 +
 . Select the package, component type and class name and click on Finish.
 +
-image::new-component-2.png[width="600"]
+image::new-component-2.png["Configuration window for adding a new component", width="600"]
 +
 . Improve the error message when `InvalidEntityException` is thrown.
 +
@@ -587,7 +587,7 @@ In our Mule app, you can configure a reconnection strategy so that our Mule app 
 
 Global Configuration for the Cookbook connector dialog window:
 
-image::reconnect.png[width="500"]
+image::reconnect.png["Global elements properties window with the Reconnection tab selected", width="500"]
 
 The generated XML for the Cookbook connector configuration element looks like:
 [source,xml,linenums]
@@ -632,15 +632,15 @@ Let's handle the ingredients:
 
 . Check the input metadata to see that the expected output is a POJO, with the expected fields our Ingredient has:
 +
-image::datasense-expected-ingredients.png[width="800"]
+image::datasense-expected-ingredients.png["Configuration panel that shows input metadata", width="800"]
 +
 . Verify that the output metadata is expected:
 +
-image::datasense-ingredients.png[width="800"]
+image::datasense-ingredients.png["Configuration panel that shows output metadata", width="800"]
 +
 . Drag and drop a Transform Message element either behind or after our connector. The input/output structure is collected automatically:
 +
-image::datasense-input.png[title="Transform Message Receiving Connector Output", width="800"]
+image::datasense-input.png["Transform Message Receiving Connector Output", width="800"]
 +
 
 Because DevKit auto-generates static metadata, DevKit automatically ensures that your connector knows how to propagate metadata information.
@@ -664,9 +664,9 @@ Let's see how this affects the UI and user experience.
 +
 Studio, can no longer determine input or output type:
 +
-image::ref-only-input.png[title="Connector Input with @RefOnly",width="900"]
+image::ref-only-input.png["Connector input with RefOnly annotation",width="900"]
 +
-image::ref-only-output.png[title="Connector Output with Abstract Class",width="900"]
+image::ref-only-output.png["Connector output with Abstract Class",width="900"]
 
 In the next section we get back our DataSense-friendly user experience.
 
@@ -678,7 +678,7 @@ To implement DataSense using a @MetaDataCategory, you need to separate your impl
 
 . Use the Anypoint DevKit Component wizard to create a new MetaDataCategory
 +
-image::new-metadatacategory.png[width="600"]
+image::new-metadatacategory.png["Window for creating a new Devkit component for creating a new Metadata Category", width="600"]
 +
 . Modify the method annotate with @MetaDataKeyRetriever to retrieve two keys, one for Recipe and another for Ingredient.
 +
@@ -721,11 +721,11 @@ include::{examplesdir}/java/v5/CookbookConnector.java[lines=115..121]
 +
 . Check our new connector looks in Studio. We have a combo after we select the entity type and save it. This automatically refreshes our metadata.
 +
-image::datasense-static.png[width="800"]
+image::datasense-static.png["Window with Input tab selected", width="800"]
 +
 Now even the \{dataWeave} knows how to interact with our @Connector:
 +
-image::datasense-static2.png[width="800"]
+image::datasense-static2.png["Window with Output tan selected", width="800"]
 
 View connector full source code https://github.com/mulesoft/mule-cookbook-tutorial/blob/master/src/main/asciidoc/resources/java/v5/CookbookConnector.java[here].
 
@@ -766,11 +766,11 @@ include::{examplesdir}/java/v6/CookbookConnector.java[lines=73..88]
 +
 Note that now the UI is a different form before, because the input is now a map.
 +
-image::datasense-ui.png[width="900"]
+image::datasense-ui.png["Input as a map", width="900"]
 +
 . In our Mule app, we cannot update the metadata and use our connector. And, as you can see, note that we have a map structure instead of a POJO:
 +
-image::datasense-map.png[width="900"]
+image::datasense-map.png["Output panel", width="900"]
 
 To see how to test DataSense check our http://mulesoft.github.io/connector-certification-docs/advanced/index.html#_testing_metadata[Testing DataSense] guide.
 
@@ -807,7 +807,7 @@ To create it use the Anypoint DevKit Component wizard and:
 
 . Set the class name as CookbookPagingDelegate
 +
-image::pagination-component.png[width="600"]
+image::pagination-component.png["New DevKit component window to add pagination", width="600"]
 
 After that you just need to implement the methods required for you to handle the new page request.
 
@@ -828,7 +828,7 @@ You can for example use a foreach in front of your paged processor:
 [discrete.view]
 === Mule App
 
-image::pagination-example.png[width="600"]
+image::pagination-example.png["Example of pagination using the For Each element", width="600"]
 
 [discrete.view]
 === XML
@@ -851,7 +851,7 @@ To install your connector from the DevKit plugin:
 
 . Right-click your project name in Package Explorer, and click *Anypoint Connector* > *Install Or Update*.
 +
-image::install1.png[width="500"]
+image::install1.png["Dropdown menu to install or update the connector", width="500"]
 +
 This triggers the DevKit Maven build tool, which generates an http://help.eclipse.org/luna/index.jsp?topic=%2Forg.eclipse.pde.doc.user%2Fconcepts%2Fupdate_site.htm[update site] folder.
 +
@@ -859,13 +859,13 @@ The files will be copied under the *dropins* folder located in the same director
 +
 . You can now use your connector in a Mule app.
 +
-image::install2.png[width="600"]
+image::install2.png["Custom connector in the list of connectors to use", width="600"]
 
 [TIP]
 ====
 To uninstall the connectors you can either use the shortcut from the UI or remove the folder from the *dropins* directory and reboot your AnypointStudio
 
-image::uninstall.png[width="400"]
+image::uninstall.png["Uninstalled connector", width="400"]
 ====
 
 === Installing from an UpdateSite.zip
@@ -876,20 +876,20 @@ Connectors can be installed manually by selecting the update site generated by D
 . Run *mvn clean package*. This builds the connector. If the build succeeded, you should see the directory where the connector's "UpdateSite.zip" was generated, which is usually what you point Studio.
 . Click *Help* > *Install New Software...*.
 +
-image::install-updatesite.png[width="600"]
+image::install-updatesite.png["Dropdown menu with the Install New Software option selected", width="600"]
 +
 . Click *Add* and in the new dialog look for the folder.
 . Click the UpdateSite file, generated under your project's target folder.
 +
-image::install-updatesite2.png[width="600"]
+image::install-updatesite2.png["Dialog box for adding software", width="600"]
 +
 You can either select the zip file named UpdateSite.zip or the folder update-site.
 +
-image::install-updatesite3.png[width="600"]
+image::install-updatesite3.png["Dialog box for adding software with zip file specified", width="600"]
 +
 A popup will open showing the task that is performed.
 [[install-dialog]]
-image::install12.png[width="500"]
+image::install12.png["Installation window for software", width="500"]
 +
 . Review the installation and update items, and accept the license agreement.
 +
@@ -897,11 +897,11 @@ image::install12.png[width="500"]
 +
 NOTE: JAR files are not signed during this run, so you will see a popup.
 +
-image::security-warning.png[width="600"]
+image::security-warning.png["Security warning dialog box", width="600"]
 +
 . You can now use your connector in a Mule app.
 +
-image::install2.png[width="600"]
+image::install2.png["Installation window for software", width="600"]
 
 == Updating a Connector
 
@@ -942,23 +942,23 @@ In order to see how all the components are related, let's create a Hello World c
 
 . In Anypoint Studio, click *File* > *New* > *Anypoint Connector Project* or right-click your project name in Package Explorer and click *New* > *Anypoint Connector Project*:
 +
-image::new-connector-1.png[width="500"]
+image::new-connector-1.png["Dropdown menu for creating new Anypoint Connector project", width="500"]
 +
 . Select the Connector Type you want to create. In this case, select *SDK Based*:
 +
-image::new0.png[width="500"]
+image::new0.png["Window for creating new Anypoint Connector project with the SDK based project type", width="500"]
 +
 . Specify the name of your connector and click *Finish*:
 +
-image::new-connector-2.png[width="500"]
+image::new-connector-2.png["Window for creating new Anypoint Connector project with the fields specified", width="500"]
 +
 This generates a project containing the structure and all required elements including a skeleton connector, images, sample docs, and basic tests for your connector.
 +
-image::new-connector-3.png[width="600"]
+image::new-connector-3.png["Window showing skeleton structure of connector", width="600"]
 +
 . Enable the DevKit view by clicking from the top bar *Window* > *Show view* > *Other*, and look for DevKit in the list.
 +
-image::enable-view.png[width="300", height="400"]
+image::enable-view.png["List of views with DevKit view selected", width="300", height="400"]
 
 Your connector initially consists of message processors and user interface elements. Users can configure the UI elements in Anypoint Studio.
 
@@ -972,13 +972,13 @@ In this image you can see how most of the code maps into UI elements.
 
 // TODO: Use 2 images of screenshots with the default layout
 
-image::split-1-high.png[caption="Figure 1: ", title="View Structure and UI", alt="", width="800", "split-1-high.png"]
+image::split-1-high.png["View structure and UI", width="800"]
 
 In this example, you can check how the code matches to XML and other UI elements.
 
 // TODO: Use 2 images of screenshots with the default layout
 
-image::split-2-high.png[caption="Figure 2: ", title="View configuration and XML", alt="", width="800", "split2"]
+image::split-2-high.png["View configuration and XML", width="800"]
 
 [NOTE]
 ====
@@ -1094,7 +1094,7 @@ If your configuration has common fields, they can be defined at a parent class.
 
 In our connector, after the refactor the classes would look like this:
 
-image::model.png[uml-model]
+image::model.png["Layout of connector with multiple configurations"]
 ////
 [plantuml,model,png]
 ----
@@ -1149,7 +1149,7 @@ As an example, we are going to use the GetRecentlyAdded method.
 
 . Inside your `@Connector` type source and use Ctrl + Space bar to display the templates.
 +
-image::source-template.png[width="600"]
+image::source-template.png["Template for configuring a source", width="600"]
 
 . Create a `@Source` that consumes the Get Recently Updated on the Connector using a callback
 +
@@ -1162,7 +1162,7 @@ include::{examplesdir}/java/v7/CookbookConnector.java[lines=73..90]
 
 . On your flow now just drag and drop the Cookbook Connector, and you will see that is automatically while generate a flow.
 +
-image::source-example.png[width="600"]
+image::source-example.png["Example of flow with Object to JSON and Logger", width="600"]
 
 . Add a logger and debug to see that the payload now has your recipes.
 +
@@ -1171,7 +1171,7 @@ image::source-example.png[width="600"]
 [discrete.view]
 === Mule App
 
-image::source-debug.png[width="600"]
+image::source-debug.png["Mule Debugger panel for Logger", width="600"]
 
 [discrete.view]
 === XML
@@ -1219,7 +1219,7 @@ To use your transformer, just drag and drop it from the palette and build a flow
 [discrete.view]
 === Mule App
 
-image::transformer-explicit.png[width="600"]
+image::transformer-explicit.png["Mule flow with Transformer", width="600"]
 
 [discrete.view]
 === XML
@@ -1248,7 +1248,7 @@ include::{examplesdir}/java/v8/CookbookConnector.java[lines=226..232]
 [discrete.view]
 === Mule App
 
-image::transformer-implicitly.png[width="600"]
+image::transformer-implicitly.png["Mule flow with Transformer used implicitly", width="600"]
 
 [discrete.view]
 === XML
@@ -1272,7 +1272,7 @@ include::{examplesdir}/java/v2/ConnectorConfig.java[lines=41..43]
 
 In Studio this translates into:
 
-image::password.png[width="500"]
+image::password.png["Global Elements Properties window for configuration with password entered", width="500"]
 
 // ==== Using @Placement
 

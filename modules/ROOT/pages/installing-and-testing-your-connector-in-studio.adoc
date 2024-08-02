@@ -190,7 +190,7 @@ After running the `mvn clean package` command:
 . Click *Add*. Locate the `.zip` file/archive in which your connector is packaged.
 . Ensure the connector appears in the central pane, and is selected. Click *Next*.
 +
-image::installing-and-testing-your-connector-in-studio-69499.png[]
+image::installing-and-testing-your-connector-in-studio-69499.png["Install window to add your connector"]
 +
 . Again, ensure the connector is selected on the next screen. Click *Next*, accept the License(s) agreement terms and *Finish*.
 
@@ -211,11 +211,11 @@ To see your new connector function, create, then run a Mule application which us
 
 . Create a simple flow using an *HTTP* connector and your new *Barn Connector*. Use the default values configured in the HTTP endpoint (*port*: `8081`, *host*: `localhost`).
 +
-image::36barnconnector.png[36BarnConnector]
+image::36barnconnector.png["Simple flow with Barn Connector"]
 +
 . Select the connector to open the properties editor. Notice the parameters Studio makes available to the end user to configure. Configure the parameters according to the table below.
 +
-image::config1.png[]
+image::config1.png["Config panel for Barn Connector"]
 +
 [%header%autowidth.spread]
 |===
@@ -228,17 +228,17 @@ image::config1.png[]
 +
 . Click the plus sign next to the *Config Reference* field to create a new global element for your connector to use.
 +
-image::config.png[]
+image::config.png["Config panel for Barn Connector with an arrow pointing to the plus icon"]
 +
 . In the *My Property*, *Username*, and *Password* fields, enter any string as the value, then click *OK*. +
  +
-image::global-elements.png[]
+image::global-elements.png["Global Elements Properties window for Barn Connector"]
 +
 . Save, then run the project as a Mule Application (right-click project name, then select *Run As* > *Mule Application*).
 . From a browser, navigate to `http://localhost:8081/?animal=Mule`
 . The application returns the response in your browser (see below).
 +
-image::browser.png[]
+image::browser.png["Browser with the response of the Mule flow"]
 
 [discrete.view]
 === XML
@@ -277,7 +277,7 @@ http://www.mulesoft.org/schema/mule/barn http://www.mulesoft.org/schema/mule/bar
 . From a browser, navigate to `http://localhost:8081/?animal=Mule`
 . The application returns the response in your browser (see below).
 +
-image::browser.png[]
+image::browser.png["Browser with the response of the Mule flow"]
 
 =====
 
