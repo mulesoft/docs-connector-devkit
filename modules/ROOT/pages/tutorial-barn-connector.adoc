@@ -278,7 +278,7 @@ To configure the Barn connector:
 +
 .. Click the green plus:
 +
-image::barnpanel1.png["Panel with arrow pointing to green plus sign"]
+image::barnpanel1.png["Panel with arrow pointing to plus sign"]
 +
 .. Ensure that the screen appears as follows and click *OK*:
 +
