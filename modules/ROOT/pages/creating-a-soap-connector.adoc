@@ -351,7 +351,7 @@ ServiceDefinitionRetriever: Responsible of returning a collection of WSDL files 
 
 keySeparator: One or more characters that work as a delimiter between Service and Operation in a compound service-operation key, present in the app XML once the keys are selected.
 
-keyLabels: Names to be used used as labels for the drop-downs shown in Studio.
+keyLabels: Names to be used as labels for the drop-downs shown in Studio.
 
 ==== Possible Scenarios
 
