@@ -290,7 +290,7 @@ The two values for My Property and My Strategy Property are supplied by the defa
 image::barnpanel3.png["Panel with the Put in barn operation selected and the Animal field with Mule selected"]
 +
 . Deploy your Mule project by clicking *Run* > *Run As* > *Mule Application*.
-. Open a browser and set the address to http://0.0.0.0:8081 - The browser displays:
+. Open a browser and set the address to `\http://0.0.0.0:8081`. The browser displays:
 +
 image::barnbrowser.png["Browser with the response of the Mule flow"]
 +

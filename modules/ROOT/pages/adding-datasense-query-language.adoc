@@ -15,7 +15,7 @@ image::6-package.png["A flowchart showing the steps in a development process"]
 == Prerequisites
 
 * Familiarity with Anypoint Connectors, xref:studio::datasense-concept.adoc[DataSense] and this topic from a user level.
-* Understand Java "@" annotations. See http://mulesoft.github.io/mule-devkit/[Anypoint DevKit API Reference].
+* Understand Java "@" annotations. 
 * Experience with implementing a basic connector with xref:index.adoc[Anypoint DevKit].
 * Understand the visitor pattern, which is fundamental to the workings of DSQL-to-native query language translation.
 See:
@@ -128,9 +128,9 @@ Package `org.mule.common.query` defines Visitor interfaces that represent differ
 |Syntax implemented
 
 |`QueryVisitor`
-|https://github.com/mulesoft/mule-common/tree/3.x/src/main/java/org/mule/common/query/DefaultQueryVisitor.java[DefaultQueryVisitor]
+|`DefaultQueryVisitor`
 
-https://github.com/mulesoft/mule-common/blob/c66595981f02fbed7b357d93010c84a0cacf704e/src/main/java/org/mule/common/query/DsqlQueryVisitor.java[DSQLQueryVisitor]
+`DSQLQueryVisitor`
 |* "Beginning of an expression"
 (such as, the word "WHERE" before a filter expression)
 * Field lists
@@ -142,7 +142,7 @@ https://github.com/mulesoft/mule-common/blob/c66595981f02fbed7b357d93010c84a0cac
 * Boolean operators
 
 |`OperatorVisitor`
-|https://github.com/mulesoft/mule-common/blob/c66595981f02fbed7b357d93010c84a0cacf704e/src/main/java/org/mule/common/query/DefaultOperatorVisitor.java[DefaultOperatorVisitor]
+|`DefaultOperatorVisitor`
 |* Specific comparison operators +
  (equals, not-equals, greater/less than, LIKE, etc.)
 |===
@@ -153,7 +153,7 @@ To implement support for a new query language, define classes that extend `Defau
 
 Creating a new operator visitor class lets you define the comparison operator syntax (including LIKE) for your native query language.
 
-Define a new class in your connector that extends https://github.com/mulesoft/mule-common/blob/c66595981f02fbed7b357d93010c84a0cacf704e/src/main/java/org/mule/common/query/DefaultOperatorVisitor.java[DefaultOperatorVisitor], which implements all the DSQL comparison operators:
+Define a new class in your connector that extends `DefaultOperatorVisitor`, which implements all the DSQL comparison operators:
 
 *Example DefaultOperatorVisitor Class:*
 
@@ -213,7 +213,7 @@ Because the rest of the operators are the same in SOQL and DSQL, no other change
 
 Creating a new query visitor class lets you define the query syntax for expressing the core query model constructs in your native query language.
 
-Create a new class in your connector project that extends https://github.com/mulesoft/mule-common/tree/3.x/src/main/java/org/mule/common/query/DefaultQueryVisitor.java[DefaultQueryVisitor] class.
+Create a new class in your connector project that extends the `DefaultQueryVisitor` class.
 
 Suppose that your service uses the following syntax:
 

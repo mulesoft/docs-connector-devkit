@@ -59,7 +59,7 @@ To use Connection Management in a connector, define and annotate the following m
 * `@ValidateConnection` method - Returns true if a connection is still valid, false otherwise
 * `@ConnectionIdentifier` method - Returns a prefix used in generating unique identifiers for connector instances in the connection pool
 
-The specific implementation of these methods depends on the target. For more information on annotations, see the http://mulesoft.github.io/mule-devkit/[Anypoint DevKit API Reference].
+The specific implementation of these methods depends on the target. 
 
 [source,java,linenums]
 ----

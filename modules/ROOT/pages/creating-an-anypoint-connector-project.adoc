@@ -53,8 +53,6 @@ With your cursor on the @Connector class or any other @ annotation, type CTRL + 
 
 image::connectorhelpinfo.png["Autocomplete function to help you create your connector project"]
 
-For more information on @Connector and other Anypoint Connector DevKit annotations, see the http://mulesoft.github.io/mule-devkit/[Anypoint DevKit API Reference].
-
 === Using Code Templates
 
 Templates are customizable pieces of code that you can add to your connector, and which provide a basic structure for elements you commonly use. Type the name or part of it and press `[ Command | Ctrl ] + space` to insert the template into the current Connector Class.
