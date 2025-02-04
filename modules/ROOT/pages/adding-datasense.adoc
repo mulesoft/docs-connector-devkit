@@ -38,9 +38,6 @@ A connector is considered to have a *static data model* (also known as a "strong
 
 In this case, metadata retrieval is straightforward: the POJO entity class definitions can be referenced and they can provide all the metadata needed in Java, available using introspection. Awareness is already implied by the strongly typed parameter in the processor.
 
-[NOTE]
-Check the https://github.com/mulesoft/twitter-connector/tree/develop[Twitter connector] in GitHub for a working example.
-
 === Static Metadata Retrieval
 
 To retrieve static metadata, obtain it from the connector. Because it is not likely to change, you don't need to make a call to the web service to gather it. Rather you can just *hard-code the information into the connector*.

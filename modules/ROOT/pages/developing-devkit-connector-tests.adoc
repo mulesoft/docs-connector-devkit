@@ -129,7 +129,7 @@ DevKit testing procedure provides the following features.
 
 * Smoke suite tests whether preconditions are met for a Regression run.
 * Regression suite includes at least one test case for each operation.
-* Write functional tests using the https://mulesoft.github.io/connector-testing-framework/[connector testing framework].
+* Write functional tests using the Connector Testing Framework.
 
 == Suite Implementation
 
