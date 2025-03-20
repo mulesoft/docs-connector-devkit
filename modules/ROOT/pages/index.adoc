@@ -10,6 +10,8 @@ Anypoint Connector DevKit (DevKit), enables the development of xref:3.9@mule-run
 ====
 Anypoint Connector DevKit 3.9 is the latest version of DevKit, offering connector end user support in a few aspects of Mule app design in Studio 6. Requirements and suggestions for writing connector code using DevKit have not changed since version 3.9.
 
+xref:release-notes::connector-devkit/anypoint-connector-devkit-3.9.x-release-notes.adoc[Anypoint Connector DevKit 3.9.x Release Notes]
+
 DevKit versioning does not follow Mule versioning. Connectors built with DevKit 3.9 work with Mule 3.5.3 to 3.9.
 ====
 
