@@ -9,7 +9,7 @@ include::partial$devkit-important.adoc[]
 When your connector is ready for release to a broad audience, take the following additional steps to ensure user success:
 
 * Create a license agreement for your connector.
-* See the advantages of building your connector with DevKit 3.9 and packaging two sets of connector logo-icons to support the old and new Studio UI.
+* See the advantages of building your connector with xref:release-notes::connector-devkit/anypoint-connector-devkit-3.9.x-release-notes.adoc[DevKit 3.9] and packaging two sets of connector logo-icons to support the old and new Studio UI.
 * Develop end-to-end walkthroughs to illustrate performing common use cases with your connector.
 * Create a compressed file for distribution using Maven.
 
